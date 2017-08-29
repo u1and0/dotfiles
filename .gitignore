@@ -1,0 +1,71 @@
+# '#' で始まる行は無視されます
+# foo.txt という名前の全てのファイルを無視する
+#	foo.txt
+# (生成された) html ファイルは無視する
+#	*.html
+# foo.html は例外とし、手でメンテナンスします
+#	!foo.html
+# object と archive ファイルは無視する
+#	*.[oa]
+# 参考: [複雑な.gitignoreの書き方参考](http://qiita.com/anqooqie/items/110957797b3d5280c44f)
+
+
+
+# すべてのファイル
+/*
+
+
+# bash cofigファイル
+!.profile
+!.bashrc
+!.bash_aliases
+!.bash_functions
+!.bash_completions
+!.zshrc
+
+# gitファイル
+!.gitignore
+!.gitconfig
+
+
+# すべてのディレクトリ
+/*/
+
+# Sublimetext3 設定ファイル
+# !/SublimeText3/
+
+
+# python系
+!/.ipython/
+/.ipython/*
+!/.ipython/extensions/
+/.ipython/extensions/*/
+!/.ipython/profile_default/
+/.ipython/profile_default/*/
+/.ipython/profile_default/history.sqlite*
+!/.ipython/profile_default/startup/
+
+# バイナリファイル
+.ipython/profile_default/db/dhist
+
+!/.matplotlib/
+/.matplotlib/*.cache
+
+!/.jupyter/
+
+!/.spyder-py3/
+/.spyder-py3/*
+!/.spyder-py3/spyder.ini
+
+# !/SublimeText3/
+# FileHistory*.*
+# Evernote.sublime-settings
+# *.cache
+# *cache*.*
+# encoding_cache.json
+
+!/.vim/
+
+
+*.last-run
+*の競合コピー*.*
