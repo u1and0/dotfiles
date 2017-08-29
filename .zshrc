@@ -179,8 +179,8 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-if [ -f ~/.bash_completions ]; then
-    . ~/.bash_completions
+if [ -f ~/.pyenvrc ]; then
+    . ~/.pyenvrc
 fi
 
 # vim:set ft=zsh:
