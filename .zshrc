@@ -156,7 +156,11 @@ bindkey '^R' history-incremental-pattern-search-backward
 ########################################
 # グローバルエイリアス
 alias -g L='| less'
+alias -g M='| more'
 alias -g G='| grep'
+alias -g P='| peco'
+alias -g H='| head'
+alias -g T='| tail'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
