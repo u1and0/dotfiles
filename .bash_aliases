@@ -80,11 +80,10 @@ alias shutup='sudo /mnt/g/backup/backup_command/tar_xz.sh ; shutdown -h 5'
 
 
 # python
-alias py='python'
-alias ipy='ipython'
+#alias ipy='ipython'
 alias jpy='jupyter qtconsole --style=monokai'
 alias jpyn='jupyter notebook'
-alias spy="Spyder"
+#alias spy="Spyder"
 
 
 # git

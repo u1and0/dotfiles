@@ -61,7 +61,7 @@ GITPROMPT='${vcs_info_msg_0_}'
 # 1行表示
 # PROMPT="%~ %# "
 # 2行表示
-PROMPT="%{$fg[cyan]%}%n@%m%{$fg[green]%} %~ ${GITPROMPT}
+PROMPT="%F{cyan}%n@%m%F{green} %~ ${GITPROMPT}
 ${reset_color}$ "
 
 
