@@ -32,7 +32,7 @@ alias dir=ll
 alias path='echo -e ${PATH//:/\\n}'
 
 # ディスクサイズ
-alias watch='watch -dn1'
+alias watch='watch -d -n1'
 alias df='df -h'
 alias du='du -h'
 alias du1='du -d1'
