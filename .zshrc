@@ -156,11 +156,29 @@ setopt hist_expand
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
 
+
 ########################################
 # キーバインド
 
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^R' history-incremental-pattern-search-backward
+
+# ctrl+Backspace
+bindkey '^H' backward-kill-word
+
+# alt+_
+bindkey '^[_' redo
+
+# カーソル移動
+# # ctrl+up
+# bindkey '\e[1;5A' backward-word
+# # ctrl+down
+# bindkey '\e[1;5B' backward-word
+# ctrl+right
+bindkey '\e[1;5C' forward-word
+# ctrl+left
+bindkey '\e[1;5D' backward-word
+
 
 ########################################
 # グローバルエイリアス
