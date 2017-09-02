@@ -144,8 +144,17 @@ setopt hist_ignore_space
 # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_reduce_blanks
 
+# ヒストリを呼び出してから実行する間に一旦編集可能
+setopt hist_verify
+
 # 高機能なワイルドカード展開を使用する
 setopt extended_glob
+
+# 補完時にヒストリを自動的に展開         
+setopt hist_expand
+
+# 履歴をインクリメンタルに追加
+setopt inc_append_history
 
 ########################################
 # キーバインド
