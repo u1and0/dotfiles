@@ -49,7 +49,7 @@ alias diff='diff --color'
 	# whereis hogeでコマンドの関連場所を検索(bin, src, man)
 	# type -a hogeでコマンドを検索
 	# -I: バイナリ無視
-alias grep='grep --color=tty -ni'
+alias grep='grep --color=tty -i'
 
 # Windowsコマンド文字化け対策
 function wincmd()
