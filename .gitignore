@@ -16,13 +16,9 @@
 
 
 # bash cofigファイル
-!.profile
-!.bashrc
 !.bash_aliases
 !.bash_functions
-!.bash_completions
 !.zshrc
-!.pyenvrc
 
 # gitファイル
 !.gitignore
@@ -32,41 +28,3 @@
 # すべてのディレクトリ
 /*/
 
-# Sublimetext3 設定ファイル
-# !/SublimeText3/
-
-
-# python系
-!/.ipython/
-/.ipython/*
-!/.ipython/extensions/
-/.ipython/extensions/*/
-!/.ipython/profile_default/
-/.ipython/profile_default/*/
-/.ipython/profile_default/history.sqlite*
-!/.ipython/profile_default/startup/
-
-# バイナリファイル
-.ipython/profile_default/db/dhist
-
-!/.matplotlib/
-/.matplotlib/*.cache
-
-!/.jupyter/
-
-!/.spyder-py3/
-/.spyder-py3/*
-!/.spyder-py3/spyder.ini
-
-# !/SublimeText3/
-# FileHistory*.*
-# Evernote.sublime-settings
-# *.cache
-# *cache*.*
-# encoding_cache.json
-
-!/.vim/
-
-
-*.last-run
-*の競合コピー*.*
