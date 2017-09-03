@@ -46,7 +46,12 @@ SAVEHIST=1000000
  export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
  export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
-# gitプロンプト
+
+# ==git repository==
+export REPOS=~/Dropbox/Program/Repos
+
+
+# ==git prompt==
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
