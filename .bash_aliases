@@ -121,3 +121,6 @@ alias grst-h='git reset --hard HEAD'
 alias tweet="~/sh/kotoriotoko/BIN/tweet.sh"
 alias timeline="~/sh/get_tl.sh"
 alias line="~/sh/line.sh"
+
+# pacman
+alias pacman='sudo pacman'
