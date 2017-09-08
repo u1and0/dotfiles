@@ -20,6 +20,7 @@
 !.bash_functions
 !.zshrc
 !.pyenvrc
+!.vimrc
 
 # gitファイル
 !.gitignore
