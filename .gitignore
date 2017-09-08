@@ -16,11 +16,8 @@
 
 
 # bash cofigファイル
-!.profile
-!.bashrc
 !.bash_aliases
 !.bash_functions
-!.bash_completions
 !.zshrc
 !.pyenvrc
 
