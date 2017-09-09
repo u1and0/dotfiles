@@ -33,7 +33,7 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # ディスクサイズ
 alias watch='watch -d -n1'
-alias watchd='watch "du -hd1 $1"'
+alias watchd='watch "du -d1 $1"'
 alias watchl='watch "ls -lthA $1"'
 
 alias df='df -h'
