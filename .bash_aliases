@@ -4,7 +4,7 @@ echo '--Loading ~/.bash_aliases--'
 # alias hogeを一時的に無効にするには\hoge
 
 # sudo command
-alias sudo='sudo $*'
+alias sudo='sudo '
 
 # 移動しやすく
 alias ..='cd ..'
@@ -36,10 +36,12 @@ alias dir=ll
 alias path='echo -e ${PATH//:/\\n}'
 alias history='history +1'
 
-# ディスクサイズ
-alias watch='watch -d -n1'
+# watch commands
+alias watch='watch -d -n1 '
 alias watchd='watch "du -hd1 $1"'
 alias watchl='watch "ls -ltrhA $1"'
+
+# ディスクサイズ
 alias df='df -h'
 alias du='du -h'
 alias du1='du -d1'
