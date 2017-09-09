@@ -24,6 +24,8 @@
 !.gitignore
 !.gitconfig
 
+# yaourt config
+!.yaourtrc
 
 # すべてのディレクトリ
 /*/
