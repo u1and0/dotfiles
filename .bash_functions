@@ -117,5 +117,3 @@ function python_print(){
 }
 alias pp='python_print'
 
-# 全履歴の表示
-function history-all(){ history -E 1 }

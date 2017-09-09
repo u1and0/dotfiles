@@ -30,6 +30,7 @@ alias cls=reset
 # Windowsっぽく
 alias dir=ll
 alias path='echo -e ${PATH//:/\\n}'
+alias history='history +1'
 
 # ディスクサイズ
 alias watch='watch -d -n1'
