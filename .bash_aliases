@@ -32,15 +32,17 @@ alias dir=ll
 alias path='echo -e ${PATH//:/\\n}'
 
 # ディスクサイズ
-alias watch='watch -d -n1'
-alias watchd='watch "du -hd1 $1"'
-alias watchl='watch "ls -lthA $1"'
 alias df='df -h'
 alias du='du -h'
 alias du1='du -d1'
-function dut() {
+function du2() {
     du -s $* | sort -h
 }
+
+# watchカスタム
+alias watch='watch -d -n1 '
+alias watchd='watch "du -d1 $1"'
+alias watchl='watch "ls -lthA $1"'
 
 # diff custom
 alias diff='diff --color'
@@ -121,6 +123,3 @@ alias grst-h='git reset --hard HEAD'
 alias tweet="~/sh/kotoriotoko/BIN/tweet.sh"
 alias timeline="~/sh/get_tl.sh"
 alias line="~/sh/line.sh"
-
-# pacman
-alias pacman='sudo pacman'
