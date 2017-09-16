@@ -36,6 +36,9 @@ SAVEHIST=1000000
   # -z-4'
 
  # man などの様々なコマンドがページャーとして less を使うようになります
+ export EDITOR=vim
+
+ # man などの様々なコマンドがページャーとして less を使うようになります
  export PAGER=less
  # $PAGER を設定した状態で以下の環境変数を指定すると man ページに色が付きます。
  export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
