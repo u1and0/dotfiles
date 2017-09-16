@@ -3,6 +3,9 @@ echo '--Loading ~/.bash_aliases--'
 # Aliases for MSYS2 bash
 # alias hogeを一時的に無効にするには\hoge
 
+# sudo command
+alias sudo='sudo $*'
+
 # 移動しやすく
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -18,6 +21,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 alias mkdir='mkdir -p'
+alias vi='vim'
 
 # 設定の読み込み
 alias relogin='exec $SHELL -l'
@@ -30,6 +34,7 @@ alias cls=reset
 # Windowsっぽく
 alias dir=ll
 alias path='echo -e ${PATH//:/\\n}'
+alias history='history +1'
 
 # ディスクサイズ
 alias df='df -h'
