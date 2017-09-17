@@ -167,9 +167,15 @@ setopt inc_append_history
 
 ########################################
 # キーバインド
+#
+# emacs-mode
+bindkey -e
 
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^R' history-incremental-pattern-search-backward
+
+# delete key
+bindkey '^[[3~' delete-char
 
 # ctrl+Backspace
 bindkey '^H' backward-kill-word
