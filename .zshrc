@@ -6,6 +6,7 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 
+
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
@@ -34,8 +35,12 @@ SAVEHIST=1000000
  export LESS='-MigrWx4'
   # -z-4'
 
+ # デフォルトのエディタ
+ export EDITOR='vim'
+ export VISUAL='vim'
+
  # man などの様々なコマンドがページャーとして less を使うようになります
- export PAGER=less
+ export PAGER='less'
  # $PAGER を設定した状態で以下の環境変数を指定すると man ページに色が付きます。
  export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
  export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
