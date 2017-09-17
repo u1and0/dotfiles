@@ -5,6 +5,7 @@ echo '--Loading ~/.bash_aliases--'
 
 # sudo command
 alias sudo='sudo '
+alias apt='sudo apt '
 
 # 移動しやすく
 alias ..='cd ..'
@@ -84,7 +85,8 @@ alias ping2='ping 192.168.0.1'
 # alias m='make -j3'
 
 # バックアップコマンド
-alias shutup='sudo /mnt/g/backup/backup_command/tar_xz.sh ; shutdown -h 5'
+alias shutup='sudo dd-backup; shutdown -h 5'
+#alias shutup='sudo /mnt/g/backup/backup_command/tar_xz.sh ; shutdown -h 5'
 
 
 # python
