@@ -4,7 +4,7 @@ echo '--Loading ~/.bash_aliases--'
 # alias hogeを一時的に無効にするには\hoge
 
 # sudo command
-alias sudo='sudo $*'
+alias sudo='sudo '
 
 # 移動しやすく
 alias ..='cd ..'
@@ -34,7 +34,6 @@ alias cls=reset
 # Windowsっぽく
 alias dir=ll
 alias path='echo -e ${PATH//:/\\n}'
-alias history='history +1'
 
 # ディスクサイズ
 alias df='df -h'
