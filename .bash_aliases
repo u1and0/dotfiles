@@ -126,6 +126,7 @@ alias gt='git tag -n'
 alias grst-h='git reset --hard HEAD'
 
 # sns
-alias tweet="~/sh/kotoriotoko/BIN/tweet.sh"
-alias timeline="~/sh/get_tl.sh"
-alias line="~/sh/line.sh"
+export SH="~/Dropbox/Program/sh"
+alias tweet="$SH/kotoriotoko/BIN/tweet.sh"
+alias timeline="$SH/get_tl.sh"
+alias line="$SH/line.sh"
