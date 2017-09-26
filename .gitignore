@@ -21,6 +21,7 @@
 !.zshrc
 !.pyenvrc
 !.vimrc
+!.tigrc
 
 # gitファイル
 !.gitignore
