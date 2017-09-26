@@ -50,7 +50,11 @@ alias watchd='watch "du -d1 $1"'
 alias watchl='watch "ls -lthA $1"'
 
 # diff custom
-alias diff='diff --color'
+if [[ -x `which colordiff` ]]; then
+	  alias diff='colordiff -u'
+  else
+	    alias diff='diff -u'
+fi
 
 # grep custom
 	# grep -r hogeで./以下のファイルの中身からhogeを検索
