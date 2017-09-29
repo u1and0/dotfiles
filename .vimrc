@@ -123,3 +123,12 @@ set runtimepath+=~/.vim/bundle/neobundle.vim
 	vmap <C-K> <Plug>(caw:hatpos:toggle)
 call neobundle#end()
 endif
+
+" カッコやクオートなどを入力した際に左に自動で移動します
+inoremap {} {}<Left>
+inoremap [] []<Left>
+inoremap () ()<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap <> <><Left>
+
