@@ -116,3 +116,8 @@ function python_print(){
 	python -c "print($*)"
 }
 alias pp='python_print'
+
+function ranger(){
+    [ -n "$RANGER_LEVEL" ] && exit || LESS="$LESS -+F -+X" command ranger "$@"
+}
+    [ -n "$RANGER_LEVEL" ] && PS1="(RANGER) $PS1"

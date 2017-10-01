@@ -28,12 +28,18 @@
 !.gitconfig
 
 
-# すべてのディレクトリ
+# すべてのディレクトリを無視
 /*/
+
+# ranger設定ファイル
+!/.config/
+/.config/*
+!/.config/ranger/
+/.config/ranger/*
+!/.config/ranger/rc.conf
 
 # Sublimetext3 設定ファイル
 # !/SublimeText3/
-
 
 # python系
 !/.ipython/
