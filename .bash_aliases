@@ -130,3 +130,4 @@ alias line="~/sh/line.sh"
 
 # pacman
 alias pacman='sudo pacman '
+alias powerpill='sudo powerpill '
