@@ -5,14 +5,15 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
-
+export SHELL=/usr/bin/zsh
+export VAGRANT_HOME=${HOME}/.vagrant.d
 
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
 
 # emacs 風キーバインドにする
-# bindkey -e
+bindkey -e
 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
@@ -87,6 +88,7 @@ zstyle ':zle:*' word-style unspecified
 # 何故かsite-functionsの場所が`/usr/local/share/zsh/site-functions`になっていたのでパスを追加
 # `$ echo $fpath | sed s/\\s/\\n/g`で確認
 fpath=(/usr/share/zsh/site-functions $fpath)
+fpath=(/usr/share/zsh/functions/Completion/zsh-completions/src $fpath)
 
 
 # 補完
