@@ -8,3 +8,4 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 # bin/activate bin/deactivateを使うため
 export PATH="$PYENV_ROOT/versions/anaconda3-5.0.0/bin:$PATH"
+export PATH="/usr/bin:$PATH"
