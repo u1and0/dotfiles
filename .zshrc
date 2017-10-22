@@ -86,7 +86,7 @@ zstyle ':zle:*' word-style unspecified
 ########################################
 # 何故かsite-functionsの場所が`/usr/local/share/zsh/site-functions`になっていたのでパスを追加
 # `$ echo $fpath | sed s/\\s/\\n/g`で確認
-fpath=(/usr/share/zsh/site-functions $fpath)
+fpath=(${HOME}/my_zsh_functions/ /usr/share/zsh/site-functions $fpath)
 
 
 # 補完
