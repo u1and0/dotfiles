@@ -27,6 +27,8 @@
 !.gitignore
 !.gitconfig
 
+# yaourt config
+!.yaourtrc
 
 # すべてのディレクトリを無視
 /*/
@@ -37,9 +39,6 @@
 !/.config/ranger/
 /.config/ranger/*
 !/.config/ranger/rc.conf
-
-# Sublimetext3 設定ファイル
-# !/SublimeText3/
 
 # python系
 !/.ipython/
@@ -59,19 +58,5 @@
 
 !/.jupyter/
 
-!/.spyder-py3/
-/.spyder-py3/*
-!/.spyder-py3/spyder.ini
-
-# !/SublimeText3/
-# FileHistory*.*
-# Evernote.sublime-settings
-# *.cache
-# *cache*.*
-# encoding_cache.json
-
 !/.vim/
 
-
-*.last-run
-*の競合コピー*.*
