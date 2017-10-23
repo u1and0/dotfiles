@@ -11,9 +11,6 @@ export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
 
-# emacs 風キーバインドにする
-# bindkey -e
-
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -167,9 +164,18 @@ setopt inc_append_history
 
 ########################################
 # キーバインド
+#
+# emacs-mode
+bindkey -e
 
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^R' history-incremental-pattern-search-backward
+
+# delete key
+bindkey '^[[3~' delete-char
+
+# ctrl+Backspace
+bindkey '^H' backward-kill-word
 
 # alt+_
 bindkey '^[_' redo

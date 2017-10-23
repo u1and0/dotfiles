@@ -106,23 +106,26 @@ endif
 "	call neobundle#rc(expand('~/.vim/bundle'))
 "endif
 if has('vim_starting')
-set runtimepath+=~/.vim/bundle/neobundle.vim
+	set runtimepath+=~/.vim/bundle/neobundle.vim
 	call neobundle#begin(expand('~/.vim/bundle/'))
-	NeoBundleFetch 'Shougo/neobundle.vim'
+		NeoBundleFetch 'Shougo/neobundle.vim'
 
-	" 以下は必要に応じて追加
-	NeoBundle 'Shougo/unite.vim'
-	NeoBundle 'Shougo/neosnippet.vim'
+		" 以下は必要に応じて追加
+		NeoBundle 'Shougo/unite.vim'
+		NeoBundle 'Shougo/neosnippet.vim'
 
-	filetype plugin indent on
+		filetype plugin indent on
 
-	" __Multiple Comment out
-	NeoBundle "tyru/caw.vim.git"
-	" caw:hatpos:toggle
-	nmap <C-K> <Plug>(caw:hatpos:toggle)
-	vmap <C-K> <Plug>(caw:hatpos:toggle)
-call neobundle#end()
+		" __Multiple Comment out
+		NeoBundle "tyru/caw.vim.git"
+		" caw:hatpos:toggle
+		nmap <C-K> <Plug>(caw:hatpos:toggle)
+		vmap <C-K> <Plug>(caw:hatpos:toggle)
+	call neobundle#end()
 endif
+
+" vim起動時に未インストールのプラグインをインストールする
+NeoBundleCheck
 
 " カッコやクオートなどを入力した際に左に自動で移動します
 inoremap {} {}<Left>

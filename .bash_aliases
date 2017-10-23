@@ -6,6 +6,8 @@ echo '--Loading ~/.bash_aliases--'
 # sudo command
 alias sudo='sudo '
 alias apt='sudo apt '
+alias pacman='sudo pacman '
+alias powerpill='sudo powerpill '
 
 # 移動しやすく
 alias ..='cd ..'
