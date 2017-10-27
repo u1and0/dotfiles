@@ -5,7 +5,8 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
-
+export SHELL=/usr/bin/zsh
+export VAGRANT_HOME=${HOME}/.vagrant.d
 
 # 色を使用出来るようにする
 autoload -Uz colors
