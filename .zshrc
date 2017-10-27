@@ -83,6 +83,8 @@ zstyle ':zle:*' word-style unspecified
 # 何故かsite-functionsの場所が`/usr/local/share/zsh/site-functions`になっていたのでパスを追加
 # `$ echo $fpath | sed s/\\s/\\n/g`で確認
 fpath=(/usr/share/zsh/site-functions $fpath)
+fpath=(/usr/share/zsh/functions/Completion/zsh-completions/src $fpath)
+fpath=(${HOME}/my_zsh_completions $fpath)
 
 
 # 補完

@@ -121,3 +121,12 @@ function ranger(){
     [ -n "$RANGER_LEVEL" ] && exit || LESS="$LESS -+F -+X" command ranger "$@"
 }
     [ -n "$RANGER_LEVEL" ] && PS1="(RANGER) $PS1"
+
+function vagrant-snapbox(){
+vagrant suspend
+vagrant sandbox commit
+vagrant sandbox off
+vagrant snapshot save $1
+vagrant sandbox on
+vagrant snapshot list
+}
