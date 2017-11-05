@@ -1,0 +1,5 @@
+{
+  "NotebookApp": {
+    "config_manager_class": "nb_config_manager.EnvironmentConfigManager"
+  }
+}

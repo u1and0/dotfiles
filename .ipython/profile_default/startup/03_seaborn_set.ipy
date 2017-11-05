@@ -1,0 +1,53 @@
+"""
+seaborn setting
+
+#import seaborn as sns
+If imported seaborn, change font style, grid style.
+"""
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def __plottest__(flip=8):
+    """TEST PLOT"""
+    x = np.linspace(0, 14, 100)
+    for i in range(1, flip):
+        plt.plot(x, np.sin(x + i * .5) * (flip - i))
+
+
+try:
+    # sns.set(context="notebook", style='whitegrid', palette='husl', font="IPAMincho",
+    sns.set(context="notebook", style='whitegrid', palette='husl', font="TakaoPGothic",
+            font_scale=1.5, color_codes=False,
+            rc={'grid.linestyle': ':', 'grid.color': 'gray', 'image.cmap': 'jet'})
+except:
+    pass
+
+print('''
+
+---------PLOT SETTING----------
+
+* Test like `__plottest__()`
+* If you'd like to know available style ,type ` plt.style.available `
+* and type as ` plt.style.use('dark_background') `
+* If you'd like RESET ORIGINAL, type `sns.reset_orig()`
+* and also, reset seaborn style using ` sns.set() `
+''')
+
+# print('''
+# Now using 'dark_background'
+
+# ```
+# plt.style.use('dark_background')
+# ```
+
+# * Recomendation:
+#   * original: 'ggplot'
+#   * also dark back ground high contrusted: 'seaborn-dark-palette'
+
+# If you'd like to know available style ,type below
+
+# ```
+# plt.style.available
+# ```
+# ''')
