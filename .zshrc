@@ -199,6 +199,8 @@ alias -g P='| peco'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g W='| wc -l'
+# ANSIカラーコードの無効化
+alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
