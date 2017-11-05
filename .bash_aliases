@@ -45,6 +45,7 @@ alias du1='du -d1'
 function du2() {
     du -s $* | sort -h
 }
+alias free='free -h'
 
 # watchカスタム
 alias watch='watch -d -n1 '

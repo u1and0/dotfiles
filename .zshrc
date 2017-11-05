@@ -5,7 +5,8 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
-
+export SHELL=/usr/bin/zsh
+export VAGRANT_HOME=${HOME}/.vagrant.d
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -48,10 +49,6 @@ SAVEHIST=1000000
  export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
 
-# ==git repository==
-export REPOS=~/Dropbox/Program/Repos
-
-
 # ==git prompt==
 autoload -Uz vcs_info
 setopt prompt_subst
@@ -83,7 +80,9 @@ zstyle ':zle:*' word-style unspecified
 ########################################
 # 何故かsite-functionsの場所が`/usr/local/share/zsh/site-functions`になっていたのでパスを追加
 # `$ echo $fpath | sed s/\\s/\\n/g`で確認
-fpath=(${HOME}/my_zsh_functions/ /usr/share/zsh/site-functions $fpath)
+fpath=(/usr/share/zsh/site-functions $fpath)
+fpath=(/usr/share/zsh/functions/Completion/zsh-completions/src $fpath)
+fpath=(${HOME}/my_zsh_completions $fpath)
 
 
 # 補完
@@ -199,6 +198,9 @@ alias -g G='| grep'
 alias -g P='| peco'
 alias -g H='| head'
 alias -g T='| tail'
+alias -g W='| wc -l'
+# ANSIカラーコードの無効化
+alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
