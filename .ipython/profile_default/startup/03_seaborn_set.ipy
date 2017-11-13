@@ -26,7 +26,6 @@ except:
 print('''
 
 ---------PLOT SETTING----------
-
 * Test like `__plottest__()`
 * If you'd like to know available style ,type ` plt.style.available `
 * and type as ` plt.style.use('dark_background') `
