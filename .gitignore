@@ -25,6 +25,7 @@
 
 # gitファイル
 !.gitignore
+!.globalgitignore
 !.gitconfig
 
 # yaourt config
