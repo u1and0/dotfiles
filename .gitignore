@@ -16,6 +16,7 @@
 
 
 # bash cofigファイル
+!.bash_profile
 !.bash_aliases
 !.bash_functions
 !.zshrc
