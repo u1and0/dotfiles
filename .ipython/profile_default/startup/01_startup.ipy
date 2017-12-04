@@ -1,0 +1,19 @@
+"""
+Promptly run command as Ipython startup.
+Try to import 'numpy','pandas','matplotlib.pyplot','seaborn',
+and print importing modules to stdout.
+"""
+__modules__ = ('numpy',
+           'pandas',
+           'matplotlib.pyplot',
+           'seaborn'
+           )
+__standfor__ = {'numpy': 'np',
+            'pandas': 'pd',
+            'matplotlib.pyplot': 'plt',
+            'seaborn': 'sns'}
+
+for __module__ in __modules__:
+    __execution__ = 'import %s as %s' % (__module__, __standfor__[__module__])
+    print(__execution__)
+    exec(__execution__)

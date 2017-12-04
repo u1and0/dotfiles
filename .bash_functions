@@ -122,11 +122,17 @@ function ranger(){
 }
     [ -n "$RANGER_LEVEL" ] && PS1="(RANGER) $PS1"
 
+# vagrant保存シーケンス関数関数化
+# * vagrantで仮想マシンを一時停止して
+# * サンドボックスをコミット・停止して
+# * スナップショットとってサンドボックス再開して
+# * スナップショットのリスト表示
 function vagrant-snapbox(){
-vagrant suspend
-vagrant sandbox commit
-vagrant sandbox off
-vagrant snapshot save $1
-vagrant sandbox on
-vagrant snapshot list
+	vagrant suspend
+	vagrant sandbox commit
+	vagrant sandbox off
+	vagrant snapshot save $1
+	vagrant sandbox on
+	vagrant snapshot list
 }
+
