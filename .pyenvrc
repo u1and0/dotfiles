@@ -8,3 +8,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 # bin/activate bin/deactivateを使うため
 export PATH="/usr/bin:$PYENV_ROOT/versions/anaconda3-5.0.0/bin:$PATH"
+export PYTHONPATH="${HOME}/Dropbox/Program/python/stockplot/bin:$PYTHONPATH"
+
+source activate snow
+
