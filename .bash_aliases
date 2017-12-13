@@ -67,6 +67,8 @@ fi
 	# -I: バイナリ無視
 alias grep='grep --color=tty -i'
 
+# history cumsom
+alias h='history'
 # Windowsコマンド文字化け対策
 function wincmd()
 {
