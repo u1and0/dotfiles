@@ -627,6 +627,7 @@ c.AliasManager.user_aliases = [
 c.InteractiveShellApp.exec_lines = ['%load_ext autoreload', '%autoreload 2']
 
 # Adjust white space of matplotlib plot
+#c.InlineBackend.rc = {'font.family': 'IPAMincho',
 c.InlineBackend.rc = {'font.family': 'TakaoPGothic',
                       'figure.facecolor': (1, 1, 1, 1),
                       'savefig.dpi': 72,
