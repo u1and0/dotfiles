@@ -161,6 +161,9 @@ setopt hist_expand
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
 
+# {a-z}を{a..z}と同様にする 
+setopt braceccl
+
 ########################################
 # キーバインド
 #

@@ -1,5 +1,5 @@
 # pyenv file
-# https://github.com/pyenv/pyenv#installation
+# mkdir .pyenv && git clone https://github.com/pyenv/pyenv .pyenv  # installation
 
 # pyenvのあるpath
 export PYENV_ROOT="$HOME/.pyenv"
@@ -7,4 +7,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # pyenv実行
 eval "$(pyenv init -)"
 # bin/activate bin/deactivateを使うため
-export PATH="$PYENV_ROOT/versions/miniconda3-latest/bin:PYENV_ROOT/versions/anaconda3-5.0.0/bin:$PATH"
+export PATH="/usr/bin:$PYENV_ROOT/versions/miniconda3-latest/bin:$PYENV_ROOT/versions/anaconda3-5.0.0/bin:$PATH"
+export PYTHONPATH="${HOME}/Dropbox/Program/python/stockplot/bin:$PYTHONPATH"
+source activate snow
