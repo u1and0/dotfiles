@@ -115,7 +115,7 @@ alias subp='sublime-projects'
 function python_print(){
 	OLDIFS=$IFS
 	IFS=, # Set derimiter as comma
-	python -c "from numpy import *; import pandas as pd; print($*)"
+	python -c "from numpy import *; from scipy.constants import *; import pandas as pd; print($*)"
 	IFS=$OLDIFS  # Reset default
 }
 alias pp='python_print'
