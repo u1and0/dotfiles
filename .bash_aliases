@@ -4,10 +4,12 @@ echo '--Loading ~/.bash_aliases--'
 # alias hogeを一時的に無効にするには\hoge
 
 # sudo command
-alias sudo='sudo '
-alias apt='sudo apt '
-alias pacman='sudo pacman '
-alias powerpill='sudo powerpill '
+if which sudo >/dev/null 2>&1 ; then
+	alias sudo='sudo '
+	alias apt='sudo apt '
+	alias pacman='sudo pacman '
+	alias powerpill='sudo powerpill '
+fi
 
 # 移動しやすく
 alias ..='cd ..'
@@ -67,6 +69,8 @@ fi
 	# -I: バイナリ無視
 alias grep='grep --color=tty -i'
 
+# history cumsom
+alias h='history'
 # Windowsコマンド文字化け対策
 function wincmd()
 {
@@ -92,7 +96,7 @@ alias ping2='ping 192.168.0.1'
 # alias m='make -j3'
 
 # バックアップコマンド
-alias shutup='sudo dd-backup; shutdown -h 5'
+alias shutup='dd-backup; shutdown -h 5'
 #alias shutup='sudo /mnt/g/backup/backup_command/tar_xz.sh ; shutdown -h 5'
 
 
