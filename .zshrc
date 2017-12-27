@@ -231,3 +231,5 @@ if [ -f ~/.pyenvrc ]; then
 fi
 
 # vim:set ft=zsh:
+
+eval $(thefuck --alias)
