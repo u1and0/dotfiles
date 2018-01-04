@@ -230,6 +230,9 @@ if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
     . ~/.pyenvrc
 fi
 
+if which thefuck >/dev/null 2>&1 ; then
+    eval $(thefuck --alias)
+fi
+
 # vim:set ft=zsh:
 
-eval $(thefuck --alias)
