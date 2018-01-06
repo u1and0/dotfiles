@@ -19,11 +19,9 @@
 !.bash_aliases
 !.bash_functions
 !.zshrc
-!.pyenvrc
-!.vimrc
-!.tigrc
 
 # gitファイル
+!.tigrc
 !.gitignore
 !.gitconfig
 
@@ -41,6 +39,7 @@
 !/.config/ranger/rc.conf
 
 # python系
+!.pyenvrc
 !/.ipython/
 /.ipython/*
 !/.ipython/extensions/
@@ -50,12 +49,15 @@
 /.ipython/profile_default/history.sqlite*
 !/.ipython/profile_default/startup/
 
-# バイナリファイル
-.ipython/profile_default/db/dhist
-
 !/.matplotlib/
 /.matplotlib/*.cache
 
 !/.jupyter/
+.jupyter/jupyter_notebook_config.json
 
+# バイナリファイル
+.ipython/profile_default/db/dhist
+
+# vimファイル
+!.vimrc
 !/.vim/
