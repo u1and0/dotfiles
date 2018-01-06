@@ -139,3 +139,11 @@ function vagrant-snapbox(){
 	vagrant snapshot list
 }
 
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tac | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection  # bindkeyで編集可能にする
+bindkey '^R' peco-history-selection  # ctrl+rでヒストリのインクリメンタル検索
