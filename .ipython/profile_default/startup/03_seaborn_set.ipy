@@ -16,17 +16,16 @@ def __plottest__(flip=8):
 
 
 try:
-    # sns.set(context="notebook", style='whitegrid', palette='husl', font="IPAMincho",
+    #sns.set(context="notebook", style='whitegrid', palette='husl', font="IPAMincho",
     sns.set(context="notebook", style='whitegrid', palette='husl', font="TakaoPGothic",
             font_scale=1.5, color_codes=False,
-            rc={'grid.linestyle': ':', 'grid.color': 'gray', 'image.cmap': 'jet'})
+            rc={'grid.linestyle': ':', 'grid.color': 'gray', 'image.cmap': 'viridis'})
 except:
     pass
 
 print('''
 
 ---------PLOT SETTING----------
-
 * Test like `__plottest__()`
 * If you'd like to know available style ,type ` plt.style.available `
 * and type as ` plt.style.use('dark_background') `

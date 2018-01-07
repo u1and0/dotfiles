@@ -6,7 +6,6 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 export SHELL=/usr/bin/zsh
-export VAGRANT_HOME=${HOME}/.vagrant.d
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -161,6 +160,9 @@ setopt hist_expand
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
 
+# {a-z}を{a..z}と同様にする 
+setopt braceccl
+
 ########################################
 # キーバインド
 #
@@ -223,8 +225,13 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-if [ -f ~/.pyenvrc ]; then
+if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
     . ~/.pyenvrc
 fi
 
+if which thefuck >/dev/null 2>&1 ; then
+    eval $(thefuck --alias)
+fi
+
 # vim:set ft=zsh:
+

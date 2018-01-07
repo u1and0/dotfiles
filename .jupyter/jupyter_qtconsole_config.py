@@ -176,6 +176,7 @@ c.JupyterQtConsoleApp.hide_menubar = True
 #     the default is Monospace.
 
 
+c.ConsoleWidget.font_size = 12
 # ConsoleWidget.font_size : Int
 #     Default: ``0``
 
@@ -196,7 +197,6 @@ c.JupyterQtConsoleApp.hide_menubar = True
 #                 completion by pressing Return.
 #     'ncurses' : Show the completion as a text list which is navigable by
 #                 `tab` and arrow keys.
-
 
 # ConsoleWidget.height : Int
 #     Default: ``25``
@@ -243,6 +243,7 @@ c.JupyterQtConsoleApp.hide_menubar = True
 #        The text is written directly to the console.
 
 
+c.ConsoleWidget.console_width = 151
 # ConsoleWidget.width : Int
 #     Default: ``81``
 

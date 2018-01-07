@@ -38,10 +38,11 @@
     "nbpresent/js/nbpresent.min": true,
     "ruler/main": false,
     "toc2/main": true,
-    "printview/main": true
+    "printview/main": true,
+    "code_prettify/autopep8": false
   },
   "limit_output": 1000,
-  "autosavetime_starting_interval": "5",
+  "autosavetime_starting_interval": "10",
   "Cell": {
     "cm_config": {
       "lineNumbers": true
@@ -70,5 +71,6 @@
     "Toolbar": true
   },
   "stored_keymap": "sublime",
-  "kse_show_rebinds": true
+  "kse_show_rebinds": true,
+  "autosavetime_set_starting_interval": true
 }

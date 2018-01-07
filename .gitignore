@@ -23,6 +23,7 @@
 # gitファイル
 !.tigrc
 !.gitignore
+!.globalgitignore
 !.gitconfig
 
 # yaourt config

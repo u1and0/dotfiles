@@ -113,7 +113,10 @@ alias subp='sublime-projects'
 
 # pythonで計算
 function python_print(){
-	python -c "print($*)"
+	OLDIFS=$IFS
+	IFS=, # Set derimiter as comma
+	python -c "from numpy import *; from scipy.constants import *; import pandas as pd; print($*)"
+	IFS=$OLDIFS  # Reset default
 }
 alias pp='python_print'
 
@@ -136,3 +139,11 @@ function vagrant-snapbox(){
 	vagrant snapshot list
 }
 
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tac | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection  # bindkeyで編集可能にする
+bindkey '^R' peco-history-selection  # ctrl+rでヒストリのインクリメンタル検索

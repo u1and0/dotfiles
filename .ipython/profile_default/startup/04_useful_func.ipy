@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import pandas as pd
+
+# `df.head()` and `df.tail()`
+pd.DataFrame.less = lambda self, n=10: self.head(n//2).append(self.tail(n//2))
+pd.Series.less = lambda self, n=10: self.head(n//2).append(self.tail(n//2))
