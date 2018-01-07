@@ -52,6 +52,6 @@
 	log6 = !git log --graph --all --stat --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
 	log7 = !git log --pretty='format:%C(yellow)%h %C(bold cyan)[%cd] %Cgreen<%an> %Cred%d%n %Creset%s' --date=format:'%Y-%m-%d %H:%M:%S'
 	last = !git log7 $(git tag | tail -1)..  # Latest tag
-	today = !git log --oneline --decorate --all --graph --since='yesterday' --date=format:'%H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(bold white)' --abbrev-commit  # todays work
+	today = !git log --oneline --decorate --all --date-order --graph --since='yesterday' --format=format:'%C(bold blue)%h %C(bold green)%ar %C(reset)%s %C(bold yellow)%d' --abbrev-commit  # todays work
 [push]
 	default = simple
