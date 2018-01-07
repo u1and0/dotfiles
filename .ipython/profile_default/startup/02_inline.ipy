@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-
 """
 Promptly run command as Ipython startup.
 If error occered when try to run `%matplotlib inline`, run `%matplotlib auto`.
@@ -11,11 +9,10 @@ you can type `plt.ioff()`/`plt.ion()` to turn interactive mode off/on.
 
 print('\n---------INLINE SETTING----------')
 __inline__ = 'matplotlib inline'
-# __gui__ = 'matplotlib auto'
+__gui__ = 'matplotlib auto'
 try:
     get_ipython().magic(__inline__)
 except:
-    # get_ipython().magic(__gui__)
-    # print("If you'd like to use `plt.show()` command,")
-    # print('you can type `plt.ioff()`/`plt.ion()` to turn interactive mode off/on.')
-    print('You would like to plot, you can use `%matplotlib auto`, then `plt.ion()`/`plt.ioff()`')
+    get_ipython().magic(__gui__)
+    print("If you'd like to use `plt.show()` command,")
+    print('you can type `plt.ioff()`/`plt.ion()` to turn interactive mode off/on.')
