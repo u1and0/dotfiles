@@ -62,3 +62,11 @@
 # vimファイル
 !.vimrc
 !/.vim/
+
+# テキストブラウザw3m
+!/.w3m/
+/.w3m/*
+!/.w3m/bookmark.html
+!/.w3m/config
+!/.w3m/keymap
+

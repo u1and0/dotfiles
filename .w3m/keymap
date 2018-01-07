@@ -1,0 +1,1 @@
+keymap A EXEC_SHELL "printenv | grep $W3M_URL | vim -"
