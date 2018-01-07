@@ -139,6 +139,7 @@ function vagrant-snapbox(){
 	vagrant snapshot list
 }
 
+# History incremental search using peco
 function peco-history-selection() {
     BUFFER=`history -n 1 | tac | peco`
     CURSOR=$#BUFFER
@@ -147,3 +148,17 @@ function peco-history-selection() {
 
 zle -N peco-history-selection  # bindkeyで編集可能にする
 bindkey '^R' peco-history-selection  # ctrl+rでヒストリのインクリメンタル検索
+
+# google search using w3m
+function google() {
+    local str opt
+    if [ $# != 0 ]; then
+        for i in $*; do
+            str="$str+$i"
+        done
+        str=`echo $str | sed 's/^\+//'`
+        opt='search?num=50&hl=ja&lr=lang_ja'
+        opt="${opt}&q=${str}"
+    fi
+    w3m http://www.google.co.jp/$opt
+}

@@ -49,4 +49,4 @@
 	last = !git log0 $(git tag | tail -1)..  # Latest tag
 	today = !git log1 --since='yesterday'  # todays work
 [push]
-	default = simple
+	default = upstream
