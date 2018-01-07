@@ -25,7 +25,7 @@
 	encoding = utf-8
 [alias]
 	# ========Useful========
-	sort = for-each-ref --sort=committerdate refs/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'  # Display branch info
+	sort = for-each-ref --sort=committerdate refs/ --format='%(HEAD) %(color:red)%(refname:short)%(color:reset) - %(color:yellow)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'  # Display branch info
 	alias = config --get-regexp alias.*  # Display alias list
 	zip = !git archive --format=zip HEAD > `git symbolic-ref --short HEAD`.zip  # Archive HEAD as zip
 	# ========add, commit, push========
