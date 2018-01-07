@@ -71,6 +71,10 @@ alias grep='grep --color=tty -i'
 
 # history cumsom
 alias h='history'
+
+# vagrant custum
+alias v='vagrant'
+
 # Windowsコマンド文字化け対策
 function wincmd()
 {
@@ -124,7 +128,7 @@ alias gpo='git push origin'
 
 # status
 alias gs='git status --short --branch'
-alias gl='git log --oneline --all --graph --decorate'
+alias gl='git log1'
 alias gls='git ls-files'
 alias gd='git diff --color-words'
 

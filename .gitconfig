@@ -42,16 +42,11 @@
 	# ========branch========
 	b = branch
 	# ========log========
-	# --stat: 統計情報
-	log0 = !git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-	log1 = !git log --pretty='format:%C(yellow)%h%Creset %C(cyan)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
-	log2 = !git log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)― %an%C(reset)' --abbrev-commit
-	log3 = !git log --graph --date-order -C -M --pretty=format:'<%h> %ad [%an] %Cgreen%d%Creset %s' --all --date=short
-	log4 = !git log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset'
-	log5 = !git log --graph --all --name-only  --pretty='format:%C(yellow)%h%Cred%d%C(green) %s %C(black bold)%ar%Creset'
-	log6 = !git log --graph --all --stat --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-	last-color = !git log --pretty='format:%C(yellow)%h%Creset %Creset%s %C(bold cyan)[%ar] %Cred%d%Creset'  $(git tag | tail -1)..  # Latest tag
-	last = !git log --pretty='%s %d'  $(git tag | tail -1)..  # Latest tag
-	today = !git log --oneline --decorate --all --graph --since='yesterday' --date=format:'%H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''        %C(white)%s%C(reset) %C(bold white)' --abbrev-commit  # todays work
+	log0 = !git log --oneline 
+	log1 = !git log --graph --date=relative --date-order --format=format:'%C(yellow)%h %C(bold green)[%ar] %C(reset)%s %C(red)%d %C(reset)' 
+	log2 = !git log --graph --stat --pretty=format:'%C(yellow)%h %C(cyan)%cd %C(bold black)%an %C(red)%d %n %C(reset)%s' --date=format:'%Y-%m-%d %H:%M:%S'
+	log3 = !git log --patch-with-stat --date=format:'%Y-%m-%d %H:%M:%S' --pretty='format:%C(yellow)%H %C(bold cyan)[%cd] %C(bold black)%an %C(red)%d% %C(reset)%n %s'
+	last = !git log0 $(git tag | tail -1)..  # Latest tag
+	today = !git log1 --since='yesterday'  # todays work
 [push]
-	default = simple
+	default = upstream

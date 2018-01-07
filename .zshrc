@@ -6,7 +6,6 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 export SHELL=/usr/bin/zsh
-export VAGRANT_HOME=${HOME}/.vagrant.d
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -230,6 +229,9 @@ if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
     . ~/.pyenvrc
 fi
 
+if which thefuck >/dev/null 2>&1 ; then
+    eval $(thefuck --alias)
+fi
+
 # vim:set ft=zsh:
 
-eval $(thefuck --alias)
