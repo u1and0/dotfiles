@@ -225,6 +225,10 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
+if [ -f ~/.zsh_functions ]; then
+    . ~/.zsh_functions
+fi
+
 if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
     . ~/.pyenvrc
 fi

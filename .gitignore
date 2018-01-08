@@ -15,9 +15,10 @@
 /*
 
 
-# bash cofigファイル
+# shell cofigファイル
 !.bash_aliases
 !.bash_functions
+!.zsh_functions
 !.zshrc
 
 # gitファイル
