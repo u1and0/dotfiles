@@ -117,7 +117,7 @@ if has('vim_starting')
 		filetype plugin indent on
 
 		" __Multiple Comment out
-		NeoBundle "tyru/caw.vim.git"
+		NeoBundle "tyru/caw.vim.git", 'master'
 		" caw:hatpos:toggle
 		nmap <C-K> <Plug>(caw:hatpos:toggle)
 		vmap <C-K> <Plug>(caw:hatpos:toggle)
