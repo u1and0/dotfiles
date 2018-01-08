@@ -162,3 +162,8 @@ function google() {
     fi
     w3m http://www.google.co.jp/$opt
 }
+
+# w3m search from history
+function whistory() {
+    w3m `cat ${HOME}/.w3m/history | peco`
+}
