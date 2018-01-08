@@ -128,10 +128,10 @@ endif
 NeoBundleCheck
 
 " カッコやクオートなどを入力した際に左に自動で移動します
-inoremap {} {}<Left>
-inoremap [] []<Left>
-inoremap () ()<Left>
-inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap <> <><Left>
+"inoremap {} {}<Left>
+"inoremap [] []<Left>
+"inoremap () ()<Left>
+"inoremap "" ""<Left>
+"inoremap '' ''<Left>
+"inoremap <> <><Left>
 
