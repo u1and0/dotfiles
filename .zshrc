@@ -221,16 +221,8 @@ fi
 
 ##########################################
 # zplug
-# zplug自体の初回インストール
-if [ ! -d .zplug ]; then
-    printf "Install zplug? [y/N]: "
-    if read -q; then
-	curl -sL --proto-redir -all,\
-	    https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh\
-		| zsh
-	exec $SHELL -l  # .zshrc再リロード
-    fi
-    source ~/.zplug/init.zsh
+if [ -d .zplug ]; then
+   source ~/.zplug/init.zsh
 
     # zplug自体のアップデート
     zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -277,6 +269,13 @@ if [ ! -d .zplug ]; then
 		    
     # コマンドをリンクして、PATH に追加し、プラグインは読み込む
     zplug load --verbose
+
+else; printf "Install zplug? [y/N]: "
+    if read -q; then
+    	curl -sL --proto-redir -all,\
+            https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh\
+		| zsh && exec $SHELL -l  # .zshrc再リロード
+    fi
 fi
 
 
