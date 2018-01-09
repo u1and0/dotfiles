@@ -218,6 +218,61 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
+
+##########################################
+# zplug
+source ~/.zplug/init.zsh
+
+# zplug自体のアップデート
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+# ダブルクォーテーションで囲うと良い
+zplug "zsh-users/zsh-history-substring-search"
+
+# Install zsh-gomi with fzf
+zplug "junegunn/fzf-bin", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"fzf", \
+    frozen:1
+
+# CLIごみばこ
+zplug "b4b4r07/zsh-gomi", \
+    as:command, \
+    use:bin/gomi, \
+    on:junegunn/fzf-bin
+
+
+# CLI finder like Mac
+zplug "b4b4r07/cli-finder"
+
+
+# 読み込み順序を設定する
+# 例: "zsh-syntax-highlighting" は compinit の後に読み込まれる必要がある
+# （2 以上は compinit 後に読み込まれるようになる）
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# タイプ補完
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+# zplug "chrissicool/zsh-256color"
+
+
+# Auto installer
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+	echo; zplug install
+    fi
+fi
+		    
+# コマンドをリンクして、PATH に追加し、プラグインは読み込む
+zplug load --verbose
+
+
+
+##########################################
+# External files
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
