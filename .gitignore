@@ -64,7 +64,6 @@
 !.vimrc
 !/.vim/
 /.vim/bundle/*
-!/.vim/bundle/*
 !.vim/bundle/neobundle.vim
 
 # テキストブラウザw3m
