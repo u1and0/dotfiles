@@ -221,7 +221,7 @@ fi
 
 ##########################################
 # zplug
-if [ -d .zplug ]; then
+if [ -d ${HOME}/.zplug ]; then
    source ~/.zplug/init.zsh
 
     # zplug自体のアップデート
@@ -258,6 +258,8 @@ if [ -d .zplug ]; then
     zplug "zsh-users/zsh-completions"
     # zplug "chrissicool/zsh-256color"
 
+    # Enhanced change directory
+    zplug "b4b4r07/enhancd", use:init.sh
 
     # Auto installer
     if ! zplug check --verbose; then
