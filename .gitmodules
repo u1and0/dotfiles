@@ -1,6 +1,0 @@
-[submodule ".vim/bundle/.vim/bundle/caw.vim_master"]
-	path = .vim/bundle/.vim/bundle/caw.vim_master
-	url = https://github.com/tyru/caw.vim
-[submodule ".vim/bundle/caw.vim_master"]
-	path = .vim/bundle/caw.vim_master
-	url = https://github.com/tyru/caw.vim
