@@ -33,6 +33,8 @@ set incsearch		" do incremental searching
 set nu			" show number of line
 set noswapfile		" never make swap files
 set nobackup		" do not keep a backup file, use versions instead
+set clipboard+=autoselect " copy to clipboard in selection
+
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
