@@ -42,10 +42,10 @@
 	# ========branch========
 	b = branch
 	# ========log========
-	log0 = !git log --oneline 
-	log1 = !git log --graph --date=relative --date-order --format=format:'%C(yellow)%h %C(bold green)[%ar] %C(reset)%s %C(auto)%d %C(reset)' 
-	log2 = !git log --graph --stat --pretty=format:'%C(yellow)%h %C(cyan)%cd %C(bold black)%an %C(auto)%d %n %C(reset)%s' --date=format:'%Y-%m-%d %H:%M:%S'
-	log3 = !git log --patch-with-stat --date=format:'%Y-%m-%d %H:%M:%S' --pretty='format:%C(yellow)%H %C(bold cyan)[%cd] %C(bold black)%an %C(auto)%d% %C(reset)%n %s'
+	log0 = !git log --all --oneline 
+	log1 = !git log --all --graph --date=relative --date-order --format=format:'%C(yellow)%h %C(bold green)[%ar] %C(reset)%s %C(auto)%d %C(reset)' 
+	log2 = !git log --all --graph --stat --pretty=format:'%C(yellow)%h %C(cyan)%cd %C(bold black)%an %C(auto)%d %n %C(reset)%s' --date=format:'%Y-%m-%d %H:%M:%S'
+	log3 = !git log --all --patch-with-stat --date=format:'%Y-%m-%d %H:%M:%S' --pretty='format:%C(yellow)%H %C(bold cyan)[%cd] %C(bold black)%an %C(auto)%d% %C(reset)%n %s'
 	last = !git log0 $(git tag | tail -1)..  # Latest tag
 	today = !git log1 --since='yesterday'  # todays work
 [push]
