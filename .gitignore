@@ -15,9 +15,10 @@
 /*
 
 
-# bash cofigファイル
+# shell cofigファイル
 !.bash_aliases
 !.bash_functions
+!.zsh_functions
 !.zshrc
 
 # gitファイル
@@ -62,6 +63,10 @@
 # vimファイル
 !.vimrc
 !/.vim/
+/.vim/*
+!/.vim/bundle/
+/.vim/bundle/*
+!.vim/bundle/neobundle.vim
 
 # テキストブラウザw3m
 !/.w3m/

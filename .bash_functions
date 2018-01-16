@@ -120,10 +120,13 @@ function python_print(){
 }
 alias pp='python_print'
 
+# rangerネスト防止
 function ranger(){
     [ -n "$RANGER_LEVEL" ] && exit || LESS="$LESS -+F -+X" command ranger "$@"
 }
-    [ -n "$RANGER_LEVEL" ] && PS1="(RANGER) $PS1"
+
+# ranger+Sで開いたshellではPS1に(RANGER)と表示
+[ -n "$RANGER_LEVEL" ] && PS1="(RANGER) $PS1"
 
 # vagrant保存シーケンス関数関数化
 # * vagrantで仮想マシンを一時停止して
@@ -139,15 +142,6 @@ function vagrant-snapbox(){
 	vagrant snapshot list
 }
 
-# History incremental search using peco
-function peco-history-selection() {
-    BUFFER=`history -n 1 | tac | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-
-zle -N peco-history-selection  # bindkeyで編集可能にする
-bindkey '^R' peco-history-selection  # ctrl+rでヒストリのインクリメンタル検索
 
 # google search using w3m
 function google() {
@@ -161,4 +155,10 @@ function google() {
         opt="${opt}&q=${str}"
     fi
     w3m http://www.google.co.jp/$opt
+}
+
+
+# w3m search from history
+function whistory() {
+    w3m `tac ${HOME}/.w3m/history | fzf`
 }

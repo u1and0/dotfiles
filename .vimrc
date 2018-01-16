@@ -33,6 +33,8 @@ set incsearch		" do incremental searching
 set nu			" show number of line
 set noswapfile		" never make swap files
 set nobackup		" do not keep a backup file, use versions instead
+set clipboard+=autoselect " copy to clipboard in selection
+
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -117,7 +119,7 @@ if has('vim_starting')
 		filetype plugin indent on
 
 		" __Multiple Comment out
-		NeoBundle "tyru/caw.vim.git"
+		NeoBundle "tyru/caw.vim.git", 'master'
 		" caw:hatpos:toggle
 		nmap <C-K> <Plug>(caw:hatpos:toggle)
 		vmap <C-K> <Plug>(caw:hatpos:toggle)
@@ -128,10 +130,10 @@ endif
 NeoBundleCheck
 
 " カッコやクオートなどを入力した際に左に自動で移動します
-inoremap {} {}<Left>
-inoremap [] []<Left>
-inoremap () ()<Left>
-inoremap "" ""<Left>
-inoremap '' ''<Left>
-inoremap <> <><Left>
+"inoremap {} {}<Left>
+"inoremap [] []<Left>
+"inoremap () ()<Left>
+"inoremap "" ""<Left>
+"inoremap '' ''<Left>
+"inoremap <> <><Left>
 

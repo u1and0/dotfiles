@@ -88,7 +88,7 @@ alias ipconfig='wincmd ipconfig'
 alias netstat='wincmd netstat'
 alias netsh='wincmd netsh'
 # pingのコマンド名混同を避けるため絶対パスで指定
-alias ping='wincmd /c/windows/system32/ping'
+# alias ping='wincmd /c/windows/system32/ping'
 
 # ネットワーク確認用
 alias ping1='ping www.google.com'
