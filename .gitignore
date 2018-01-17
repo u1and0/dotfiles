@@ -63,6 +63,10 @@
 # vimファイル
 !.vimrc
 !/.vim/
+/.vim/*
+!/.vim/bundle/
+/.vim/bundle/*
+!.vim/bundle/neobundle.vim
 
 # テキストブラウザw3m
 !/.w3m/

@@ -221,6 +221,7 @@ fi
 
 ##########################################
 # zplug
+<<<<<<< HEAD
 if [[ -f ${HOME}/.zplug/init.zsh ]]; then
    source ~/.zplug/init.zsh
 
@@ -228,8 +229,14 @@ if [[ -f ${HOME}/.zplug/init.zsh ]]; then
     zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
     # ダブルクォーテーションで囲うと良い
-    zplug "zsh-users/zsh-history-substring-search"
+    zplug "zsh-users/zsh-history-substring-search", defer:3
 
+    # Better history searching with arrow keys
+    if zplug check "zsh-users/zsh-history-substring-search"; then
+	    bindkey '^P' history-substring-search-up
+	    bindkey '^N' history-substring-search-down
+    fi
+    
     # Install zsh-gomi with fzf
     zplug "junegunn/fzf-bin", \
         as:command, \
@@ -258,6 +265,8 @@ if [[ -f ${HOME}/.zplug/init.zsh ]]; then
     zplug "zsh-users/zsh-completions"
     # zplug "chrissicool/zsh-256color"
 
+    # Enhanced change directory
+    zplug "b4b4r07/enhancd", use:init.sh, defer:3
 
     # Auto installer
     if ! zplug check --verbose; then

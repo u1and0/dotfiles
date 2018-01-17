@@ -1,6 +1,3 @@
-[submodule ".vim/bundle/.vim/bundle/caw.vim_master"]
-	path = .vim/bundle/.vim/bundle/caw.vim_master
-	url = https://github.com/tyru/caw.vim
-[submodule ".vim/bundle/caw.vim_master"]
-	path = .vim/bundle/caw.vim_master
-	url = https://github.com/tyru/caw.vim
+[submodule ".vim/bundle/neobundle.vim"]
+	path = .vim/bundle/neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim.git
