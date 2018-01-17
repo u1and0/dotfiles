@@ -221,7 +221,7 @@ fi
 
 ##########################################
 # zplug
-if [ -d .zplug ]; then
+if [[ -f ${HOME}/.zplug/init.zsh ]]; then
    source ~/.zplug/init.zsh
 
     # zplug自体のアップデート
