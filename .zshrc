@@ -221,7 +221,6 @@ fi
 
 ##########################################
 # zplug
-<<<<<<< HEAD
 if [[ -f ${HOME}/.zplug/init.zsh ]]; then
    source ~/.zplug/init.zsh
 
