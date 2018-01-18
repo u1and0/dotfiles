@@ -53,9 +53,10 @@ zplug "b4b4r07/cli-finder"
 # syntax highlighting in shell command
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# タイプ補完
+# Auto completions 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
+zplug "hchbaw/auto-fu.zsh", at:pu  # zsh automatic complete-word and list-choices
 
 # Enhanced change directory
 zplug "b4b4r07/enhancd", use:init.sh, defer:3
