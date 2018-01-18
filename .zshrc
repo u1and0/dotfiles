@@ -196,13 +196,21 @@ bindkey '\e[1;5D' backward-word
 # グローバルエイリアス
 alias -g L='| less'
 alias -g M='| more'
-alias -g G='| grep'
 alias -g P='| peco'
 alias -g F='| fzf'
 alias -g Y='| fzy'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g W='| wc -l'
+
+if which ag > /dev/null 2>&1 ; then
+	alias -g G='| ag'
+elif which ack > /dev/null 2>&1 ; then
+	alias -g G='| ack'
+else
+	alias -g G='| grep'
+fi
+
 # ANSIカラーコードの無効化
 alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
