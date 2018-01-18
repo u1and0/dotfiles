@@ -109,87 +109,51 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
+zstyle ':completion:*:default' list-colors ""
+# 補完候補に色を付ける（空文字列はデフォルト値を使うという意味）
+zstyle ':completion::expand:*' glob true            # echo /bin/*sh とかで展開する
+zstyle ':completion::expand:*' substitute true      # echo $(ls) とかで展開する
 
 
 ########################################
 # オプション
-# 日本語ファイル名を表示可能にする
-setopt print_eight_bit
-
-# beep を無効にする
-setopt no_beep
-
-# フローコントロールを無効にする
-setopt no_flow_control
-
-# Ctrl+Dでzshを終了しない
-setopt ignore_eof
-
-# '#' 以降をコメントとして扱う
-setopt interactive_comments
-
-# ディレクトリ名だけでcdする
-setopt auto_cd
-
-# cd したら自動的にpushdする
-setopt auto_pushd
-# 重複したディレクトリを追加しない
-setopt pushd_ignore_dups
-
-# 同時に起動したzshの間でヒストリを共有する
-setopt share_history
-
-# 同じコマンドをヒストリに残さない
-setopt hist_ignore_all_dups
-
-# スペースから始まるコマンド行はヒストリに残さない
-setopt hist_ignore_space
-
-# ヒストリに保存するときに余分なスペースを削除する
-setopt hist_reduce_blanks
-
-# ヒストリを呼び出してから実行する間に一旦編集可能
-setopt hist_verify
-
-# 高機能なワイルドカード展開を使用する
-setopt extended_glob
-
-# 補完時にヒストリを自動的に展開         
-setopt hist_expand
-
-# 履歴をインクリメンタルに追加
-setopt inc_append_history
-
-# {a-z}を{a..z}と同様にする 
-setopt braceccl
-
+setopt print_eight_bit      # 日本語ファイル名を表示可能にする 
+setopt no_beep              # beep を無効にする 
+setopt no_flow_control      # フローコントロールを無効にする
+setopt ignore_eof           # Ctrl+Dでzshを終了しない
+setopt interactive_comments # '#' 以降をコメントとして扱う
+setopt auto_cd              # ディレクトリ名だけでcdする
+setopt auto_pushd           # cd したら自動的にpushdする
+setopt pushd_ignore_dups    # 重複したディレクトリを追加しない
+setopt share_history        # 同時に起動したzshの間でヒストリを共有する
+setopt hist_ignore_all_dups # 同じコマンドをヒストリに残さない
+setopt hist_ignore_space    # スペースから始まるコマンド行はヒストリに残さない
+setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
+setopt hist_verify          # ヒストリを呼び出してから実行する間に一旦編集可能
+setopt extended_glob        # 高機能なワイルドカード展開を使用する
+setopt hist_expand          # 補完時にヒストリを自動的に展開         
+setopt inc_append_history   # 履歴をインクリメンタルに追加
+setopt braceccl             # {a-z}を{a..z}と同様にする 
+setopt auto_param_keys      # カッコの対応などを自動的に補完する
+setopt magic_equal_subst    # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できるようにする
 ########################################
 # キーバインド
-#
-# emacs-mode
-bindkey -e
 
-# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
+bindkey -e   # emacs-mode 
 bindkey '^R' history-incremental-pattern-search-backward
-
-# delete key
-bindkey '^[[3~' delete-char
-
-# ctrl+Backspace
-bindkey '^H' backward-kill-word
-
-# alt+_
-bindkey '^[_' redo
+# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
+bindkey '^[[3~' delete-char   # delete key
+bindkey '^H' backward-kill-word   # ctrl+Backspace
+bindkey '^[_' redo   # alt+_
 
 # カーソル移動
 # # ctrl+up
 # bindkey '\e[1;5A' backward-word
 # # ctrl+down
 # bindkey '\e[1;5B' backward-word
-# ctrl+right
-bindkey '\e[1;5C' forward-word
-# ctrl+left
-bindkey '\e[1;5D' backward-word
+bindkey '\e[1;5C' forward-word   # ctrl+right
+bindkey '\e[1;5D' backward-word   # ctrl+left
+bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 
 
 ########################################
