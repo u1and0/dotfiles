@@ -246,11 +246,8 @@ if [[ -f ${HOME}/.zplug/init.zsh ]]; then
 	hook-build:"make && sudo make install"
 
     # Install fuzzy-finder peco
-    zplug "peco/peco", as:command, from:gh-r
+    zplug "peco/peco", as:command, from:gh-r, frozen:1
     zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux  # fzf-tmux の peco バージョン
-
-
-
 
 
     # history search using fzf using ctrl+R
