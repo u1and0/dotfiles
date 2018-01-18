@@ -131,8 +131,11 @@ if has('vim_starting')
 		nmap <C-K> <Plug>(caw:hatpos:toggle)
 		vmap <C-K> <Plug>(caw:hatpos:toggle)
 
-        " Quick Search
+        " Quick search
         NeoBundle 'rking/ag.vim'
+
+        " Multi-cursol
+        NeoBundle 'terryma/vim-multiple-cursors'
 
 	call neobundle#end()
 endif
