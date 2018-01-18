@@ -18,7 +18,7 @@
 # shell cofigファイル
 !.bash_aliases
 !.bash_functions
-!.zsh_functions
+!.zplug.zsh
 !.zshrc
 
 # gitファイル
