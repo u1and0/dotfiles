@@ -14,6 +14,9 @@ zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
 # Install fuzzy-finder "fzy"
 # Provided, it requires to set the variable like the following:
 # ZPLUG_SUDO_PASSWORD="********"
+if [ `whoami` = vagrant ]; then
+   ZPLUG_SUDO_PASSWORD=vagrant 
+fi
 zplug "jhawthorn/fzy", \
 	as:command, \
 	rename-to:fzy, \
