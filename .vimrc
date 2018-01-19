@@ -137,6 +137,9 @@ if has('vim_starting')
         " Multi-cursol
         NeoBundle 'terryma/vim-multiple-cursors'
 
+        " vim Japanese man
+        NeoBundle 'vim-jp/vimdoc-ja'
+
 	call neobundle#end()
 endif
 
