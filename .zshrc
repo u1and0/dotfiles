@@ -157,15 +157,16 @@ bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 
 
 ########################################
-# グローバルエイリアス
+# Global Alias
+alias -g D='2> /dev/null'
+alias -g F='| fzf'
+alias -g H='| head'
 alias -g L='| less'
 alias -g M='| more'
 alias -g P='| peco'
-alias -g F='| fzf'
-alias -g Y='| fzy'
-alias -g H='| head'
 alias -g T='| tail'
 alias -g W='| wc -l'
+alias -g Y='| fzy'
 
 if which ag > /dev/null 2>&1 ; then
 	alias -g G='| ag'
