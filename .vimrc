@@ -138,6 +138,7 @@ if has('vim_starting')
         NeoBundle 'terryma/vim-multiple-cursors'
 
         " vim Japanese man
+        " It takes long time to download
         NeoBundle 'vim-jp/vimdoc-ja'
 
 	call neobundle#end()
