@@ -1,4 +1,4 @@
-tabstop 8
+tabstop 4
 indent_incr 4
 pixel_per_char 7
 pixel_per_line 14
@@ -37,14 +37,14 @@ label_topline 0
 nextpage_topline 0
 color 1
 basic_color terminal
-anchor_color blue
+anchor_color cyan
 image_color green
 form_color red
-mark_color cyan
+mark_color yellow
 bg_color terminal
 active_style 0
-active_color cyan
-visited_anchor 0
+active_color yellow
+visited_anchor 1
 visited_color magenta
 pagerline 10000
 use_history 1
