@@ -14,6 +14,8 @@
 # すべてのファイル
 /*
 
+# すべてのディレクトリを無視
+/*/
 
 # shell cofigファイル
 !.bash_aliases
@@ -27,15 +29,16 @@
 !.globalgitignore
 !.gitconfig
 
-
 # tmux設定ファイル 
 !.tmux.conf
+!/.tmux/
+/.tmux/*
+!.tmux/plugins/
+/.tmux/plugins/*
+!.tmux/plugins/tpm
 
 # yaourt config
 !.yaourtrc
-
-# すべてのディレクトリを無視
-/*/
 
 # ranger設定ファイル
 !/.config/
