@@ -29,6 +29,7 @@ zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux  # fzf-tmux の peco バ
 
 # history search using fzf using ctrl+R
 zplug "tsub/f4036e067a59b242a161fc3c8a5f01dd", from:gist 
+zplug "tsub/f4036e067a59b242a161fc3c8a5f01dd", from:gist, defer:3
 
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
