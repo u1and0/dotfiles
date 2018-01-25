@@ -1,1 +1,35 @@
+# ===Reset keybind===
+keymap H NULL
+keymap C-w NULL
+keymap L NULL
+keymap H NULL
+keymap s NULL
+keymap { NULL
+keymap } NULL
+
+
+# ====command===
+keymap :: COMMAND
+keymap :h HELP
+
+
+# ===Tab nabigation===
+keymap t GOTO google.com
+keymap C-t TAB_GOTO google.com
+keymap T TAB_LINK
+keymap C-T NEW_TAB
+keymap C-w CLOSE_TAB
+keymap f NEXT_TAB
+keymap d PREV_TAB
+
+
+# ====history navigation===
+keymap L NEXT
+keymap H PREV
+keymap ESC-h SELECT_MENU
+
+
+# ===Misc===
 keymap A EXEC_SHELL "printenv | grep $W3M_URL | vim -"
+keymap C CHARSET
+keymap ESC-d MAIN_MENU

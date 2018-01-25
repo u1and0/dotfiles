@@ -241,5 +241,11 @@ if which thefuck >/dev/null 2>&1 ; then
     eval $(thefuck --alias)
 fi
 
+# twitter sh packages
+if [ -d ${HOME}/Dropbox/Program/sh/kotoriotoko/BIN ]; then
+    export PATH=${HOME}/Dropbox/Program/sh/kotoriotoko/BIN:$PATH
+fi
+
+
 # vim:set ft=zsh:
 
