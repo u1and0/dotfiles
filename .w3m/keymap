@@ -10,7 +10,7 @@ keymap } NULL
 
 # ====command===
 keymap :: COMMAND
-keymap :H HELP
+keymap :h HELP
 
 
 # ===Tab nabigation===
