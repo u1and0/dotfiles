@@ -60,6 +60,12 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "hchbaw/auto-fu.zsh", at:pu  # zsh automatic complete-word and list-choices
 
+function zle-line-init(){
+    auto-fu-init
+}
+zle -N zle-line-init
+
+
 # Enhanced change directory
 zplug "b4b4r07/enhancd", use:init.sh, defer:3
 
