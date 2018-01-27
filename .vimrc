@@ -35,6 +35,8 @@ set noswapfile		" never make swap files
 set nobackup		" do not keep a backup file, use versions instead
 set clipboard+=autoselect " copy to clipboard in selection
 set hidden          " Enable opening another file while editting a file
+set ignorecase      " Search ignore case
+set smartcase       " Search ignore case if only use letter case
 
 " Tab setting
 set tabstop=4       " The width of a TAB is set to 4.
