@@ -13,6 +13,8 @@
 	excludesfile = ~/.globalgitignore
 	symlinks = true
 	quotepath = false
+    pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+
 	# preloadindex = true  # <windows用>インデックスの比較を並列実行してくれてgit statusなどを高速化 
 	# fscache = true  # <windows用>ユーザーディレクトリへのアクセスではなくシステム領域にキャッシュを書き込む
 [pack]
@@ -50,3 +52,15 @@
 	today = !git log1 --since='yesterday'  # todays work
 [push]
 	default = upstream
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
