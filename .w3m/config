@@ -52,7 +52,7 @@ history 10000
 save_hist 1
 confirm_qq 1
 close_tab_back 0
-mark 0
+mark 1
 emacs_like_lineedit 0
 vi_prec_num 0
 mark_all_pages 0
