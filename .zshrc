@@ -161,7 +161,11 @@ bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 alias -g D='2> /dev/null'
 alias -g F='| fzf'
 alias -g H='| head'
-alias -g L='| less'
+if which vimpager > /dev/null 2>&1 ; then
+    alias -g L='| vimpager'
+else
+    alias -g L='| less'
+fi
 alias -g M='| more'
 alias -g P='| peco'
 alias -g T='| tail'
