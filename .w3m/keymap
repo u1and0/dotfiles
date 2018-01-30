@@ -3,11 +3,10 @@ keymap H NULL
 keymap C-w NULL
 keymap L NULL
 keymap H NULL
-keymap s NULL
 keymap { NULL
 keymap } NULL
 
-# ====command===
+# ====Command===
 keymap :: COMMAND
 keymap :h HELP
 
@@ -17,14 +16,15 @@ keymap T TAB_LINK
 keymap C-t NEW_TAB
 keymap C-w CLOSE_TAB
 keymap TAB NEXT_TAB
-keymap ^[[Z PREV_TAB
-# ^[[Z = shift+TAB
+keymap ^[[Z PREV_TAB  # ^[[Z = shift+TAB
+keymap s NEXT_TAB
+keymap a PREV_TAB
 
-# ====history navigation===
+# ====Link navigation===
 keymap f NEXT_LINK
 keymap d PREV_LINK
 
-# ====history navigation===
+# ====History navigation===
 keymap L NEXT
 keymap H PREV
 keymap ESC-h SELECT_MENU
