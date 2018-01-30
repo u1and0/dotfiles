@@ -101,3 +101,8 @@ afu-ad-delete-unambiguous-prefix afu+accept-and-hold
 # Enhanced change directory
 zplug "b4b4r07/enhancd", use:init.sh, defer:3
 
+# Install twitter.sh
+TWITTER_REPO="ShellShoccar-jpn/kotoriotoko"
+zplug $TWITTER_REPO 
+export PATH=$ZPLUG_REPOS/$TWITTER_REPO/BIN:$PATH
+TWITTER_REPO=
