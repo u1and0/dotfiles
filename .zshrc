@@ -12,7 +12,7 @@ autoload -Uz colors
 colors
 
 # ヒストリの設定
-HISTFILE=~/.zsh_history
+HISTFILE=~/.history/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
