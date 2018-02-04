@@ -60,12 +60,10 @@ precmd () { vcs_info }
 GITPROMPT='${vcs_info_msg_0_}'
 
 # プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
 PROMPT="%F{cyan}%n@%m%F{green} %~ ${GITPROMPT} ${reset_color}
-$ " 
-
+$ "
+RPROMPT="%{$fg_bold[yellow]%}%*%{$reset_color%}"
+# RPROMPT="%{$bg[magenta]%}%*%{$reset_color%}"
 
 
 # 単語の区切り文字を指定する
