@@ -1,0 +1,10 @@
+# vim:ft=toml
+[[plugins]] # Plugin to easily access Most Recently Used (MRU) files
+repo = 'Shougo/neomru.vim'
+on_source = 'denite.nvim'
+on_path = '.*'
+
+[[plugins]] # Yank
+repo = 'Shougo/neoyank.vim'
+on_source = 'denite.nvim'
+on_event = 'TextYankPost'

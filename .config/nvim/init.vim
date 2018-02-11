@@ -1,3 +1,4 @@
+"vim:ft=vim
 " [Qiita - NeoVim と dein.vim を使ってみる!](https://qiita.com/Ress/items/7e71e007cf8d41a07a1a#_reference-47cfe0fce2ee71abfcf6)
 " reset augroup
 augroup MyAutoCmd

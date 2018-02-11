@@ -52,6 +52,10 @@
 /.config/nvim/*
 !/.config/nvim/init.vim
 
+!/.config/dein/
+/.config/dein/*
+!/.config/dein/*.toml
+
 # python系
 !.pyenvrc
 !/.ipython/
