@@ -43,9 +43,14 @@
 # ranger設定ファイル
 !/.config/
 /.config/*
+
 !/.config/ranger/
 /.config/ranger/*
 !/.config/ranger/rc.conf
+
+!/.config/nvim/
+/.config/nvim/*
+!/.config/nvim/init.vim
 
 # python系
 !.pyenvrc
@@ -71,9 +76,11 @@
 !.vimrc
 !/.vim/
 /.vim/*
+
 !/.vim/bundle/
 /.vim/bundle/*
 !.vim/bundle/neobundle.vim
+
 
 # テキストブラウザw3m
 !/.w3m/
