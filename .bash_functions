@@ -164,10 +164,10 @@ function whistory() {
 }
 
 # Check FX rate
-cconv() {
-  amount=${1:-1}
-  from=${2:-USD}
-  to=${3:-JPY}
+function cconv() {
+  from=${1:-USD}
+  to=${2:-JPY}
+  amount=${3:-1}
   curl -s "https://finance.google.com/finance/converter?a=$amount&from=$from&to=$to" | sed '/res/!d;s/<[^>]*>//g'
 }
 
