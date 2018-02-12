@@ -171,3 +171,6 @@ repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
     set helplang=ja,en
 '''
+
+[[plugins]] # Multi-cursol
+repo = 'terryma/vim-multiple-cursors' 
