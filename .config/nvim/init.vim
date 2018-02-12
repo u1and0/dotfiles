@@ -1,5 +1,13 @@
 "vim:ft=vim
 " [Qiita - NeoVim と dein.vim を使ってみる!](https://qiita.com/Ress/items/7e71e007cf8d41a07a1a#_reference-47cfe0fce2ee71abfcf6)
+
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+if &compatible
+  set nocompatible
+endif
+
+
 " reset augroup
 augroup MyAutoCmd
     autocmd!
