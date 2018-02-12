@@ -2,10 +2,17 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+[[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
+repo = 'Shougo/context_filetype.vim'
+
 [[plugins]] # hybrid
 repo = 'w0ng/vim-hybrid'
 
-[[plugins]] # ステータスライン
+[[plugins]] # Status line
 repo = 'itchyny/lightline.vim'
 hook_add = '''
     let g:lightline = {'colorscheme': 'wombat'}
