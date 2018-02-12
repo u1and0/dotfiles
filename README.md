@@ -1,62 +1,61 @@
-commit 
-Merge: 
-Author:
-Date:  
+zsh auto-fu & twitter.sh & Excute time & history sharing / tmux.conf : save-session & paste mode / git diff-so-fancy / shell function cconv: Currency CONVersion 
+
+---summary---
+* .zshrc
+    * Add right prompt display time as yellow bold color
+    * hist_save_no_dups=Do not save same command in history
+    * Share .zsh_history with virtual machine , Modify .zsh_history path to .history/
+    * Install twitter.sh using zplug & add path
+    * global alias L=vimpager if exist
+* .zplug.zsh
+    * vim syntax as zsh, auto-fu makes frozen repository
+    * Install twitter.sh using zplug & add path
+* .tmux.conf
+    * tpm: tmux-resurrect
+    * Session name pre-word as '#' instead of 'S'
+    * Error modify paste mode
+    * tmux copy mode use Esc, y, p like vim commands
+* .w3m
+    * bookmark
+        * Add search gist
+        * Add github.com
+    * keymap
+        * Add a,s = Next, Prev TAB
+* .gitconfig
+    * Modify git log1 remove square bracket [] describing relative time
+    * Add git diff-so-fancy
+* .bash_aliases
+    * alias vi=vim removed
+* .bash_functions
+    * cconv default $1(from)=USD $2(to)=JPY $3(amount)=1
+
+
+---logs---
+50bdc54 [add]README.md
+018b50d [rm]@.bash_aliases: alias vi=vim removed
+9afc50a @.bash_functions: cconv default $1(from)=USD $2(to)=JPY $3(amount)=1
+e7401ac [add]@.tmux.conf/tpm: tmux-resurrect
+9f0d214 [mod]@.tmux.conf: Session name pre-word as '#' instead of 'S'
+130b7bb [add]@.bash_function: "cconv" is currency converting function
+3c38d8b [add]@.w3m/bookmark: search gist
+c7951c5 [mod]@.gitconfig: git log1 remove square bracket [] describing relative time
+6f7979f [add]@.zshrc: Add right prompt display time as yellow bold color
+ec4931f [add]@.zshrc: hist_save_no_dups=Do not save same command in history
+eba8e87 [mod]@.zshrc:Share .zsh_history with virtual machine , Modify .zsh_history path to .history/
+e37e7c3 [mod]@.zplug.zsh: vim syntax as zsh, auto-fu makes frozen repository
+b2555e5 [mod]@.tmux.conf: Error modify paste mode
+8a2b495 [mod]@.zplug.zsh, @.zshrc: Install twitter.sh using zplug & add path
+1d0a25c [add].tmux.conf: tmux copy mode use Esc, y, p like vim commands
+15b1235 [add].w3m/bookmark: github.com
+8b8629f Merge branch 'develop' into feature/powerline
+e55fde4 [add]@.w3m/keymap: a,s = Next, Prev TAB
+d421698 [add]@.tmux.conf: Run powerline when tmux start
+083682d [add]@.gitconfig: Add git diff-so-fancy
+e23dd11 [add]@.zshrc: global alias L=vimpager if exist
+407890f Merge tag 'v1.6.0' into develop
 
 
 
-    ---summary---
-    018b50d [rm]@.bash_aliases: alias vi=vim removed
-    9afc50a @.bash_functions: cconv default $1(from)=USD $2(to)=JPY $3(amount)=1
-
-    * .tmux.conf
-        * tpm: tmux-resurrect
-        * Session name pre-word as '#' instead of 'S'
-        * Error modify paste mode
-        * tmux copy mode use Esc, y, p like vim commands
-    * .w3m
-        * bookmark
-            * Add search gist
-            * Add github.com
-        * keymap
-            * Add a,s = Next, Prev TAB
-    * .zsrch
-        * Add right prompt display time as yellow bold color
-        * hist_save_no_dups=Do not save same command in history
-        * Share .zsh_history with virtual machine , Modify .zsh_history path to .history/
-        * Install twitter.sh using zplug & add path
-        * global alias L=vimpager if exist
-    * .zplug.zsh
-        * vim syntax as zsh, auto-fu makes frozen repository
-        * Install twitter.sh using zplug & add path
-    * .gitconfig
-        * Modify git log1 remove square bracket [] describing relative time
-        * Add git diff-so-fancy
-
-
-    ---logs---
-    50bdc54 [add]README.md
-    018b50d [rm]@.bash_aliases: alias vi=vim removed
-    9afc50a @.bash_functions: cconv default $1(from)=USD $2(to)=JPY $3(amount)=1
-    e7401ac [add]@.tmux.conf/tpm: tmux-resurrect
-    9f0d214 [mod]@.tmux.conf: Session name pre-word as '#' instead of 'S'
-    130b7bb [add]@.bash_function: "cconv" is currency converting function
-    3c38d8b [add]@.w3m/bookmark: search gist
-    c7951c5 [mod]@.gitconfig: git log1 remove square bracket [] describing relative time
-    6f7979f [add]@.zshrc: Add right prompt display time as yellow bold color
-    ec4931f [add]@.zshrc: hist_save_no_dups=Do not save same command in history
-    eba8e87 [mod]@.zshrc:Share .zsh_history with virtual machine , Modify .zsh_history path to .history/
-    e37e7c3 [mod]@.zplug.zsh: vim syntax as zsh, auto-fu makes frozen repository
-    b2555e5 [mod]@.tmux.conf: Error modify paste mode
-    8a2b495 [mod]@.zplug.zsh, @.zshrc: Install twitter.sh using zplug & add path
-    1d0a25c [add].tmux.conf: tmux copy mode use Esc, y, p like vim commands
-    15b1235 [add].w3m/bookmark: github.com
-    8b8629f Merge branch 'develop' into feature/powerline
-    e55fde4 [add]@.w3m/keymap: a,s = Next, Prev TAB
-    d421698 [add]@.tmux.conf: Run powerline when tmux start
-    083682d [add]@.gitconfig: Add git diff-so-fancy
-    e23dd11 [add]@.zshrc: global alias L=vimpager if exist
-    407890f Merge tag 'v1.6.0' into develop
 
 commit d14bae739122dbf2e85199b6c7cd7e185565bf13 (tag: v1.6.0, origin/master, master)
 Merge: a4f4c95 4ad668e
