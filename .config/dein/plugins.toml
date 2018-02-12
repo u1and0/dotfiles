@@ -21,6 +21,9 @@ hook_add = '''
 [[plugins]] # Toml
 repo  = 'cespare/vim-toml'
 
+[[plugins]] # Neo Term using `:T <terminal command>`
+repo  = 'kassio/neoterm'
+
 [[plugins]] # Japanese doc
 repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
