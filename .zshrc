@@ -12,7 +12,7 @@ autoload -Uz colors
 colors
 
 # ヒストリの設定
-HISTFILE=~/.zsh_history
+HISTFILE=~/.history/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
@@ -60,12 +60,10 @@ precmd () { vcs_info }
 GITPROMPT='${vcs_info_msg_0_}'
 
 # プロンプト
-# 1行表示
-# PROMPT="%~ %# "
-# 2行表示
 PROMPT="%F{cyan}%n@%m%F{green} %~ ${GITPROMPT} ${reset_color}
-$ " 
-
+$ "
+RPROMPT="%{$fg_bold[yellow]%}%*%{$reset_color%}"
+# RPROMPT="%{$bg[magenta]%}%*%{$reset_color%}"
 
 
 # 単語の区切り文字を指定する
@@ -132,6 +130,7 @@ setopt hist_reduce_blanks   # ヒストリに保存するときに余分なス�
 setopt hist_verify          # ヒストリを呼び出してから実行する間に一旦編集可能
 setopt extended_glob        # 高機能なワイルドカード展開を使用する
 setopt hist_expand          # 補完時にヒストリを自動的に展開         
+setopt hist_save_no_dups    # 古いコマンドと同じものは無視
 setopt inc_append_history   # 履歴をインクリメンタルに追加
 # setopt braceccl             # {a-z}を{a..z}と同様にする 
 setopt auto_param_keys      # カッコの対応などを自動的に補完する
@@ -161,7 +160,11 @@ bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 alias -g D='2> /dev/null'
 alias -g F='| fzf'
 alias -g H='| head'
-alias -g L='| less'
+if which vimpager > /dev/null 2>&1 ; then
+    alias -g L='| vimpager'
+else
+    alias -g L='| less'
+fi
 alias -g M='| more'
 alias -g P='| peco'
 alias -g T='| tail'
@@ -240,12 +243,6 @@ fi
 if which thefuck >/dev/null 2>&1 ; then
     eval $(thefuck --alias)
 fi
-
-# twitter sh packages
-if [ -d ${HOME}/Dropbox/Program/sh/kotoriotoko/BIN ]; then
-    export PATH=${HOME}/Dropbox/Program/sh/kotoriotoko/BIN:$PATH
-fi
-
 
 # vim:set ft=zsh:
 

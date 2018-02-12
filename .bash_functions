@@ -162,3 +162,12 @@ function google() {
 function whistory() {
     w3m `tac ${HOME}/.w3m/history | fzf`
 }
+
+# Check FX rate
+function cconv() {
+  from=${1:-USD}
+  to=${2:-JPY}
+  amount=${3:-1}
+  curl -s "https://finance.google.com/finance/converter?a=$amount&from=$from&to=$to" | sed '/res/!d;s/<[^>]*>//g'
+}
+

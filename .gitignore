@@ -17,6 +17,9 @@
 # すべてのディレクトリを無視
 /*/
 
+# README
+!README.md
+
 # shell cofigファイル
 !.bash_aliases
 !.bash_functions

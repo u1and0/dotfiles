@@ -1,4 +1,4 @@
-# vim:ft=zplug
+# vim:ft=zsh
 # zplug自体のアップデート
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
@@ -58,7 +58,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # Auto completions 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "hchbaw/auto-fu.zsh", at:pu  # zsh automatic complete-word and list-choices
+zplug "hchbaw/auto-fu.zsh", at:pu, frozen:1  # zsh automatic complete-word and list-choices
 
 function zle-line-init(){
     auto-fu-init
@@ -101,3 +101,8 @@ afu-ad-delete-unambiguous-prefix afu+accept-and-hold
 # Enhanced change directory
 zplug "b4b4r07/enhancd", use:init.sh, defer:3
 
+# Install twitter.sh
+TWITTER_REPO="ShellShoccar-jpn/kotoriotoko"
+zplug $TWITTER_REPO 
+export PATH=$ZPLUG_REPOS/$TWITTER_REPO/BIN:$PATH
+TWITTER_REPO=
