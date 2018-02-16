@@ -194,33 +194,6 @@ elif which putclip >/dev/null 2>&1 ; then
 fi
 
 
-##########################################
-# zplug
-if [[ -f ${HOME}/.zplug/init.zsh ]]; then
-    export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
-    source ~/.zplug/init.zsh
-
-    # Auto installer
-    if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-	    echo; zplug install
-        fi
-    fi
-		    
-    # コマンドをリンクして、PATH に追加し、プラグインは読み込む
-    zplug load --verbose
-
-else; printf "Install zplug? [y/N]: "
-    if read -q; then
-    	curl -sL --proto-redir -all,\
-            https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh\
-		| zsh && exec $SHELL -l  # .zshrc再リロード
-    fi
-fi
-
-
-##########################################
 # External files
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
