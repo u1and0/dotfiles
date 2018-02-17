@@ -111,6 +111,8 @@ zstyle ':completion:*:default' list-colors ""
 # 補完候補に色を付ける（空文字列はデフォルト値を使うという意味）
 zstyle ':completion::expand:*' glob true            # echo /bin/*sh とかで展開する
 zstyle ':completion::expand:*' substitute true      # echo $(ls) とかで展開する
+zstyle ':completion:*' completer _oldlist _complete 
+zstyle ':completion:*:default' menu select  # Tabキーを押すと候補を選択できる
 
 
 ########################################
