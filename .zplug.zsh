@@ -68,3 +68,7 @@ TWITTER_REPO="ShellShoccar-jpn/kotoriotoko"
 zplug $TWITTER_REPO 
 export PATH=$ZPLUG_REPOS/$TWITTER_REPO/BIN:$PATH
 TWITTER_REPO=
+
+# Tracks your most used directories, based on 'frecency'.
+zplug "rupa/z", use:"*.sh"
+
