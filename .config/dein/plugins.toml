@@ -175,6 +175,6 @@ hook_add = '''
 [[plugins]] # Multi-cursol
 repo = 'terryma/vim-multiple-cursors' 
 
-[[plugins]] # Session saveing
-repo = 'tpope/vim-obsession' 
+[[plugins]] # Commentout plugin use 'Ctrl+/(C-_)'
+repo = 'tomtom/tcomment_vim'
 
