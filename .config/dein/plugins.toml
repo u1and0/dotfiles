@@ -178,3 +178,6 @@ repo = 'terryma/vim-multiple-cursors'
 [[plugins]] # Commentout plugin use 'Ctrl+/(C-_)'
 repo = 'tomtom/tcomment_vim'
 
+[[plugins]] # Show side bar "NERDTree"
+repo = 'scrooloose/nerdtree'
+
