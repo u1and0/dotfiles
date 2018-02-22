@@ -72,3 +72,6 @@ TWITTER_REPO=
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh"
 
+# The most awesome Powerline theme for ZSH around!
+zplug 'bhilburn/powerlevel9k', as:theme
+
