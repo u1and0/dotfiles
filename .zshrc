@@ -165,19 +165,31 @@ bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 ########################################
 # Global Alias
 alias -g D='2> /dev/null'
-alias -g F='| fzf'
-alias -g H='| head'
+
+## FuzzyFinder
+if [ -n "$TMUX" ] && which fzf-tmux > /dev/null 2>&1 ; then
+    alias -g F='| fzf-tmux --reverse'
+else
+    alias -g F='| fzf'
+fi
+if [ -n "$TMUX" ] && which peco-tmux > /dev/null 2>&1 ; then
+    alias -g P='| peco-tmux'
+else
+    alias -g P='| peco'
+fi
+alias -g Y='| fzy'
+
+## Print Stdout
 if which vimpager > /dev/null 2>&1 ; then
     alias -g L='| vimpager'
 else
     alias -g L='| less'
 fi
 alias -g M='| more'
-alias -g P='| peco'
+alias -g H='| head'
 alias -g T='| tail'
-alias -g W='| wc -l'
-alias -g Y='| fzy'
 
+## Global Regurar Expression Print
 if which ag > /dev/null 2>&1 ; then
 	alias -g G='| ag'
 elif which ack > /dev/null 2>&1 ; then
@@ -186,9 +198,7 @@ else
 	alias -g G='| grep'
 fi
 
-# ANSIカラーコードの無効化
-alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
-
+## Clipboard
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then
@@ -202,6 +212,10 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
+## Misc
+alias -g W='| wc -l'
+# ANSIカラーコードの無効化
+alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
 ##########################################
 # zplug
