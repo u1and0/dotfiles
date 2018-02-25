@@ -17,6 +17,9 @@ HISTFILE=~/.history/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
+
 # LESS設定
  # -----------------------------
  # __LESS ENVPATH__
