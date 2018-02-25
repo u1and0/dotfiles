@@ -26,8 +26,10 @@ zplug "peco/peco", as:command, from:gh-r, frozen:1  # Install fuzzy-finder peco
 zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux  # fzf-tmux の peco バージョン
 
 
-# history search using fzf using ctrl+R
-zplug "tsub/f4036e067a59b242a161fc3c8a5f01dd", from:gist
+# history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
+zplug "u1and0/ffsearch"
+# To switch filter, set the HISTORY_FILTER argument
+# for example `HISTORY_FILTER=fzy`
 
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
@@ -58,44 +60,6 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # Auto completions 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "hchbaw/auto-fu.zsh", at:pu, frozen:1  # zsh automatic complete-word and list-choices
-
-function zle-line-init(){
-    auto-fu-init
-}
-zle -N zle-line-init
-zstyle ':completion:*' completer _oldlist _complete 
-zstyle ':completion:*:default' menu select  # Tabキーを押すと候補を選択できる
-
-
-# delete unambiguous prefix when accepting line
-function afu+delete-unambiguous-prefix () {
-    afu-clearing-maybe
-    local buf; buf="$BUFFER"
-    local bufc; bufc="$buffer_cur"
-    [[ -z "$cursor_new" ]] && cursor_new=-1
-    [[ "$buf[$cursor_new]" == ' ' ]] && return
-    [[ "$buf[$cursor_new]" == '/' ]] && return
-    ((afu_in_p == 1)) && [[ "$buf" != "$bufc" ]] && {
-        there are more than one completion candidates
-        zle afu+complete-word
-        [[ "$buf" == "$BUFFER" ]] && {
-            the completion suffix was an unambiguous prefix
-            afu_in_p=0; buf="$bufc"
-        }
-        BUFFER="$buf"
-        buffer_cur="$bufc"
-    }
-}
-zle -N afu+delete-unambiguous-prefix
-function afu-ad-delete-unambiguous-prefix () {
-    local afufun="$1"
-    local code; code=$functions[$afufun]
-    eval "function $afufun () { zle afu+delete-unambiguous-prefix; $code }"
-}
-afu-ad-delete-unambiguous-prefix afu+accept-line
-afu-ad-delete-unambiguous-prefix afu+accept-line-and-down-history
-afu-ad-delete-unambiguous-prefix afu+accept-and-hold
 
 
 # Enhanced change directory
@@ -106,3 +70,10 @@ TWITTER_REPO="ShellShoccar-jpn/kotoriotoko"
 zplug $TWITTER_REPO 
 export PATH=$ZPLUG_REPOS/$TWITTER_REPO/BIN:$PATH
 TWITTER_REPO=
+
+# Tracks your most used directories, based on 'frecency'.
+zplug "rupa/z", use:"*.sh"
+
+# The most awesome Powerline theme for ZSH around!
+zplug 'bhilburn/powerlevel9k', as:theme
+

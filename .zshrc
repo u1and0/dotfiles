@@ -6,6 +6,7 @@
 # 環境変数
 export LANG=ja_JP.UTF-8
 export SHELL=/usr/bin/zsh
+export TERM="xterm-256color"
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -15,6 +16,9 @@ colors
 HISTFILE=~/.history/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
 
 # LESS設定
  # -----------------------------
@@ -131,6 +135,7 @@ setopt hist_ignore_space    # スペースから始まるコマンド行はヒ�
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_verify          # ヒストリを呼び出してから実行する間に一旦編集可能
 setopt extended_glob        # 高機能なワイルドカード展開を使用する
+setopt extended_history     # $HISTFILEに時間も記録
 setopt hist_expand          # 補完時にヒストリを自動的に展開         
 setopt hist_save_no_dups    # 古いコマンドと同じものは無視
 setopt inc_append_history   # 履歴をインクリメンタルに追加
@@ -160,19 +165,31 @@ bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 ########################################
 # Global Alias
 alias -g D='2> /dev/null'
-alias -g F='| fzf'
-alias -g H='| head'
+
+## FuzzyFinder
+if [ -n "$TMUX" ] && which fzf-tmux > /dev/null 2>&1 ; then
+    alias -g F='| fzf-tmux --reverse'
+else
+    alias -g F='| fzf'
+fi
+if [ -n "$TMUX" ] && which peco-tmux > /dev/null 2>&1 ; then
+    alias -g P='| peco-tmux'
+else
+    alias -g P='| peco'
+fi
+alias -g Y='| fzy'
+
+## Print Stdout
 if which vimpager > /dev/null 2>&1 ; then
     alias -g L='| vimpager'
 else
     alias -g L='| less'
 fi
 alias -g M='| more'
-alias -g P='| peco'
+alias -g H='| head'
 alias -g T='| tail'
-alias -g W='| wc -l'
-alias -g Y='| fzy'
 
+## Global Regurar Expression Print
 if which ag > /dev/null 2>&1 ; then
 	alias -g G='| ag'
 elif which ack > /dev/null 2>&1 ; then
@@ -181,9 +198,7 @@ else
 	alias -g G='| grep'
 fi
 
-# ANSIカラーコードの無効化
-alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
-
+## Clipboard
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then
@@ -197,6 +212,10 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
+## Misc
+alias -g W='| wc -l'
+# ANSIカラーコードの無効化
+alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
 ##########################################
 # zplug
