@@ -4,7 +4,7 @@
 
 ########################################
 # 環境変数
-if [ -f ~/.bashrc]; then
+if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 

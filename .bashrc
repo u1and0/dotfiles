@@ -3,10 +3,10 @@ export LANG=ja_JP.UTF-8
 export SHELL=/usr/bin/zsh
 export TERM="xterm-256color"
 # LinuxBrew setting
-export PATH="${HOME}/.linuxbrew/bin:$PATH"
-export MANPATH="${HOME}/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="${HOME}/.linuxbrew/share/info:$INFOPATH"
-export XDG_DATA_DIRS="${HOME}/.linuxbrew/share:$XDG_DATA_DIRS"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.lilinuxbrew/nuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+export XDG_DATA_DIRS="/home/linuxbrew/.lilinuxbrew/nuxbrew/share:$XDG_DATA_DIRS"
 
 # LESS設定
  # -----------------------------
