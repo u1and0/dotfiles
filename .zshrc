@@ -4,9 +4,9 @@
 
 ########################################
 # 環境変数
-export LANG=ja_JP.UTF-8
-export SHELL=/usr/bin/zsh
-export TERM="xterm-256color"
+if [ -f ~/.bashrc]; then
+    . ~/.bashrc
+fi
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -17,42 +17,12 @@ HISTFILE=~/.history/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+# Extended mv `zmv`
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
-# LESS設定
- # -----------------------------
- # __LESS ENVPATH__
- # -g  検索したとき、ヒットした全ての文字列を反転するのではなく、現在カーソルがある行のみ反転する。
- # -i  検索時に全部小文字で入力したときだけ、大文字小文字を無視する。
- # -M  詳しいプロンプトを表示する。
- # -R  ANSI カラーエスケープシーケンスを解するようになる。
- # -S  一行が長く、ターミナルの幅が狭くて表示できない場合、途中までしか表示しない。
- # -W  一度に2行以上移動した場合、新たに表示した最初の行をハイライトする。
- # -z-4    ウィンドウのサイズをターミナルのサイズ - 4 に設定する。
- # -x4 タブを 4 つのスペースで表現する。
- # -L  $LESSOPEN 環境変数を無効にする。
- # -N  行数
- export LESS='-MigrWx4'
-  # -z-4'
 
- # デフォルトのエディタ
- export EDITOR='vim'
- export VISUAL='vim'
-
- # man などの様々なコマンドがページャーとして less を使うようになります
- export PAGER='less'
- # $PAGER を設定した状態で以下の環境変数を指定すると man ページに色が付きます。
- export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
- export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
- export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
- export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
- export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
- export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
- export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
-
-
-# ==git prompt==
+# Git prompt
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -63,7 +33,7 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 GITPROMPT='${vcs_info_msg_0_}'
 
-# プロンプト
+# Prompt
 PROMPT="%F{cyan}%n@%m%F{green} %~ ${GITPROMPT} ${reset_color}
 $ "
 RPROMPT="%{$fg_bold[yellow]%}%*%{$reset_color%}"
@@ -144,7 +114,6 @@ setopt auto_param_keys      # カッコの対応などを自動的に補完す�
 setopt magic_equal_subst    # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できるようにする
 ########################################
 # キーバインド
-
 bindkey -e   # emacs-mode 
 bindkey '^R' history-incremental-pattern-search-backward
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする

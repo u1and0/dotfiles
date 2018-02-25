@@ -21,6 +21,7 @@
 !README.md
 
 # shell cofigファイル
+!.bashrc
 !.bash_aliases
 !.bash_functions
 !.zplug.zsh
