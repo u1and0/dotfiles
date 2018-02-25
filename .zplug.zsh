@@ -26,8 +26,10 @@ zplug "peco/peco", as:command, from:gh-r, frozen:1  # Install fuzzy-finder peco
 zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux  # fzf-tmux の peco バージョン
 
 
-# history search using fzf using ctrl+R
-zplug "tsub/f4036e067a59b242a161fc3c8a5f01dd", from:gist
+# history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
+zplug "u1and0/ffsearch"
+# To switch filter, set the HISTORY_FILTER argument
+# for example `HISTORY_FILTER=fzy`
 
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3

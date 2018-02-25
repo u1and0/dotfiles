@@ -135,6 +135,7 @@ setopt hist_ignore_space    # スペースから始まるコマンド行はヒ�
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_verify          # ヒストリを呼び出してから実行する間に一旦編集可能
 setopt extended_glob        # 高機能なワイルドカード展開を使用する
+setopt extended_history     # $HISTFILEに時間も記録
 setopt hist_expand          # 補完時にヒストリを自動的に展開         
 setopt hist_save_no_dups    # 古いコマンドと同じものは無視
 setopt inc_append_history   # 履歴をインクリメンタルに追加
