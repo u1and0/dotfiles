@@ -184,3 +184,6 @@ repo = 'scrooloose/nerdtree'
 [[plugins]] # Session saveing
 repo = 'tpope/vim-obsession' 
 
+[[plugins]] # 
+repo = 'tpope/vim-surround' 
+
