@@ -4,26 +4,40 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 
 # Install fuzzy-finder "fzf"
-zplug "junegunn/fzf-bin", \
-	as:command, \
-	from:gh-r, \
-	rename-to:"fzf", \
-	frozen:1
-zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+zplug "junegunn/fzf-bin",\
+	as:command,\
+	from:gh-r,\
+	rename-to:"fzf",\
+    hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh",\
+    hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh",\
+    hook-load:'export MANPATH="$ZPLUG_REPOS/junegunn/fzf/man/man1/fzf:$MANPATH"'
+
+zplug "junegunn/fzf",\
+    as:command,\
+    use:bin/fzf-tmux,\
+    on:"junegunn/fzf-bin"
 
 # Install fuzzy-finder "fzy"
 # Provided, it requires to set the variable like the following:
 # ZPLUG_SUDO_PASSWORD="********"
 if [ `whoami` = vagrant ]; then
-   ZPLUG_SUDO_PASSWORD=vagrant 
+    ZPLUG_SUDO_PASSWORD=vagrant 
 fi
-zplug "jhawthorn/fzy", \
-	as:command, \
-	rename-to:fzy, \
+zplug "jhawthorn/fzy",\
+	as:command,\
+	rename-to:fzy,\
 	hook-build:"make && sudo make install"
 
-zplug "peco/peco", as:command, from:gh-r, frozen:1  # Install fuzzy-finder peco
-zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux  # fzf-tmux の peco バージョン
+zplug "peco/peco",\
+    as:command,\
+    from:gh-r,\
+    use:"*amd64*",\
+    frozen:1  # Install fuzzy-finder peco
+
+zplug "b4b4r07/dotfiles",\
+    as:command,\
+    use:bin/peco-tmux,\
+    on:"peco/peco"  # fzf-tmux の peco バージョン
 
 
 # history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
