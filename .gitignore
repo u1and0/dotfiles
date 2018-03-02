@@ -26,6 +26,8 @@
 !.bash_functions
 !.zplug.zsh
 !.zshrc
+!.zsh_aliases
+!.zsh_functions
 
 # gitファイル
 !.tigrc

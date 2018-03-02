@@ -17,10 +17,6 @@ HISTFILE=~/.history/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# Extended mv `zmv`
-autoload -Uz zmv
-alias zmv='noglob zmv -W'
-
 
 # Git prompt
 autoload -Uz vcs_info
@@ -131,60 +127,6 @@ bindkey '\e[1;5D' backward-word   # ctrl+left
 bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 
 
-########################################
-# Global Alias
-alias -g D='2> /dev/null'
-
-## FuzzyFinder
-if [ -n "$TMUX" ] && which fzf-tmux > /dev/null 2>&1 ; then
-    alias -g F='| fzf-tmux --reverse'
-else
-    alias -g F='| fzf'
-fi
-if [ -n "$TMUX" ] && which peco-tmux > /dev/null 2>&1 ; then
-    alias -g P='| peco-tmux'
-else
-    alias -g P='| peco'
-fi
-alias -g Y='| fzy'
-
-## Print Stdout
-if which vimpager > /dev/null 2>&1 ; then
-    alias -g L='| vimpager'
-else
-    alias -g L='| less'
-fi
-alias -g M='| more'
-alias -g H='| head'
-alias -g T='| tail'
-
-## Global Regurar Expression Print
-if which ag > /dev/null 2>&1 ; then
-	alias -g G='| ag'
-elif which ack > /dev/null 2>&1 ; then
-	alias -g G='| ack'
-else
-	alias -g G='| grep'
-fi
-
-## Clipboard
-# C で標準出力をクリップボードにコピーする
-# mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
-if which pbcopy >/dev/null 2>&1 ; then
-    # Mac
-    alias -g C='| pbcopy'
-elif which xsel >/dev/null 2>&1 ; then
-    # Linux
-    alias -g C='| xsel --input --clipboard'
-elif which putclip >/dev/null 2>&1 ; then
-    # Cygwin
-    alias -g C='| putclip'
-fi
-
-## Misc
-alias -g W='| wc -l'
-# ANSIカラーコードの無効化
-alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
 ##########################################
 # zplug
@@ -222,6 +164,9 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
 if [ -f ~/.zsh_functions ]; then
     . ~/.zsh_functions
 fi
