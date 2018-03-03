@@ -187,3 +187,6 @@ repo = 'tpope/vim-obsession'
 [[plugins]] # 
 repo = 'tpope/vim-surround' 
 
+[[plugins]] # Auto-bracket correction
+repo = 'jiangmiao/auto-pairs' 
+
