@@ -83,11 +83,14 @@ zplug "b4b4r07/enhancd", use:init.sh, defer:3
 TWITTER_REPO="ShellShoccar-jpn/kotoriotoko"
 zplug $TWITTER_REPO 
 export PATH=$ZPLUG_REPOS/$TWITTER_REPO/BIN:$PATH
-TWITTER_REPO=
+TWITTER_REPO=""
 
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh"
 
 # The most awesome Powerline theme for ZSH around!
 zplug 'bhilburn/powerlevel9k', as:theme
+
+# pacman backup
+zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96"
 
