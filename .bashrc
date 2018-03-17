@@ -56,3 +56,11 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
+if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
+    . ~/.pyenvrc
+fi
+
+if which thefuck >/dev/null 2>&1 ; then
+    eval $(thefuck --alias)
+fi
+
