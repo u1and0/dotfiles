@@ -1,3 +1,6 @@
+" vim:ft=vim
+
+" === Tab keymap setting ===
 " The prefix key.
 nnoremap    [Tag]   <Nop>
 nmap    t [Tag]
@@ -16,7 +19,19 @@ for n in range(1, 9)
   map <silent> [Tag]N :tabprevious<CR>
   " tp 前のタブ
 
-" Build script <Ctrl+:h>
-autocmd BufNewFile,BufRead *.rb nnoremap <C-h> :!ruby %
-autocmd BufNewFile,BufRead *.py nnoremap <C-h> :!python %
-autocmd BufNewFile,BufRead *.pl nnoremap <C-h> :!perl %
+
+" === Build script <C-b> ===
+autocmd BufNewFile,BufRead *.rb nnoremap <C-b> :!ruby %
+autocmd BufNewFile,BufRead *.py nnoremap <C-b> :!python %
+autocmd BufNewFile,BufRead *.pl nnoremap <C-b> :!perl %
+
+
+" === Line number toggle <C-l> ===
+function! Setnumber()
+    if &number
+        setlocal nonumber
+    else
+        setlocal number
+    endif
+endfunction
+nnoremap <silent> <C-l> :call Setnumber()<CR>

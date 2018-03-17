@@ -180,6 +180,7 @@ repo = 'tomtom/tcomment_vim'
 
 [[plugins]] # Show side bar "NERDTree"
 repo = 'scrooloose/nerdtree'
+hook_add = 'nnoremap <silent><C-k><C-b> :NERDTreeToggle<CR>'
 
 [[plugins]] # Session saveing
 repo = 'tpope/vim-obsession' 
@@ -190,3 +191,6 @@ repo = 'tpope/vim-surround'
 [[plugins]] # Auto-bracket correction
 repo = 'jiangmiao/auto-pairs' 
 
+
+[[plugins]] # python indent
+repo = 'hynek/vim-python-pep8-indent'

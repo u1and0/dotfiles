@@ -38,14 +38,14 @@ endif
 " dein.vim settings
 
 if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
+        call dein#begin(s:dein_dir)
 
     let s:toml_dir = expand('$CONFIG/dein')
 
     call dein#load_toml(s:toml_dir . '/plugins.toml', {'lazy': 0})
     call dein#load_toml(s:toml_dir . '/lazy.toml', {'lazy': 1})
     if has('python3')
-        call dein#load_toml(s:toml_dir . '/python.toml', {'lazy': 1})
+        call dein#load_toml(s:toml_dir . '/python.toml', {'lazy': 0})
     endif
 
     call dein#end()
