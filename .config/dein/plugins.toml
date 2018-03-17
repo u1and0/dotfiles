@@ -191,3 +191,6 @@ repo = 'tpope/vim-surround'
 [[plugins]] # Auto-bracket correction
 repo = 'jiangmiao/auto-pairs' 
 
+
+[[plugins]] # python indent
+repo = 'hynek/vim-python-pep8-indent'
