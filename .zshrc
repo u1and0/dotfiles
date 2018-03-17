@@ -1,13 +1,23 @@
+# vim:set ft=zsh:
 # 少し凝った zshrc
 # License : MIT
 # http://mollifier.mit-license.org/
 
-########################################
-# 環境変数
+##########################################
+# External files
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
+if [ -f ~/.zsh_functions ]; then
+    . ~/.zsh_functions
+fi
+
+
+##########################################
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
@@ -86,7 +96,7 @@ zstyle ':completion:*:default' menu select  # Tabキーを押すと候補を選�
 
 
 ########################################
-# オプション
+# Options
 setopt print_eight_bit      # 日本語ファイル名を表示可能にする 
 setopt no_beep              # beep を無効にする 
 setopt no_flow_control      # フローコントロールを無効にする
@@ -108,8 +118,10 @@ setopt inc_append_history   # 履歴をインクリメンタルに追加
 # setopt braceccl             # {a-z}を{a..z}と同様にする 
 setopt auto_param_keys      # カッコの対応などを自動的に補完する
 setopt magic_equal_subst    # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できるようにする
+
+
 ########################################
-# キーバインド
+# Keybinds
 bindkey -e   # emacs-mode 
 bindkey '^R' history-incremental-pattern-search-backward
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
@@ -129,7 +141,7 @@ bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
 
 
 ##########################################
-# zplug
+# Load zplug
 if [[ -f ${HOME}/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
     source ~/.zplug/init.zsh
@@ -152,32 +164,3 @@ else; printf "Install zplug? [y/N]: "
 		| zsh && exec $SHELL -l  # .zshrc再リロード
     fi
 fi
-
-
-##########################################
-# External files
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
-
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
-fi
-if [ -f ~/.zsh_functions ]; then
-    . ~/.zsh_functions
-fi
-
-if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
-    . ~/.pyenvrc
-fi
-
-if which thefuck >/dev/null 2>&1 ; then
-    eval $(thefuck --alias)
-fi
-
-# vim:set ft=zsh:
-
