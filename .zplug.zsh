@@ -92,11 +92,7 @@ zplug "rupa/z", use:"*.sh"
 zplug 'bhilburn/powerlevel9k', as:theme
 
 # pacman backup
-zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96", from:gist
-
-#BACPAC_REPO="u1and0/8bd32ade8d95988b52b03a1b08297b96"
-#zplug $BACPAC_REPO,\
-#    from:gist,\
-#    as:command,\
-#    use:bacpac ,\
-#    hook-load:"function bacpac(){; cd $ZPLUG_REPOS/$BACPAC_REPO; ./bacpac $1}"
+zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\
+    from:gist,\
+    dir:"${HOME}/bacpac"
+alias bacpac="${HOME}/bacpac/bacpac"
