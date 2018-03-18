@@ -14,7 +14,7 @@ keymap :h HELP
 keymap t GOTO google.com
 keymap T TAB_LINK
 keymap C-t NEW_TAB
-keymap C-w CLOSE_TAB
+keymap C-wC-w CLOSE_TAB
 keymap TAB NEXT_TAB
 keymap ^[[Z PREV_TAB  # ^[[Z = shift+TAB
 keymap s NEXT_TAB
