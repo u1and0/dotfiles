@@ -14,9 +14,9 @@ for n in range(1, 9)
   " tc 新しいタブを一番右に作る
   map <silent> [Tag]x :tabclose<CR>
   " tx タブを閉じる
-  map <silent> [Tag]n :tabnext<CR>
+  map <silent> [Tag]t :tabnext<CR>
   " tn 次のタブ
-  map <silent> [Tag]N :tabprevious<CR>
+  map <silent> [Tag]T :tabprevious<CR>
   " tp 前のタブ
 
 
