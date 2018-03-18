@@ -96,3 +96,9 @@ zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\
     from:gist,\
     dir:"${HOME}/bacpac"
 alias bacpac="${HOME}/bacpac/bacpac"
+
+# Gist editor
+zplug "b4b4r07/gist",\
+    as:command,\
+    rename-to:"gist",\
+    hook-build:'go get -d && go build'
