@@ -12,6 +12,11 @@ zplug "junegunn/fzf-bin",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh",\
     hook-load:'export MANPATH="$ZPLUG_REPOS/junegunn/fzf/man/man1/fzf:$MANPATH"'
 
+# history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
+zplug "u1and0/ffsearch", defer:1
+# To switch filter, set the HISTORY_FILTER argument
+# for example `HISTORY_FILTER=fzy`
+
 zplug "junegunn/fzf",\
     as:command,\
     use:bin/fzf-tmux,\
@@ -39,11 +44,6 @@ zplug "b4b4r07/dotfiles",\
     use:bin/peco-tmux,\
     on:"peco/peco"  # fzf-tmux の peco バージョン
 
-
-# history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
-zplug "u1and0/ffsearch"
-# To switch filter, set the HISTORY_FILTER argument
-# for example `HISTORY_FILTER=fzy`
 
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
