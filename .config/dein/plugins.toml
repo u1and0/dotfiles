@@ -182,10 +182,10 @@ repo = 'tomtom/tcomment_vim'
 repo = 'scrooloose/nerdtree'
 hook_add = 'nnoremap <silent><C-k><C-b> :NERDTreeToggle<CR>'
 
-[[plugins]] # Session saveing
+[[plugins]] # Session saveing ':Obsession'
 repo = 'tpope/vim-obsession' 
 
-[[plugins]] # 
+[[plugins]] # Select then 'S'
 repo = 'tpope/vim-surround' 
 
 [[plugins]] # Auto-bracket correction
