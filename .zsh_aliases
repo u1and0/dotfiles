@@ -30,7 +30,9 @@ alias -g H='| head'
 alias -g T='| tail'
 
 ## Global Regurar Expression Print
-if which ag > /dev/null 2>&1 ; then
+if which rg > /dev/null 2>&1 ; then
+	alias -g G='| rg'
+elif which ag > /dev/null 2>&1 ; then
 	alias -g G='| ag'
 elif which ack > /dev/null 2>&1 ; then
 	alias -g G='| ack'
