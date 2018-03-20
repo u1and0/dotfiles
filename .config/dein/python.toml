@@ -46,7 +46,7 @@ hook_add = '''
     " バッファからファイル名検索
     nmap <silent> <C-k><C-p> :<C-u>Denite buffer<CR>
     nmap <silent> <C-k><C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
-    
+
     " アクセス率の高いファイル
     nmap <silent> <C-k><C-k> :<C-u>Denite file_mru<CR>
     nmap <silent> <C-k><C-z> :<C-u>Denite file_old<CR>

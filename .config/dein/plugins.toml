@@ -173,7 +173,7 @@ hook_add = '''
 '''
 
 [[plugins]] # Multi-cursol
-repo = 'terryma/vim-multiple-cursors' 
+repo = 'terryma/vim-multiple-cursors'
 
 [[plugins]] # Commentout plugin use 'Ctrl+/(C-_)'
 repo = 'tomtom/tcomment_vim'
@@ -183,17 +183,23 @@ repo = 'scrooloose/nerdtree'
 hook_add = 'nnoremap <silent><C-k><C-b> :NERDTreeToggle<CR>'
 
 [[plugins]] # Session saveing ':Obsession'
-repo = 'tpope/vim-obsession' 
+repo = 'tpope/vim-obsession'
 
 [[plugins]] # Select then 'S'
-repo = 'tpope/vim-surround' 
+repo = 'tpope/vim-surround'
 
 [[plugins]] # Auto-bracket correction
-repo = 'jiangmiao/auto-pairs' 
+repo = 'jiangmiao/auto-pairs'
 
 [[plugins]] # python indent
 repo = 'hynek/vim-python-pep8-indent'
 
 [[plugins]] # Faster matcher. Needs cmake & boost: `pacman -S cmake boost`
-repo = 'nixprime/cpsm' 
+repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
+
+[[plugins]] # 末尾の全角と半角の空白文字を赤くハイライト
+repo = 'bronson/vim-trailing-whitespace'
+
+[[plugins]] # インデントの可視化
+repo = 'Yggdroot/indentLine'
