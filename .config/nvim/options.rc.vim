@@ -21,3 +21,6 @@ set softtabstop=4   	" Sets the number of columns for a TAB
 set expandtab       	" Expand TABs to spaces
 set cursorline          " Highlight corsorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
