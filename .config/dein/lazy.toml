@@ -13,3 +13,12 @@ on_event = 'TextYankPost'
 repo = 'haya14busa/dein-command.vim' 
 on_source = ['dein.vim']
 
+
+[[plugins]] # Python completions
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+on_i = 1
+#hook_add = '''
+#    let g:deoplete#sources#jedi#python_path = '/usr/bin/python3'
+#   " '/home/vagrant/.pyenv/versions/anaconda3-5.0.0/envs/snow/bin/python3.6'
+#'''

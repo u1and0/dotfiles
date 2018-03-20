@@ -21,9 +21,9 @@ for n in range(1, 9)
 
 
 " === Build script <C-b> ===
-autocmd BufNewFile,BufRead *.rb nnoremap <C-b> :!ruby %
-autocmd BufNewFile,BufRead *.py nnoremap <C-b> :!python %
-autocmd BufNewFile,BufRead *.pl nnoremap <C-b> :!perl %
+autocmd BufNewFile,BufRead *.rb nnoremap <C-b> ':w|!ruby %'
+autocmd BufNewFile,BufRead *.py nnoremap <C-b> :w | :!python %
+autocmd BufNewFile,BufRead *.pl nnoremap <C-b> ':w|!perl %'
 
 
 " === Line number toggle <C-l> ===
