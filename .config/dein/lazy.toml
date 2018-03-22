@@ -41,7 +41,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'plytophogy/vim-virtualenv'
+repo = 'lambdalisue/vim-pyenv'
 depends = 'jedi-vim'
 on_ft = 'python'
 
