@@ -91,14 +91,14 @@ zstyle ':completion:*:default' list-colors ""
 # 補完候補に色を付ける（空文字列はデフォルト値を使うという意味）
 zstyle ':completion::expand:*' glob true            # echo /bin/*sh とかで展開する
 zstyle ':completion::expand:*' substitute true      # echo $(ls) とかで展開する
-zstyle ':completion:*' completer _oldlist _complete 
+zstyle ':completion:*' completer _oldlist _complete
 zstyle ':completion:*:default' menu select  # Tabキーを押すと候補を選択できる
 
 
 ########################################
 # Options
-setopt print_eight_bit      # 日本語ファイル名を表示可能にする 
-setopt no_beep              # beep を無効にする 
+setopt print_eight_bit      # 日本語ファイル名を表示可能にする
+setopt no_beep              # beep を無効にする
 setopt no_flow_control      # フローコントロールを無効にする
 setopt ignore_eof           # Ctrl+Dでzshを終了しない
 setopt interactive_comments # '#' 以降をコメントとして扱う
@@ -111,18 +111,17 @@ setopt hist_ignore_space    # スペースから始まるコマンド行はヒ�
 setopt hist_reduce_blanks   # ヒストリに保存するときに余分なスペースを削除する
 setopt hist_verify          # ヒストリを呼び出してから実行する間に一旦編集可能
 setopt extended_glob        # 高機能なワイルドカード展開を使用する
-setopt extended_history     # $HISTFILEに時間も記録
-setopt hist_expand          # 補完時にヒストリを自動的に展開         
+setopt hist_expand          # 補完時にヒストリを自動的に展開
 setopt hist_save_no_dups    # 古いコマンドと同じものは無視
 setopt inc_append_history   # 履歴をインクリメンタルに追加
-# setopt braceccl             # {a-z}を{a..z}と同様にする 
+# setopt braceccl             # {a-z}を{a..z}と同様にする
 setopt auto_param_keys      # カッコの対応などを自動的に補完する
 setopt magic_equal_subst    # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できるようにする
 
 
 ########################################
 # Keybinds
-bindkey -e   # emacs-mode 
+bindkey -e   # emacs-mode
 bindkey '^R' history-incremental-pattern-search-backward
 # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^[[3~' delete-char   # delete key
@@ -153,7 +152,7 @@ if [[ -f ${HOME}/.zplug/init.zsh ]]; then
 	    echo; zplug install
         fi
     fi
-		    
+
     # コマンドをリンクして、PATH に追加し、プラグインは読み込む
     zplug load --verbose
 
