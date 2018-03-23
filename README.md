@@ -1,4 +1,163 @@
-zsh auto-fu & twitter.sh & Excute time & history sharing / tmux.conf : save-session & paste mode / git diff-so-fancy / shell function cconv: Currency CONVersion 
+# v1.8.0
+nantoka
+
+## ---summary---
+### .zshrc
+* Add
+    * zplug.zsh: history searching
+    * autoload zmv
+    * Designate 256 color
+* Modify
+    * Use neovim as default editor & Load bash_aliases/functions from bashrc
+    * Global alias
+* Remove
+    * Remove auto-fu
+    * Do not record history time
+
+### .zsh_aliias
+* Add
+    * Add global alias "rg"
+    * Global alias & Suffix alias
+
+### nvim
+* Add
+    * Completion python code using jedi
+    * neocomplete now customizing
+    * Show unvisible character
+    * Toggle line number <C-l>
+    * Highlight colorline
+    * Build current file use Ctrl+h
+    * Add "vim-obsession" saving current vim(nvim) session in ./Session.vim
+    * Inherit from .vimrc
+    * Add vim-precious, context_filetype.vim <- file type change by syntax
+    * Set nocompatible mode
+    * Add nvim config & Install neovim
+* Modify
+    * **rollback keymap build script
+    * Denite options
+    * Build key <C-b>
+    * commnand history line 10000
+    * Set file type as .vim
+* Remove
+    * Remove set nu
+    * alias vi=vim removed
+
+### dein
+* Add
+    * show pyenv status @ left line
+    * 52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
+    * show pyenv status @ left line
+    * Completion python code using jedi
+    * Deoplete options
+    * vim-trailing-whitespace, indentLine
+    * neocomplete now customizing
+    * cpsm faster matcher
+    * python indent plugin
+    * Add dein-command plugin
+    * NERDTree keymap <C-k><C-b>
+    * Add Auto-bracket correction "jiangmiao/auto-pairs"
+    * Add surround.vim
+    * Add session manger plugin "tpope/vim-obsession"
+    * Add Sidebar plugin "scrooloose/nerdtree"
+    * Add vim-obsession
+    * Add vim-multiple-cursors
+    * Add lightline setting, Add vim-gutter, vim-fugitive
+    * Add Neoterm
+    * Add vim-precious, context filetype.vim <- file type change by syntax
+* Modify
+    * Modify Denite map
+    * python.toml: Comment and Indent
+    * Denite keymaps modify
+    * Denite options
+    * Commentout plugin "tomtom/tcommentvim
+### w3m
+* Modify
+    * Close tab <C-W> twice
+
+### bashrc
+* Add
+    * Same setting with bash & Set up LinuxBrew
+    * Load .pyenvrc & thefuck init
+* Modify
+    * .zshrc:Use neovim as default editor & Load bash_aliases/functions from bashrc
+    * .zshrc:Use neovim as default editor & Load bash_aliases/functions from bashrc
+    * Modify linuxbrew path
+
+### tmux.conf
+* Add
+    *  weather icon
+    * themes/tmux/mytheme.json
+    * Run powerline-daemon unless powerline-daemon running
+    * Run powerline when tmux start
+
+
+### ---logs---
+1ac9715 [rm]@.zshrc: Do not record history time
+b7f943f Merge branch 'feature/neocomplete' into develop
+e3f0a40 WIP on feature/neocomplete: 52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
+05c3d91 index on feature/neocomplete: 52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
+52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
+950edee [add]@.config/dein/python.toml: Deoplete options
+750397f [mod]@.config/dein/python.toml: Modify Denite map
+e8c95cc [add]@.config/dein/plugins.toml: vim-trailing-whitespace, indentLine
+139aad6 Merge branch 'develop' of github.com:u1and0/dotfiles into develop
+65b6ef2 [add]@.zsh_aliases: Add global alias "rg"
+b0b9ae6 [add]@.zplug.zsh: Add gist cli editor building with go
+719893e Merge remote-tracking branch 'origin/develop' into develop
+7cf1f97 [mod]@.jupyter/jupyter_notebook_config.py: Set port as default
+c04abad [add]@.zplug.zsh: Add bacpac options aliased ~/bacpac/bacpac
+741b409 [add]@.zplug.zsh: Add bacpac options aliased ~/bacpac/bacpac
+ff1273d [mod]@.zplug.zsh: u1and0/ffsearch add "defer:1"
+50e55cd [mod]@.w3m/keymap: Close tab <C-W> twice
+7e2fc7a [add]@.config/dein/plugins.toml: cpsm faster matcher
+2aa613f [mod].config/dein/plugins.toml , python.toml: Comment and Indent
+8890ad8 [mod]@.bashrc: Load .pyenvrc & thefuck init
+4f12d6a Merge branch 'feature/neovim-config' into develop
+3d600a5 [mod]@.bashrc, .zshrc:Use neovim as default editor & Load bash_aliases/functions from bashrc
+8a9f998 [mod]@.config/dein/python.toml: Denite keymaps modify
+3091b97 [add]@.config/dein/plugins.toml: python indent plugin
+a197e6b [add]@.config/dein/lazy.toml: Add dein-command plugin
+60793cd [add]@.config/dein/plugins.toml: NERDTree keymap <C-k><C-b>
+fd11dab [mod]@.zplug.zsh: "bacpac" install from my gist
+ba146d6 [add]@.zplug.zsh: Add pacman backup module "bacpac" from my secret gist
+55f4538 [add]@.config/dein/plugins.toml: Add Auto-bracket correction "jiangmiao/auto-pairs"
+da27e2d [mod]@.zplug.zsh: indentation
+50bf07b [add]@.config/dein/plugins.toml: Add surround.vim
+e91db95 [add]@.zsh_aliases, .zsh_functions: Global alias & Suffix alias
+1105531 [add]@.gitconfig: Add diff-so-fancy again
+bf55c67 [mod]@.bashrc: Modify linuxbrew path
+086b783 [add]@.bashrc: Same setting with bash & Set up LinuxBrew
+39bd0f0 Merge remote-tracking branch 'origin/develop' into develop
+e387a00 [mod]@.zshrc: Global alias
+4e6c406 [add]@.zshrc, @.zplug.zsh: history searching
+2faa5b7 [add]@.zshrc: autoload zmv
+3da5848 [add]@.zshrc: Designate 256 color
+f6021f4 [add]@.zplug.zsh: zsh theme "bhilburn/powerlevel9k" using powerline
+e834094 [add]@.zplug.zsh: Add zsh theme "agnoster" with powerline fonts
+5844e16 Next generation vim "Neovim" & plugin manager "dein"
+d8d5e27 [add]@.config/dein/plugins.toml: Add session manger plugin "tpope/vim-obsession"
+a29a270 [add]@.config/dein/plugins.toml: Add Sidebar plugin "scrooloose/nerdtree"
+ed468c8 [mod]@.config/dein/plugins.toml: Commentout plugin "tomtom/tcomment_vim"
+31997a3 [add]@.config/dein/plugin.toml: Add vim-obsession
+7213d7e [add]@.zplug.zsh: "z" is tracking your most used directories, based on frecency.
+bfbf445 [rm]@.zshrc, .zplug.zsh: Remove auto-fu
+1b113c2 Merge tag 'v1.7.2' into develop
+1719a63 [add]@.config/dein/plugins.toml: Add vim-multiple-cursors
+1ec68ad [add]@.config/dein/plugins.toml: Add lightline setting, Add vim-gutter, vim-fugitive
+66501c0 [add]@.config/dein/plugins.toml: Add Neoterm
+b03f021 [mod]@README.md: mod typo
+0d1b8ce [add]@.config/powerline/themes/tmux/mytheme.json: weather icon
+e992560 [mod].config/powerline/config.json
+c2617ca [add]@themes/tmux/mytheme.json
+8e7f98d [add].config/powerline
+6e33116 [add]@.tmux.comf: Run powerline-daemon unless powerline-daemon running
+8b8629f Merge branch 'develop' into feature/powerline
+d421698 [add]@.tmux.conf: Run powerline when tmux start
+
+
+
+# v1.7.0
+zsh auto-fu & twitter.sh & Excute time & history sharing / tmux.conf : save-session & paste mode / git diff-so-fancy / shell function cconv: Currency CONVersion
 
 ---summary---
 * .zshrc
