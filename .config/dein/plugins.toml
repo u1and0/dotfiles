@@ -34,6 +34,7 @@ let g:lightline = {
         \   'left': [
         \     ['mode', 'paste'],
         \     ['fugitive', 'gitgutter', 'filename'],
+        \     ['pyenv'], 
         \   ],
         \   'right': [
         \     ['lineinfo', 'syntastic'],
@@ -50,6 +51,7 @@ let g:lightline = {
         \   'filetype': 'MyFiletype',
         \   'fileencoding': 'MyFileencoding',
         \   'mode': 'MyMode',
+        \   'pyenv': 'MyPyenvVersion',
         \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
@@ -100,6 +102,10 @@ endfunction
 
 function! MyMode()
   return winwidth('.') > 60 ? lightline#mode() : ''
+endfunction
+
+function! MyPyenvVersion()
+  return '⌘ '.pyenv#info#preset('short')[1:]
 endfunction
 
 function! MyGitGutter()
@@ -203,3 +209,38 @@ repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]] # インデントの可視化
 repo = 'Yggdroot/indentLine'
+
+[[plugins]] # Python completions
+repo = 'Shougo/neocomplcache'
+
+[[plugins]] # Python completions
+repo = 'Shougo/neosnippet' 
+hook_add = '''
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+\ pumvisible() ? "\<C-n>" :
+\ neosnippet#expandable_or_jumpable() ?
+\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+'''
+
+[[plugins]] # Python snippets completions
+repo = 'Shougo/neosnippet-snippets' 
+
+[[plugins]]
+repo = 'ervandew/supertab'
+hook_add = '''
+    let g:SuperTabContextDefaultCompletionType = "context"
+    let g:SuperTabDefaultCompletionType = "<c-n>"
+'''
