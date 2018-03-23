@@ -1,8 +1,7 @@
-# v1.8.0
-nantoka
+v1.8.0 Neovim / Dein installed
 
-## ---summary---
-### .zshrc
+---summary---
+* .zshrc
 * Add
     * zplug.zsh: history searching
     * autoload zmv
@@ -14,12 +13,12 @@ nantoka
     * Remove auto-fu
     * Do not record history time
 
-### .zsh_aliias
+* .zsh_aliias
 * Add
     * Add global alias "rg"
     * Global alias & Suffix alias
 
-### nvim
+* nvim
 * Add
     * Completion python code using jedi
     * neocomplete now customizing
@@ -42,7 +41,7 @@ nantoka
     * Remove set nu
     * alias vi=vim removed
 
-### dein
+* dein
 * Add
     * show pyenv status @ left line
     * 52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
@@ -70,11 +69,11 @@ nantoka
     * Denite keymaps modify
     * Denite options
     * Commentout plugin "tomtom/tcommentvim
-### w3m
+* w3m
 * Modify
     * Close tab <C-W> twice
 
-### bashrc
+* bashrc
 * Add
     * Same setting with bash & Set up LinuxBrew
     * Load .pyenvrc & thefuck init
@@ -83,7 +82,7 @@ nantoka
     * .zshrc:Use neovim as default editor & Load bash_aliases/functions from bashrc
     * Modify linuxbrew path
 
-### tmux.conf
+* tmux.conf
 * Add
     *  weather icon
     * themes/tmux/mytheme.json
@@ -91,7 +90,7 @@ nantoka
     * Run powerline when tmux start
 
 
-### ---logs---
+---logs---
 1ac9715 [rm]@.zshrc: Do not record history time
 b7f943f Merge branch 'feature/neocomplete' into develop
 e3f0a40 WIP on feature/neocomplete: 52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
