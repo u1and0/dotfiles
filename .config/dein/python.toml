@@ -1,0 +1,170 @@
+# vim:ft=toml
+[[plugins]] # 補完
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+    " Vim起動時にneocompleteを有効にする
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_ignore_case = 1
+    " smartcase有効化. 大文字が入力されるまで大文字小文字の区別を無視する
+    let g:deoplete#enable_smart_case = 1
+    " 3文字以上の単語に対して補完を有効にする
+    let g:neocomplete#min_keyword_length = 3
+    " 区切り文字まで補完する
+    let g:neocomplete#enable_auto_delimiter = 1
+    " 1文字目の入力から補完のポップアップを表示
+    let g:neocomplete#auto_completion_start_length = 1
+
+    " <TAB>: completion.
+    " imap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
+    " タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ
+    imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+    function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
+
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+
+    " バックスペースで補完のポップアップを閉じる
+    inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
+
+    " エンターキーで補完候補の確定. スニペットの展開もエンターキーで確定
+    imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
+'''
+
+[[plugins]] # unite.vim 後継
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+depends = ['neomru.vim']
+on_event = 'BufRead'
+hook_add = '''
+    " === Denite 呼び出しkeymap ===
+    " 現在ファイルから検索
+    nmap <silent> <C-j><C-f> :<C-u>Denite line<CR>
+    nmap <silent> <C-j><C-e> :<C-u>DeniteCursorWord line<CR>
+
+    " バッファからgrep
+    nmap <silent> <C-j><C-g> :<C-u>Denite grep<CR>
+    nmap <silent> <C-j><C-b> :<C-u>DeniteCursorWord grep<CR>
+
+    " ファイルタイプが云々　不明
+    nmap <silent> <C-j><C-t> :<C-u>Denite filetype<CR>
+    " カレントディレクトリ以下のファイル
+    nmap <silent> <C-j><C-n> :<C-u>Denite file_rec<CR>
+    " ホームディレクトリ以下のファイル
+    nmap <silent> <C-j>. :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/']}])<CR>
+    nnoremap ml :<C-u>call denite#start([{'name': 'file_rec', 'args': [g:memolist_path]}])<CR>
+
+    " バッファからファイル名検索
+    nmap <silent> <C-j><C-p> :<C-u>Denite buffer<CR>
+    nmap <silent> <C-j><C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
+
+    " アクセス率の高いファイル
+    nmap <silent> <C-j><C-j> :<C-u>Denite file_mru<CR>
+    nmap <silent> <C-j><C-z> :<C-u>Denite file_old<CR>
+
+    " yankで取り込んだバッファ検索
+    nmap <silent> <C-j><C-y> :<C-u>Denite neoyank<CR>
+
+    " Denite中断したDeniteの続き
+    nmap <silent> <C-j><C-r> :<C-u>Denite -resume<CR>
+    "以前のバッファで次の候補を即座に開く
+    nmap <silent> <C-j>; :<C-u>Denite -resume -immediately -select=+1<CR>
+    "以前のバッファで前の候補を即座に開く
+    nmap <silent> <C-j>- :<C-u>Denite -resume -immediately -select=-1<CR>
+
+
+    " === Denite中のkeymap ===
+    "上下移動
+    call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
+    call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
+    call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+    call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+    "splitで開く
+    call denite#custom#map('insert', '<C-l>', '<denite:do_action:split>', 'noremap')
+    call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+
+
+    " === file_rec custom ===
+    if executable('fd')
+        call denite#custom#alias('source', 'file_rec', 'file_rec')
+        " fd --follow --hidden --exclude '.git' --type f
+        call denite#custom#var('file_rec', 'command', ['fd', '--follow', '--hidden', '--exclude', '.git', '--type', 'f', ''])
+    elseif executable('rg')
+        call denite#custom#var('file_rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
+    endif
+
+
+    " === grep custom ===
+    if executable('rg')
+        call denite#custom#var('grep', 'command', ['rg'])
+        call denite#custom#var('grep', 'recursive_opts', [])
+        call denite#custom#var('grep', 'final_opts', [])
+        call denite#custom#var('grep', 'separator', ['--'])
+        call denite#custom#var('grep', 'default_opts',
+            \ ['--vimgrep', '--no-heading'])
+        call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    elseif executable('pt')
+        call denite#custom#var('grep', 'command', ['pt'])
+        call denite#custom#var('grep', 'default_opts', ['--nogroup', '--nocolor', '--smart-case'])
+        call denite#custom#var('grep', 'recursive_opts', [])
+        call denite#custom#var('grep', 'pattern_opt', [])
+        call denite#custom#var('grep', 'separator', ['--'])
+        call denite#custom#var('grep', 'final_opts', [])
+    else
+        call denite#custom#var('file_rec', 'command',
+            \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+    endif
+
+    call denite#custom#source('file_old', 'matchers',
+          \ ['matcher_fuzzy', 'matcher_project_files'])
+    call denite#custom#source('tag', 'matchers', ['matcher_substring'])
+    if has('nvim')
+        call denite#custom#source('file_rec,grep', 'matchers',
+            \ ['matcher_cpsm'])
+    endif
+    call denite#custom#source('file_old', 'converters',
+          \ ['converter_relative_word'])
+
+    " 正規表現検索
+    call denite#custom#map('insert', '<C-r>',
+          \ '<denite:toggle_matchers:matcher_substring>', 'noremap')
+    call denite#custom#map('insert', '<C-a>',
+          \ '<denite:toggle_sorters:sorter_reverse>', 'noremap')
+    call denite#custom#map('normal', 'r',
+          \ '<denite:do_action:quickfix>', 'noremap')
+    call denite#custom#map('insert', ';',
+          \ 'vimrc#sticky_func()', 'expr')
+
+    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+    call denite#custom#var('file_rec/git', 'command',
+          \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+    call denite#custom#option('default', {
+          \ 'auto_accel': v:true,
+          \ 'prompt': '>',
+          \ 'source_names': 'short',
+          \ })
+
+    let s:menus = {}
+    let s:menus.vim = {
+        \ 'description': 'Vim',
+        \ }
+    let s:menus.vim.file_candidates = [
+        \ ['    > Edit configuation file (init.vim)', '~/.config/nvim/init.vim']
+        \ ]
+    call denite#custom#var('menu', 'menus', s:menus)
+
+    call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+          \ [ '.git/', '.ropeproject/', '__pycache__/',
+          \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+
+    call denite#custom#action('file', 'test',
+          \ {context -> execute('let g:foo = 1')})
+
+    call denite#custom#action('file', 'test2',
+    \ {context -> denite#do_action(context, 'open', context['targets'])})
+'''

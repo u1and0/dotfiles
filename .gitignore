@@ -21,10 +21,13 @@
 !README.md
 
 # shell cofigファイル
+!.bashrc
 !.bash_aliases
 !.bash_functions
 !.zplug.zsh
 !.zshrc
+!.zsh_aliases
+!.zsh_functions
 
 # gitファイル
 !.tigrc
@@ -46,9 +49,14 @@
 # ranger設定ファイル
 !/.config/
 /.config/*
+
 !/.config/ranger/
 /.config/ranger/*
 !/.config/ranger/rc.conf
+
+!/.config/nvim/
+
+!/.config/dein/
 
 # python系
 !.pyenvrc
@@ -74,9 +82,11 @@
 !.vimrc
 !/.vim/
 /.vim/*
+
 !/.vim/bundle/
 /.vim/bundle/*
 !.vim/bundle/neobundle.vim
+
 
 # テキストブラウザw3m
 !/.w3m/

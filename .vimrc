@@ -146,6 +146,9 @@ if has('vim_starting')
         " It takes long time to download
         NeoBundle 'vim-jp/vimdoc-ja'
 
+        " Session saveing
+        NeoBundle 'tpope/vim-obsession'
+
 	call neobundle#end()
 endif
 
