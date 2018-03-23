@@ -34,7 +34,7 @@ let g:lightline = {
         \   'left': [
         \     ['mode', 'paste'],
         \     ['fugitive', 'gitgutter', 'filename'],
-        \     ['pyenv'], 
+        \     ['pyenv'],
         \   ],
         \   'right': [
         \     ['lineinfo', 'syntastic'],
@@ -214,7 +214,7 @@ repo = 'Yggdroot/indentLine'
 repo = 'Shougo/neocomplcache'
 
 [[plugins]] # Python completions
-repo = 'Shougo/neosnippet' 
+repo = 'Shougo/neosnippet'
 hook_add = '''
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -236,7 +236,7 @@ endif
 '''
 
 [[plugins]] # Python snippets completions
-repo = 'Shougo/neosnippet-snippets' 
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'ervandew/supertab'
