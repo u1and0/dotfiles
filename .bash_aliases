@@ -4,11 +4,22 @@ echo '--Loading ~/.bash_aliases--'
 # alias hogeを一時的に無効にするには\hoge
 
 # sudo command
-if which sudo >/dev/null 2>&1 ; then
-	alias sudo='sudo '
-	alias apt='sudo apt '
-	alias pacman='sudo pacman '
-	alias powerpill='sudo powerpill '
+if which sudo > /dev/null 2>&1; then
+    alias sudo='sudo '
+
+    # apt-fast / apt
+    if which apt-fast > /dev/null 2>&1; then
+        alias apt='sudo apt-fast'
+    else
+        alias apt='sudo apt'
+    fi
+
+    # powerpill / pacman
+    if which powerpill > /dev/null 2>&1; then
+        alias pacman='sudo powerpill '
+    else
+        alias pacman='sudo pacman '
+    fi
 fi
 
 
