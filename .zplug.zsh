@@ -5,9 +5,9 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Install fuzzy-finder "fzf"
 zplug "junegunn/fzf-bin",\
-	as:command,\
-	from:gh-r,\
-	rename-to:"fzf",\
+    as:command,\
+    from:gh-r,\
+    rename-to:"fzf",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh",\
     hook-load:'export MANPATH="$ZPLUG_REPOS/junegunn/fzf/man/man1/fzf:$MANPATH"'
@@ -26,12 +26,12 @@ zplug "junegunn/fzf",\
 # Provided, it requires to set the variable like the following:
 # ZPLUG_SUDO_PASSWORD="********"
 if [ `whoami` = vagrant ]; then
-    ZPLUG_SUDO_PASSWORD=vagrant 
+    ZPLUG_SUDO_PASSWORD=vagrant
 fi
 zplug "jhawthorn/fzy",\
-	as:command,\
-	rename-to:fzy,\
-	hook-build:"make && sudo make install"
+    as:command,\
+    rename-to:fzy,\
+    hook-build:"make && sudo make install"
 
 zplug "peco/peco",\
     as:command,\
@@ -55,9 +55,9 @@ fi
 
 # Install zsh-gomi
 zplug "b4b4r07/zsh-gomi", \
-	as:command, \
-	use:bin/gomi, \
-	on:junegunn/fzf-bin
+    as:command, \
+    use:bin/gomi, \
+    on:junegunn/fzf-bin
 
 
 # CLI finder like Mac
@@ -71,7 +71,7 @@ zplug "b4b4r07/cli-finder"
 # syntax highlighting in shell command
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# Auto completions 
+# Auto completions
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 

@@ -11,6 +11,7 @@ if which sudo >/dev/null 2>&1 ; then
 	alias powerpill='sudo powerpill '
 fi
 
+
 # 移動しやすく
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -93,23 +94,6 @@ alias netsh='wincmd netsh'
 alias ping1='ping www.google.com'
 alias ping2='ping 192.168.0.1'
 
-# mingw32用
-# msysのmakeと被らないようにコマンド名が変えられている
-# alias make='mingw32-make'
-# alias m='make -j3'
-
-# バックアップコマンド
-alias shutup='dd-backup; shutdown -h 5'
-#alias shutup='sudo /mnt/g/backup/backup_command/tar_xz.sh ; shutdown -h 5'
-
-
-# python
-#alias ipy='ipython'
-alias jpy='jupyter qtconsole --style=monokai'
-alias jpyn='jupyter notebook'
-#alias spy="Spyder"
-
-
 # git
 alias g='git'
 alias gf='git flow'
@@ -141,6 +125,5 @@ alias grst-h='git reset --hard HEAD'
 
 # sns
 export SH="~/Dropbox/Program/sh"
-alias tweet="$SH/kotoriotoko/BIN/tweet.sh"
 alias timeline="$SH/get_tl.sh"
 alias line="$SH/line.sh"
