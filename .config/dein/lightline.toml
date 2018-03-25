@@ -11,20 +11,24 @@ let g:gitgutter_sign_removed = '✘'
 let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
-		\ 'tabline': {
+        \ 'tab':{
+            \ 'active': [ 'tabnum', 'filename', 'modified' ],
+            \ 'inactive': [ 'tabnum', 'filename', 'modified' ]
+        \ },
+        \ 'tabline': {
             \ 'left': [ [ 'tabs' ] ],
-		    \ 'right': [ [ 'close' ] ]
+            \ 'right': [ [ 'close' ] ]
         \ },
         \ 'active': {
         \   'left': [
         \     ['mode', 'paste'],
         \     ['pyenv'],
-        \     ['fugitive', 'gitgutter', 'filename'],
+        \     ['fugitive', 'gitgutter',],
         \   ],
         \   'right': [
-        \     ['lineinfo', 'syntastic'],
-        \     ['percent'],
-        \     ['fileformat', 'fileencoding', 'filetype'],
+        \     ['percent', 'lineinfo', 'syntastic'],
+        \     ['readonly','filename'],
+        \     ['fileencoding', 'filetype']
         \   ]
         \ },
         \ 'component_function': {
@@ -50,7 +54,7 @@ function! MyModified()
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '' : ''
 endfunction
 
 function! MyFilename()

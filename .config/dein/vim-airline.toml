@@ -1,4 +1,4 @@
-#vim:ft=vim
+#vim:ft=toml
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
