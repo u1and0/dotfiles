@@ -89,6 +89,8 @@ zplug "rupa/z", use:"*.sh"
 
 # The most awesome Powerline theme for ZSH around!
 zplug 'bhilburn/powerlevel9k', as:theme
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context anaconda dir vcs newline)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs command_execution_time history time)
 
 # pacman backup
 zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\

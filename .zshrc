@@ -163,7 +163,3 @@ else; printf "Install zplug? [y/N]: "
 		| zsh && exec $SHELL -l  # .zshrc再リロード
     fi
 fi
-
-# Powerline prompt
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir anaconda vcs newline)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs command_execution_time history time)
