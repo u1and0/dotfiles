@@ -23,11 +23,6 @@ if which sudo > /dev/null 2>&1; then
 fi
 
 
-# 移動しやすく
-alias ..='cd ..'
-alias ...='cd ../..'
-alias -- -='cd -'
-
 # lsを使いやすく
 alias ls='ls --color=auto --show-control-chars --time-style=long-iso -FH'
 alias ll='ls -lAhrt'
@@ -59,6 +54,7 @@ function du2() {
     du -s $* | sort -h
 }
 alias free='free -h'
+alias tree='tree -C'
 
 # watchカスタム
 alias watch='watch -d -n1 '
