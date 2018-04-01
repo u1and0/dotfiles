@@ -9,9 +9,9 @@ if which sudo > /dev/null 2>&1; then
 
     # apt-fast / apt
     if which apt-fast > /dev/null 2>&1; then
-        alias apt='sudo apt-fast'
+        alias apt='sudo apt-fast '
     else
-        alias apt='sudo apt'
+        alias apt='sudo apt '
     fi
 
     # powerpill / pacman
