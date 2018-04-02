@@ -1,3 +1,102 @@
+v1.8.1: Tmux / Zsh / Neovim powerline theme
+
+---Summary---
+* tmux
+    * Add
+        * Show CPU usage theme custom
+        * Tree view <prefix> + <C-e>
+        * tmux-thempack, powerline theme
+        * tmux-thempack, powerline theme
+        * Add tmux-plugins/tmux-continuum
+        * Add tmux-plugins/tmux-continuum
+        * Add tmux-plugins/tmux-continuum
+        * weather icon /mytheme.json
+        * Run powerline-daemon unless powerline-daemon running
+        * Run powerline when tmux start
+        * Run powerline when tmux start
+    * Modify
+        * tmux-theme modify u1and0 fork
+        * tmux-theme modify u1and0 fork
+        * Modify theme pack
+        * Add tmux theme
+* dein
+    * Add
+        * Devide neovim status line setting
+    * Modify
+        * show file info
+* .zplug.zsh
+    * Add
+        * Add powerline/fonts
+        * Add zsh theme "agnoster" with powerline fonts
+    * Modify
+        * Use _pacman to powerpill completion
+        * POWERLEVEL9K option move from .zshrc to .zplug.zsh
+        * POWERLEVEL9K option move from .zshrc to .zplug.zsh
+        * The way of load for twitter commands fixed
+        * Fix white space / Remove unused aliases
+* .zshrc
+    * Add
+        * POWERLEVEL9K command excution time
+        * POWERLEVEL9K prompt add python conda env & newline
+    * Modify
+        * POWERLEVEL9K option move from .zshrc to .zplug.zsh
+* .bash_aliases / .zsh_aliases
+    * Modify
+        * unalias cd "-, .., ..." / alias tree -C
+        * Fix white space / Remove unused aliases
+        * Change global prompt fzf fzf-tmux fzy
+* .gitignore
+    * Modify
+        * less search pattern modify (Add fit flow features)
+        * less search pattern modify (Add tag & HEAD)
+        * Fix less pattern of git pager & Fix white space
+        * Add diff-so-fancy again
+* yaourtrc
+    * Modify next app vim=>nvim, pacman=>powerpill
+
+
+
+---Logs---
+a974136 [rm]@.tmux.conf: comment
+084cae8 [mod]@.yaourtrc: Modify next app vim=>nvim, pacman=>powerpill
+db695ca [mod]@.w3n/bookmark.html, keymap: C-u, C-d Next/Prev Page, Add hatena in bookmark
+14587ff [mod]@.zplug.zsh. .zshrc: Use _pacman to powerpill completion
+24ec2ff [mod]@.bash_aliases: Enable apt completion
+b2c1773 [mod]@.tmux.conf: tmux-theme modify u1and0 fork
+7dd923d [mod]@.tmux.conf: Modify theme pack
+1620323 [mod]@.tmux.conf: Add tmux theme
+2dcbbc5 [mod]@.bash_alias: unalias cd "-, .., ..." / alias tree -C
+26dd729 [add]@.tmux.conf: Show CPU usage theme custom
+3eefeab [add]@.tmux.conf: Tree view <prefix> + <C-e>
+24dfa04 [mod]@.zshrc, @.zplug.zsh: POWERLEVEL9K option move from .zshrc to .zplug.zsh
+c0a0fb8 [add]@.zshrc: POWERLEVEL9K command excution time
+71480f0 [mod]@.gitconfig: less search pattern modify (Add fit flow features)
+48a71f1 [mod]@.gitconfig: less search pattern modify (Add tag & HEAD)
+6a8e023 Merge branch 'feature/tmux-theme' into develop
+cf24596 [mod]@.config/dein/lighline.toml: show file info
+31d43af [add]@.config/dein/{lighline, vim-airline}.toml: Devide neovim status line setting
+20c2bfe [mod]@.gitconfig: Fix less pattern of git pager & Fix white space
+5a1b0d6 [mod]@.zplug.zsh: The way of load for twitter commands fixed
+b93ce20 [mod]@.bash_aliases: Modified apt / pacman aliases
+f99d3df [mod]@.bash_alias, .zplug.zsh: Fix white space / Remove unused aliases
+b6e757b [add]@.zplug.zsh: Add powerline/fonts
+1466a36 [add]@.zshrc: POWERLEVEL9K prompt add python conda env & newline
+60ba455 [add]@.tmux.conf: tmux-thempack, powerline theme
+83b1bd2 [add]@.tmux.conf: Add tmux-plugins/tmux-continuum
+84fffaf [mod]@.zsh_aliases: Change global prompt fzf fzf-tmux fzy
+d0390ae [mod]@README.md: Modify # -> *
+e33b947 [mod]@.vimrc: Set no number line
+5486e08 v1.8.0 Neovim / Dein installed
+e834094 [add]@.zplug.zsh: Add zsh theme "agnoster" with powerline fonts
+0d1b8ce [add]@.config/powerline/themes/tmux/mytheme.json: weather icon
+e992560 [mod].config/powerline/config.json
+c2617ca [add]@themes/tmux/mytheme.json
+8e7f98d [add].config/powerline
+6e33116 [add]@.tmux.conf: Run powerline-daemon unless powerline-daemon running
+8b8629f Merge branch 'develop' into feature/powerline
+d421698 [add]@.tmux.conf: Run powerline when tmux start
+
+
 v1.8.0 Neovim / Dein installed
 
 ---summary---
