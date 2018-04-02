@@ -73,8 +73,9 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # Auto completions
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-
+zplug "zsh-users/zsh-completions",\
+    defer:2,\
+    hook-load:'compdef _pacman powerpill=pacman'  # Use _pacman as _powerpill
 
 # Enhanced change directory
 zplug "b4b4r07/enhancd", use:init.sh, defer:3
