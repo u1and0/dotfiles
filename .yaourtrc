@@ -15,7 +15,7 @@
 #EDITOR="$EDITOR"
 #TMPDIR="/tmp"
 #VISUAL="$VISUAL"
-export VISUAL='vim'
+export VISUAL=$VISUAL
 
 # SUDO
 SUDONOVERIF=1      # Avoid multiple sudo checks when timestamp_timeout=0
@@ -54,6 +54,7 @@ BUILD_NOCONFIRM=1  # Only prompt for editing files
 
 # Command
 #PACMAN="pacman"
+PACMAN="powerpill"
 #MAKEPKG="makepkg"
 #DIFFEDITCMD="vimdiff"
 

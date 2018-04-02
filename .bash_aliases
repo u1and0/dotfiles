@@ -4,17 +4,24 @@ echo '--Loading ~/.bash_aliases--'
 # alias hogeを一時的に無効にするには\hoge
 
 # sudo command
-if which sudo >/dev/null 2>&1 ; then
-	alias sudo='sudo '
-	alias apt='sudo apt '
-	alias pacman='sudo pacman '
-	alias powerpill='sudo powerpill '
+if which sudo > /dev/null 2>&1; then
+    alias sudo='sudo '
+
+    # apt-fast / apt
+    if which apt-fast > /dev/null 2>&1; then
+        alias apt='sudo apt-fast '
+    else
+        alias apt='sudo apt '
+    fi
+
+    # powerpill / pacman
+    if which powerpill > /dev/null 2>&1; then
+        alias pacman='sudo powerpill '
+    else
+        alias pacman='sudo pacman '
+    fi
 fi
 
-# 移動しやすく
-alias ..='cd ..'
-alias ...='cd ../..'
-alias -- -='cd -'
 
 # lsを使いやすく
 alias ls='ls --color=auto --show-control-chars --time-style=long-iso -FH'
@@ -47,6 +54,7 @@ function du2() {
     du -s $* | sort -h
 }
 alias free='free -h'
+alias tree='tree -C'
 
 # watchカスタム
 alias watch='watch -d -n1 '
@@ -93,23 +101,6 @@ alias netsh='wincmd netsh'
 alias ping1='ping www.google.com'
 alias ping2='ping 192.168.0.1'
 
-# mingw32用
-# msysのmakeと被らないようにコマンド名が変えられている
-# alias make='mingw32-make'
-# alias m='make -j3'
-
-# バックアップコマンド
-alias shutup='dd-backup; shutdown -h 5'
-#alias shutup='sudo /mnt/g/backup/backup_command/tar_xz.sh ; shutdown -h 5'
-
-
-# python
-#alias ipy='ipython'
-alias jpy='jupyter qtconsole --style=monokai'
-alias jpyn='jupyter notebook'
-#alias spy="Spyder"
-
-
 # git
 alias g='git'
 alias gf='git flow'
@@ -141,6 +132,5 @@ alias grst-h='git reset --hard HEAD'
 
 # sns
 export SH="~/Dropbox/Program/sh"
-alias tweet="$SH/kotoriotoko/BIN/tweet.sh"
 alias timeline="$SH/get_tl.sh"
 alias line="$SH/line.sh"

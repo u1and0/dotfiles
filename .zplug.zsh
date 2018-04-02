@@ -5,9 +5,9 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Install fuzzy-finder "fzf"
 zplug "junegunn/fzf-bin",\
-	as:command,\
-	from:gh-r,\
-	rename-to:"fzf",\
+    as:command,\
+    from:gh-r,\
+    rename-to:"fzf",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh",\
     hook-load:'export MANPATH="$ZPLUG_REPOS/junegunn/fzf/man/man1/fzf:$MANPATH"'
@@ -26,12 +26,12 @@ zplug "junegunn/fzf",\
 # Provided, it requires to set the variable like the following:
 # ZPLUG_SUDO_PASSWORD="********"
 if [ `whoami` = vagrant ]; then
-    ZPLUG_SUDO_PASSWORD=vagrant 
+    ZPLUG_SUDO_PASSWORD=vagrant
 fi
 zplug "jhawthorn/fzy",\
-	as:command,\
-	rename-to:fzy,\
-	hook-build:"make && sudo make install"
+    as:command,\
+    rename-to:fzy,\
+    hook-build:"make && sudo make install"
 
 zplug "peco/peco",\
     as:command,\
@@ -55,9 +55,9 @@ fi
 
 # Install zsh-gomi
 zplug "b4b4r07/zsh-gomi", \
-	as:command, \
-	use:bin/gomi, \
-	on:junegunn/fzf-bin
+    as:command, \
+    use:bin/gomi, \
+    on:junegunn/fzf-bin
 
 
 # CLI finder like Mac
@@ -71,25 +71,27 @@ zplug "b4b4r07/cli-finder"
 # syntax highlighting in shell command
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-# Auto completions 
+# Auto completions
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-
+zplug "zsh-users/zsh-completions",\
+    defer:2,\
+    hook-load:'compdef _pacman powerpill=pacman'  # Use _pacman as _powerpill
 
 # Enhanced change directory
 zplug "b4b4r07/enhancd", use:init.sh, defer:3
 
 # Install twitter.sh
-TWITTER_REPO="ShellShoccar-jpn/kotoriotoko"
-zplug $TWITTER_REPO 
-export PATH=$ZPLUG_REPOS/$TWITTER_REPO/BIN:$PATH
-TWITTER_REPO=""
+zplug "ShellShoccar-jpn/kotoriotoko",\
+    hook-load:'export PATH=$ZPLUG_REPOS/ShellShoccar-jpn/kotoriotoko/BIN:$PATH',\
+    lazy:true
 
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh"
 
 # The most awesome Powerline theme for ZSH around!
 zplug 'bhilburn/powerlevel9k', as:theme
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context anaconda dir vcs newline)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs command_execution_time history time)
 
 # pacman backup
 zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\

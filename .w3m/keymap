@@ -5,6 +5,8 @@ keymap L NULL
 keymap H NULL
 keymap { NULL
 keymap } NULL
+keymap b NULL
+keymap C-u NULL
 
 # ====Command===
 keymap :: COMMAND
@@ -20,9 +22,12 @@ keymap ^[[Z PREV_TAB  # ^[[Z = shift+TAB
 keymap s NEXT_TAB
 keymap a PREV_TAB
 
-# ====Link navigation===
+# ====Page navigation===
 keymap f NEXT_LINK
 keymap d PREV_LINK
+keymap C-d NEXT_PAGE
+keymap C-u PREV_PAGE
+keymap b PREV_WORD
 
 # ====History navigation===
 keymap L NEXT
