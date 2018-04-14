@@ -81,9 +81,8 @@ zplug "zsh-users/zsh-completions",\
 zplug "b4b4r07/enhancd", use:init.sh, defer:3
 
 # Install twitter.sh
-zplug "ShellShoccar-jpn/kotoriotoko",\
-    hook-load:'export PATH=$ZPLUG_REPOS/ShellShoccar-jpn/kotoriotoko/BIN:$PATH',\
-    lazy:true
+zplug "ShellShoccar-jpn/kotoriotoko"
+export PATH=$ZPLUG_REPOS/ShellShoccar-jpn/kotoriotoko/BIN:$PATH
 
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh"
