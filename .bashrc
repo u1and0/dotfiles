@@ -56,7 +56,7 @@ if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
 
-if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
+if [ -f ~/.pyenvrc ] && [ -d ~/pyenv ]; then
     . ~/.pyenvrc
 fi
 
