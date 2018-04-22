@@ -91,3 +91,5 @@ zplug "b4b4r07/gist",\
     as:command,\
     rename-to:"gist",\
     hook-build:'go get -d && go build'
+
+zplug "esc/conda-zsh-completion", as:command
