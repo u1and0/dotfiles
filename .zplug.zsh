@@ -33,18 +33,6 @@ zplug "jhawthorn/fzy",\
     rename-to:fzy,\
     hook-build:"make && sudo make install"
 
-zplug "peco/peco",\
-    as:command,\
-    from:gh-r,\
-    use:"*amd64*",\
-    frozen:1  # Install fuzzy-finder peco
-
-zplug "b4b4r07/dotfiles",\
-    as:command,\
-    use:bin/peco-tmux,\
-    on:"peco/peco"  # fzf-tmux の peco バージョン
-
-
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then
