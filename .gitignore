@@ -19,6 +19,7 @@
 
 # README
 !README.md
+!install.sh
 
 # shell cofigファイル
 !.bashrc
@@ -35,7 +36,7 @@
 !.globalgitignore
 !.gitconfig
 
-# tmux設定ファイル 
+# tmux設定ファイル
 !.tmux.conf
 !/.tmux/
 /.tmux/*
