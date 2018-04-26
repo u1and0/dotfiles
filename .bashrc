@@ -64,3 +64,7 @@ if which thefuck >/dev/null 2>&1 ; then
     eval $(thefuck --alias)
 fi
 
+if which fasd >/dev/null 2>&1 ; then
+    eval $(fasd --init auto)
+fi
+
