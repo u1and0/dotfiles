@@ -64,7 +64,9 @@ if which thefuck >/dev/null 2>&1 ; then
     eval $(thefuck --alias)
 fi
 
+# facd: Frecency directory & file
 if which fasd >/dev/null 2>&1 ; then
-    eval $(fasd --init auto)
+    eval "$(fasd --init auto)"
+    alias c='fasd_cd -d'  # cd recentry directory
+    alias e='f -e $EDITOR'  # Edit recentry file
 fi
-

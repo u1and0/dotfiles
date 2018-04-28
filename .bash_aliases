@@ -38,10 +38,6 @@ alias mkdir='mkdir -p'
 alias relogin='exec $SHELL -l'
 alias re=relogin
 
-# 画面消去
-alias c=clear
-alias cls=reset
-
 # Windowsっぽく
 alias dir=ll
 alias path='echo -e ${PATH//:/\\n}'
