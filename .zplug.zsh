@@ -10,7 +10,10 @@ zplug "junegunn/fzf-bin",\
     rename-to:"fzf",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh",\
-    hook-load:'export MANPATH="$ZPLUG_REPOS/junegunn/fzf/man/man1/fzf:$MANPATH"'
+export MANPATH="$ZPLUG_REPOS/junegunn/fzf/man/man1/fzf:$MANPATH"
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_COMPLETION_TRIGGER='**'
+export FZF_COMPLETION_OPTS='+c -x'
 
 # history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
 zplug "u1and0/ffsearch", defer:1

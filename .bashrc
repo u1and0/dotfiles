@@ -70,3 +70,13 @@ if which fasd >/dev/null 2>&1 ; then
     alias c='fasd_cd -d'  # cd recentry directory
     alias e='f -e $EDITOR'  # Edit recentry file
 fi
+
+
+# fzf setting
+if which fzf >/dev/null 2>&1 ; then
+    export FZF_COMPLETION_TRIGGER='**'
+    export FZF_COMPLETION_OPTS='+c -x'
+    if which rg >/dev/null 2>&1 ; then
+        export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+    fi
+fi
