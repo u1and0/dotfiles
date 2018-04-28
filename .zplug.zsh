@@ -92,4 +92,9 @@ zplug "b4b4r07/gist",\
     rename-to:"gist",\
     hook-build:'go get -d && go build'
 
-zplug "esc/conda-zsh-completion", as:command
+zplug "esc/conda-zsh-completion", as:command, rename-to:"_conda"
+
+zplug "jupyter/jupyter_core",\
+    as:command,\
+    use:examples/completions-zsh,\
+    rename-to:"_jupyter"

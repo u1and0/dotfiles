@@ -60,6 +60,7 @@ zstyle ':zle:*' word-style unspecified
 fpath=(/usr/share/zsh/site-functions $fpath)
 fpath=(/usr/share/zsh/functions/Completion/zsh-completions/src $fpath)
 fpath=(${HOME}/my_zsh_completions $fpath)
+fpath=(${ZPLUG_BIN} $fpath)
 
 
 # 補完
