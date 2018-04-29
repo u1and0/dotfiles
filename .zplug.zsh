@@ -69,7 +69,10 @@ zplug "zsh-users/zsh-completions",\
     hook-load:'compdef _pacman powerpill=pacman'  # Use _pacman as _powerpill
 
 # Enhanced change directory
-zplug "b4b4r07/enhancd", use:init.sh, defer:3
+zplug "b4b4r07/enhancd",\
+    use:init.sh,\
+    defer:2
+ENHANCD_COMMAND=cdd; export ENHANCD_COMMAND
 
 # Install twitter.sh
 zplug "ShellShoccar-jpn/kotoriotoko"
