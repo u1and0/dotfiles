@@ -19,6 +19,8 @@ for n in range(1, 9)
   map <silent> [Tag]T :tabprevious<CR>
   " tp 前のタブ
 
+nmap <C-b> :bNext<CR>
+nmap <C-B> :bprevious<CR>
 
 " === Build script <C-b> ===
 " autocmd BufNewFile,BufRead *.rb nnoremap <C-b> :!ruby %

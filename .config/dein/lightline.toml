@@ -17,7 +17,7 @@ let g:lightline = {
         \ },
         \ 'tabline': {
             \ 'left': [ [ 'tabs' ] ],
-            \ 'right': [ [ 'close' ] ]
+            \ 'right': [ [ 'buffers' ] ]
         \ },
         \ 'active': {
         \   'left': [
@@ -45,6 +45,8 @@ let g:lightline = {
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
         \ },
+        \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
+        \ 'component_type':{'buffers': 'tabsel'},
         \ 'separator': {'left': '', 'right': ''},
         \ 'subseparator': {'left': '', 'right': ''}
         \ }
@@ -155,3 +157,6 @@ function! MyCharCode()
   return "'". char ."' ". nr
 endfunction
 '''
+
+[[plugins]] # bufferline
+repo = 'mgee/lightline-bufferline'
