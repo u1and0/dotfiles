@@ -38,13 +38,9 @@ export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
 
 # デフォルトのエディタ
-if which nvim > /dev/null 2>&1 ; then
-    export EDITOR='nvim'
-    export VISUAL='nvim'
-else
-    export EDITOR='vim'
-    export VISUAL='vim'
-fi
+type nvim >/dev/null 2>&1 && VISUAL='nvim'  # if nvim exist
+export VISUAL=${VISUAL:='vim'}  # VISUAL editor could be a full screen editor
+export EDITOR='vi'  # EDITOR editor should be able to work without use of "advanced" terminal functionality
 
 
 # Load external files
