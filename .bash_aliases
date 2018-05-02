@@ -22,6 +22,10 @@ if which sudo > /dev/null 2>&1; then
     fi
 fi
 
+# 移動しやすく
+alias ..='cd ..'
+alias ...='cd ../..'
+alias -- -='cd -'
 
 # lsを使いやすく
 alias ls='ls --color=auto --show-control-chars --time-style=long-iso -FH'

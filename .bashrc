@@ -45,35 +45,20 @@ export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without us
 
 
 # Load external files
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
+[ -f ~/.bash_functions ] && . ~/.bash_functions
 
-if [ -f ~/.pyenvrc ] && [ -d ~/pyenv ]; then
-    . ~/.pyenvrc
-fi
+[ -f ~/.pyenvrc ] && [ -d ~/pyenv ] && . ~/.pyenvrc
 
-if which thefuck >/dev/null 2>&1 ; then
-    eval $(thefuck --alias)
-fi
+# thefuck: Magnificent app which corrects your previous console command
+type thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
 
 # facd: Frecency directory & file
-if which fasd >/dev/null 2>&1 ; then
-    eval "$(fasd --init auto)"
-    alias c='fasd_cd -d'  # cd recentry directory
-    alias e='f -e $EDITOR'  # Edit recentry file
-fi
-
+type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 
 # fzf setting
-if which fzf >/dev/null 2>&1 ; then
-    export FZF_COMPLETION_TRIGGER='**'
-    export FZF_COMPLETION_OPTS='+c -x'
-    if which rg >/dev/null 2>&1 ; then
-        export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-    fi
+
+if type fzf > /dev/null 2>&1 && type rg > /dev/null 2>&1 ; then
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 fi
