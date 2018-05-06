@@ -97,3 +97,6 @@ hook_add = '''
     let g:SuperTabContextDefaultCompletionType = "context"
     let g:SuperTabDefaultCompletionType = "<C-n>"
 '''
+
+[[plugins]] # Shellscript syntax checker
+repo = 'scrooloose/syntastic'

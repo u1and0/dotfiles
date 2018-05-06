@@ -7,14 +7,9 @@ alias zmv='noglob zmv -W'
 alias -g D='2> /dev/null'
 
 ## FuzzyFinder
-alias -g F='| fzf'
-alias -g R='| fzf-tmux --reverse'
+alias -g F='| fzf-tmux'
 alias -g Y='| fzy'
-if [ -n "$TMUX" ] && which peco-tmux > /dev/null 2>&1 ; then
-    alias -g P='| peco-tmux'
-else
-    alias -g P='| peco'
-fi
+alias -g P='| peco-tmux'
 
 ## Print Stdout
 alias -g V='| vimpager'
