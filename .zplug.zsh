@@ -10,7 +10,7 @@ zplug "junegunn/fzf-bin",\
     rename-to:"fzf",\
     hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh;\
                source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_COMMAND='fd -t f -IE "/.git/"'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
