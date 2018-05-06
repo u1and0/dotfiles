@@ -8,13 +8,11 @@ zplug "junegunn/fzf-bin",\
     as:command,\
     from:gh-r,\
     rename-to:"fzf",\
-    hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh",\
-    hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh"
-
-# history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
-zplug "u1and0/ffsearch", defer:1
-# To switch filter, set the HISTORY_FILTER argument
-# for example `HISTORY_FILTER=fzy`
+    hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh;\
+               source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 zplug "junegunn/fzf",\
     as:command,\
@@ -64,11 +62,6 @@ zplug "zsh-users/zsh-completions",\
     defer:2,\
     hook-load:'compdef _pacman powerpill=pacman'  # Use _pacman as _powerpill
 
-# Enhanced change directory
-zplug "b4b4r07/enhancd",\
-    use:init.sh,\
-    defer:2
-ENHANCD_COMMAND=cdd; export ENHANCD_COMMAND
 
 # Install twitter.sh
 zplug "ShellShoccar-jpn/kotoriotoko"
@@ -76,6 +69,22 @@ export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh"
+
+zplug "clvv/fasd", as:command, use:fasd
+
+# history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
+# zplug "u1and0/ffsearch", defer:1
+# To switch filter, set the HISTORY_FILTER argument
+# for example `HISTORY_FILTER=fzy`
+
+# fzf + cd, git, edit also...
+zplug "u1and0/fzf-extras",\
+    on:"clvv/fasd",\
+    at:hotfix/v0.0.21.1.1,\
+    use:"fzf*"
+alias zz='zd -z $*'
+alias gz='fzf-gitlog-widget'
+alias gx='fzf-gitlog-multi-widget'
 
 # The most awesome Powerline theme for ZSH around!
 zplug 'bhilburn/powerlevel9k', as:theme
@@ -94,6 +103,7 @@ zplug "b4b4r07/gist",\
     rename-to:"gist",\
     hook-build:'go get -d && go build'
 
+# ===Completions===
 zplug "esc/conda-zsh-completion", as:command, rename-to:"_conda"
 
 zplug "jupyter/jupyter_core",\
