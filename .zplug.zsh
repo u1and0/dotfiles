@@ -79,8 +79,7 @@ zplug "clvv/fasd", as:command, use:fasd
 
 # fzf + cd, git, edit also...
 zplug "u1and0/fzf-extras",\
-    on:"clvv/fasd",\
-    at:hotfix/v0.0.21.1.1,\
+    on:"junegunn/fzf",\
     use:"fzf*"
 alias zz='zd -z $*'
 alias gz='fzf-gitlog-widget'
