@@ -2,71 +2,71 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
+[[plugins]]  # カーソル位置のコンテキストに合わせてftを切り替える
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 
-[[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
+[[plugins]]  # カーソル位置のコンテキストのftを判定するライブラリ
 repo = 'Shougo/context_filetype.vim'
 
-[[plugins]] # hybrid
+[[plugins]]  # hybrid
 repo = 'w0ng/vim-hybrid'
 
-[[plugins]] # vim-fugitive
+[[plugins]]  # vim-fugitive
 repo = 'tpope/vim-fugitive'
 
-[[plugins]] # vim-gitgutter
+[[plugins]]  # vim-gitgutter
 repo = 'airblade/vim-gitgutter'
 
 
-[[plugins]] # Toml
-repo  = 'cespare/vim-toml'
+[[plugins]]  # Toml
+repo = 'cespare/vim-toml'
 
-[[plugins]] # Neo Term using `:T <terminal command>`
-repo  = 'kassio/neoterm'
+[[plugins]]  # Neo Term using `:T <terminal command>`
+repo = 'kassio/neoterm'
 
-[[plugins]] # Japanese doc
+[[plugins]]  # Japanese doc
 repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
     set helplang=ja,en
 '''
 
-[[plugins]] # Multi-cursol
+[[plugins]]  # Multi-cursol
 repo = 'terryma/vim-multiple-cursors'
 
-[[plugins]] # Commentout plugin use 'Ctrl+/(C-_)'
+[[plugins]]  # Commentout plugin use 'Ctrl+/(C-_)'
 repo = 'tomtom/tcomment_vim'
 
-[[plugins]] # Show side bar "NERDTree"
+[[plugins]]  # Show side bar "NERDTree"
 repo = 'scrooloose/nerdtree'
-hook_add = 'nnoremap <silent><C-k><C-b> :NERDTreeToggle<CR>'
+hook_add = 'nnoremap <F5> :NERDTreeToggle<CR>'
 
-[[plugins]] # Session saveing ':Obsession'
+[[plugins]]  # Session saveing ':Obsession'
 repo = 'tpope/vim-obsession'
 
-[[plugins]] # Select then 'S'
+[[plugins]]  # Select then 'S'
 repo = 'tpope/vim-surround'
 
-[[plugins]] # Auto-bracket correction
+[[plugins]]  # Auto-bracket correction
 repo = 'jiangmiao/auto-pairs'
 
-[[plugins]] # python indent
+[[plugins]]  # python indent
 repo = 'hynek/vim-python-pep8-indent'
 
-[[plugins]] # Faster matcher. Needs cmake & boost: `pacman -S cmake boost`
+[[plugins]]  # Faster matcher. Needs cmake & boost: `pacman -S cmake boost`
 repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
 
-[[plugins]] # 末尾の全角と半角の空白文字を赤くハイライト
+[[plugins]]  # 末尾の全角と半角の空白文字を赤くハイライト
 repo = 'bronson/vim-trailing-whitespace'
 
-[[plugins]] # インデントの可視化
+[[plugins]]  # インデントの可視化
 repo = 'Yggdroot/indentLine'
 
-[[plugins]] # Python completions
+[[plugins]]  # Python completions
 repo = 'Shougo/neocomplcache'
 
-[[plugins]] # Python completions
+[[plugins]]  # Python completions
 repo = 'Shougo/neosnippet'
 hook_add = '''
 " Plugin key-mappings.
@@ -88,7 +88,7 @@ if has('conceal')
 endif
 '''
 
-[[plugins]] # Python snippets completions
+[[plugins]]  # Python snippets completions
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
@@ -100,3 +100,15 @@ hook_add = '''
 
 [[plugins]] # Shellscript syntax checker
 repo = 'scrooloose/syntastic'
+[[plugins]]  # ctag
+repo = 'majutsushi/tagbar'
+hook_add = '''
+nmap <F8> :TagbarToggle<CR>
+'''
+
+[[plugins]]  # Generate ctag/gtag
+repo = 'jsfaint/gen_tags.vim'
+hook_add = '''
+let g:gen_tags#ctags_auto_gen = 1
+let g:gen_tags#gtags_auto_gen = 1
+'''
