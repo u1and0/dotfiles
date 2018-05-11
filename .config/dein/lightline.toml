@@ -23,7 +23,7 @@ let g:lightline = {
         \   'left': [
         \     ['mode', 'paste'],
         \     ['filename'],
-        \     ['fugitive', 'gitgutter',],
+        \     ['fugitive', 'gitgutter', 'ale'],
         \   ],
         \   'right': [
         \     ['percent', 'lineinfo', 'syntastic'],
@@ -44,6 +44,7 @@ let g:lightline = {
         \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
+        \   'ale': 'ALEGetStatusLine'
         \ },
         \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
         \ 'component_type':{'buffers': 'tabsel'},

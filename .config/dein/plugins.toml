@@ -98,13 +98,9 @@ hook_add = '''
     let g:SuperTabDefaultCompletionType = "<C-n>"
 '''
 
-[[plugins]] # Shellscript syntax checker
-repo = 'scrooloose/syntastic'
 [[plugins]]  # ctag
 repo = 'majutsushi/tagbar'
-hook_add = '''
-nmap <F8> :TagbarToggle<CR>
-'''
+hook_add = 'nmap <F8> :TagbarToggle<CR>'
 
 [[plugins]]  # Generate ctag/gtag
 repo = 'jsfaint/gen_tags.vim'
