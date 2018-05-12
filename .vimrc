@@ -136,9 +136,6 @@ if has('vim_starting')
 		nmap <C-K> <Plug>(caw:hatpos:toggle)
 		vmap <C-K> <Plug>(caw:hatpos:toggle)
 
-        " Quick search
-        NeoBundle 'rking/ag.vim'
-
         " Multi-cursol
         NeoBundle 'terryma/vim-multiple-cursors'
 
@@ -163,3 +160,8 @@ NeoBundleCheck
 "inoremap '' ''<Left>
 "inoremap <> <><Left>
 
+" Shift + 矢印でウィンドウサイズを変更
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>

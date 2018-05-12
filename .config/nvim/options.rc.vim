@@ -22,5 +22,5 @@ set expandtab       	" Expand TABs to spaces
 set cursorline          " Highlight corsorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
-set list
+set list  " 不可視文字の表示
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%

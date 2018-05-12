@@ -70,6 +70,13 @@ repo = 'tpope/vim-surround'
 [[plugins]]  # Auto-bracket correction
 repo = 'jiangmiao/auto-pairs'
 
+[[plugins]]  # Select increasingly larger regions of text using the same key combination
+repo = 'terryma/vim-expand-region'
+hook_add = '''
+    vmap v <Plug>(expand_region_expand)
+    vmap <C-v> <Plug>(expand_region_shrink)
+'''
+
 [[plugins]]  # python indent
 repo = 'hynek/vim-python-pep8-indent'
 
