@@ -11,4 +11,4 @@ eval "$(pyenv init -)"
 # bin/activate bin/deactivateを使うため
 export PATH="/usr/bin:$PYENV_ROOT/versions/miniconda3-latest/bin:$PYENV_ROOT/versions/anaconda3-5.0.0/bin:$PATH"
 export PYTHONPATH="${HOME}/Dropbox/Program/python/useful:$PYTHONPATH"
-source activate snow
+# source activate snow

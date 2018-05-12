@@ -41,38 +41,42 @@ on_cmd = 'Denite'
 depends = ['neomru.vim']
 on_event = 'BufRead'
 hook_add = '''
-    " === Denite 呼び出しkeymap ===
+    " Prefix key
+    nmap [denite] <Nop>
+    map <C-j> [denite]
+
+    " Keymap
     " 現在ファイルから検索
-    nmap <silent> <C-j><C-f> :<C-u>Denite line<CR>
-    nmap <silent> <C-j><C-e> :<C-u>DeniteCursorWord line<CR>
+    nmap <silent> [denite]<C-f> :<C-u>Denite line<CR>
+    nmap <silent> [denite]<C-e> :<C-u>DeniteCursorWord line<CR>
 
     " バッファからgrep
-    nmap <silent> <C-j><C-g> :<C-u>Denite grep<CR>
-    nmap <silent> <C-j><C-b> :<C-u>DeniteCursorWord grep<CR>
+    nmap <silent> [denite]<C-g> :<C-u>Denite grep<CR>
+    nmap <silent> [denite]<C-b> :<C-u>DeniteCursorWord grep<CR>
 
     " ファイルタイプが云々　不明
-    nmap <silent> <C-j><C-t> :<C-u>Denite filetype<CR>
+    nmap <silent> [denite]<C-t> :<C-u>Denite filetype<CR>
     " カレントディレクトリ以下のファイル
-    nmap <silent> <C-j><C-n> :<C-u>Denite file_rec<CR>
+    nmap <silent> [denite]<C-n> :<C-u>Denite file_rec<CR>
     " ホームディレクトリ以下のファイル
-    nmap <silent> <C-j>. :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/']}])<CR>
+    nmap <silent> [denite] . :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/']}])<CR>
     nnoremap ml :<C-u>call denite#start([{'name': 'file_rec', 'args': [g:memolist_path]}])<CR>
 
     " バッファからファイル名検索
-    nmap <silent> <C-j><C-p> :<C-u>Denite buffer<CR>
-    nmap <silent> <C-j><C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
+    nmap <silent> [denite]<C-p> :<C-u>Denite buffer<CR>
+    nmap <silent> [denite]<C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
 
     " アクセス率の高いファイル
-    nmap <silent> <C-j><C-j> :<C-u>Denite file_mru<CR>
-    nmap <silent> <C-j><C-z> :<C-u>Denite file_old<CR>
+    nmap <silent> [denite]<C-j> :<C-u>Denite file_mru<CR>
+    nmap <silent> [denite]<C-z> :<C-u>Denite file_old<CR>
 
     " yankで取り込んだバッファ検索
-    nmap <silent> <C-j><C-y> :<C-u>Denite neoyank<CR>
+    nmap <silent> [denite]<C-y> :<C-u>Denite neoyank<CR>
 
     " Denite中断したDeniteの続き
-    nmap <silent> <C-j><C-r> :<C-u>Denite -resume<CR>
+    nmap <silent> [denite]<C-r> :<C-u>Denite -resume<CR>
     "以前のバッファで次の候補を即座に開く
-    nmap <silent> <C-j>; :<C-u>Denite -resume -immediately -select=+1<CR>
+    nmap <silent> [denite] ; :<C-u>Denite -resume -immediately -select=+1<CR>
     "以前のバッファで前の候補を即座に開く
     nmap <silent> <C-j>- :<C-u>Denite -resume -immediately -select=-1<CR>
 
@@ -170,72 +174,12 @@ hook_add = '''
     \ {context -> denite#do_action(context, 'open', context['targets'])})
 '''
 
-[[plugins]]  # Asynchronous Lint Engine
-repo = 'w0rp/ale'
-hook_add= '''
-" エラー行に表示するマーク
-let g:ale_sign_error = '⨉'
-let g:ale_sign_warning = '⚠'
-" エラー行にカーソルをあわせた際に表示されるメッセージフォーマット
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-" エラー表示の列を常時表示
-let g:ale_sign_column_always = 1
-
-" ファイルを開いたときにlint実行
-let g:ale_lint_on_enter = 1
-" ファイルを保存したときにlint実行
-let g:ale_lint_on_save = 1
-" 編集中のlintはしない
-let g:ale_lint_on_text_changed = 'never'
-
-" lint結果をロケーションリストまたはQuickFixには表示
-" let g:ale_set_loclist = 1  "Default
-" let g:ale_set_quickfix = 0
-let g:ale_open_list = 1
-let g:ale_keep_list_window_open = 0
-
-" Disable completion where available.
-let g:ale_completion_enabled = 0
-
-" 有効にするlinter
-" Check Python files with flake8 and pylint.
-let g:ale_linters = {'python': ['flake8', 'pylint']}
-" Fix Python files with autopep8 and yapf.
-let g:ale_fixers = {'python': ['autopep8', 'yapf']}
-" Disable warnings about trailing whitespace for Python files.
-let g:ale_warn_about_trailing_whitespace = 0
-let g:ale_fix_on_save = 1
-
-" ALE用プレフィックス
-nmap [ale] <Nop>
-map <C-k> [ale]
-" エラー行にジャンプ
-nmap <silent> [ale]<C-k> <Plug>(ale_previous_wrap)
-nmap <silent> [ale]<C-j> <Plug>(ale_next_wrap)
-'''
-
-[[plugins]]  # Program runner
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-" vimprocで非同期実行
-" 成功時にバッファ、失敗時にQuickFixで表示
-" 結果表示のサイズ調整など
-let g:quickrun_config = {
-    \ '_' : {
-        \ 'runner' : 'vimproc',
-        \ 'runner/vimproc/updatetime' : 40,
-        \ 'outputter' : 'error',
-        \ 'outputter/error/success' : 'buffer',
-        \ 'outputter/error/error'   : 'quickfix',
-        \ 'outputter/buffer/split' : ':botright 8sp',
-    \ }
-\}
-
-" 実行時に前回の表示内容をクローズ&保存してから実行
-let g:quickrun_no_default_key_mappings = 1
-nmap <Leader>r :cclose<CR>:write<CR>:QuickRun -mode n<CR>
-'''
-
 [[plugins]]  # Great asynchronous execution library
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]  # denite.nvim source for GNU Global
+repo = 'ozelentok/denite-gtags'
+hook_add = '''
+    nmap <silent> [denite]<C-D> :Denite -buffer-name=gtags_completion gtags_completion<cr>
+'''
