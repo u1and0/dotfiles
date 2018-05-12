@@ -41,38 +41,42 @@ on_cmd = 'Denite'
 depends = ['neomru.vim']
 on_event = 'BufRead'
 hook_add = '''
-    " === Denite 呼び出しkeymap ===
+    " Prefix key
+    nmap [denite] <Nop>
+    map <C-j> [denite]
+
+    " Keymap
     " 現在ファイルから検索
-    nmap <silent> <C-j><C-f> :<C-u>Denite line<CR>
-    nmap <silent> <C-j><C-e> :<C-u>DeniteCursorWord line<CR>
+    nmap <silent> [denite]<C-f> :<C-u>Denite line<CR>
+    nmap <silent> [denite]<C-e> :<C-u>DeniteCursorWord line<CR>
 
     " バッファからgrep
-    nmap <silent> <C-j><C-g> :<C-u>Denite grep<CR>
-    nmap <silent> <C-j><C-b> :<C-u>DeniteCursorWord grep<CR>
+    nmap <silent> [denite]<C-g> :<C-u>Denite grep<CR>
+    nmap <silent> [denite]<C-b> :<C-u>DeniteCursorWord grep<CR>
 
     " ファイルタイプが云々　不明
-    nmap <silent> <C-j><C-t> :<C-u>Denite filetype<CR>
+    nmap <silent> [denite]<C-t> :<C-u>Denite filetype<CR>
     " カレントディレクトリ以下のファイル
-    nmap <silent> <C-j><C-n> :<C-u>Denite file_rec<CR>
+    nmap <silent> [denite]<C-n> :<C-u>Denite file_rec<CR>
     " ホームディレクトリ以下のファイル
-    nmap <silent> <C-j>. :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/']}])<CR>
+    nmap <silent> [denite] . :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/']}])<CR>
     nnoremap ml :<C-u>call denite#start([{'name': 'file_rec', 'args': [g:memolist_path]}])<CR>
 
     " バッファからファイル名検索
-    nmap <silent> <C-j><C-p> :<C-u>Denite buffer<CR>
-    nmap <silent> <C-j><C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
+    nmap <silent> [denite]<C-p> :<C-u>Denite buffer<CR>
+    nmap <silent> [denite]<C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
 
     " アクセス率の高いファイル
-    nmap <silent> <C-j><C-j> :<C-u>Denite file_mru<CR>
-    nmap <silent> <C-j><C-z> :<C-u>Denite file_old<CR>
+    nmap <silent> [denite]<C-j> :<C-u>Denite file_mru<CR>
+    nmap <silent> [denite]<C-z> :<C-u>Denite file_old<CR>
 
     " yankで取り込んだバッファ検索
-    nmap <silent> <C-j><C-y> :<C-u>Denite neoyank<CR>
+    nmap <silent> [denite]<C-y> :<C-u>Denite neoyank<CR>
 
     " Denite中断したDeniteの続き
-    nmap <silent> <C-j><C-r> :<C-u>Denite -resume<CR>
+    nmap <silent> [denite]<C-r> :<C-u>Denite -resume<CR>
     "以前のバッファで次の候補を即座に開く
-    nmap <silent> <C-j>; :<C-u>Denite -resume -immediately -select=+1<CR>
+    nmap <silent> [denite] ; :<C-u>Denite -resume -immediately -select=+1<CR>
     "以前のバッファで前の候補を即座に開く
     nmap <silent> <C-j>- :<C-u>Denite -resume -immediately -select=-1<CR>
 
