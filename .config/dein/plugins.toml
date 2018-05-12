@@ -18,7 +18,6 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]  # vim-gitgutter
 repo = 'airblade/vim-gitgutter'
 
-
 [[plugins]]  # Toml
 repo = 'cespare/vim-toml'
 
@@ -125,6 +124,7 @@ hook_add = '''
     let g:SuperTabDefaultCompletionType = "<C-n>"
 '''
 
+# Ctags / Gtags
 [[plugins]]  # A class outline viewer for Vim
 repo = 'majutsushi/tagbar'
 hook_add = 'nmap <F8> :TagbarToggle<CR>'
@@ -134,4 +134,26 @@ repo = 'jsfaint/gen_tags.vim'
 hook_add = '''
 let g:gen_tags#ctags_auto_gen = 1
 let g:gen_tags#gtags_auto_gen = 1
+'''
+
+[[plugins]]
+repo = 'lighttiger2505/gtags.vim'
+hook_add = '''
+    " Options
+    let g:Gtags_Auto_Map = 0
+    let g:Gtags_OpenQuickfixWindow = 1
+    " Keymap
+    " Show definetion of function cousor word on quickfix
+    nmap <silent> K :<C-u>exe("Gtags ".expand('<cword>'))<CR>
+    " Show reference of cousor word on quickfix
+    nmap <silent> R :<C-u>exe("Gtags -r ".expand('<cword>'))<CR>
+'''
+
+[[plugins]] # Fuzzy Finder for vim
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+" <C-]>でタグ検索
+nnoremap <silent> [denite]<C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
+" fzfからファイルにジャンプできるようにする
+let g:fzf_buffers_jump = 1
 '''

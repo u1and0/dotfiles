@@ -177,3 +177,9 @@ hook_add = '''
 [[plugins]]  # Great asynchronous execution library
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]  # denite.nvim source for GNU Global
+repo = 'ozelentok/denite-gtags'
+hook_add = '''
+    nmap <silent> [denite]<C-D> :Denite -buffer-name=gtags_completion gtags_completion<cr>
+'''
