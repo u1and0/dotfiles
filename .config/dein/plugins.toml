@@ -98,7 +98,7 @@ hook_add = '''
     let g:SuperTabDefaultCompletionType = "<C-n>"
 '''
 
-[[plugins]]  # ctag
+[[plugins]]  # A class outline viewer for Vim
 repo = 'majutsushi/tagbar'
 hook_add = 'nmap <F8> :TagbarToggle<CR>'
 
