@@ -91,7 +91,7 @@ let g:ale_fix_on_save = 1
 
 " ALE用プレフィックス
 nmap [ale] <Nop>
-map <C-k> [ale]
+map <C-q> [ale]
 " エラー行にジャンプ
 nmap <silent> [ale]<C-k> <Plug>(ale_previous_wrap)
 nmap <silent> [ale]<C-j> <Plug>(ale_next_wrap)

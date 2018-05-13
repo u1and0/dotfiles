@@ -49,7 +49,6 @@ hook_add = '''
     xmap <Space>M <Plug>(quickhl-manual-reset)
 
     nmap <Space>j <Plug>(quickhl-cword-toggle)
-    nmap <Space>] <Plug>(quickhl-tag-toggle)
     map H <Plug>(operator-quickhl-manual-this-motion)
 '''
 
@@ -117,14 +116,15 @@ endif
 [[plugins]]  # Python snippets completions
 repo = 'Shougo/neosnippet-snippets'
 
-[[plugins]]
-repo = 'ervandew/supertab'
+[[plugins]]  # Allows you to use <Tab> for all your insert completion needs
+# repo = 'ervandew/supertab'  # Error occur
+repo = 'metalelf0/supertab'
 hook_add = '''
     let g:SuperTabContextDefaultCompletionType = "context"
     let g:SuperTabDefaultCompletionType = "<C-n>"
 '''
 
-# Ctags / Gtags
+### Ctags / Gtags ###
 [[plugins]]  # A class outline viewer for Vim
 repo = 'majutsushi/tagbar'
 hook_add = 'nmap <F8> :TagbarToggle<CR>'
