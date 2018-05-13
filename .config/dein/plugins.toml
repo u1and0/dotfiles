@@ -117,8 +117,8 @@ endif
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]  # Allows you to use <Tab> for all your insert completion needs
-# repo = 'ervandew/supertab'  # Error occur
-repo = 'metalelf0/supertab'
+repo = 'ervandew/supertab'  # Error occur
+# repo = 'metalelf0/supertab'  # Fix error but doesn't work
 hook_add = '''
     let g:SuperTabContextDefaultCompletionType = "context"
     let g:SuperTabDefaultCompletionType = "<C-n>"
@@ -139,8 +139,27 @@ hook_add = '''
 [[plugins]] # Fuzzy Finder for vim
 repo = 'junegunn/fzf.vim'
 hook_add = '''
-" <C-]>でタグ検索
-nnoremap <silent> [denite]<C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
-" fzfからファイルにジャンプできるようにする
-let g:fzf_buffers_jump = 1
+    " <C-]>でタグ検索
+    nnoremap <silent> [denite]<C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
+    " fzfからファイルにジャンプできるようにする
+    let g:fzf_buffers_jump = 1
+'''
+
+[[plugins]]  # Add support for markdown files in tagbar
+repo = 'jszakmeister/markdown2ctags'
+hook_add = '''
+    let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'ctagsbin' : '$HOME/.local/share/dein/repos/github.com/jszakmeister/markdown2ctags/markdown2ctags.py',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+    \ }
 '''
