@@ -57,6 +57,8 @@ hook_add= '''
 " エラー行に表示するマーク
 let g:ale_sign_error = '⨉'
 let g:ale_sign_warning = '⚠'
+" ステータスラインで表示するフォーマットを変更
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ OK']
 " エラー行にカーソルをあわせた際に表示されるメッセージフォーマット
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " エラー表示の列を常時表示

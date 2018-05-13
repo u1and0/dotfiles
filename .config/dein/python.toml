@@ -180,6 +180,13 @@ build = 'make'
 
 [[plugins]]  # denite.nvim source for GNU Global
 repo = 'ozelentok/denite-gtags'
+on_cmd = 'Denite'
 hook_add = '''
-    nmap <silent> [denite]<C-D> :Denite -buffer-name=gtags_completion gtags_completion<cr>
+    nnoremap [denite]a :DeniteCursorWord -buffer-name=gtags_context gtags_context<cr>
+    nnoremap [denite]d :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
+    nnoremap [denite]r :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
+    nnoremap [denite]g :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<cr>
+    nnoremap [denite]t :Denite -buffer-name=gtags_completion gtags_completion<cr>
+    nnoremap [denite]f :Denite -buffer-name=gtags_file gtags_file<cr>
+    nnoremap [denite]p :Denite -buffer-name=gtags_path gtags_path<cr>
 '''
