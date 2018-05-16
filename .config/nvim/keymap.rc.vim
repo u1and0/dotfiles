@@ -3,7 +3,7 @@
 " === Tab keymap setting ===
 " The prefix key.
 nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
+nmap    <C-t> [Tag]
 " Tab jump
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
@@ -51,3 +51,6 @@ nnoremap <S-Left>  5<C-w><<CR>
 nnoremap <S-Right> 5<C-w>><CR>
 nnoremap <S-Up>    5<C-w>-<CR>
 nnoremap <S-Down>  5<C-w>+<CR>
+
+" Yank to end of line
+nnoremap Y y$
