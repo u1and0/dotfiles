@@ -16,8 +16,7 @@ def __plottest__(flip=8):
 
 
 try:
-    #sns.set(context="notebook", style='whitegrid', palette='husl', font="IPAMincho",
-    sns.set(context="notebook", style='whitegrid', palette='husl', font="TakaoPGothic",
+    sns.set(context="notebook", style='whitegrid', palette='husl', font="IPAGothic",
             font_scale=1.5, color_codes=False,
             rc={'grid.linestyle': ':', 'grid.color': 'gray', 'image.cmap': 'viridis'})
 except:

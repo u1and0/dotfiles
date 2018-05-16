@@ -19,6 +19,8 @@ for n in range(1, 9)
   map <silent> [Tag]T :tabprevious<CR>
   " tp 前のタブ
 
+nmap <C-b> :bNext<CR>
+nmap <C-B> :bprevious<CR>
 
 " === Build script <C-b> ===
 " autocmd BufNewFile,BufRead *.rb nnoremap <C-b> :!ruby %
@@ -35,3 +37,17 @@ function! Setnumber()
     endif
 endfunction
 nnoremap <silent> <C-l> :call Setnumber()<CR>
+
+
+" === Leader ===
+let mapleader = "\<Space>"
+
+
+" QuickFixおよびHelpでは q でバッファを閉じる
+autocmd MyAutoCmd FileType help,qf nnoremap <buffer> q <C-w>c<Paste>
+
+" Shift + 矢印でウィンドウサイズを変更
+nnoremap <S-Left>  5<C-w><<CR>
+nnoremap <S-Right> 5<C-w>><CR>
+nnoremap <S-Up>    5<C-w>-<CR>
+nnoremap <S-Down>  5<C-w>+<CR>

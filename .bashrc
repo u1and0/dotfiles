@@ -38,29 +38,27 @@ export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 
 
 # デフォルトのエディタ
-if which nvim > /dev/null 2>&1 ; then
-    export EDITOR='nvim'
-    export VISUAL='nvim'
-else
-    export EDITOR='vim'
-    export VISUAL='vim'
-fi
+type nvim >/dev/null 2>&1 && VISUAL='nvim'  # if nvim exist
+export VISUAL=${VISUAL:='vim'}  # VISUAL editor could be a full screen editor
+type vim >/dev/null 2>&1 && EDITOR='vim'  # if vim exist
+export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without use of "advanced" terminal functionality
 
 
 # Load external files
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
+[ -f ~/.bash_functions ] && . ~/.bash_functions
 
-if [ -f ~/.pyenvrc ] && [ -d ~/.pyenv ]; then
-    . ~/.pyenvrc
-fi
+[ -f ~/.pyenvrc ] && [ -d ~/pyenv ] && . ~/.pyenvrc
 
-if which thefuck >/dev/null 2>&1 ; then
-    eval $(thefuck --alias)
-fi
+# thefuck: Magnificent app which corrects your previous console command
+type thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
 
+# facd: Frecency directory & file
+type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
+
+# fzf setting
+
+if type fzf > /dev/null 2>&1 && type rg > /dev/null 2>&1 ; then
+    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+fi

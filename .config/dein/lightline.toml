@@ -17,17 +17,17 @@ let g:lightline = {
         \ },
         \ 'tabline': {
             \ 'left': [ [ 'tabs' ] ],
-            \ 'right': [ [ 'close' ] ]
+            " \ 'right': [ [ 'buffers' ] ]
         \ },
         \ 'active': {
         \   'left': [
         \     ['mode', 'paste'],
-        \     ['pyenv'],
-        \     ['fugitive', 'gitgutter',],
+        \     ['filename'],
+        \     ['fugitive', 'gitgutter', 'ale'],
         \   ],
         \   'right': [
         \     ['percent', 'lineinfo', 'syntastic'],
-        \     ['readonly','filename'],
+        \     ['readonly','pyenv'],
         \     ['fileencoding', 'filetype']
         \   ]
         \ },
@@ -44,7 +44,10 @@ let g:lightline = {
         \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
         \   'gitgutter': 'MyGitGutter',
+        \   'ale': 'ALEGetStatusLine'
         \ },
+        \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
+        \ 'component_type':{'buffers': 'tabsel'},
         \ 'separator': {'left': '', 'right': ''},
         \ 'subseparator': {'left': '', 'right': ''}
         \ }

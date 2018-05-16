@@ -13,7 +13,7 @@
 	excludesfile = ~/.globalgitignore
 	symlinks = true
 	quotepath = false
-	pager = diff-so-fancy | less --tabs=4 -RFX --pattern '(^(Date|added|deleted|modified):|tag:|HEAD ->|master|develop|feature|hotfix|release|support)'
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 	# preloadindex = true  # <windows用>インデックスの比較を並列実行してくれてgit statusなどを高速化
 	# fscache = true  # <windows用>ユーザーディレクトリへのアクセスではなくシステム領域にキャッシュを書き込む
