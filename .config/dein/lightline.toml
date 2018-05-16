@@ -158,6 +158,3 @@ function! MyCharCode()
   return "'". char ."' ". nr
 endfunction
 '''
-
-[[plugins]] # bufferline
-repo = 'mgee/lightline-bufferline'
