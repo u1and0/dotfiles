@@ -3,7 +3,7 @@
 " === Tab keymap setting ===
 " The prefix key.
 nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
+nmap    T [Tag]
 " Tab jump
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
@@ -19,8 +19,10 @@ for n in range(1, 9)
   map <silent> [Tag]T :tabprevious<CR>
   " tp 前のタブ
 
-nmap <C-b> :bNext<CR>
-nmap <C-B> :bprevious<CR>
+nnoremap    [buf]   <Nop>
+nmap   <C-p> [buf]
+nmap [buf]n :bNext<CR>
+nmap [buf]p :bprevious<CR>
 
 " === Build script <C-b> ===
 " autocmd BufNewFile,BufRead *.rb nnoremap <C-b> :!ruby %
