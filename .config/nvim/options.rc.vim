@@ -26,3 +26,22 @@ highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 set list  " 不可視文字の表示
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+colorscheme slate
+
+
+"virtualモードの時にスターで選択位置のコードを検索するようにする"
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+
+" スワップファイルがあったときは常にreadonlyで開く
+augroup swapchoice-readonly
+  autocmd!
+  autocmd SwapExists * let v:swapchoice = 'o'
+augroup END
