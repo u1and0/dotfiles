@@ -53,3 +53,6 @@ nnoremap <S-Left>  5<C-w><<CR>
 nnoremap <S-Right> 5<C-w>><CR>
 nnoremap <S-Up>    5<C-w>-<CR>
 nnoremap <S-Down>  5<C-w>+<CR>
+
+" Yank to end of line
+nnoremap Y y$
