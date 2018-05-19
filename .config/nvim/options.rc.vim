@@ -45,3 +45,7 @@ augroup swapchoice-readonly
   autocmd!
   autocmd SwapExists * let v:swapchoice = 'o'
 augroup END
+
+" `:e %%`アクティブなファイルが含まれているディレクトリを手早く展開する
+" :eだけでなく:wや:rでも使える。
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
