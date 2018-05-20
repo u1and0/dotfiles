@@ -29,6 +29,13 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 colorscheme slate
 
 
+" vim default plugins
+filetype plugin on
+
+" if-else構文などをマッチ対象として%でジャンプできるようにする
+runtime macros/matchit.vim
+
+
 "virtualモードの時にスターで選択位置のコードを検索するようにする"
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
