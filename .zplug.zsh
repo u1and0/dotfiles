@@ -96,13 +96,13 @@ zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\
     dir:"${HOME}/bacpac"
 alias bacpac="${HOME}/bacpac/bacpac"
 
-# Gist editor
-zplug "b4b4r07/gist",\
+# Dropbox
+zplug "andreafabrizi/Dropbox-Uploader",\
     as:command,\
-    rename-to:"gist",\
-    hook-build:'go get -d && go build'
+    use:"dropbox_uploader.sh",\
+    rename-to:"db"
 
-# ===Completions===
+# Completions
 zplug "esc/conda-zsh-completion", as:command, rename-to:"_conda"
 
 zplug "jupyter/jupyter_core",\
