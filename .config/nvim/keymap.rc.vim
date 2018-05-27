@@ -30,17 +30,6 @@ nnoremap <silent> ]B :blast<CR>
 " autocmd BufNewFile,BufRead *.pl nnoremap <C-b> :!perl %
 
 
-" Line number toggle <C-l>
-function! Setnumber()
-    if &number
-        setlocal nonumber
-    else
-        setlocal number
-    endif
-endfunction
-nnoremap <silent> <C-l> :call Setnumber()<CR>
-
-
 " Leader
 let mapleader = "\<Space>"
 
