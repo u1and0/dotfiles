@@ -45,3 +45,7 @@ nnoremap <S-Down>  5<C-w>+<CR>
 
 " Yank to end of line
 nnoremap Y y$
+
+" Up/Down in command window
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
