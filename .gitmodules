@@ -6,5 +6,5 @@
 	url = https://github.com/tmux-plugins/tpm
 [submodule "pyenv"]
 	path = pyenv
-	url = https://github.com/pyenv/pyenv.git
+	url = https://github.com/pyenv/pyenv
 	branch = master
