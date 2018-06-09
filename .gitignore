@@ -75,6 +75,9 @@
 !/.jupyter/
 .jupyter/jupyter_notebook_config.json
 
+# snow environment packages
+!snow-packages.yml
+
 # バイナリファイル
 .ipython/profile_default/db/dhist
 
@@ -98,8 +101,3 @@
 !/.w3m/bookmark.html
 !/.w3m/config
 !/.w3m/keymap
-
-# python環境マネージャ
-!/pyenv/
-/pyenv/*
-!snow-packages.yml

@@ -8,11 +8,13 @@
 mv ${HOME}/dotfiles/.git ${HOME} &&
     git reset --hard &&
         rm -rf dotfiles
-git submodule update --init --recursive &&
+git submodule update --init --recursive
 
 # Change user shell
-sudo chsh `whoami` -s `which zsh` &&
-    eval $SHELL -l
+if type zsh; then
+    sudo chsh `whoami` -s `which zsh` &&
+        eval $SHELL -l
+fi
 
 # Restore my archlinux packages
 # ${HOME}/bacpac/bacpac restore
