@@ -101,3 +101,5 @@
 
 # python環境マネージャ
 !/pyenv/
+/pyenv/*
+!snow-packages.yml
