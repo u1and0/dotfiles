@@ -5,16 +5,15 @@
 # git clone https://github.com/u1and0/dotfiles.git
 
 # Cloning & Replacing
-mv ${HOME}/dotfiles/.git ${HOME} &&
+mv ${HOME}/dotfiles/.git ${HOME} 2> /dev/null &&
     git reset --hard &&
         rm -rf dotfiles
 git submodule update --init --recursive
 
 # Change user shell
-if type zsh; then
-    sudo chsh `whoami` -s `which zsh` &&
+type zsh > /dev/null 2>&1 &&
+    sudo chsh `whoami` -s /usr/bin/zsh &&
         eval $SHELL -l
-fi
 
 # Restore my archlinux packages
 # ${HOME}/bacpac/bacpac restore

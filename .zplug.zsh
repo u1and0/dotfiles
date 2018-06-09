@@ -93,7 +93,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs comman
 # pacman backup
 zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\
     from:gist,\
-    dir:"${HOME}/bacpac"\
+    dir:"${HOME}/bacpac",\
     hook-build:"${HOME}/bacpac/bacpac restore"
 alias bacpac="${HOME}/bacpac/bacpac"
 
@@ -114,5 +114,6 @@ zplug "jupyter/jupyter_core",\
 # Python environment manager
 source ${HOME}/.pyenvrc
 zplug "pyenv/pyenv",\
-    hook-build"pyenv install miniconda3-latest && \
+    dir:"${HOME}/pyenv",\
+    hook-build:"pyenv install miniconda3-latest && \
     conda env create --file ${HOME}/snow-packages.yml"
