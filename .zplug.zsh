@@ -7,9 +7,9 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "junegunn/fzf-bin",\
     as:command,\
     from:gh-r,\
-    rename-to:"fzf",\
-    hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh;\
-               source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh"
+    rename-to:"fzf"
+source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
+source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
 export FZF_DEFAULT_COMMAND='fd -t f -IE "/.git/"'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
