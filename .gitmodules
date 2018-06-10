@@ -4,3 +4,9 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "bacpac"]
+	path = bacpac
+	url = https://gist.github.com/u1and0/8bd32ade8d95988b52b03a1b08297b96
+[submodule "pyenv"]
+	path = pyenv
+	url = https://github.com/pyenv/pyenv

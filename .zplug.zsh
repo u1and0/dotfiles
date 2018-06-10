@@ -90,13 +90,6 @@ zplug 'bhilburn/powerlevel9k', as:theme
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context anaconda dir vcs newline)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs command_execution_time history time)
 
-# pacman backup
-zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\
-    from:gist,\
-    dir:"${HOME}/bacpac",\
-    hook-build:"${HOME}/bacpac/bacpac restore"
-alias bacpac="${HOME}/bacpac/bacpac"
-
 # Dropbox
 zplug "andreafabrizi/Dropbox-Uploader",\
     as:command,\
@@ -110,10 +103,3 @@ zplug "jupyter/jupyter_core",\
     as:command,\
     use:examples/completions-zsh,\
     rename-to:"_jupyter"
-
-# Python environment manager
-source ${HOME}/.pyenvrc
-zplug "pyenv/pyenv",\
-    dir:"${HOME}/pyenv",\
-    hook-build:"pyenv install miniconda3-latest && \
-    conda env create --file ${HOME}/snow-packages.yml"
