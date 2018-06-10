@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # Intalling my dotfiles script
 #
 # Type below command mannually
@@ -9,24 +9,24 @@
 
 
 # Cloning & Replacing dotfiles
-printf "!!! Replace all dotfles in HOME directory? !!! [y/N]: "
+printf "!!! Replace all dotfles in HOME directory? !!! [y/N]: \n"
 if read -q; then
     mv ${HOME}/dotfiles/.git ${HOME} &&
         git reset --hard &&
             rm -rf dotfiles
-    git submodule update --init --recursive ${HOME}
+    git submodule update --force --init --recursive ${HOME}
 fi
 
 
 # Restore my archlinux packages
-printf "Restore whole packages managed by pacman?[y/N]: "
+printf "Restore whole packages managed by pacman?[y/N]: \n"
 if read -q; then
     ${HOME}/bacpac/bacpac restore
 fi
 
 
 # Install python using pyenv
-printf "Install my python environment?[y/N]: "
+printf "Install my python environment?[y/N]: \n"
 if read -q; then
     source ${HOME}/.pyenvrc
     pyenv install miniconda3-latest
@@ -45,7 +45,7 @@ fi
 
 
 # Change user shell
-printf "Change default shell to zsh?[y/N]: "
+printf "Change default shell to zsh?[y/N]: \n"
 if read -q; then
     type zsh && chsh `whoami` -s /usr/bin/zsh
         && printf "\nRelogin\n"; eval $SHELL -l
