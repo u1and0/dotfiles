@@ -1,6 +1,60 @@
-v1.8.1: Tmux / Zsh / Neovim powerline theme
+# v1.9.0; Neovim python env
+* Neovim
+    * [rm]lightlinw-bufferline @.config/dein
+    * [add]markdown2ctags @.config/dein/plugins.toml
+    * [mod]Gtags access from only denite-gtags @neovim, dein
+    * [add]Quickrun & vimproc @.config/dein/python.toml
+    * [add]buffer line & buffer change keymap @.config/dein/lightline.toml&keymap.rc.vim
+    * [add]Denite tab open command @.config/dein/python.toml
+    * [mod]@.config/dein/lightline.toml: Display info filename & pyenv
+    * [mod]small change: modify ALE prefix C-q, [rm]multihl toggle ctags
+    * [add] ctags/gtags
+    * [mod]jedi, quickrun, denite options modify
+    * [mod]keymap window resize
+    * [add]Multi highlighting use <SPACE>+m @plugins.toml
+    * [mod]ALE config: disable window, shellcheck use only lint @lazy.toml
+    * [mv]ale, quickrun move from python.toml to lazy.toml
+    * [add]tagbar <F8> [mod] NERDTree <F5>
+* Zplug
+    * [mod]fzf default option add --multi @.zplug.zsh
+    * [mod]depend fzf @.zplug.zsh
+    * [mod]Enhancd call for `cdd` @.zplug.zsh
+    * [add]fzf options @.bashrc, .zplug.zsh
+    * [add]@.zplug.zsh: conda & jupyter completion
+    * [add]@.zplug.zsh: conda completion as command
+    * [rm]@.zplug.zsh: Remove peco
+    * [mod]@.zplug.zsh: tweet.sh path
+    * [add]@.zshrc: source .zshrc when installing zplug
+    * [mod]@.zplug.zsh: Modify twiiter path export
+    * [add]fasd aliases [rm]dublicate aliases
+    * [add]@.bashrc: fasd init
+* Python
+    * [mod]disable pyenv activate
+    * [add]@.pyenvrc: comment & modify PYTHONPATH
+    * [add]@.bashrc, .gitmodules, .pyenvrc: Add pyenv as submodules
+    * [mod]@.ipython: Use IPAfont
+* Misc
+    * [mod]smallchange
+    * [add].globalrc is copied from /usr/share/gtags/globalrc
+    * [add]ALE:Asynchronous Lint Engine [rm]syntastic
+    * [mod]@install.sh: change shell & remove HOME .git dir
+    * [add]install.sh: For deploying dotfiles
+* Git
+    * [rm]git diff pattern search because unconvinient for scrolling @.gitconfig
+* fzf
+    * [mod]FZF_DEFAULT_COMMAND is fd -IE -t f
+* alias
+    * alias-g F=fzf
+    * [mod]recover cd alias, fzf options
+    * [mod]VISUAL=nvim or vim, EDITOR=vim or vi @.bashrc
+    * [mod]VISUAL is advanced editor, EDITOR is not @.bashrc
+    * function
+    * [rm].zsh_functions file
 
----Summary---
+
+# v1.8.1: Tmux / Zsh / Neovim powerline theme
+
+## ---Summary---
 * tmux
     * Add
         * Show CPU usage theme custom
@@ -19,7 +73,6 @@ v1.8.1: Tmux / Zsh / Neovim powerline theme
         * tmux-theme modify u1and0 fork
         * Modify theme pack
         * Add tmux theme
-* dein
     * Add
         * Devide neovim status line setting
     * Modify
@@ -56,50 +109,11 @@ v1.8.1: Tmux / Zsh / Neovim powerline theme
 
 
 
----Logs---
-a974136 [rm]@.tmux.conf: comment
-084cae8 [mod]@.yaourtrc: Modify next app vim=>nvim, pacman=>powerpill
-db695ca [mod]@.w3n/bookmark.html, keymap: C-u, C-d Next/Prev Page, Add hatena in bookmark
-14587ff [mod]@.zplug.zsh. .zshrc: Use _pacman to powerpill completion
-24ec2ff [mod]@.bash_aliases: Enable apt completion
-b2c1773 [mod]@.tmux.conf: tmux-theme modify u1and0 fork
-7dd923d [mod]@.tmux.conf: Modify theme pack
-1620323 [mod]@.tmux.conf: Add tmux theme
-2dcbbc5 [mod]@.bash_alias: unalias cd "-, .., ..." / alias tree -C
-26dd729 [add]@.tmux.conf: Show CPU usage theme custom
-3eefeab [add]@.tmux.conf: Tree view <prefix> + <C-e>
-24dfa04 [mod]@.zshrc, @.zplug.zsh: POWERLEVEL9K option move from .zshrc to .zplug.zsh
-c0a0fb8 [add]@.zshrc: POWERLEVEL9K command excution time
-71480f0 [mod]@.gitconfig: less search pattern modify (Add fit flow features)
-48a71f1 [mod]@.gitconfig: less search pattern modify (Add tag & HEAD)
-6a8e023 Merge branch 'feature/tmux-theme' into develop
-cf24596 [mod]@.config/dein/lighline.toml: show file info
-31d43af [add]@.config/dein/{lighline, vim-airline}.toml: Devide neovim status line setting
-20c2bfe [mod]@.gitconfig: Fix less pattern of git pager & Fix white space
-5a1b0d6 [mod]@.zplug.zsh: The way of load for twitter commands fixed
-b93ce20 [mod]@.bash_aliases: Modified apt / pacman aliases
-f99d3df [mod]@.bash_alias, .zplug.zsh: Fix white space / Remove unused aliases
-b6e757b [add]@.zplug.zsh: Add powerline/fonts
-1466a36 [add]@.zshrc: POWERLEVEL9K prompt add python conda env & newline
-60ba455 [add]@.tmux.conf: tmux-thempack, powerline theme
-83b1bd2 [add]@.tmux.conf: Add tmux-plugins/tmux-continuum
-84fffaf [mod]@.zsh_aliases: Change global prompt fzf fzf-tmux fzy
-d0390ae [mod]@README.md: Modify # -> *
-e33b947 [mod]@.vimrc: Set no number line
-5486e08 v1.8.0 Neovim / Dein installed
-e834094 [add]@.zplug.zsh: Add zsh theme "agnoster" with powerline fonts
-0d1b8ce [add]@.config/powerline/themes/tmux/mytheme.json: weather icon
-e992560 [mod].config/powerline/config.json
-c2617ca [add]@themes/tmux/mytheme.json
-8e7f98d [add].config/powerline
-6e33116 [add]@.tmux.conf: Run powerline-daemon unless powerline-daemon running
-8b8629f Merge branch 'develop' into feature/powerline
-d421698 [add]@.tmux.conf: Run powerline when tmux start
 
 
-v1.8.0 Neovim / Dein installed
+# v1.8.0 Neovim / Dein installed
 
----summary---
+## ---summary---
 * .zshrc
 * Add
     * zplug.zsh: history searching
@@ -189,75 +203,11 @@ v1.8.0 Neovim / Dein installed
     * Run powerline when tmux start
 
 
----logs---
-1ac9715 [rm]@.zshrc: Do not record history time
-b7f943f Merge branch 'feature/neocomplete' into develop
-e3f0a40 WIP on feature/neocomplete: 52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
-05c3d91 index on feature/neocomplete: 52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
-52803a3 [add]@.config/dein/lazy.toml, plugins.toml: show pyenv status @ left line
-950edee [add]@.config/dein/python.toml: Deoplete options
-750397f [mod]@.config/dein/python.toml: Modify Denite map
-e8c95cc [add]@.config/dein/plugins.toml: vim-trailing-whitespace, indentLine
-139aad6 Merge branch 'develop' of github.com:u1and0/dotfiles into develop
-65b6ef2 [add]@.zsh_aliases: Add global alias "rg"
-b0b9ae6 [add]@.zplug.zsh: Add gist cli editor building with go
-719893e Merge remote-tracking branch 'origin/develop' into develop
-7cf1f97 [mod]@.jupyter/jupyter_notebook_config.py: Set port as default
-c04abad [add]@.zplug.zsh: Add bacpac options aliased ~/bacpac/bacpac
-741b409 [add]@.zplug.zsh: Add bacpac options aliased ~/bacpac/bacpac
-ff1273d [mod]@.zplug.zsh: u1and0/ffsearch add "defer:1"
-50e55cd [mod]@.w3m/keymap: Close tab <C-W> twice
-7e2fc7a [add]@.config/dein/plugins.toml: cpsm faster matcher
-2aa613f [mod].config/dein/plugins.toml , python.toml: Comment and Indent
-8890ad8 [mod]@.bashrc: Load .pyenvrc & thefuck init
-4f12d6a Merge branch 'feature/neovim-config' into develop
-3d600a5 [mod]@.bashrc, .zshrc:Use neovim as default editor & Load bash_aliases/functions from bashrc
-8a9f998 [mod]@.config/dein/python.toml: Denite keymaps modify
-3091b97 [add]@.config/dein/plugins.toml: python indent plugin
-a197e6b [add]@.config/dein/lazy.toml: Add dein-command plugin
-60793cd [add]@.config/dein/plugins.toml: NERDTree keymap <C-k><C-b>
-fd11dab [mod]@.zplug.zsh: "bacpac" install from my gist
-ba146d6 [add]@.zplug.zsh: Add pacman backup module "bacpac" from my secret gist
-55f4538 [add]@.config/dein/plugins.toml: Add Auto-bracket correction "jiangmiao/auto-pairs"
-da27e2d [mod]@.zplug.zsh: indentation
-50bf07b [add]@.config/dein/plugins.toml: Add surround.vim
-e91db95 [add]@.zsh_aliases, .zsh_functions: Global alias & Suffix alias
-1105531 [add]@.gitconfig: Add diff-so-fancy again
-bf55c67 [mod]@.bashrc: Modify linuxbrew path
-086b783 [add]@.bashrc: Same setting with bash & Set up LinuxBrew
-39bd0f0 Merge remote-tracking branch 'origin/develop' into develop
-e387a00 [mod]@.zshrc: Global alias
-4e6c406 [add]@.zshrc, @.zplug.zsh: history searching
-2faa5b7 [add]@.zshrc: autoload zmv
-3da5848 [add]@.zshrc: Designate 256 color
-f6021f4 [add]@.zplug.zsh: zsh theme "bhilburn/powerlevel9k" using powerline
-e834094 [add]@.zplug.zsh: Add zsh theme "agnoster" with powerline fonts
-5844e16 Next generation vim "Neovim" & plugin manager "dein"
-d8d5e27 [add]@.config/dein/plugins.toml: Add session manger plugin "tpope/vim-obsession"
-a29a270 [add]@.config/dein/plugins.toml: Add Sidebar plugin "scrooloose/nerdtree"
-ed468c8 [mod]@.config/dein/plugins.toml: Commentout plugin "tomtom/tcomment_vim"
-31997a3 [add]@.config/dein/plugin.toml: Add vim-obsession
-7213d7e [add]@.zplug.zsh: "z" is tracking your most used directories, based on frecency.
-bfbf445 [rm]@.zshrc, .zplug.zsh: Remove auto-fu
-1b113c2 Merge tag 'v1.7.2' into develop
-1719a63 [add]@.config/dein/plugins.toml: Add vim-multiple-cursors
-1ec68ad [add]@.config/dein/plugins.toml: Add lightline setting, Add vim-gutter, vim-fugitive
-66501c0 [add]@.config/dein/plugins.toml: Add Neoterm
-b03f021 [mod]@README.md: mod typo
-0d1b8ce [add]@.config/powerline/themes/tmux/mytheme.json: weather icon
-e992560 [mod].config/powerline/config.json
-c2617ca [add]@themes/tmux/mytheme.json
-8e7f98d [add].config/powerline
-6e33116 [add]@.tmux.comf: Run powerline-daemon unless powerline-daemon running
-8b8629f Merge branch 'develop' into feature/powerline
-d421698 [add]@.tmux.conf: Run powerline when tmux start
-
-
 
 # v1.7.0
 zsh auto-fu & twitter.sh & Excute time & history sharing / tmux.conf : save-session & paste mode / git diff-so-fancy / shell function cconv: Currency CONVersion
 
----summary---
+## ---summary---
 * .zshrc
     * Add right prompt display time as yellow bold color
     * hist_save_no_dups=Do not save same command in history
@@ -287,30 +237,6 @@ zsh auto-fu & twitter.sh & Excute time & history sharing / tmux.conf : save-sess
     * cconv default $1(from)=USD $2(to)=JPY $3(amount)=1
 
 
----logs---
-50bdc54 [add]README.md
-018b50d [rm]@.bash_aliases: alias vi=vim removed
-9afc50a @.bash_functions: cconv default $1(from)=USD $2(to)=JPY $3(amount)=1
-e7401ac [add]@.tmux.conf/tpm: tmux-resurrect
-9f0d214 [mod]@.tmux.conf: Session name pre-word as '#' instead of 'S'
-130b7bb [add]@.bash_function: "cconv" is currency converting function
-3c38d8b [add]@.w3m/bookmark: search gist
-c7951c5 [mod]@.gitconfig: git log1 remove square bracket [] describing relative time
-6f7979f [add]@.zshrc: Add right prompt display time as yellow bold color
-ec4931f [add]@.zshrc: hist_save_no_dups=Do not save same command in history
-eba8e87 [mod]@.zshrc:Share .zsh_history with virtual machine , Modify .zsh_history path to .history/
-e37e7c3 [mod]@.zplug.zsh: vim syntax as zsh, auto-fu makes frozen repository
-b2555e5 [mod]@.tmux.conf: Error modify paste mode
-8a2b495 [mod]@.zplug.zsh, @.zshrc: Install twitter.sh using zplug & add path
-1d0a25c [add].tmux.conf: tmux copy mode use Esc, y, p like vim commands
-15b1235 [add].w3m/bookmark: github.com
-8b8629f Merge branch 'develop' into feature/powerline
-e55fde4 [add]@.w3m/keymap: a,s = Next, Prev TAB
-d421698 [add]@.tmux.conf: Run powerline when tmux start
-083682d [add]@.gitconfig: Add git diff-so-fancy
-e23dd11 [add]@.zshrc: global alias L=vimpager if exist
-407890f Merge tag 'v1.6.0' into develop
-
 
 
 
@@ -321,7 +247,7 @@ Date:   Sun Jan 28 20:09:47 2018 +0900
 
     zplug auto install / tmux plugin maneger / w3m mod / vim plugin manegar
 
-    ---summary---
+## ---summary---
     * .tmux.conf
         * Quick window selection
         * Status bar modify
@@ -368,56 +294,6 @@ Date:   Sun Jan 28 20:09:47 2018 +0900
             * TAB, SHIFT+TAB=Next,Preb TAB
             * Remove Ctrl+Shift+t key
 
-    ---logs---
-    4ad668e [rm]@.zshrc: Remove curly brace option
-    ff792b2 [mod]@.w3m/keymap: f,b=Next,Prev Link / TAB, SHIFT+TAB=Next,Preb TAB / [rm]Ctrl+Shift+t key
-    338905c [add]@.w3m/bookmark.html: vim cheatsheet
-    4fd881c [add]@.w3m/config: mark option enable
-    b2d8889 [add]@.tmux.conf: quick window selection
-    c50e120 Merge branch 'feature/tmux-tpm' into develop
-    823507a [mod]@.tmux.conf: status bar modify
-    04915a5 [rm]@.tmux.conf: Entering copymode when scrolling up
-    5d946dd [mod]@.tmux.conf: time status modify
-    461b8a5 [mod]@.tmux.conf: mouse mode changed
-    356d842 [mod]@.vimrc: set ignorecase, smartcase
-    0688a69 [mod]@.zplug.zsh: tsub history-fzf-select retunred back to `defer 3`
-    2460333 [add]@.zplug.zsh: auto-fu completion patch
-    e71fd69 [add]@.zplug.zsh: auto-fu: automatic complete-word and list-choices
-    632a1c4 Merge remote-tracking branch 'origin/develop' into develop
-    165d3ec [add]@.zplug.zsh: diff-highlight
-    4418dcd [mod]@.zplug.zsh: comment change, differ 1
-    2945960 [mod]@.zplug.zsh: Ctrl+R history-find differ 3
-    3fda744 [mod]@.gitconfig: git dif = git diff --stat
-    4c299a6 [mod]@.w3m/keymap: help command as :h
-    589a002 [add]@.tmux.conf: Add tmux plugin manager `tpm`
-    adc635f [mod]@.w3m/keymap: tab, history navigation / @.w3m/config: wrap search always on
-    91ef1b9 bookmark & config link color skybule
-    a0e746b [add]@.zshrc: twitter shellscripts shell path to $PATH
-    5e944cd [add]@.w3m/bookmark: w3m vim usage
-    0b1f542 [add]@.tmux.conf: Set mouse setting
-    c329069 [rm]@.tmux.conf:  utf8 option was removed in tmux v2.1
-    fd11474 [mod]@.tmux.conf: set bindkey as Ctrl+S
-    390186f [add].tmux.conf: Add mouse setting
-    998edad [add]@.vimrc: set hidden for buffer
-    3b5492d [add].tmux.conf: default setting
-    34982ac [add]@.zshrc: Add D=2> /dev/null
-    8250080 [mod]@.vimrc: comment japanese manual
-    2c69a96 [add]@.zplug: set ZPLUG_SUDO_PASSWORD as vagrant if I am vagrant
-    c79505a [add]@.vimrc: Add Japanese man
-    0c18fa7 [add]@.zplug.zsh: Add auto-fu
-    204bd2a [add]@.zshrc: add some zsh option
-    06bf712 [add]@.vimrc: Install Multi Cursol
-    9d2faec [add]@.vimrc: Install "Ag" via Neobundle
-    476615b [add]@.zshrc: global alias G=ag or ack or grep
-    6d7f048 [add]@.vimrc: tab indent 4 spaces
-    8d14e7c [mod].zshrc/.zplug.zsh: zplugs install extract from .zshrc to .zplug.zsh
-    7530d83 [mod]Installing peco via zplug
-    9df9fe2 [mod]zplug install peco, fzy, fzf-tmux
-    1105450 [rm].zsh_functions
-    ce0894c Merge develop
-    82cc6b3 Merge develop
-    3380698 [mod] if .zplug/init.sh exist install plugins
-    3601d46 Merge tag 'v1.5.0' into develop
 
 
 commit a4f4c9586ec6e4d6fe83d858636fcf121cab874c (tag: v1.5.0)
@@ -427,7 +303,7 @@ Date:   Tue Jan 16 19:02:01 2018 +0900
 
     Merge branch 'release/v1.5.0'
 
-    ---Summary---
+## ---Summary---
     * .zshrc
             * add zplug
                     * add zsh-syntax-highlight
@@ -454,40 +330,6 @@ Date:   Tue Jan 16 19:02:01 2018 +0900
     * .bash_functions
             * w3m history search function 'whistory()'
 
-    ---Logs---
-    d4ba340 [mod]git log<n> add `--all` option
-    d8c7b2e [add].zshrc/zplug: ctrlP/N history-substring-search
-    6164e16 [mod]@.gitconfig: ignore .vim/.netrwhist
-    81e7a05 [mod]@.gitconfig: git log2/log3 color auto
-    73ccc5a [mod]@.tigrc: tigrc warning status-show-untracked-dirs
-    e09e8cf [mod].gitignore: ignore .vim/bundle all directory except neobundle.vim
-    381da3b [add]@.vim/bundle/neobundle: submodule add neobundle
-    a527d7e [rm] neobundle remove --cached
-    5583719 [add]@.bash_aliases: ping alias commented out
-    ac8de67 [rm]--cached remove all bundle except neobundle
-    81ac676 [mod]@.gitignore: submodule ignore
-    5e66f9e @gitconfig/alias: git log1 color auto
-    667e80d [add]@.vimrc: set clipboard sharing
-    5583719 [add]@.bash_aliases: ping alias commented out
-    5dafc25 [add]@.zshrc/zplug: Enhancd
-    07fe0b4 [mod]@.zshrc: zplug first install modify
-    2e3f55c [add]@.zshrc: zplug first auto install
-    bd9dfe8 [add]@.zshrc: zplug install [zplug, zsh-history-substring-search, fzf, zsh-gomi, cli-finder, z
-sh-syntax-highlighting, zsh-autosuggestions, zsh-completions]
-    2354821 [add]@.zshrc: global alias F=fzf
-    3f4f042 [mod].vimrc: NeoBundleInstall caw.vim <reinstall>
-    37686ce [add].zsh_functions / [mod].bash_functions, .zsh_functions: Use fzf instead of peco
-    eef27a7 [mod]@.bash_function: ranger nested
-    901a3c2 [rm]@.vimrc: comment out auto bracket move
-    c3ebcbe [add]@.w3m/bookmark.html: gmail
-    5253ad1 .vim/bundle/neobundle.vim
-    361cbfe Merge branch 'develop' of github.com:u1and0/dotfiles into develop
-    b9445c5 [add]@.bash_functions: whistory() - w3m search from history
-    a40d1cb [mod]@.gitconfig: git sort color change
-    9cd3e7e [add]@.w3m/bookmark.html: Add mobile twitter
-    bbecb00 Merge remote-tracking branch 'origin/develop' into develop
-    601ce0e Merge tag 'v1.4.0' into develop
-    85c8d16 [auto]@.vim/bundle/*: NeobundleUpdate
 
 
 commit 601ce0e48ebd2184220cec4e6a01c57b2db7052f
@@ -520,32 +362,6 @@ Date:   Sun Jan 7 22:48:38 2018 +0900
     * .config/ranger/rc.conf
         * set draw_borders true
         * set preview_images true
-
-    73bb9cb Merge branch 'release/v1.4.0'
-    1c77064 [add]@/.ipython/profile_default/startup/02_inline.ipy: Add guideline for using jupyter console
- over ssh connection.
-    dc665ea [mod]/.ipython/profile_default/startup/02_inline.ipy: come back again __gui__ magic
-    d4adbd6 [add]@.bash_function: function google() using text browser <w3m>
-    39a086b [mod]@.gitconfig: [push] upstream=it must set upstream remote branch. Use `git branch -u origi
-n/master` for setting. Check `git branch -vv`
-    af10ad1 [mod]@.bash_alias: gl=git log1 = log --graph --date=relative --date-order --format
-    933ba00 [mod]@.gitconfig: Modify git log0-3
-    121d9e7 [mod]@.gitconfig/alias: git today shoter discription
-    d8dec2e [mod][rm]@.gitconfig: git alias log7 modify / last(no color) removed. Use --color option
-    d8fe732 Merge remote-tracking branch 'origin/develop' into develop
-    54ed00d [mod]@.ipython/profile_default/startup/02_inline.ipy: Use `%matplotlib inline` only because of
- core dumping when ssh connecting
-    80ac547 [mod]@.jupyter/jupyter_notebook_config.py: jupyter-notebook ssh connection setting
-    8ea078a [add]@.bash_functions: incrementar search from .zsh_history
-    4ff9d49 [mod]@.gitconfig: git last-color modify
-    bdb778d [mod]@.zshrc: remove VAGRANT=HOME / @.bash_alias: v=vagrant
-    5265af0 [mod]@.zshrc: locate thefuck then thefuck --alias
-    0d264f0 [mod]@.config/ranger/rc.conf: set draw_borders true
-    5238f9e [mod]@.config/ranger/rc.conf: set preview_images true
-    c421f5d [mod]@.ipython/profile_default/startup/04_useful_func.ipy: pd.Series.less()
-    f92e393 [mod]@.jupyter/jupyter_qtconsole_config.py: qtconsole config, window&font size
-    41af64e Merge tag 'v1.3.0' into develop
-    aa1914d [merge] auto
 
 
 commit 41af64e54287812d1f695ac68ffa19218c22a601

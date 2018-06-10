@@ -22,6 +22,10 @@ if which sudo > /dev/null 2>&1; then
     fi
 fi
 
+# 移動しやすく
+alias ..='cd ..'
+alias ...='cd ../..'
+alias -- -='cd -'
 
 # lsを使いやすく
 alias ls='ls --color=auto --show-control-chars --time-style=long-iso -FH'
@@ -37,10 +41,6 @@ alias mkdir='mkdir -p'
 # 設定の読み込み
 alias relogin='exec $SHELL -l'
 alias re=relogin
-
-# 画面消去
-alias c=clear
-alias cls=reset
 
 # Windowsっぽく
 alias dir=ll

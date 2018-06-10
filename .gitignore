@@ -19,6 +19,7 @@
 
 # README
 !README.md
+!install.sh
 
 # shell cofigファイル
 !.bashrc
@@ -35,7 +36,7 @@
 !.globalgitignore
 !.gitconfig
 
-# tmux設定ファイル 
+# tmux設定ファイル
 !.tmux.conf
 !/.tmux/
 /.tmux/*
@@ -50,13 +51,12 @@
 !/.config/
 /.config/*
 
+# ranger
 !/.config/ranger/
 /.config/ranger/*
 !/.config/ranger/rc.conf
-
-!/.config/nvim/
-
-!/.config/dein/
+!/.config/ranger/rifle.conf
+!/.config/ranger/scope.sh
 
 # python系
 !.pyenvrc
@@ -87,6 +87,10 @@
 /.vim/bundle/*
 !.vim/bundle/neobundle.vim
 
+# neovim config
+!/.config/nvim/
+!/.config/dein/
+!.globalrc
 
 # テキストブラウザw3m
 !/.w3m/

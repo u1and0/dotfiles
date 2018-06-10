@@ -8,20 +8,12 @@ alias -g D='2> /dev/null'
 
 ## FuzzyFinder
 alias -g F='| fzf'
-alias -g R='| fzf-tmux --reverse'
 alias -g Y='| fzy'
-if [ -n "$TMUX" ] && which peco-tmux > /dev/null 2>&1 ; then
-    alias -g P='| peco-tmux'
-else
-    alias -g P='| peco'
-fi
+alias -g P='| peco-tmux'
 
 ## Print Stdout
-if which vimpager > /dev/null 2>&1 ; then
-    alias -g L='| vimpager'
-else
-    alias -g L='| less'
-fi
+alias -g V='| vimpager'
+alias -g L='| less'
 alias -g M='| more'
 alias -g H='| head'
 alias -g T='| tail'

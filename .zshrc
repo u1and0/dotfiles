@@ -60,6 +60,7 @@ zstyle ':zle:*' word-style unspecified
 fpath=(/usr/share/zsh/site-functions $fpath)
 fpath=(/usr/share/zsh/functions/Completion/zsh-completions/src $fpath)
 fpath=(${HOME}/my_zsh_completions $fpath)
+fpath=(${ZPLUG_BIN} $fpath)
 
 
 # 補完
@@ -160,6 +161,6 @@ else; printf "Install zplug? [y/N]: "
     if read -q; then
         curl -sL --proto-redir -all,\
             https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh\
-                | zsh && exec $SHELL -l  # .zshrc再リロード
+                | zsh && source $0  # .zshrc再リロード
     fi
 fi

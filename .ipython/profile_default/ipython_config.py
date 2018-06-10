@@ -628,7 +628,7 @@ c.InteractiveShellApp.exec_lines = ['%load_ext autoreload', '%autoreload 2']
 
 # Adjust white space of matplotlib plot
 #c.InlineBackend.rc = {'font.family': 'IPAMincho',
-c.InlineBackend.rc = {'font.family': 'TakaoPGothic',
+c.InlineBackend.rc = {'font.family': 'IPAGothic',
                       'figure.facecolor': (1, 1, 1, 1),
                       'savefig.dpi': 72,
                       'figure.subplot.bottom': 0.125,
