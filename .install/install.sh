@@ -3,7 +3,7 @@
 #
 # Type below command mannually
 # ```
-# git clone https://github.com/u1and0/dotfiles.git ~/dotfiles
+# git clone --depth 30 https://github.com/u1and0/dotfiles.git ~/dotfiles
 # && ~/dotfiles/.install/install.sh
 # ```
 
@@ -14,7 +14,7 @@ if read -q; then
     mv ${HOME}/dotfiles/.git ${HOME} &&
         git reset --hard &&
             rm -rf dotfiles
-    git submodule update --force --init --recursive ${HOME}
+    git submodule update --init --recursive ${HOME}
 fi
 
 
@@ -47,6 +47,7 @@ fi
 # Change user shell
 printf "Change default shell to zsh?[y/N]: \n"
 if read -q; then
-    type zsh && chsh `whoami` -s /usr/bin/zsh
-        && printf "\nRelogin\n"; eval $SHELL -l
+    type zsh &&
+        chsh `whoami` -s /usr/bin/zsh &&
+            printf "\nRelogin\n"; eval $SHELL -l
 fi
