@@ -9,8 +9,8 @@
 
 
 # Cloning & Replacing dotfiles
-printf "!!! Replace all dotfles in HOME directory? !!! [y/N]: \n"
-if read -q; then
+printf "!!! Replace all dotfles in HOME directory? !!! [y/N]: "
+if read -q; then; echo
     mv ${HOME}/dotfiles/.git ${HOME} &&
         git reset --hard &&
             rm -rf dotfiles
@@ -19,15 +19,15 @@ fi
 
 
 # Restore my archlinux packages
-printf "Restore whole packages managed by pacman?[y/N]: \n"
-if read -q; then
+printf "Restore whole packages managed by pacman?[y/N]:"
+if read -q; then; echo
     ${HOME}/bacpac/bacpac restore
 fi
 
 
 # Install python using pyenv
-printf "Install my python environment?[y/N]: \n"
-if read -q; then
+printf "Install my python environment?[y/N]:"
+if read -q; then; echo
     source ${HOME}/.pyenvrc
     pyenv install miniconda3-latest
 
@@ -45,8 +45,8 @@ fi
 
 
 # Change user shell
-printf "Change default shell to zsh?[y/N]: \n"
-if read -q; then
+printf "Change default shell to zsh?[y/N]: "
+if read -q; then; echo
     type zsh &&
         chsh `whoami` -s /usr/bin/zsh &&
             printf "\nRelogin\n"; eval $SHELL -l
