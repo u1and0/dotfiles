@@ -1,11 +1,10 @@
 #!/bin/zsh
 # Intalling my dotfiles script
-#
-# Type below command mannually
-# ```
-# git clone --depth 30 https://github.com/u1and0/dotfiles.git ~/dotfiles
-# && ~/dotfiles/.install/install.sh
-# ```
+
+# Download dotfiles
+git clone --depth 3 -b feature/pyenv\
+    https://github.com/u1and0/dotfiles.git ${HOME}/dotfiles &&
+    ${HOME}/dotfiles/.install/install.zsh
 
 
 # Cloning & Replacing dotfiles
