@@ -49,5 +49,5 @@ printf "\nChange default shell to zsh? [y/N]: "
 if read -q; then; echo
     type zsh &&
         sudo chsh `whoami` -s /usr/bin/zsh &&
-            printf "\nRelogin\n"; eval "$SHELL -l"
+            printf "\nrelogin\n"; /usr/bin/zsh -l"
 fi
