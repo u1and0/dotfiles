@@ -11,7 +11,7 @@
 
 # Download dotfiles if not dotfiles directory
 if [ ! -d dotfiles ]; then
-git clone --depth 3 -b feature/pyenv\
+git clone -b develop\
     https://github.com/u1and0/dotfiles.git ${HOME}/dotfiles &&
     ${HOME}/dotfiles/.install/install.zsh
 fi
