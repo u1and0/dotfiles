@@ -1,8 +1,13 @@
 #!/bin/zsh
-# Intall my dotfiles
+# Intall my dotfiles using oneliner
+#
 # ```
-# $ zsh -c "$(curl -L raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)"
+# $ bash -c "$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)"
+#               or
+# $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)"
 # ```
+# you can also use zsh instead of bash
+
 
 # Download dotfiles if not dotfiles directory
 if [ ! -d dotfiles ]; then
