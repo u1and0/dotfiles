@@ -1,10 +1,8 @@
-# pyenv file
-# git clone https://github.com/pyenv/pyenv ~/dotfiles/pyenv  # For installing pyenv
-#       or
-# git submodule add https://github.com/pyenv/pyenv ~/dotfiles/pyenv
+#!/bin/sh
+# pyenv config file
 
 # pyenvのあるpath
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # pyenv実行
 eval "$(pyenv init -)"
