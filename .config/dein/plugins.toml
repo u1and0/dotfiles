@@ -163,3 +163,6 @@ hook_add = '''
     \ 'sort': 0,
     \ }
 '''
+
+[[plugins]]  # Manipulating Gist alternate in Vim
+repo = 'lambdalisue/vim-gista'

@@ -4,7 +4,3 @@
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "pyenv"]
-	path = pyenv
-	url = https://github.com/pyenv/pyenv.git
-	branch = master

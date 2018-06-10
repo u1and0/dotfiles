@@ -51,10 +51,12 @@
 !/.config/
 /.config/*
 
+# ranger
 !/.config/ranger/
 /.config/ranger/*
 !/.config/ranger/rc.conf
-
+!/.config/ranger/rifle.conf
+!/.config/ranger/scope.sh
 
 # python系
 !.pyenvrc
@@ -72,6 +74,9 @@
 
 !/.jupyter/
 .jupyter/jupyter_notebook_config.json
+
+# snow environment packages
+!snow-packages.yml
 
 # バイナリファイル
 .ipython/profile_default/db/dhist
@@ -96,4 +101,3 @@
 !/.w3m/bookmark.html
 !/.w3m/config
 !/.w3m/keymap
-

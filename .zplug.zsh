@@ -7,9 +7,9 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "junegunn/fzf-bin",\
     as:command,\
     from:gh-r,\
-    rename-to:"fzf",\
-    hook-load:"source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh;\
-               source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh"
+    rename-to:"fzf"
+source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
+source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
 export FZF_DEFAULT_COMMAND='fd -t f -IE "/.git/"'
 export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -93,19 +93,27 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs comman
 # pacman backup
 zplug "u1and0/8bd32ade8d95988b52b03a1b08297b96",\
     from:gist,\
-    dir:"${HOME}/bacpac"
+    dir:"${HOME}/bacpac",\
+    hook-build:"${HOME}/bacpac/bacpac restore"
 alias bacpac="${HOME}/bacpac/bacpac"
 
-# Gist editor
-zplug "b4b4r07/gist",\
+# Dropbox
+zplug "andreafabrizi/Dropbox-Uploader",\
     as:command,\
-    rename-to:"gist",\
-    hook-build:'go get -d && go build'
+    use:"dropbox_uploader.sh",\
+    rename-to:"db"
 
-# ===Completions===
+# Completions
 zplug "esc/conda-zsh-completion", as:command, rename-to:"_conda"
 
 zplug "jupyter/jupyter_core",\
     as:command,\
     use:examples/completions-zsh,\
     rename-to:"_jupyter"
+
+# Python environment manager
+source ${HOME}/.pyenvrc
+zplug "pyenv/pyenv",\
+    dir:"${HOME}/pyenv",\
+    hook-build:"pyenv install miniconda3-latest && \
+    conda env create --file ${HOME}/snow-packages.yml"

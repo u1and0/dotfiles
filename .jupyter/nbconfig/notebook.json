@@ -72,5 +72,12 @@
   },
   "stored_keymap": "sublime",
   "kse_show_rebinds": true,
-  "autosavetime_set_starting_interval": true
+  "autosavetime_set_starting_interval": true,
+  "keys": {
+    "command": {
+      "bind": {
+        "9": "jupyter-notebook:change-cell-to-code"
+      }
+    }
+  }
 }
