@@ -1,11 +1,21 @@
 #!/bin/zsh
-# Intalling my dotfiles script
+# Intall my dotfiles
+# ```
+# $ zsh -c "$(curl -L raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)"
+# ```
 
-# Download dotfiles
+# Download dotfiles if not dotfiles directory
+if [ ! -d dotfiles ]; then
 git clone --depth 3 -b feature/pyenv\
     https://github.com/u1and0/dotfiles.git ${HOME}/dotfiles &&
     ${HOME}/dotfiles/.install/install.zsh
+fi
 
+
+# Already cloning to dotfiles in your home dir, then
+# ```
+# $ dotfiles/.install/install.zsh
+# ```
 
 # Cloning & Replacing dotfiles
 printf "\n!!! Replace all dotfles in HOME directory? !!! [y/N]: "
