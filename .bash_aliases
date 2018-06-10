@@ -134,3 +134,6 @@ alias grst-h='git reset --hard HEAD'
 export SH="~/Dropbox/Program/sh"
 alias timeline="$SH/get_tl.sh"
 alias line="$SH/line.sh"
+
+# bacpac
+[ -d $HOME/bacpac ] && alias bacpac="${HOME}/bacpac/bacpac"
