@@ -9,6 +9,13 @@
 # you can also use zsh instead of bash
 
 
+dotfiles_logo='
+      | |     | |  / _(_) |
+    __| | ___ | |_| |_ _| | ___  ___
+   / _` |/ _ \| __|  _| | |/ _ \/ __|
+  | (_| | (_) | |_| | | | |  __/\__ \ 
+   \__,_|\___/ \__|_| |_|_|\___||___/ '
+
 read_yn() {
     if [[ -n $ZSH_VERSION ]]; then
         read -q
@@ -18,9 +25,9 @@ read_yn() {
 }
 
 clone_dot() {
-    git clone -b develop\
+    git clone -b feature/inst --depth 5\
         https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles" &&
-        "${HOME}/dotfiles/.install/install.zsh"
+        "${HOME}/dotfiles/.install/install"
 }
 
 replace_dot() {
@@ -44,14 +51,14 @@ chsh_zsh() {
 }
 
 main() {
+    echo 'Clone dotfiles from  [y/N]: '
+
     # Download dotfiles if not dotfiles directory
     # if already cloning to dotfiles in your home dir, then
     # ```
-    # $ dotfiles/.install/install.zsh
+    # $ dotfiles/.install/install
     # ```
-    if [[ ! -d dotfiles ]]
-    then
-        echo '!!! Replace all dotfles in HOME directory? !!! [y/N]: '
+    if [[ ! -d dotfiles ]]; then
         read_yn && clone_dot
     fi
 
