@@ -51,28 +51,29 @@ chsh_zsh() {
 }
 
 main() {
-    echo $dotfiles_logo
+    echo "$dotfiles_logo"
 
     # Download dotfiles if not dotfiles directory
     # if already cloning to dotfiles in your home dir, then
     # ```
     # $ dotfiles/.install/install
     # ```
-    if [[ ! -d dotfiles ]]; then
-        read_yn && clone_dot
-    fi
 
     # Cloning & Replacing dotfiles
-    echo '!!! Replace all dotfles in HOME directory? !!! [y/N]: '
-    read_yn && replace_dot
+    printf '\n!!! Replace all dotfles in HOME directory? !!! [y/N]: '
+    if [[ ! -d dotfiles ]]; then
+        read_yn && echo; clone_dot && replace_dot
+    else
+        read_yn && echo; replace_dot
+    fi
 
     # Restore my archlinux packages using `bacpac`
-    echo 'Restore whole packages managed by pacman? [y/N]: '
-    read_yn && "$HOME"/bacpac/bacpac restore
+    printf '\nRestore whole packages managed by pacman? [y/N]: '
+    read_yn && echo; "$HOME"/bacpac/bacpac restore
 
     # Install python using `pyenv`
-    echo 'Install my python environment? [y/N]: '
-    read_yn && pyenv_conda_restore
+    printf '\nInstall my python environment? [y/N]: '
+    read_yn && echo; pyenv_conda_restore
     # -----------------------------
     # if not yml file, backup first
     # `conda env export > snow-packages.yml`
@@ -83,9 +84,9 @@ main() {
     # -----------------------------
 
     # Change user shell
-    echo 'Change default shell to zsh? [y/N]: '
-    if type zsh; then
-        read_yn && chsh_zsh
+    printf '\nChange default shell to zsh? [y/N]: '
+    if type zsh > /dev/null 2>&1; then
+        read_yn && echo; chsh_zsh
     fi
     exit
 }
