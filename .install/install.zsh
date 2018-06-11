@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # Intall my dotfiles using oneliner
 #
 # ```
@@ -9,12 +9,25 @@
 # you can also use zsh instead of bash
 
 
+read_yn() {
+    if [[ -n $ZSH_VERSION ]]; then
+        read -q
+    else
+        read -n1 yn; [[ $yn = [yY] ]]
+    fi
+}
+
+clone_dot() {
+    git clone -b develop\
+        https://github.com/u1and0/dotfiles.git ${HOME}/dotfiles &&
+        ${HOME}/dotfiles/.install/install.zsh
+}
+
 # Download dotfiles if not dotfiles directory
-if [ ! -d dotfiles ]; then
-git clone -b develop\
-    https://github.com/u1and0/dotfiles.git ${HOME}/dotfiles &&
-    ${HOME}/dotfiles/.install/install.zsh
-fi
+# if [ ! -d dotfiles ]; then
+#     printf "\n!!! Replace all dotfles in HOME directory? !!! [y/N]: "
+#     clone_dot
+# fi
 
 
 # Already cloning to dotfiles in your home dir, then
