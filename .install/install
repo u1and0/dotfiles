@@ -18,16 +18,15 @@ dotfiles_logo='
 
 read_yn() {
     if [[ -n $ZSH_VERSION ]]; then
-        read -q
+        read -q && return 0 || return 1
     else
-        read -n1 yn; [[ $yn = [yY] ]]
+        read -n1 yn; [[ $yn = [yY] ]] && return 0 || return 1
     fi
 }
 
 clone_dot() {
     git clone -b feature/inst --depth 5\
-        https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles" &&
-        "${HOME}/dotfiles/.install/install"
+        https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles"
 }
 
 replace_dot() {
