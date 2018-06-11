@@ -1,0 +1,83 @@
+#!/bin/bash
+# Intall my dotfiles using oneliner
+#
+# ```
+# $ bash -c '$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)'
+#               or
+# $ bash -c '$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)'
+# ```
+# you can also use zsh instead of bash
+
+
+read_yn() {
+    if [[ -n $ZSH_VERSION ]]; then
+        read -q
+    else
+        read -n1 yn; [[ $yn = [yY] ]]
+    fi
+}
+
+clone_dot() {
+    git clone -b develop\
+        https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles" &&
+        "${HOME}/dotfiles/.install/install.zsh"
+}
+
+replace_dot() {
+    mv "${HOME}/dotfiles/.git" "${HOME}" &&
+        git reset --hard &&
+            rm -rf dotfiles
+    git submodule update --init --recursive "${HOME}"
+}
+
+pyenv_conda_restore() {
+    source "${HOME}/.pyenvrc"
+    pyenv install miniconda3-latest
+
+    # Restore my python packages
+    conda env create --file "${HOME}/.install/snow-packages.yml"
+}
+
+chsh_zsh() {
+    sudo chsh "$(whoami)" -s /usr/bin/zsh &&
+        echo 'relogin'; /usr/bin/zsh -l
+}
+
+main() {
+    # Download dotfiles if not dotfiles directory
+    # if already cloning to dotfiles in your home dir, then
+    # ```
+    # $ dotfiles/.install/install.zsh
+    # ```
+    if [[ ! -d dotfiles ]]
+    then
+        echo '!!! Replace all dotfles in HOME directory? !!! [y/N]: '
+        read_yn && clone_dot
+    fi
+
+    # Cloning & Replacing dotfiles
+    echo '!!! Replace all dotfles in HOME directory? !!! [y/N]: '
+    read_yn && replace_dot
+
+    # Restore my archlinux packages using `bacpac`
+    echo 'Restore whole packages managed by pacman? [y/N]: '
+    read_yn && "$HOME"/bacpac/bacpac restore
+
+    # Install python using `pyenv`
+    echo 'Install my python environment? [y/N]: '
+    read_yn && pyenv_conda_restore
+    # -----------------------------
+    # if not yml file, backup first
+    # `conda env export > snow-packages.yml`
+    #
+    # prefix <name>-packages.yml named to conda-env name
+    # same as
+    # `conda create -n <name>`
+    # -----------------------------
+
+    # Change user shell
+    echo 'Change default shell to zsh? [y/N]: '
+    type zsh && read_yn && chsh_zsh
+}
+
+main
