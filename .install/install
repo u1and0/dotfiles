@@ -51,7 +51,7 @@ chsh_zsh() {
 }
 
 main() {
-    echo 'Clone dotfiles from  [y/N]: '
+    echo $dotfiles_logo
 
     # Download dotfiles if not dotfiles directory
     # if already cloning to dotfiles in your home dir, then
@@ -84,7 +84,10 @@ main() {
 
     # Change user shell
     echo 'Change default shell to zsh? [y/N]: '
-    type zsh && read_yn && chsh_zsh
+    if type zsh; then
+        read_yn && chsh_zsh
+    fi
+    exit
 }
 
 main
