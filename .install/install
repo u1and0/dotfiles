@@ -16,26 +16,33 @@ dotfiles_logo='
   | (_| | (_) | |_| | | | |  __/\__ \ 
    \__,_|\___/ \__|_| |_|_|\___||___/ '
 
+# return true if y or Y, else return false
 read_yn() {
     if [[ -n $ZSH_VERSION ]]; then
-        read -q && return 0 || return 1
+        read -q
     else
-        read -n1 yn; [[ $yn = [yY] ]] && return 0 || return 1
+        read -n1 yn; [[ $yn = [yY] ]]
     fi
+    rtn=$?
+    echo
+    return $rtn
 }
 
+# git clone from u1and0/dotfile
 clone_dot() {
-    git clone -b feature/inst --depth 5\
+    git clone -b feature/inst --depth 1\
         https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles"
 }
 
+# replace all dotfiles in .git dir
 replace_dot() {
-    mv "${HOME}/dotfiles/.git" "${HOME}" &&
+    mv -i "${HOME}/dotfiles/.git" "${HOME}" &&
         git reset --hard &&
             rm -rf dotfiles
     git submodule update --init --recursive "${HOME}"
 }
 
+# install miniconda3-latest & restore conda packages
 pyenv_conda_restore() {
     source "${HOME}/.pyenvrc"
     pyenv install miniconda3-latest
@@ -43,7 +50,16 @@ pyenv_conda_restore() {
     # Restore my python packages
     conda env create --file "${HOME}/.install/snow-packages.yml"
 }
+# -----------------------------
+# if not yml file, backup first
+# `conda env export > snow-packages.yml`
+#
+# prefix <name>-packages.yml named to conda-env name
+# same as
+# `conda create -n <name>`
+# -----------------------------
 
+# change default shell to zsh
 chsh_zsh() {
     sudo chsh "$(whoami)" -s /usr/bin/zsh &&
         echo 'relogin'; /usr/bin/zsh -l
@@ -52,42 +68,25 @@ chsh_zsh() {
 main() {
     echo "$dotfiles_logo"
 
-    # Download dotfiles if not dotfiles directory
-    # if already cloning to dotfiles in your home dir, then
-    # ```
-    # $ dotfiles/.install/install
-    # ```
-
     # Cloning & Replacing dotfiles
     printf '\n!!! Replace all dotfles in HOME directory? !!! [y/N]: '
     if [[ ! -d dotfiles ]]; then
-        read_yn && echo; clone_dot && replace_dot
+        read_yn && clone_dot && replace_dot
     else
-        read_yn && echo; replace_dot
+        read_yn && replace_dot
     fi
 
     # Restore my archlinux packages using `bacpac`
     printf '\nRestore whole packages managed by pacman? [y/N]: '
-    read_yn && echo; "$HOME"/bacpac/bacpac restore
+    read_yn && "$HOME"/bacpac/bacpac restore
 
     # Install python using `pyenv`
     printf '\nInstall my python environment? [y/N]: '
-    read_yn && echo; pyenv_conda_restore
-    # -----------------------------
-    # if not yml file, backup first
-    # `conda env export > snow-packages.yml`
-    #
-    # prefix <name>-packages.yml named to conda-env name
-    # same as
-    # `conda create -n <name>`
-    # -----------------------------
+    read_yn && pyenv_conda_restore
 
     # Change user shell
     printf '\nChange default shell to zsh? [y/N]: '
-    if type zsh > /dev/null 2>&1; then
-        read_yn && echo; chsh_zsh
-    fi
-    exit
+    read_yn && chsh_zsh
 }
 
 main
