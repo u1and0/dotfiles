@@ -50,6 +50,10 @@
 	log3 = !git log --all --patch-with-stat --date=format:'%Y-%m-%d %H:%M:%S' --pretty='format:%C(yellow)%H %C(bold cyan)[%cd] %C(bold black)%an %C(auto)%d% %C(reset)%n %s'
 	last = !git log0 $(git tag | tail -1)..  # Latest tag
 	today = !git log1 --since='yesterday'  # todays work
+	# ========submodule========
+	sdiff = !"git diff && git submodule foreach 'git diff'"
+	spush = push --recurse-submodules=on-demand
+	supdate = submodule update --remote --merge
 [push]
 	default = upstream
 [color "diff-highlight"]
@@ -64,3 +68,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[fetch]
+	prune = true

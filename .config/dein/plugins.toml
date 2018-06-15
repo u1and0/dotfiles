@@ -166,3 +166,6 @@ hook_add = '''
 
 [[plugins]]  # Manipulating Gist alternate in Vim
 repo = 'lambdalisue/vim-gista'
+
+[[plugins]]  # quickly find, substitute, and abbreviate several variations of a word at once.<Paste>
+repo = 'tpope/vim-abolish'
