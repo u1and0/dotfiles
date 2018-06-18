@@ -49,7 +49,7 @@ export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without us
 
 [ -f ~/.bash_functions ] && . ~/.bash_functions
 
-[ -f ~/.pyenvrc ] && [ -d ~/.pyenv ] && . ~/.pyenvrc
+[ -f ~/.pyenvrc ] && [ -d ~/pyenv ] && . ~/.pyenvrc
 
 # thefuck: Magnificent app which corrects your previous console command
 type thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
