@@ -70,3 +70,7 @@
 	whitespace = red reverse
 [fetch]
 	prune = true
+[merge]
+	ff = false
+[pull]
+	ff = only
