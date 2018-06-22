@@ -36,6 +36,10 @@
 !.globalgitignore
 !.gitconfig
 
+# git submodules
+!/pyenv/
+!/bacpac/
+
 # tmux設定ファイル
 !.tmux.conf
 !/.tmux/
@@ -51,10 +55,12 @@
 !/.config/
 /.config/*
 
+# ranger
 !/.config/ranger/
 /.config/ranger/*
 !/.config/ranger/rc.conf
-
+!/.config/ranger/rifle.conf
+!/.config/ranger/scope.sh
 
 # python系
 !.pyenvrc
@@ -97,3 +103,5 @@
 !/.w3m/config
 !/.w3m/keymap
 
+# Install scripts
+!/.install/

@@ -165,3 +165,7 @@ nnoremap <S-Left>  <C-w><<CR>
 nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
+"
+" `:e %%`アクティブなファイルが含まれているディレクトリを手早く展開する
+" :eだけでなく:wや:rでも使える。
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'

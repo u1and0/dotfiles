@@ -1,0 +1,95 @@
+#!/bin/bash
+# Intall my dotfiles using oneliner
+#
+# ```
+# $ bash -c "$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
+#               or
+# $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
+# ```
+
+
+dotfiles_logo='
+      | |     | |  / _(_) |
+    __| | ___ | |_| |_ _| | ___  ___
+   / _` |/ _ \| __|  _| | |/ _ \/ __|
+  | (_| | (_) | |_| | | | |  __/\__ \ 
+   \__,_|\___/ \__|_| |_|_|\___||___/ '
+
+# return true if y or Y, else return false
+read_yn() {
+    if [[ -n $ZSH_VERSION ]]; then
+        read -q
+    else
+        read -n1 yn; [[ $yn = [yY] ]]
+    fi
+    rtn=$?
+    echo
+    return $rtn
+}
+
+# git clone from u1and0/dotfile
+clone_dot() {
+    git clone --depth 10\
+        https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles"
+}
+
+# replace all dotfiles in .git dir
+replace_dot() {
+    mv -i "${HOME}/dotfiles/.git" "${HOME}" &&
+        git reset --hard &&
+            rm -rf dotfiles
+    git submodule update --init --recursive "${HOME}"
+}
+
+# install miniconda3-latest & restore conda packages
+pyenv_conda_restore() {
+    source "${HOME}/.pyenvrc"
+    pyenv install miniconda3-latest
+
+    # Restore my python packages
+    conda env create --file "${HOME}/.install/snow-packages.yml"
+}
+# -----------------------------
+# if not yml file, backup first
+# `conda env export > snow-packages.yml`
+#
+# prefix <name>-packages.yml named to conda-env name
+# same as
+# `conda create -n <name>`
+# -----------------------------
+
+# change default shell to zsh
+chsh_zsh() {
+    sudo chsh "$(whoami)" -s /usr/bin/zsh &&
+        echo 'relogin'; /usr/bin/zsh -l
+}
+
+main() {
+    echo "$dotfiles_logo"
+
+    # Cloning & Replacing dotfiles
+    if [ ! -d dotfiles ]; then
+        printf '\nDownload dotfles? [y/N]: '
+        read_yn && clone_dot
+    fi
+
+    # Replacing dotfiles
+    printf '\n!!! Install to replace all dotfles in HOME directory? !!! [y/N]: '
+    read_yn && replace_dot
+
+    # Restore archlinux packages using `bacpac`
+    if [ -d bacpac ]; then
+        printf '\nRestore whole packages managed by pacman? [y/N]: '
+        read_yn && "$HOME"/bacpac/bacpac restore
+    fi
+
+    # Install python using `pyenv`
+    printf '\nInstall my python environment? [y/N]: '
+    read_yn && pyenv_conda_restore
+
+    # Change user shell
+    printf '\nChange default shell to zsh? [y/N]: '
+    read_yn && chsh_zsh
+}
+
+main
