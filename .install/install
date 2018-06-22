@@ -2,11 +2,10 @@
 # Intall my dotfiles using oneliner
 #
 # ```
-# $ bash -c '$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)'
+# $ bash -c "$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
 #               or
-# $ bash -c '$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install.zsh)'
+# $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
 # ```
-# you can also use zsh instead of bash
 
 
 dotfiles_logo='
@@ -30,7 +29,7 @@ read_yn() {
 
 # git clone from u1and0/dotfile
 clone_dot() {
-    git clone -b feature/inst --depth 1\
+    git clone --depth 10\
         https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles"
 }
 
@@ -69,16 +68,20 @@ main() {
     echo "$dotfiles_logo"
 
     # Cloning & Replacing dotfiles
-    printf '\n!!! Replace all dotfles in HOME directory? !!! [y/N]: '
-    if [[ ! -d dotfiles ]]; then
-        read_yn && clone_dot && replace_dot
-    else
-        read_yn && replace_dot
+    if [ ! -d dotfiles ]; then
+        printf '\nDownload dotfles? [y/N]: '
+        read_yn && clone_dot
     fi
 
-    # Restore my archlinux packages using `bacpac`
-    printf '\nRestore whole packages managed by pacman? [y/N]: '
-    read_yn && "$HOME"/bacpac/bacpac restore
+    # Replacing dotfiles
+    printf '\n!!! Install to replace all dotfles in HOME directory? !!! [y/N]: '
+    read_yn && replace_dot
+
+    # Restore archlinux packages using `bacpac`
+    if [ -d bacpac ]; then
+        printf '\nRestore whole packages managed by pacman? [y/N]: '
+        read_yn && "$HOME"/bacpac/bacpac restore
+    fi
 
     # Install python using `pyenv`
     printf '\nInstall my python environment? [y/N]: '
