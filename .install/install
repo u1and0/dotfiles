@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Intall my dotfiles using oneliner
 #
 # ```
@@ -6,7 +5,6 @@
 #               or
 # $ bash -c '$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)'
 # ```
-# you can also use zsh instead of bash
 
 
 dotfiles_logo='
@@ -30,7 +28,7 @@ read_yn() {
 
 # git clone from u1and0/dotfile
 clone_dot() {
-    git clone -b release/v1.10.1 --depth 1\
+    git clone -b release/v1.10.0 --depth 1\
         https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles"
 }
 
