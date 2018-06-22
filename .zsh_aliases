@@ -47,7 +47,8 @@ fi
 alias -g W='| wc -l'
 # ANSIカラーコードの無効化
 alias -g I='| sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
-
+# backslash to slash `echo -E '\\path\to\windows' B`
+alias -g B="| tr '\' / 2> /dev/null"
 
 #### Suffix Alias #####
 ## Command
