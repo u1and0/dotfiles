@@ -30,7 +30,7 @@ read_yn() {
 
 # git clone from u1and0/dotfile
 clone_dot() {
-    git clone -b feature/inst --depth 1\
+    git clone -b release/v1.10.0 --depth 1\
         https://github.com/u1and0/dotfiles.git "${HOME}/dotfiles"
 }
 
