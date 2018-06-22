@@ -1,3 +1,85 @@
+# v1.10.0; Install scripts
+* .install/install
+    * [mod] clone branch=master@install
+    * [mod] directory check @install
+    * [mod]Use double quote instead of single
+    * [rm] #! @install
+    * Use /usr/bin/bash @.install/install
+    * release install test
+    * [add]comment [rm] echo command after read_yn
+    * [mod]return 0,1 [rm]recursive install
+    * [mod]echo -> printf
+    * echo logo, zsh if state
+    * [mod]echo logo
+    * [mv]functionize & zsh -> bash
+    * [add]function read_yn() @.install/install.zsh
+    * [submodule]bacpac update
+    * [mod]clone branch devlop @install.zsh
+    * auto-install dotfiles, pyenv, pacman packages
+    * [add]doc: use `wget -qO -` or `curl -fsSL` @install.zsh
+    * [add]if not dotfile dir, then start cloning @.install/install.zsh
+    * auto download using git clone & curl
+    * relogin line @.install/install.zsh
+    * [mod]echo position
+    * [mv].sh -> .zsh, echo end of printf
+    * [add]pyenv & bacpac managed by zplug, install.sh managed by dotfile
+
+* git
+    * [add] fast-forward config @.gitconfig
+    * [add]prune true: when fetching remote, then remove deleted remote repository @.gitconfig
+    * [add]git submodule alias @.gitconfig
+    * [mod]install scripts directory
+    * [mod]Manage bacpac & pyenv in submodule
+    * [merge] conflict .pyenvcr
+    * [fix] @install.sh
+    * [mod]install sh
+
+* pyenv
+    * [fix]pyenv path .pyenv-> pyenv
+    * [fix]$PATH /usr/bin describe last for powerpill using system python
+    * [fix] pyenv path
+    * [mod]pyenv dir @.bashrc
+    * [mod]use echo instead of printf \n
+    * [fix] pyenv dir is pyenv not .pyenv
+    * [add] pyenv & bacpac managed by submodules
+    * [add] pyenv, bacpac
+    * Revert "[rm] pyenv ignore"
+    * [rm] pyenv ignore
+    * pyenv path -> ~/.pyenv
+
+* zsh
+    * [add]global alias B: change backslash to slash @.zsh_aliases
+
+* zplug
+    * [add]andreafabrizi/Dropbox-Uploader: Dropbox CLI tool @.zplug.zsh
+
+* vim
+    * [add]tpope vim abolish @dein/plugins.toml
+    * [mod]source fzf shell completion
+    * [add]submodule add pyenv
+    * [add]Up/Down key same as C-p/n @.nvim/keymap
+    * [fix]denite . option@dein/python.toml, pythonpath@.pyenvrc
+    * [rm]disable <C-L> keybind @.config/nvim/keymap
+    * <leader>r: jedi modify variables @lazy.toml, key<9>: change markdown cell @notebook.json
+    * [rm]Show line number keymap <C-l>, instead of using `se nu`
+    * [add]vim-gista: Manipulating Gist alternate in Vim
+    * [add] match plugin on @nvim/options
+    * [add]buffer jump / tab jump @nvim/vim config
+    * fix tab prekeymap @.nvim/keymap
+    * [add] colorscheme, select search, open as readonly if swap exist
+    * [mod]neovim option set
+    * [mod] tab prekeymap 'T', buf prekeymap 'p'
+    * Y: yank to end of line @nvim/keymap
+
+* ranger
+    * [fix]preview image true @ranger/rc.conf
+    * [add]rifle.conf, scope.sh @.config/ranger
+
+* python
+    * [add]df.mirror: Append reverse df @.ipython startup useful func
+
+
+
 # v1.9.0; Neovim python env
 * Neovim
     * [rm]lightlinw-bufferline @.config/dein
