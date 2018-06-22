@@ -1,9 +1,10 @@
+#!/bin/bash
 # Intall my dotfiles using oneliner
 #
 # ```
-# $ bash -c '$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)'
+# $ bash -c "$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
 #               or
-# $ bash -c '$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)'
+# $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
 # ```
 
 
