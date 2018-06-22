@@ -2,6 +2,12 @@
 # Intall my dotfiles using oneliner
 #
 # ```
+# Use redirect from git.io
+# $ bash -c "$(curl -fsSL git.io/dotu1)"
+#               or
+# $ bash -c "$(wget -qO - git.io/dotu1)"
+#
+# Use raw github content
 # $ bash -c "$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
 #               or
 # $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
