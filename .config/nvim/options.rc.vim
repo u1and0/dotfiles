@@ -56,3 +56,6 @@ augroup END
 " `:e %%`アクティブなファイルが含まれているディレクトリを手早く展開する
 " :eだけでなく:wや:rでも使える。
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" tags path
+autocmd BufNewFile,BufRead *.py set tags+=${PYENV_ROOT}/versions/miniconda3-latest/envs/snow/lib/python3.6/tags
