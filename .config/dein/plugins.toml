@@ -129,12 +129,13 @@ hook_add = '''
 repo = 'majutsushi/tagbar'
 hook_add = 'nmap <F8> :TagbarToggle<CR>'
 
-[[plugins]]  # Generate ctag/gtag
-repo = 'jsfaint/gen_tags.vim'
-hook_add = '''
-    let g:gen_tags#ctags_auto_gen = 1
-    let g:gen_tags#gtags_auto_gen = 1
-'''
+# globalコマンドに細工してエラーの原因となっている可能性がある
+# [[plugins]]  # Generate ctag/gtag
+# repo = 'jsfaint/gen_tags.vim'
+# hook_add = '''
+#     let g:gen_tags#ctags_auto_gen = 1
+#     let g:gen_tags#gtags_auto_gen = 1
+# '''
 
 [[plugins]] # Fuzzy Finder for vim
 repo = 'junegunn/fzf.vim'
