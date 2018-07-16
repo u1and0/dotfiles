@@ -170,3 +170,6 @@ repo = 'lambdalisue/vim-gista'
 
 [[plugins]]  # quickly find, substitute, and abbreviate several variations of a word at once.<Paste>
 repo = 'tpope/vim-abolish'
+
+[[plugins]]  # pairs of handy bracket mappings http://www.vim.org/scripts/script.php
+repo = 'tpope/vim-unimpaired'
