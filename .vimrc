@@ -124,14 +124,11 @@ if has('vim_starting')
 	call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
-		" 以下は必要に応じて追加
-		NeoBundle 'Shougo/unite.vim'
-		NeoBundle 'Shougo/neosnippet.vim'
-
 		filetype plugin indent on
 
 		" Multiple Comment out
 		NeoBundle "tyru/caw.vim.git", 'master'
+        
 		" caw:hatpos:toggle
 		nmap <C-K> <Plug>(caw:hatpos:toggle)
 		vmap <C-K> <Plug>(caw:hatpos:toggle)
@@ -145,6 +142,12 @@ if has('vim_starting')
 
         " Session saveing
         NeoBundle 'tpope/vim-obsession'
+
+        " pairs of handy bracket mappings http://www.vim.org/scripts/script.php
+        NeoBundle 'tpope/vim-unimpaired'
+        
+        " Auto-bracket correction
+        NeoBundle 'jiangmiao/auto-pairs'
 
 	call neobundle#end()
 endif
