@@ -58,4 +58,5 @@ augroup END
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " tags path
+autocmd BufNewFile,BufRead *.py set tags+=${PYTHONPATH}/tags
 autocmd BufNewFile,BufRead *.py set tags+=${PYENV_ROOT}/versions/miniconda3-latest/envs/snow/lib/python3.6/tags
