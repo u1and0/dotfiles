@@ -8,14 +8,11 @@ def _less(self, n=10):
     return self.head(n // 2).append(self.tail(n // 2))
 
 
-pd.DataFrame.less = _less
-pd.Series.less = _less
-
-
 def _mirror(self):
     """Append reverse DataFrame"""
     return self.append(self[-2::-1], ignore_index=True)
 
 
-pd.DataFrame.mirror = _mirror
-pd.Series.mirror = _mirror
+for cl in (pd.DataFrame, pd.Series):
+    for names in [('less',_less),('mirror',_mirror)]:
+        setattr(cl, *names)
