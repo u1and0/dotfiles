@@ -59,7 +59,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " tags path
 autocmd BufNewFile,BufRead *.py set tags+=${PYTHONPATH}/tags
-autocmd BufNewFile,BufRead *.py set tags+=${PYENV_ROOT}/versions/miniconda3-latest/envs/snow/lib/python3.6/tags
+autocmd BufNewFile,BufRead *.py set tags+=${PYENV_ROOT}/versions/miniconda3-latest/envs/snow/lib/python3.6/site-packages/tags
 
 " file encodings
 set encoding=utf-8

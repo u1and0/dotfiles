@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""ipython start up scripts for pandas useful methods"""
 import pandas as pd
 
 
@@ -8,14 +9,31 @@ def _less(self, n=10):
     return self.head(n // 2).append(self.tail(n // 2))
 
 
-pd.DataFrame.less = _less
-pd.Series.less = _less
-
-
 def _mirror(self):
     """Append reverse DataFrame"""
     return self.append(self[-2::-1], ignore_index=True)
 
 
-pd.DataFrame.mirror = _mirror
-pd.Series.mirror = _mirror
+def _read_tables(*files, **kwargs):
+    """ Read general delimited files into DataFrame
+    Super function of `pd.read_table()`
+    """
+    return pd.DataFrame(
+        {f: pd.read_table(f, **kwargs).squeeze() for f in files})
+
+
+NAMES = [
+    ('less', _less),
+    ('mirror', _mirror),
+]
+
+
+def main():
+    for cl in (pd.DataFrame, pd.Series):
+        for name in NAMES:
+            setattr(cl, *name)
+    setattr(pd, 'read_tables', _read_tables)
+
+
+if __name__ == '__main__':
+    main()
