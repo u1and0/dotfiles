@@ -54,6 +54,8 @@ pyenv_conda_restore() {
 
     # Restore my python packages
     conda env create --file "${HOME}/.install/snow-packages.yml"
+            or
+    conda env export --file "${HOME}/.install/snow-packages.yml"
 }
 # -----------------------------
 # if not yml file, backup first
