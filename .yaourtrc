@@ -53,8 +53,8 @@ BUILD_NOCONFIRM=1  # Only prompt for editing files
 #TERMINALTITLE=1
 
 # Command
-#PACMAN="pacman"
-PACMAN="powerpill"
+PACMAN="pacman"
+# PACMAN="powerpill"
 #MAKEPKG="makepkg"
 #DIFFEDITCMD="vimdiff"
 
