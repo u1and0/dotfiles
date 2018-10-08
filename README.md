@@ -1,3 +1,11 @@
+# Installation
+
+```
+$ bash -c "$(curl -fsSL git.io/dotu1)"
+# or
+$ bash -c "$(wget -qO - git.io/dotu1)"
+```
+
 # v1.10.0; Install scripts
 * .install/install
     * [mod] clone branch=master@install
