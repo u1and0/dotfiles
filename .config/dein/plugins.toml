@@ -173,3 +173,18 @@ repo = 'tpope/vim-abolish'
 
 [[plugins]]  # pairs of handy bracket mappings http://www.vim.org/scripts/script.php
 repo = 'tpope/vim-unimpaired'
+
+[[plugins]]  # Yank History
+repo = 'vim-scripts/YankRing.vim'
+hook_add='''
+   nnoremap <silent> <F9> :YRShow<CR>
+'''
+
+[[plugins]]  # HTML tag completion
+repo = 'alvan/vim-closetag'
+
+[[plugins]]  # Place, toggle and display marks.
+repo = 'kshenoy/vim-signature'
+hook_add='''
+    nnoremap <silent> <F3> :SignatureToggle<CR>
+'''
