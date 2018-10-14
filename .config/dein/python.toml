@@ -66,12 +66,23 @@ hook_add = '''
     nmap <silent> [denite]<C-p> :<C-u>Denite buffer<CR>
     nmap <silent> [denite]<C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
 
-    " アクセス率の高いファイル
+    " アクセス率の高いファイルを開く
     nmap <silent> [denite]<C-j> :<C-u>Denite file_mru<CR>
+
+    " 過去に開いたファイル(:oldfilesで表示される)を開く
     nmap <silent> [denite]<C-z> :<C-u>Denite file_old<CR>
+
+    " 現在ディレクトリ以下のディレクトリからファイルを開く
+    nmap <silent> [denite],     :<C-u>Denite directory_rec<CR>
+
+    " よく行くディレクトリへ移動
+    nmap <silent> [denite]<C-d> :<C-u>Denite directory_mru<CR>
 
     " yankで取り込んだバッファ検索
     nmap <silent> [denite]<C-y> :<C-u>Denite neoyank<CR>
+
+    " help tag検索
+    nmap <silent> [denite]<C-h> :<C-u>Denite help<CR>
 
     " Denite中断したDeniteの続き
     nmap <silent> [denite]<C-r> :<C-u>Denite -resume<CR>
