@@ -177,7 +177,10 @@ repo = 'tpope/vim-unimpaired'
 [[plugins]]  # Yank History
 repo = 'vim-scripts/YankRing.vim'
 hook_add='''
-   nnoremap <silent> <F9> :YRShow<CR>
+    nnoremap <silent> <F9> :YRShow<CR>
+    function! YRRunAfterMaps()
+        nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+    endfunction
 '''
 
 [[plugins]]  # HTML tag completion
