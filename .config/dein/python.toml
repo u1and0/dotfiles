@@ -3,7 +3,7 @@
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
-hook_source = '''
+hook_add = '''
     " Vim起動時にneocompleteを有効にする
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_ignore_case = 1
@@ -26,7 +26,7 @@ hook_source = '''
     endfunction
 
     " <S-TAB>: completion back.
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+    " inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
     " バックスペースで補完のポップアップを閉じる
     inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
