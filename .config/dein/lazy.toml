@@ -50,7 +50,7 @@ on_ft = 'python'
 
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
-on_ft = ['python', 'sh']
+on_ft = ['python', 'sh', 'js', 'javascript']
 hook_add= '''
 " エラー行に表示するマーク
 let g:ale_sign_error = '⨉'
@@ -80,11 +80,14 @@ let g:ale_completion_enabled = 0
 
 " 有効にするlinter
 " Check Python files with flake8 and pylint.
-let g:ale_linters = {'python': ['flake8', 'pylint'],
+let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'sh': ['shellcheck'],
+                    \ 'javascript': ['eslint'],
                     \ }
 " Fix Python files with autopep8 and yapf.
-let g:ale_fixers = {'python': ['autopep8', 'yapf']}
+let g:ale_fixers = { 'python': ['autopep8', 'yapf'],
+                   \ 'javascript': ['eslint'],
+                   \ }
 " Disable warnings about trailing whitespace for Python files.
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_fix_on_save = 1
