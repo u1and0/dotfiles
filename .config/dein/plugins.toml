@@ -191,3 +191,29 @@ repo = 'kshenoy/vim-signature'
 hook_add='''
     nnoremap <silent> <F3> :SignatureToggle<CR>
 '''
+
+[[plugins]]
+repo = 'mojako/ref-sources.vim'
+
+[[plugins]]
+repo = 'tokuhirom/jsref'
+
+[[plugins]]
+repo = 'jqapi/jqapi'
+
+[[plugins]]  # vim manual
+repo = 'thinca/vim-ref'
+hook_add = '''
+let g:ref_cache_dir               = $XDG_CACHE_HOME . '/thinca/vim-ref/cache'
+let g:ref_detect_filetype         = {
+            \    'css':        'phpmanual',
+            \    'html':       ['phpmanual',  'javascript', 'jquery'],
+            \    'javascript': ['javascript', 'jquery'],
+            \    'php':        ['phpmanual',  'javascript', 'jquery']
+            \}
+let g:ref_javascript_doc_path = '$HOME/.local/share/repos/github.com/tokuhirom/jsref/htdocs'
+let g:ref_jquery_doc_path     = '$HOME/.local/share/repos/github.com/jqapi/jqapi'
+let g:ref_phpmanual_path      = '$HOME/.local/share/repos/github.com/thinca/vim-ref/doc/ref-phpmanual.txt'
+let g:ref_use_cache           = 1
+let g:ref_use_vimproc         = 1
+'''
