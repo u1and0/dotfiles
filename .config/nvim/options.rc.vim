@@ -9,6 +9,7 @@ set nobackup            " do not keep a backup file, use versions instead
 "set clipboard+=autoselect " copy to clipboard in selection
 set hidden              " Enable opening another file while editting a file
 set ignorecase          " Search ignore case
+set wildignorecase      " Command line ignore case
 set smartcase           " Search ignore case if only use letter case
 set display=lastline    " 長い行の表示
 set pumheight=10        " 補完ウィンドウの大きさ
