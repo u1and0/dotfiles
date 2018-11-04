@@ -196,15 +196,13 @@ hook_add='''
 [[plugins]]  # vim reference
 repo = 'thinca/vim-ref'
 hook_add = '''
-let g:ref_cache_dir               = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/cache'
 let g:ref_detect_filetype         = {
             \    'css':        'phpmanual',
             \    'html':       ['phpmanual',  'javascript', 'jquery'],
             \    'javascript': ['javascript', 'jquery'],
             \    'php':        ['phpmanual',  'javascript', 'jquery']
             \}
-let g:ref_javascript_doc_path = $HOME . '/.local/share/dein/repos/github.com/tokuhirom/jsref/htdocs'
-let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
+
 " To download the phpmanual, type below on your shell.
 " wget http://jp2.php.net/get/php_manual_ja.tar.gz/from/this/mirror ~/.local/share/dein/repos/github.com/thinca/vim-ref/mirror && aunpack mirror
 let g:ref_phpmanual_path      = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/php-chunked-xhtml'
@@ -221,9 +219,12 @@ let g:ref_source_webdict_sites = {
             \   'jquery': {
             \     'url': 'https://api.jquery.com/%s/',
             \     'cache': 0,
-            \   }
+            \   },
             \ }
-" 出力に対するフィルタ。最初の数行を削除している。
+" jqueryはmustardamus/jqapiの代わり
+
+" Filter function
+" 出力に対するフィルタ。最初と最後の数行を削除
 function! g:ref_source_webdict_sites.wiktionary.filter(output)
       return join(split(a:output, "\n")[16 :], "\n")
 endfunction
@@ -236,10 +237,20 @@ endfunction
 function! g:ref_source_webdict_sites.jquery.filter(output)
       return join(split(a:output, "\n")[51 : -131], "\n")
 endfunction
+
+" Option
+let g:ref_source_webdict_sites.default = 'kotobankej'  " Ref webdict {word}で和英検索
 let g:ref_source_webdict_use_cache = 1
-let g:ref_source_webdict_sites.default = 'kotobankej'
 let g:ref_use_cache           = 1
+let g:ref_cache_dir               = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/cache'
 let g:ref_use_vimproc         = 1
+
+" Keymap
+nnoremap <Space>k :Ref webdict <C-R><C-W><C-Left><Left>
+" 現在ワードをコマンドラインに貼り付け
+" カーソルを'webdict'の前にする
+" <C-W>で'webdict'を別のリファレンスソースに変えるか
+" <CR>で即座に和英検索
 '''
 
 [[plugins]]  # vim-ref sources (英辞郎, CPAN, jQAPI, コトバンク, Wikipedia)
@@ -250,9 +261,15 @@ repo = 'mfumi/ref-dicts-en.git'
 
 [[plugins]]  # javascript manual
 repo = 'tokuhirom/jsref'
+hook_add = '''
+let g:ref_javascript_doc_path = $HOME . '/.local/share/dein/repos/github.com/tokuhirom/jsref/htdocs'
+'''
 
 [[plugins]]  # jQuery manual
 repo = 'mustardamus/jqapi'
+hook_add = '''
+let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
+'''
 
 [[plugins]]  # CUI web browser
 repo = 'yuratomo/w3m.vim'
