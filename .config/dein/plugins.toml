@@ -191,3 +191,68 @@ repo = 'kshenoy/vim-signature'
 hook_add='''
     nnoremap <silent> <F3> :SignatureToggle<CR>
 '''
+
+# ========Vim References========
+[[plugins]]  # vim reference
+repo = 'thinca/vim-ref'
+hook_add = '''
+let g:ref_cache_dir               = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/cache'
+let g:ref_detect_filetype         = {
+            \    'css':        'phpmanual',
+            \    'html':       ['phpmanual',  'javascript', 'jquery'],
+            \    'javascript': ['javascript', 'jquery'],
+            \    'php':        ['phpmanual',  'javascript', 'jquery']
+            \}
+let g:ref_javascript_doc_path = $HOME . '/.local/share/dein/repos/github.com/tokuhirom/jsref/htdocs'
+let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
+" To download the phpmanual, type below on your shell.
+" wget http://jp2.php.net/get/php_manual_ja.tar.gz/from/this/mirror ~/.local/share/dein/repos/github.com/thinca/vim-ref/mirror && aunpack mirror
+let g:ref_phpmanual_path      = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/php-chunked-xhtml'
+let g:ref_source_webdict_sites = {
+            \   'wiktionary': {
+            \     'url': 'http://ja.wiktionary.org/wiki/%s',
+            \   },
+            \   'kotobank': {
+            \     'url': 'https://kotobank.jp/word/%s',
+            \   },
+            \   'kotobankej': {
+            \     'url': 'https://kotobank.jp/ejword/%s',
+            \   },
+            \   'jquery': {
+            \     'url': 'https://api.jquery.com/%s/',
+            \     'cache': 0,
+            \   }
+            \ }
+" 出力に対するフィルタ。最初の数行を削除している。
+function! g:ref_source_webdict_sites.wiktionary.filter(output)
+      return join(split(a:output, "\n")[16 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.kotobank.filter(output)
+      return join(split(a:output, "\n")[15 : -57], "\n")
+endfunction
+function! g:ref_source_webdict_sites.kotobankej.filter(output)
+      return join(split(a:output, "\n")[21 : -35], "\n")
+endfunction
+function! g:ref_source_webdict_sites.jquery.filter(output)
+      return join(split(a:output, "\n")[51 : -131], "\n")
+endfunction
+let g:ref_source_webdict_use_cache = 1
+let g:ref_source_webdict_sites.default = 'kotobankej'
+let g:ref_use_cache           = 1
+let g:ref_use_vimproc         = 1
+'''
+
+[[plugins]]  # vim-ref sources (英辞郎, CPAN, jQAPI, コトバンク, Wikipedia)
+repo = 'mojako/ref-sources.vim'
+
+[[plugins]]  # vim-ref sources (Answer.com, Reverso, Hyper Dictionary, Longman, Oxford Dictionaries, Synonym.com)
+repo = 'mfumi/ref-dicts-en.git'
+
+[[plugins]]  # javascript manual
+repo = 'tokuhirom/jsref'
+
+[[plugins]]  # jQuery manual
+repo = 'mustardamus/jqapi'
+
+[[plugins]]  # CUI web browser
+repo = 'yuratomo/w3m.vim'
