@@ -219,6 +219,12 @@ let g:ref_source_webdict_sites = {
             \   'kotobankej': {
             \     'url': 'https://kotobank.jp/ejword/%s',
             \   },
+            \   'kotobankje': {
+            \     'url': 'https://kotobank.jp/jeword/%s',
+            \   },
+            \   'weblio': {
+            \     'url': 'https://ejje.weblio.jp/content/%s',
+            \   },
             \   'jquery': {
             \     'url': 'https://api.jquery.com/%s/',
             \     'cache': 0,
@@ -237,6 +243,12 @@ endfunction
 function! g:ref_source_webdict_sites.kotobankej.filter(output)
       return join(split(a:output, "\n")[21 : -35], "\n")
 endfunction
+function! g:ref_source_webdict_sites.kotobankje.filter(output)
+      return join(split(a:output, "\n")[21 : -35], "\n")
+endfunction
+function! g:ref_source_webdict_sites.weblio.filter(output)
+      return join(split(a:output, "\n")[20 : ], "\n")
+endfunction
 function! g:ref_source_webdict_sites.jquery.filter(output)
       return join(split(a:output, "\n")[51 : -131], "\n")
 endfunction
@@ -249,15 +261,21 @@ let g:ref_cache_dir               = $HOME . '/.local/share/dein/repos/github.com
 let g:ref_use_vimproc         = 1
 
 " Keymap
-nnoremap <Space>k :Ref webdict <C-R><C-W><C-Left><Left>
-" 現在ワードをコマンドラインに貼り付け
-" カーソルを'webdict'の前にする
-" <C-W>で'webdict'を別のリファレンスソースに変えるか
-" <CR>で即座に和英検索
+nmap [Ref] <Nop>
+map <C-k> [Ref]
+" カレントワードをコマンドラインに貼り付け、カーソルを'webdict'の前に置く
+" <CR>で即座に和英検索 or 別のリファレンスソースに変えてから検索
+nnoremap [Ref]      :Ref webdict <C-R><C-W><C-Left><Left>
+" カレントワードを英和検索
+nnoremap [Ref]<C-K> :Ref webdict <C-R><C-W><CR>
 '''
 
 [[plugins]]  # vim-ref sources (英辞郎, CPAN, jQAPI, コトバンク, Wikipedia)
 repo = 'mojako/ref-sources.vim'
+hook_add = '''
+" カレントワードをwikipedia検索
+nnoremap [Ref]<C-W> :Ref wikipedia <C-R><C-W><CR>
+'''
 
 [[plugins]]  # vim-ref sources (Answer.com, Reverso, Hyper Dictionary, Longman, Oxford Dictionaries, Synonym.com)
 repo = 'mfumi/ref-dicts-en.git'
@@ -276,3 +294,10 @@ let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustard
 
 [[plugins]]  # CUI web browser
 repo = 'yuratomo/w3m.vim'
+hook_add = '''
+nnoremap [Ref]<C-G> :W3mSplit <C-R>
+" 続けて<C-W>で word 貼り付け
+" 続けて<C-A>で WORD 貼り付け
+" 続けて"で バッファを貼り付け
+" :help <C-R> for more help
+'''
