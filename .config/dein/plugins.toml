@@ -65,6 +65,9 @@ repo = 'tpope/vim-obsession'
 [[plugins]]  # Select then 'S'
 repo = 'tpope/vim-surround'
 
+[[plugins]]  # Repead surroud.vim
+repo = 'tpope/vim-repeat'
+
 [[plugins]]  # Auto-bracket correction
 repo = 'jiangmiao/auto-pairs'
 
