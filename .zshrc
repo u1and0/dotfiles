@@ -23,7 +23,7 @@ autoload -Uz colors
 colors
 
 # ヒストリの設定
-HISTFILE=~/.history/.zsh_history
+HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
@@ -51,7 +51,7 @@ autoload -Uz select-word-style
 select-word-style default
 # ここで指定した文字は単語区切りとみなされる
 # / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
-zstyle ':zle:*' word-chars " /=;@:{},|"
+zstyle ':zle:*' word-chars " /=;@:{}[]()<>,.|"
 zstyle ':zle:*' word-style unspecified
 
 ########################################
@@ -118,6 +118,7 @@ setopt inc_append_history   # 履歴をインクリメンタルに追加
 # setopt braceccl             # {a-z}を{a..z}と同様にする
 setopt auto_param_keys      # カッコの対応などを自動的に補完する
 setopt magic_equal_subst    # コマンドラインの引数で --prefix=/usr などの = 以降でも補完できるようにする
+setopt correct              # もしかして機能
 
 
 ########################################

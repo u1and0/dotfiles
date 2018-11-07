@@ -1,4 +1,94 @@
-# v1.10.0; Install scripts
+# Installation
+Intall my dotfiles using oneliner
+
+```
+$ bash -c "$(curl -fsSL git.io/dotu1)"
+# or
+$ bash -c "$(wget -qO - git.io/dotu1)"
+```
+
+## Redundant Installation
+Use raw github content
+
+```
+$ bash -c "$(curl -fsSL raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
+or
+$ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.install/install)"
+```
+
+## install script jobs
+
+* Cloning & Replacing dotfiles
+* Replacing dotfiles
+* Restore archlinux packages using `bacpac`
+* Install python using `pyenv`
+* Change user shell
+
+---
+# Version info
+
+## v1.11.0: Add vim-ref, javascript completion
+
+* zsh
+    * [add] setopt correct: thefuck zsh version
+    * [mod] zsh history place @.zshrc
+    * [mod] .zsh_history place / yaourt use pacman instead of powerpill TEMP
+    * [add] delimiter @.zshrc
+    * [mod] fzf default option
+
+* vim
+    * [mod] default site change to weblio @vim-ref
+    * [add] vim-ref other sources & keymaps
+    * [add] repeat.vim enhance surround.vim
+    * [mod] tmux-w3m search keymap <prefix>g-><prefix>n
+    * [add] keymap <space>k & vim-ref comment @plugins.toml
+    * [add] wildignorecase on command line completion @vimrc, nvim/options
+    * [add] tmux google/man search
+    * [add] vim-ref other sources {wikipedia wiktionary jquery javascript koktobank kotobankej} w3m.vim
+    * [mod] ALE option use location list (default close)
+    * [add] vim-ref ref-sources jsref jqapi @nvim/plugins
+    * [fix] manual path
+    * [fix] vim fileencoding
+    * [add] for javasctipt env at neovim
+    * [mod] nvim/denite config @python.toml; conda restore comman @.install/install
+    * [add] neovim plugins: YankRing/vim-closetag/vim-signature @plugins.toml
+    * [add] installation @README.md
+    * [del] ignore tab option @.config/dein/python.toml
+    * [add] defx install & example keybind @.config/dein/python.toml
+    * comment out jsfain/gen_tags.vim @dein/plugins.toml
+    * [add] denite keymap: denite directory_rec, directory_mru, denite help
+    * [mod] Y; yank to EOL. fix for YankRing collision
+    * [add] tpope/vim-unimpaied: vim keymapping
+    * [add] set pyenv tags file path @nvim/options
+    * [add] file encordings @vimrc, options.rc.vim
+
+* python
+    * [add] nearest_x() @ipython startup
+    * [add] $PYTHONPATH in tags path of neovim
+    * [mod] port number fix @jupyter notebook config
+    * [mod] less(), mirror(), attribute @04_useful_func
+    * [mod] pd.read_tables() function @04_useful.ipy
+    * [update] conda snow yml file
+
+* pacman / yaourt / powerpill
+    * [revert] yaourt use powerpill instead of pacman @.yaourtrc
+    * [fix] yaourt use powerpill (cause of fixed powerpill)
+
+* w3m
+    * [add] <C-E>, <C-Y> for down/up @w3m/keymap
+
+* bacoac
+    * [add] node-jshint, eslint, powerpill [rm] GUI xfce's @bacpac
+
+* git
+    * [mod] fetch option @.gitconfig
+
+* etc
+    * [add] skip extensions .eps, .pdf, .aux @.globalrc
+
+
+## v1.10.0: Install scripts
+
 * .install/install
     * [mod] clone branch=master@install
     * [mod] directory check @install
@@ -80,7 +170,7 @@
 
 
 
-# v1.9.0; Neovim python env
+## v1.9.0; Neovim python env
 * Neovim
     * [rm]lightlinw-bufferline @.config/dein
     * [add]markdown2ctags @.config/dein/plugins.toml
@@ -134,7 +224,7 @@
     * [rm].zsh_functions file
 
 
-# v1.8.1: Tmux / Zsh / Neovim powerline theme
+## v1.8.1: Tmux / Zsh / Neovim powerline theme
 
 ## ---Summary---
 * tmux
@@ -193,7 +283,7 @@
 
 
 
-# v1.8.0 Neovim / Dein installed
+## v1.8.0 Neovim / Dein installed
 
 ## ---summary---
 * .zshrc
@@ -286,7 +376,7 @@
 
 
 
-# v1.7.0
+## v1.7.0
 zsh auto-fu & twitter.sh & Excute time & history sharing / tmux.conf : save-session & paste mode / git diff-so-fancy / shell function cconv: Currency CONVersion
 
 ## ---summary---

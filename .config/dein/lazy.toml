@@ -50,7 +50,7 @@ on_ft = 'python'
 
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
-on_ft = ['python', 'sh']
+on_ft = ['python', 'sh', 'js', 'javascript']
 hook_add= '''
 " エラー行に表示するマーク
 let g:ale_sign_error = '⨉'
@@ -69,10 +69,12 @@ let g:ale_lint_on_save = 1
 " 編集中のlintはしない
 let g:ale_lint_on_text_changed = 'never'
 
-" lint結果をロケーションリストまたはQuickFixには表示
-let g:ale_set_loclist = 0  "Default 1
-" let g:ale_set_quickfix = 0
-let g:ale_open_list = 1
+" lint結果をロケーションリストに表示
+let g:ale_set_loclist = 1
+" lint結果をQuickfixに表示しない
+let g:ale_set_quickfix = 0
+" lint結果をデフォルトで表示しない(:lopenで開く)
+let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 
 " Disable completion where available.
@@ -80,11 +82,14 @@ let g:ale_completion_enabled = 0
 
 " 有効にするlinter
 " Check Python files with flake8 and pylint.
-let g:ale_linters = {'python': ['flake8', 'pylint'],
+let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'sh': ['shellcheck'],
+                    \ 'javascript': ['jshint', 'eslint'],
                     \ }
 " Fix Python files with autopep8 and yapf.
-let g:ale_fixers = {'python': ['autopep8', 'yapf']}
+let g:ale_fixers = { 'python': ['autopep8', 'yapf'],
+                   \ 'javascript': ['eslint'],
+                   \ }
 " Disable warnings about trailing whitespace for Python files.
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_fix_on_save = 1
@@ -119,4 +124,3 @@ let g:quickrun_config = {
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>b :QuickRun <CR>
 '''
-

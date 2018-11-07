@@ -9,6 +9,7 @@ set nobackup            " do not keep a backup file, use versions instead
 "set clipboard+=autoselect " copy to clipboard in selection
 set hidden              " Enable opening another file while editting a file
 set ignorecase          " Search ignore case
+set wildignorecase      " Command line ignore case
 set smartcase           " Search ignore case if only use letter case
 set display=lastline    " 長い行の表示
 set pumheight=10        " 補完ウィンドウの大きさ
@@ -21,6 +22,9 @@ set tabstop=4           " The width of a TAB is set to 4.
 set shiftwidth=4        " Indents will have a width of 4
 set softtabstop=4       " Sets the number of columns for a TAB
 set expandtab           " Expand TABs to spaces
+filetype plugin indent on " filetypeによってインデント設定を変える
+
+" 文字装飾、ハイライト
 set cursorline          " Highlight corsorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
@@ -56,3 +60,13 @@ augroup END
 " `:e %%`アクティブなファイルが含まれているディレクトリを手早く展開する
 " :eだけでなく:wや:rでも使える。
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" tags path
+autocmd BufNewFile,BufRead *.py set tags+=${PYTHONPATH}/tags
+autocmd BufNewFile,BufRead *.py set tags+=${PYENV_ROOT}/versions/miniconda3-latest/envs/snow/lib/python3.6/site-packages/tags
+
+" file encodings
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
+
