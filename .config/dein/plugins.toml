@@ -254,7 +254,7 @@ function! g:ref_source_webdict_sites.jquery.filter(output)
 endfunction
 
 " Option
-let g:ref_source_webdict_sites.default = 'kotobankej'  " Ref webdict {word}で和英検索
+let g:ref_source_webdict_sites.default = 'weblio'  " Ref webdict {word}で和英/和英検索
 let g:ref_source_webdict_use_cache = 1
 let g:ref_use_cache           = 1
 let g:ref_cache_dir               = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/cache'
@@ -266,7 +266,7 @@ map <C-k> [Ref]
 " カレントワードをコマンドラインに貼り付け、カーソルを'webdict'の前に置く
 " <CR>で即座に和英検索 or 別のリファレンスソースに変えてから検索
 nnoremap [Ref]      :Ref webdict <C-R><C-W><C-Left><Left>
-" カレントワードを英和検索
+" カレントワードを英和/和英検索
 nnoremap [Ref]<C-K> :Ref webdict <C-R><C-W><CR>
 '''
 
