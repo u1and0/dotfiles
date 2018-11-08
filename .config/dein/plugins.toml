@@ -21,35 +21,31 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]  # Toml
 repo = 'cespare/vim-toml'
 
-[[plugins]]  # Neo Term using `:T <terminal command>`
-repo = 'kassio/neoterm'
-
 [[plugins]]  # Japanese doc
 repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
     set helplang=ja,en
 '''
 
-[[plugins]]  # Multi-cursol
+[[plugins]]  # Multi-cursol keymap: g<C-N> (Just<C-N> corrade with YankRing)
 repo = 'terryma/vim-multiple-cursors'
 
 [[plugins]]  # Multi highlight
 repo = 't9md/vim-quickhl'
 hook_add = '''
-    nmap <Space>m <Plug>(quickhl-manual-this)
-    xmap <Space>m <Plug>(quickhl-manual-this)
+    nmap <Leader>m <Plug>(quickhl-manual-this)
+    xmap <Leader>m <Plug>(quickhl-manual-this)
 
-    nmap <Space>w <Plug>(quickhl-manual-this-whole-word)
-    xmap <Space>w <Plug>(quickhl-manual-this-whole-word)
+    nmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
+    xmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
 
-    nmap <Space>c <Plug>(quickhl-manual-clear)
-    vmap <Space>c <Plug>(quickhl-manual-clear)
+    nmap <Leader>c <Plug>(quickhl-manual-clear)
+    vmap <Leader>c <Plug>(quickhl-manual-clear)
 
-    nmap <Space>M <Plug>(quickhl-manual-reset)
-    xmap <Space>M <Plug>(quickhl-manual-reset)
+    nmap <Leader>M <Plug>(quickhl-manual-reset)
+    xmap <Leader>M <Plug>(quickhl-manual-reset)
 
-    nmap <Space>j <Plug>(quickhl-cword-toggle)
-    map H <Plug>(operator-quickhl-manual-this-motion)
+    nmap <Leader>q <Plug>(quickhl-cword-toggle)
 '''
 
 [[plugins]]  # Commentout plugin use 'Ctrl+/(C-_)'
