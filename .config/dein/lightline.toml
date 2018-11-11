@@ -3,6 +3,8 @@
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 " lightline.vim
+" 左は静的情報(mode, filetype, encode)
+" 右は動的情報(git, syntax, line)
 let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
@@ -17,12 +19,12 @@ let g:lightline = {
         \   'left': [
         \     ['mode', 'paste'],
         \     ['filename'],
-        \     ['fugitive', 'gitgutter', 'ale'],
+        \     ['filetype', 'fileencoding'],
         \   ],
         \   'right': [
-        \     ['percent', 'lineinfo', 'syntastic'],
-        \     ['readonly','pyenv'],
-        \     ['fileencoding', 'filetype']
+        \     ['percent', 'lineinfo'],
+        \     ['gitgutter', 'fugitive', 'pyenv'],
+        \     ['syntastic', 'ale'],
         \   ]
         \ },
         \ 'component_function': {
@@ -90,7 +92,13 @@ function! MyMode()
 endfunction
 
 function! MyPyenvVersion()
-  return '⌘ '.pyenv#info#preset('short')[1:]
+" systemかbuiltin以外のPyenvでenv nameを返す
+  let env = pyenv#info#preset('short')[1:]
+  if env == 'system' || env == 'builtin'
+    return ''
+  else
+    return '⌘ '.env
+  endif
 endfunction
 
 function! MyGitGutter()
