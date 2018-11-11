@@ -2,11 +2,6 @@
 [[plugins]] # Status line
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-" vim-gitgutter
-let g:gitgutter_sign_added = '✚'
-let g:gitgutter_sign_modified = '➜'
-let g:gitgutter_sign_removed = '✘'
-
 " lightline.vim
 let g:lightline = {
         \ 'colorscheme': 'wombat',
@@ -16,8 +11,8 @@ let g:lightline = {
             \ 'inactive': [ 'tabnum', 'filename', 'modified' ]
         \ },
         \ 'tabline': {
-            \ 'left': [ [ 'tabs' ] ],
-            " \ 'right': [ [ 'buffers' ] ]
+            \ 'left': [ [ 'buffers' ] ],
+            \ 'right': [ [ 'tabs' ] ],
         \ },
         \ 'active': {
         \   'left': [
@@ -49,7 +44,12 @@ let g:lightline = {
         \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
         \ 'component_type':{'buffers': 'tabsel'},
         \ 'separator': {'left': '', 'right': ''},
-        \ 'subseparator': {'left': '', 'right': ''}
+        \ 'subseparator': {'left': '', 'right': ''},
+        \ 'bufferline': {
+        \   'show_number': 2,
+        \   'number_map':{0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+        \                 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+        \ },
         \ }
 
 function! MyModified()
@@ -157,4 +157,10 @@ function! MyCharCode()
 
   return "'". char ."' ". nr
 endfunction
+
+set showtabline=2
 '''
+
+[[plugins]] # bufferline
+repo = 'mgee/lightline-bufferline'
+on_source = 'lightline.vim'

@@ -17,6 +17,12 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]  # vim-gitgutter
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    " vim-gitgutter
+    let g:gitgutter_sign_added = '✚'
+    let g:gitgutter_sign_modified = '➜'
+    let g:gitgutter_sign_removed = '✘'
+'''
 
 [[plugins]]  # Toml
 repo = 'cespare/vim-toml'
@@ -190,6 +196,7 @@ repo = 'kshenoy/vim-signature'
 hook_add='''
     nnoremap <silent> <F3> :SignatureToggle<CR>
     nnoremap <silent> <F4> :SignatureListBufferMarks<CR>
+
 '''
 
 # ========Vim References========
@@ -271,8 +278,8 @@ nnoremap [Ref]<C-K> :Ref webdict <C-R><C-W><CR>
 repo = 'mojako/ref-sources.vim'
 depends = 'thinca/vim-ref'
 hook_add = '''
-" カレントワードをwikipedia検索
-nnoremap [Ref]<C-W> :Ref wikipedia <C-R><C-W><CR>
+    " カレントワードをwikipedia検索
+    nnoremap [Ref]<C-W> :Ref wikipedia <C-R><C-W><CR>
 '''
 
 [[plugins]]  # vim-ref sources (Answer.com, Reverso, Hyper Dictionary, Longman, Oxford Dictionaries, Synonym.com)
@@ -283,22 +290,36 @@ depends = 'thinca/vim-ref'
 repo = 'tokuhirom/jsref'
 depends = 'thinca/vim-ref'
 hook_add = '''
-let g:ref_javascript_doc_path = $HOME . '/.local/share/dein/repos/github.com/tokuhirom/jsref/htdocs'
+    let g:ref_javascript_doc_path = $HOME . '/.local/share/dein/repos/github.com/tokuhirom/jsref/htdocs'
 '''
 
 [[plugins]]  # jQuery manual
 repo = 'mustardamus/jqapi'
 depends = 'thinca/vim-ref'
 hook_add = '''
-let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
+    let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
 '''
 
 [[plugins]]  # CUI web browser
 repo = 'yuratomo/w3m.vim'
 hook_add = '''
-nnoremap [Ref]<C-G> :W3mSplit <C-R>
-" 続けて<C-W>で word 貼り付け
-" 続けて<C-A>で WORD 貼り付け
-" 続けて"で バッファを貼り付け
-" :help <C-R> for more help
+    nnoremap [Ref]<C-G> :W3mSplit <C-R>
+    " 続けて<C-W>で word 貼り付け
+    " 続けて<C-A>で WORD 貼り付け
+    " 続けて"で バッファを貼り付け
+    " :help <C-R> for more help
 '''
+
+# ==============================
+
+[[plugins]]  # Project manage
+repo = 'vimplugin/project.vim'
+hook_add = '''
+    " 開始したときカレントディレクトリに.vimprojects ファイルがあれば読み込む
+    if getcwd() != $HOME
+        if filereadable(getcwd(). '/.vimprojects')
+            Project .vimprojects
+        endif
+    endif
+'''
+
