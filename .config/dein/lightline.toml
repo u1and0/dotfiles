@@ -19,12 +19,13 @@ let g:lightline = {
         \   'left': [
         \     ['mode', 'paste'],
         \     ['filename'],
-        \     ['filetype', 'fileencoding'],
+        \     ['filetype', 'fileencoding', 'fileformat'],
         \   ],
         \   'right': [
+        \     [ 'linter_checking', 'linter_errors',
+        \       'linter_warnings', 'linter_ok' ],
         \     ['percent', 'lineinfo'],
-        \     ['gitgutter', 'fugitive', 'pyenv'],
-        \     ['syntastic', 'ale'],
+        \     ['pyenv','fugitive', 'gitgutter' ],
         \   ]
         \ },
         \ 'component_function': {
@@ -39,8 +40,7 @@ let g:lightline = {
         \   'pyenv': 'MyPyenvVersion',
         \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
-        \   'gitgutter': 'MyGitGutter',
-        \   'ale': 'ALEGetStatusLine'
+        \   'gitgutter': 'MyGitGutter'
         \ },
         \ 'separator': {'left': '', 'right': ''},
         \ 'subseparator': {'left': '', 'right': ''},
@@ -159,6 +159,23 @@ function! MyCharCode()
 endfunction
 '''
 
+[[plugins]] # Display ALE status on status line
+repo = 'maximbaz/lightline-ale'
+hook_add = '''
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+let g:lightline.component_type = {
+      \  'linter_checking': 'left',
+      \  'linter_warnings': 'warning',
+      \  'linter_errors': 'error',
+      \  'linter_ok': 'left',
+      \ }
+'''
+
 [[plugins]] # bufferline
 repo = 'mgee/lightline-bufferline'
 depends = 'lightline.vim'
@@ -167,9 +184,8 @@ hook_add = '''
 
     " Overwrite lighline#tabline
     let g:lightline.tabline = {'left': [['buffers']], 'right': [['tabs']]}
-    let g:lightline.component_expand =
-        \ {'buffers': 'lightline#bufferline#buffers'}
-    let g:lightline.component_type   = {'buffers': 'tabsel'}
+    let g:lightline.component_expand.buffers = 'lightline#bufferline#buffers'
+    let g:lightline.component_type.buffers = 'tabsel'
 
     " Buffer line setting
     let g:lightline#bufferline#unnamed = '[No Name]'
