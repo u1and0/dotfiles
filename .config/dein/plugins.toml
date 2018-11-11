@@ -312,14 +312,3 @@ hook_add = '''
 
 # ==============================
 
-[[plugins]]  # Project manage
-repo = 'vimplugin/project.vim'
-hook_add = '''
-    " 開始したときカレントディレクトリに.vimprojects ファイルがあれば読み込む
-    if getcwd() != $HOME
-        if filereadable(getcwd(). '/.vimprojects')
-            Project .vimprojects
-        endif
-    endif
-'''
-
