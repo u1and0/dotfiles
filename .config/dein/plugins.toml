@@ -83,9 +83,9 @@ hook_add = '''
 [[plugins]]  # python indent
 repo = 'hynek/vim-python-pep8-indent'
 
-[[plugins]]  # Faster matcher. Needs cmake & boost: `pacman -S cmake boost`
-repo = 'nixprime/cpsm'
-build = 'env PY3=ON ./install.sh'
+# [[plugins]]  # Faster matcher. Needs cmake & boost: `pacman -S cmake boost`
+# repo = 'nixprime/cpsm'
+# build = 'env PY3=ON ./install.sh'
 
 [[plugins]]  # 末尾の全角と半角の空白文字を赤くハイライト
 repo = 'bronson/vim-trailing-whitespace'
