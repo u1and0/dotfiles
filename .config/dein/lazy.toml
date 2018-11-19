@@ -84,12 +84,14 @@ let g:ale_completion_enabled = 0
 " Check Python files with flake8 and pylint.
 let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'sh': ['shellcheck'],
-                    \ 'javascript': ['jshint', 'eslint'],
+                    \ 'javascript': ['jshint',],
+                    \ 'html': ['jshint',],
                     \ }
+                    " \ 'html': ['jshint', 'eslint'],
 " Fix Python files with autopep8 and yapf.
 let g:ale_fixers = { 'python': ['autopep8', 'yapf'],
-                   \ 'javascript': ['eslint'],
                    \ }
+                   " \ 'javascript': ['eslint'],
 " Disable warnings about trailing whitespace for Python files.
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_fix_on_save = 1
