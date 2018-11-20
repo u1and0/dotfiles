@@ -261,3 +261,12 @@ hook_add='''
         \ defx#do_action('print')
     endfunction
 '''
+
+[[plugins]]  # Visualizing your Vim undo tree.
+repo = 'sjl/gundo.vim'
+hook_add = '''
+    if has('python3')
+        let g:gundo_prefer_python3 = 1          " anything else breaks on Ubuntu 16.04+
+    endif
+    nnoremap <silent> <F4> :GundoToggle<CR>
+'''

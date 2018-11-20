@@ -195,8 +195,6 @@ repo = 'alvan/vim-closetag'
 repo = 'kshenoy/vim-signature'
 hook_add='''
     nnoremap <silent> <F3> :SignatureToggle<CR>
-    nnoremap <silent> <F4> :SignatureListBufferMarks<CR>
-
 '''
 
 # ========Vim References========
