@@ -61,3 +61,8 @@ set fileformats=unix,dos,mac
 
 " spell check language
 set spelllang=en,cjk
+
+" grep program
+if executable('rg')
+    set grepprg=rg\ -nH
+endif
