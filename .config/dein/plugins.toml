@@ -270,6 +270,13 @@ map <C-k> [Ref]
 nnoremap [Ref]      :Ref webdict <C-R><C-W><C-Left><Left>
 " カレントワードを英和/和英検索
 nnoremap [Ref]<C-K> :Ref webdict <C-R><C-W><CR>
+
+" Refで開いたウィンドウではq でバッファを閉じる
+augroup RefAutoCmd
+    autocmd!
+    autocmd RefAutoCmd FileType man,ref-* nnoremap <buffer> q <C-w>c<Paste>
+augroup END
+
 '''
 
 [[plugins]]  # vim-ref sources (英辞郎, CPAN, jQAPI, コトバンク, Wikipedia)
