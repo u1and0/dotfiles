@@ -4,6 +4,22 @@
 import pandas as pd
 
 
+def nearest_x(series, value):
+    """valueに指定した値に近い順に並べ替えたSeriesを返す
+    args:
+        * series: pandas Series
+        * value: -3なら3下がったところ
+    return:
+        * absolute_sub: indexとその偏差がvalueに
+                        入ったpandas Series
+    """
+    # オフセット値の設定
+    down = series.max() + value
+    # 近い値順にソートして偏差を値とする
+    absolute_sub = pd.Series(abs(series - down)).sort_values()
+    return absolute_sub
+
+
 def _less(self, n=10):
     """Append `df.head()` with `df.tail()`"""
     return self.head(n // 2).append(self.tail(n // 2))
@@ -19,12 +35,14 @@ def _read_tables(*files, **kwargs):
     Super function of `pd.read_table()`
     """
     return pd.DataFrame(
-        {f: pd.read_table(f, **kwargs).squeeze() for f in files})
+        {f: pd.read_table(f, **kwargs).squeeze()
+         for f in files})
 
 
 NAMES = [
     ('less', _less),
     ('mirror', _mirror),
+    ('nearest_x', nearest_x),
 ]
 
 

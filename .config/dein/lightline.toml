@@ -2,12 +2,9 @@
 [[plugins]] # Status line
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-" vim-gitgutter
-let g:gitgutter_sign_added = '✚'
-let g:gitgutter_sign_modified = '➜'
-let g:gitgutter_sign_removed = '✘'
-
 " lightline.vim
+" 左は静的情報(mode, filetype, encode)
+" 右は動的情報(git, syntax, line)
 let g:lightline = {
         \ 'colorscheme': 'wombat',
         \ 'mode_map': {'c': 'NORMAL'},
@@ -17,18 +14,18 @@ let g:lightline = {
         \ },
         \ 'tabline': {
             \ 'left': [ [ 'tabs' ] ],
-            " \ 'right': [ [ 'buffers' ] ]
         \ },
         \ 'active': {
         \   'left': [
         \     ['mode', 'paste'],
         \     ['filename'],
-        \     ['fugitive', 'gitgutter', 'ale'],
+        \     ['filetype', 'fileencoding', 'fileformat'],
         \   ],
         \   'right': [
-        \     ['percent', 'lineinfo', 'syntastic'],
-        \     ['readonly','pyenv'],
-        \     ['fileencoding', 'filetype']
+        \     [ 'linter_checking', 'linter_errors',
+        \       'linter_warnings', 'linter_ok' ],
+        \     ['percent', 'lineinfo'],
+        \     ['pyenv','fugitive', 'gitgutter' ],
         \   ]
         \ },
         \ 'component_function': {
@@ -43,13 +40,10 @@ let g:lightline = {
         \   'pyenv': 'MyPyenvVersion',
         \   'syntastic': 'SyntasticStatuslineFlag',
         \   'charcode': 'MyCharCode',
-        \   'gitgutter': 'MyGitGutter',
-        \   'ale': 'ALEGetStatusLine'
+        \   'gitgutter': 'MyGitGutter'
         \ },
-        \ 'component_expand': {'buffers': 'lightline#bufferline#buffers'},
-        \ 'component_type':{'buffers': 'tabsel'},
         \ 'separator': {'left': '', 'right': ''},
-        \ 'subseparator': {'left': '', 'right': ''}
+        \ 'subseparator': {'left': '', 'right': ''},
         \ }
 
 function! MyModified()
@@ -98,7 +92,13 @@ function! MyMode()
 endfunction
 
 function! MyPyenvVersion()
-  return '⌘ '.pyenv#info#preset('short')[1:]
+" systemかbuiltin以外のPyenvでenv nameを返す
+  let env = pyenv#info#preset('short')[1:]
+  if env == 'system' || env == 'builtin'
+    return ''
+  else
+    return '⌘ '.env
+  endif
 endfunction
 
 function! MyGitGutter()
@@ -157,4 +157,56 @@ function! MyCharCode()
 
   return "'". char ."' ". nr
 endfunction
+'''
+
+[[plugins]] # Display ALE status on status line
+repo = 'maximbaz/lightline-ale'
+depends = 'lightline.vim'
+hook_add = '''
+    let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+    let g:lightline.component_type = {
+      \  'linter_checking': 'left',
+      \  'linter_warnings': 'warning',
+      \  'linter_errors': 'error',
+      \  'linter_ok': 'left',
+      \ }
+    let g:lightline#ale#indicator_errors = '⨉: '
+    let g:lightline#ale#indicator_warnings = '⚠ : '
+'''
+
+[[plugins]] # bufferline
+repo = 'mgee/lightline-bufferline'
+depends = 'lightline.vim'
+hook_add = '''
+    set showtabline=2  " Always show tabline & bufferline
+
+    " Overwrite lighline#tabline
+    let g:lightline.tabline = {'left': [['buffers']], 'right': [['tabs']]}
+    let g:lightline.component_expand.buffers = 'lightline#bufferline#buffers'
+    let g:lightline.component_type.buffers = 'tabsel'
+
+    " Buffer line setting
+    let g:lightline#bufferline#unnamed = '[No Name]'
+    let g:lightline#bufferline#show_number = 2
+    let g:lightline#bufferline#number_map =
+                                \ {0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+                                \  5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+
+    " Keymaps
+    " Jump to buffer number
+    nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+    nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+    nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+    nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+    nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+    nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+    nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+    nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+    nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+    nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 '''

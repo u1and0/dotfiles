@@ -17,12 +17,15 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]  # vim-gitgutter
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    " vim-gitgutter
+    let g:gitgutter_sign_added = '✚'
+    let g:gitgutter_sign_modified = '➜'
+    let g:gitgutter_sign_removed = '✘'
+'''
 
 [[plugins]]  # Toml
 repo = 'cespare/vim-toml'
-
-[[plugins]]  # Neo Term using `:T <terminal command>`
-repo = 'kassio/neoterm'
 
 [[plugins]]  # Japanese doc
 repo = 'vim-jp/vimdoc-ja'
@@ -30,26 +33,25 @@ hook_add = '''
     set helplang=ja,en
 '''
 
-[[plugins]]  # Multi-cursol
+[[plugins]]  # Multi-cursol keymap: g<C-N> (Just<C-N> corrade with YankRing)
 repo = 'terryma/vim-multiple-cursors'
 
 [[plugins]]  # Multi highlight
 repo = 't9md/vim-quickhl'
 hook_add = '''
-    nmap <Space>m <Plug>(quickhl-manual-this)
-    xmap <Space>m <Plug>(quickhl-manual-this)
+    nmap <Leader>m <Plug>(quickhl-manual-this)
+    xmap <Leader>m <Plug>(quickhl-manual-this)
 
-    nmap <Space>w <Plug>(quickhl-manual-this-whole-word)
-    xmap <Space>w <Plug>(quickhl-manual-this-whole-word)
+    nmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
+    xmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
 
-    nmap <Space>c <Plug>(quickhl-manual-clear)
-    vmap <Space>c <Plug>(quickhl-manual-clear)
+    nmap <Leader>c <Plug>(quickhl-manual-clear)
+    vmap <Leader>c <Plug>(quickhl-manual-clear)
 
-    nmap <Space>M <Plug>(quickhl-manual-reset)
-    xmap <Space>M <Plug>(quickhl-manual-reset)
+    nmap <Leader>M <Plug>(quickhl-manual-reset)
+    xmap <Leader>M <Plug>(quickhl-manual-reset)
 
-    nmap <Space>j <Plug>(quickhl-cword-toggle)
-    map H <Plug>(operator-quickhl-manual-this-motion)
+    nmap <Leader>q <Plug>(quickhl-cword-toggle)
 '''
 
 [[plugins]]  # Commentout plugin use 'Ctrl+/(C-_)'
@@ -65,6 +67,9 @@ repo = 'tpope/vim-obsession'
 [[plugins]]  # Select then 'S'
 repo = 'tpope/vim-surround'
 
+[[plugins]]  # Repead surroud.vim
+repo = 'tpope/vim-repeat'
+
 [[plugins]]  # Auto-bracket correction
 repo = 'jiangmiao/auto-pairs'
 
@@ -78,9 +83,9 @@ hook_add = '''
 [[plugins]]  # python indent
 repo = 'hynek/vim-python-pep8-indent'
 
-[[plugins]]  # Faster matcher. Needs cmake & boost: `pacman -S cmake boost`
-repo = 'nixprime/cpsm'
-build = 'env PY3=ON ./install.sh'
+# [[plugins]]  # Faster matcher. Needs cmake & boost: `pacman -S cmake boost`
+# repo = 'nixprime/cpsm'
+# build = 'env PY3=ON ./install.sh'
 
 [[plugins]]  # 末尾の全角と半角の空白文字を赤くハイライト
 repo = 'bronson/vim-trailing-whitespace'
@@ -173,3 +178,135 @@ repo = 'tpope/vim-abolish'
 
 [[plugins]]  # pairs of handy bracket mappings http://www.vim.org/scripts/script.php
 repo = 'tpope/vim-unimpaired'
+
+[[plugins]]  # Yank History
+repo = 'vim-scripts/YankRing.vim'
+hook_add='''
+    nnoremap <silent> <F9> :YRShow<CR>
+    function! YRRunAfterMaps()
+        nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+    endfunction
+'''
+
+[[plugins]]  # HTML tag completion
+repo = 'alvan/vim-closetag'
+
+[[plugins]]  # Place, toggle and display marks.
+repo = 'kshenoy/vim-signature'
+hook_add='''
+    nnoremap <silent> <F3> :SignatureToggle<CR>
+'''
+
+# ========Vim References========
+[[plugins]]  # vim reference
+repo = 'thinca/vim-ref'
+hook_add = '''
+let g:ref_detect_filetype         = {
+            \    'css':        'phpmanual',
+            \    'html':       ['phpmanual',  'javascript', 'jquery'],
+            \    'javascript': ['javascript', 'jquery'],
+            \    'php':        ['phpmanual',  'javascript', 'jquery']
+            \}
+
+" To download the phpmanual, type below on your shell.
+" wget http://jp2.php.net/get/php_manual_ja.tar.gz/from/this/mirror ~/.local/share/dein/repos/github.com/thinca/vim-ref/mirror && aunpack mirror
+let g:ref_phpmanual_path      = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/php-chunked-xhtml'
+let g:ref_source_webdict_sites = {
+            \   'wiktionary': {
+            \     'url': 'http://ja.wiktionary.org/wiki/%s',
+            \   },
+            \   'kotobank': {
+            \     'url': 'https://kotobank.jp/word/%s',
+            \   },
+            \   'kotobankej': {
+            \     'url': 'https://kotobank.jp/ejword/%s',
+            \   },
+            \   'kotobankje': {
+            \     'url': 'https://kotobank.jp/jeword/%s',
+            \   },
+            \   'weblio': {
+            \     'url': 'https://ejje.weblio.jp/content/%s',
+            \   },
+            \   'jquery': {
+            \     'url': 'https://api.jquery.com/%s/',
+            \     'cache': 0,
+            \   },
+            \ }
+" jqueryはmustardamus/jqapiの代わり
+
+" Filter function
+" 出力に対するフィルタ。最初と最後の数行を削除
+function! g:ref_source_webdict_sites.wiktionary.filter(output)
+      return join(split(a:output, "\n")[16 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.kotobank.filter(output)
+      return join(split(a:output, "\n")[15 : -57], "\n")
+endfunction
+function! g:ref_source_webdict_sites.kotobankej.filter(output)
+      return join(split(a:output, "\n")[21 : -35], "\n")
+endfunction
+function! g:ref_source_webdict_sites.kotobankje.filter(output)
+      return join(split(a:output, "\n")[21 : -35], "\n")
+endfunction
+function! g:ref_source_webdict_sites.weblio.filter(output)
+      return join(split(a:output, "\n")[20 : ], "\n")
+endfunction
+function! g:ref_source_webdict_sites.jquery.filter(output)
+      return join(split(a:output, "\n")[51 : -131], "\n")
+endfunction
+
+" Option
+let g:ref_source_webdict_sites.default = 'weblio'  " Ref webdict {word}で和英/和英検索
+let g:ref_source_webdict_use_cache = 1
+let g:ref_use_cache           = 1
+let g:ref_cache_dir               = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/cache'
+let g:ref_use_vimproc         = 1
+
+" Keymap
+nmap [Ref] <Nop>
+map <C-k> [Ref]
+" カレントワードをコマンドラインに貼り付け、カーソルを'webdict'の前に置く
+" <CR>で即座に和英検索 or 別のリファレンスソースに変えてから検索
+nnoremap [Ref]      :Ref webdict <C-R><C-W><C-Left><Left>
+" カレントワードを英和/和英検索
+nnoremap [Ref]<C-K> :Ref webdict <C-R><C-W><CR>
+'''
+
+[[plugins]]  # vim-ref sources (英辞郎, CPAN, jQAPI, コトバンク, Wikipedia)
+repo = 'mojako/ref-sources.vim'
+depends = 'thinca/vim-ref'
+hook_add = '''
+    " カレントワードをwikipedia検索
+    nnoremap [Ref]<C-W> :Ref wikipedia <C-R><C-W><CR>
+'''
+
+[[plugins]]  # vim-ref sources (Answer.com, Reverso, Hyper Dictionary, Longman, Oxford Dictionaries, Synonym.com)
+repo = 'mfumi/ref-dicts-en.git'
+depends = 'thinca/vim-ref'
+
+[[plugins]]  # javascript manual
+repo = 'tokuhirom/jsref'
+depends = 'thinca/vim-ref'
+hook_add = '''
+    let g:ref_javascript_doc_path = $HOME . '/.local/share/dein/repos/github.com/tokuhirom/jsref/htdocs'
+'''
+
+[[plugins]]  # jQuery manual
+repo = 'mustardamus/jqapi'
+depends = 'thinca/vim-ref'
+hook_add = '''
+    let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
+'''
+
+[[plugins]]  # CUI web browser
+repo = 'yuratomo/w3m.vim'
+hook_add = '''
+    nnoremap [Ref]<C-G> :W3mSplit <C-R>
+    " 続けて<C-W>で word 貼り付け
+    " 続けて<C-A>で WORD 貼り付け
+    " 続けて"で バッファを貼り付け
+    " :help <C-R> for more help
+'''
+
+# ==============================
+

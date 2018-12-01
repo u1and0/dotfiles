@@ -3,7 +3,7 @@
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
-hook_source = '''
+hook_add = '''
     " Vim起動時にneocompleteを有効にする
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_ignore_case = 1
@@ -26,7 +26,7 @@ hook_source = '''
     endfunction
 
     " <S-TAB>: completion back.
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+    " inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
     " バックスペースで補完のポップアップを閉じる
     inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
@@ -60,18 +60,28 @@ hook_add = '''
     nmap <silent> [denite]<C-n> :<C-u>Denite file_rec<CR>
     " ホームディレクトリ以下のファイル
     nmap <silent> [denite]. :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/']}])<CR>
-    nnoremap ml :<C-u>call denite#start([{'name': 'file_rec', 'args': [g:memolist_path]}])<CR>
 
     " バッファからファイル名検索
     nmap <silent> [denite]<C-p> :<C-u>Denite buffer<CR>
     nmap <silent> [denite]<C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
 
-    " アクセス率の高いファイル
+    " アクセス率の高いファイルを開く
     nmap <silent> [denite]<C-j> :<C-u>Denite file_mru<CR>
+
+    " 過去に開いたファイル(:oldfilesで表示される)を開く
     nmap <silent> [denite]<C-z> :<C-u>Denite file_old<CR>
+
+    " 現在ディレクトリ以下のディレクトリからファイルを開く
+    nmap <silent> [denite],     :<C-u>Denite directory_rec<CR>
+
+    " よく行くディレクトリへ移動
+    nmap <silent> [denite]<C-d> :<C-u>Denite directory_mru<CR>
 
     " yankで取り込んだバッファ検索
     nmap <silent> [denite]<C-y> :<C-u>Denite neoyank<CR>
+
+    " help tag検索
+    nmap <silent> [denite]<C-h> :<C-u>Denite help<CR>
 
     " Denite中断したDeniteの続き
     nmap <silent> [denite]<C-r> :<C-u>Denite -resume<CR>
@@ -127,10 +137,10 @@ hook_add = '''
     call denite#custom#source('file_old', 'matchers',
           \ ['matcher_fuzzy', 'matcher_project_files'])
     call denite#custom#source('tag', 'matchers', ['matcher_substring'])
-    if has('nvim')
-        call denite#custom#source('file_rec,grep', 'matchers',
-            \ ['matcher_cpsm'])
-    endif
+    " if has('nvim')
+    "     call denite#custom#source('file_rec,grep', 'matchers',
+    "         \ ['matcher_cpsm'])
+    " endif
     call denite#custom#source('file_old', 'converters',
           \ ['converter_relative_word'])
 
@@ -250,4 +260,13 @@ hook_add='''
         nnoremap <silent><buffer><expr> <C-g>
         \ defx#do_action('print')
     endfunction
+'''
+
+[[plugins]]  # Visualizing your Vim undo tree.
+repo = 'sjl/gundo.vim'
+hook_add = '''
+    if has('python3')
+        let g:gundo_prefer_python3 = 1          " anything else breaks on Ubuntu 16.04+
+    endif
+    nnoremap <silent> <F4> :GundoToggle<CR>
 '''

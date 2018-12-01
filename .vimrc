@@ -36,7 +36,10 @@ set nobackup		" do not keep a backup file, use versions instead
 set clipboard+=autoselect " copy to clipboard in selection
 set hidden          " Enable opening another file while editting a file
 set ignorecase      " Search ignore case
+set wildignorecase  " Command line ignore case
 set smartcase       " Search ignore case if only use letter case
+set wildmenu        " コマンドライン上Tab補完
+set wildmode=full
 
 " Tab setting
 set tabstop=4       " The width of a TAB is set to 4.
@@ -175,5 +178,11 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " file encodings
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
+
+" spell check language
+set spelllang=en,cjk
+
+" Yank to end of line
+nnoremap Y y$

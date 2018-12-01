@@ -7,6 +7,9 @@ keymap { NULL
 keymap } NULL
 keymap b NULL
 keymap C-u NULL
+keymap C-q NULL
+keymap C-e NULL
+keymap C-y NULL
 
 # ====Command===
 keymap :: COMMAND
@@ -28,6 +31,8 @@ keymap d PREV_LINK
 keymap C-d NEXT_PAGE
 keymap C-u PREV_PAGE
 keymap b PREV_WORD
+keymap C-e UP
+keymap C-y DOWN
 
 # ====History navigation===
 keymap L NEXT
