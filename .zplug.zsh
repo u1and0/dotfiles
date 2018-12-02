@@ -34,8 +34,13 @@ zplug "jhawthorn/fzy",\
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then
-    bindkey '^P' history-substring-search-up
-    bindkey '^N' history-substring-search-down
+    if $ZSH_KEYBINDS_VIMODE; then
+        bindkey -M viins '^P'  history-substring-search-up
+        bindkey -M viins '^N'  history-substring-search-down
+    else
+        bindkey '^P' history-substring-search-up
+        bindkey '^N' history-substring-search-down
+    fi
 fi
 
 

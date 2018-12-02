@@ -29,6 +29,7 @@
 !.zshrc
 !.zsh_aliases
 !.zsh_functions
+!.zsh_keybinds
 
 # gitファイル
 !.tigrc
