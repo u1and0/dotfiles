@@ -270,3 +270,6 @@ hook_add = '''
     endif
     nnoremap <silent> <F4> :GundoToggle<CR>
 '''
+
+[[plugins]]  # Calculate mode
+repo = 'fedorenchik/VimCalc3'
