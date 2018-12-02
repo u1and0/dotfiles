@@ -93,7 +93,7 @@ alias gx='fzf-gitlog-multi-widget'
 
 # The most awesome Powerline theme for ZSH around!
 zplug 'bhilburn/powerlevel9k', as:theme
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context anaconda dir vcs newline)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vi_mode anaconda dir vcs newline)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs command_execution_time history time)
 
 # Dropbox
