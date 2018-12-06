@@ -93,8 +93,8 @@ zstyle ':completion:*:default' list-colors ""
 zstyle ':completion::expand:*' glob true            # echo /bin/*sh とかで展開する
 zstyle ':completion::expand:*' substitute true      # echo $(ls) とかで展開する
 zstyle ':completion:*' completer _oldlist _complete
-zstyle ':completion:*:default' menu select interactive  # Tabキーを押すと候補を選択できる
-setopt menu_complete
+zstyle ':completion:*:default' menu select #interactive  # Tabキーを押すと候補を選択できる
+# setopt menu_complete  # 絞込み検索  # tabですぐに選択できないので削除
 
 
 ########################################
