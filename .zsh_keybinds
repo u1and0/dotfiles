@@ -18,7 +18,8 @@ if $ZSH_KEYBINDS_VIMODE ;then  # vi-keybinds
     bindkey -M viins '^U'  backward-kill-line
     bindkey -M viins '^W'  backward-kill-word
     bindkey -M viins '^Y'  yank
-    bindkey -M vicmd '^M'  run-help  # cmd-mode時にC-Mで入力中コマンドのmanを開く
+    # bindkey -M vicmd '^M'  run-help  # cmd-mode時にC-Mで入力中コマンドのmanを開く
+    # C-MはEnterと同じ意味。紛らわしいので削除
     # vi-text object brackets
     autoload -U select-bracketed
     zle -N select-bracketed
