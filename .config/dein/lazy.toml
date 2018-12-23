@@ -126,3 +126,7 @@ let g:quickrun_config = {
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>b :QuickRun <CR>
 '''
+
+[[plugins]]  # :Zenkaku <--> :Hankaku
+repo = 'yuta-masano/hz_ja.vim'
+on_i = 1
