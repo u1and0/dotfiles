@@ -57,7 +57,7 @@ hook_add = '''
     " ファイルタイプが云々　不明
     nmap <silent> [denite]<C-t> :<C-u>Denite filetype<CR>
     " カレントディレクトリ以下のファイル
-    nmap <silent> [denite]<C-n> :<C-u>Denite file_rec<CR>
+    nmap <silent> [denite]<C-n> :<C-u>Denite file/rec<CR>
     " ホームディレクトリ以下のファイル
     nmap <silent> [denite]. :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/']}])<CR>
 
