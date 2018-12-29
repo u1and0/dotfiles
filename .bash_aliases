@@ -62,11 +62,9 @@ alias watchd='watch "du -d1 $1"'
 alias watchl='watch "ls -lthA $1"'
 
 # diff custom
-if [[ -x `which colordiff` ]]; then
-	  alias diff='colordiff -u'
-  else
-	    alias diff='diff -u'
-fi
+type colordiff > /dev/null 2>&1 &&
+    alias diff='colordiff -u' ||
+    alias diff='diff -u'
 
 # grep custom
 	# grep -r hogeで./以下のファイルの中身からhogeを検索
