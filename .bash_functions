@@ -158,6 +158,12 @@ function google() {
 }
 
 
+# wikipedia search using w3m
+function wikipedia() {
+    w3m https://ja.wikipedia.org/wiki/$1
+}
+
+
 # w3m search from history
 function whistory() {
     w3m `tac ${HOME}/.w3m/history | fzf`

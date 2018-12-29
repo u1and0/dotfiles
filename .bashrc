@@ -51,9 +51,6 @@ export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without us
 
 [ -f ~/.pyenvrc ] && [ -d ~/pyenv ] && . ~/.pyenvrc
 
-# thefuck: Magnificent app which corrects your previous console command
-type thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
-
 # facd: Frecency directory & file
 type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 

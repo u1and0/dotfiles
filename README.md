@@ -27,6 +27,49 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 ---
 # Version info
 
+## v1.12.0: zsh-keybinds/VI-MODE, Get vim plugins (bufferline, Gundo, Calculate), tmux-prefix: Space
+* bash
+    [rm] remove thefuck, use .zsh option instead
+    [mod] colordiff alias @.bash_alias
+    [add] wikipedia function @.bash_functions
+* zsh
+    [add] perl path added by cpan @.zshrc
+    [rm] run-help key @.zsh_keybinds
+    [rn] setopt menu_complete @.zshrc
+    [add] vi-mode displaied in prompt @.zplug.zsh
+    [add] zsh bindkey vi-mode !BREAKABLE CHANGE!
+* bacpac
+    [add] add modules yay & expac @bacpac
+* vim
+    [fix] file_rec -> file/rec @nvim python.toml
+    [add] :Zenkaku & :Hankaku plugin @lazy.toml
+    [add] calculate function for vim
+    [add] calclate function for vim
+    [add] nvim external grep program @option
+    [add] open quickfix using grep or vimgrep immediately
+    [add] autocmd for close window use q @plugins.toml
+    [add] Gundo.vim
+    [add] autocmd.rc.vim file
+    [add] html.vim in ftplugins
+    [ignore] cpsm matcher commented out @nvim dein
+    [rm] project.vim @nvim plugin
+    [add] set lightline error mark @nvim lightline
+    [add] lightline-ale @nvim lightline
+    [mod] modify display info @nvim lightline
+    [add] lighline x bufferline @nvim
+    [add]spellcheck use language cjk(=jp)  @.vimrc, nvim options
+    [add] F4: show markers location list @nvim
+    [add] dependency on vim-ref
+    [mod] only jshint
+    [mod] use <leader>k/j @ale jump
+    [mod] bufferline setting move to mgee/lighline-bufferline
+    [rm] delete never used plugins NeoTerm, memolist on denite
+* ranger
+    [add] viewnior as image viewer @ranger.conf
+* tmux
+    [mod] prefix key change from S to Space @.tmux.conf
+    [add] htop on split window @.tmux.conf
+
 ## v1.11.0: Add vim-ref, javascript completion
 
 * zsh
@@ -77,7 +120,7 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 * w3m
     * [add] <C-E>, <C-Y> for down/up @w3m/keymap
 
-* bacoac
+* bacpac
     * [add] node-jshint, eslint, powerpill [rm] GUI xfce's @bacpac
 
 * git

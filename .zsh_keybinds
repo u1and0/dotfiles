@@ -1,0 +1,64 @@
+if $ZSH_KEYBINDS_VIMODE ;then  # vi-keybinds
+    bindkey -v
+    bindkey -M viins '\er' history-incremental-pattern-search-forward
+    bindkey -M viins '^?'  backward-delete-char
+    bindkey -M viins '^A'  beginning-of-line
+    bindkey -M viins '^B'  backward-char
+    bindkey -M viins '^D'  kill-word #delete-char-or-list
+    bindkey -M viins '^E'  end-of-line
+    bindkey -M viins '^F'  forward-char
+    bindkey -M viins '^G'  send-break
+    bindkey -M viins '^H'  backward-delete-char
+    bindkey -M viins '^J'  accept-and-infer-next-history
+    bindkey -M viins '^K'  kill-line
+    bindkey -M viins '^N'  down-line-or-history
+    bindkey -M viins '^P'  up-line-or-history
+    bindkey -M viins '^O'  reverse-menu-complete  # ^Iはデフォルトでmenu-complete
+    bindkey -M viins '^R'  history-incremental-pattern-search-backward
+    bindkey -M viins '^U'  backward-kill-line
+    bindkey -M viins '^W'  backward-kill-word
+    bindkey -M viins '^Y'  yank
+    # bindkey -M vicmd '^M'  run-help  # cmd-mode時にC-Mで入力中コマンドのmanを開く
+    # C-MはEnterと同じ意味。紛らわしいので削除
+    # vi-text object brackets
+    autoload -U select-bracketed
+    zle -N select-bracketed
+    for m in visual viopp; do
+        for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+            bindkey -M $m $c select-bracketed
+        done
+    done
+    # vi-text object quote
+    autoload -U select-quoted
+    zle -N select-quoted
+    for m in visual viopp; do
+        for c in {a,i}{\',\",\`}; do
+            bindkey -M $m $c select-quoted
+        done
+    done
+    # vi-text object surround
+    autoload -Uz surround
+    zle -N delete-surround surround
+    zle -N change-surround surround
+    zle -N add-surround surround
+    bindkey -a cs change-surround
+    bindkey -a ds delete-surround
+    bindkey -a ys add-surround
+    bindkey -M visual S add-surround
+else  # emacs-keybinds
+    bindkey -e
+    bindkey '^R' history-incremental-pattern-search-backward
+    # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
+    bindkey '^[[3~' delete-char   # delete key
+    bindkey '^H' backward-kill-word   # ctrl+Backspace
+    bindkey '^[_' redo   # alt+_
+    bindkey '^U'  backward-kill-line
+    # カーソル移動
+    # # ctrl+up
+    # bindkey '\e[1;5A' backward-word
+    # # ctrl+down
+    # bindkey '\e[1;5B' backward-word
+    bindkey '\e[1;5C' forward-word   # ctrl+right
+    bindkey '\e[1;5D' backward-word   # ctrl+left
+    bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
+fi

@@ -93,7 +93,8 @@ zstyle ':completion:*:default' list-colors ""
 zstyle ':completion::expand:*' glob true            # echo /bin/*sh とかで展開する
 zstyle ':completion::expand:*' substitute true      # echo $(ls) とかで展開する
 zstyle ':completion:*' completer _oldlist _complete
-zstyle ':completion:*:default' menu select  # Tabキーを押すと候補を選択できる
+zstyle ':completion:*:default' menu select #interactive  # Tabキーを押すと候補を選択できる
+# setopt menu_complete  # 絞込み検索  # tabですぐに選択できないので削除
 
 
 ########################################
@@ -123,23 +124,21 @@ setopt correct              # もしかして機能
 
 ########################################
 # Keybinds
-bindkey -e   # emacs-mode
-bindkey '^R' history-incremental-pattern-search-backward
-# ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
-bindkey '^[[3~' delete-char   # delete key
-bindkey '^H' backward-kill-word   # ctrl+Backspace
-bindkey '^[_' redo   # alt+_
-
-# カーソル移動
-# # ctrl+up
-# bindkey '\e[1;5A' backward-word
-# # ctrl+down
-# bindkey '\e[1;5B' backward-word
-bindkey '\e[1;5C' forward-word   # ctrl+right
-bindkey '\e[1;5D' backward-word   # ctrl+left
-bindkey "\e[Z" reverse-menu-complete   # Shift-Tabで補完候補を逆順す
+# デフォルトのキーバインドemacsモードにしたいときは以下を打つ
+# ZSH_KEYBINDS_VIMODE=true; source ~/.zsh_keybinds
+if [[ -f ${HOME}/.zsh_keybinds ]]; then
+    export ZSH_KEYBINDS_VIMODE=true
+    source ~/.zsh_keybinds
+fi
 
 
+########################################
+# Perl path
+PATH="/home/vagrant/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/vagrant/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/vagrant/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/vagrant/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/vagrant/perl5"; export PERL_MM_OPT;
 
 ##########################################
 # Load zplug
