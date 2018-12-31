@@ -129,9 +129,8 @@ alias gt='git tag -n'
 alias grst-h='git reset --hard HEAD'
 
 # sns
-export SH="~/Dropbox/Program/sh"
-alias timeline="$SH/get_tl.sh"
-alias line="$SH/line.sh"
+alias timeline="$SHPATH/get_tl.sh"
+alias line="$SHPATH/line.sh"
 
 # bacpac
 [ -d $HOME/bacpac ] && alias bacpac="${HOME}/bacpac/bacpac"

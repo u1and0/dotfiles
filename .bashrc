@@ -2,6 +2,8 @@
 export LANG=ja_JP.UTF-8
 export SHELL=/usr/bin/zsh
 export TERM="xterm-256color"
+export SHPATH="${HOME}/sh"
+PATH="$PATH:$SHPATH/bin"
 # LinuxBrew setting
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.lilinuxbrew/nuxbrew/share/man:$MANPATH"
