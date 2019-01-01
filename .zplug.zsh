@@ -109,3 +109,9 @@ zplug "jupyter/jupyter_core",\
     as:command,\
     use:examples/completions-zsh,\
     rename-to:"_jupyter"
+
+# PDF to compressed file
+zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
+    from:gist,\
+    as:command,\
+    use:"pdfto*"
