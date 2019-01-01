@@ -55,9 +55,3 @@ export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without us
 
 # facd: Frecency directory & file
 type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
-
-# fzf setting
-
-if type fzf > /dev/null 2>&1 && type rg > /dev/null 2>&1 ; then
-    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-fi

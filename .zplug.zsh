@@ -10,7 +10,7 @@ zplug "junegunn/fzf-bin",\
     rename-to:"fzf"
 source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
 source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
-export FZF_DEFAULT_COMMAND='fd -t f -IE "/.git/"'
+export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
 # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
 export FZF_DEFAULT_OPTS='--ansi --multi'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -114,4 +114,4 @@ zplug "jupyter/jupyter_core",\
 zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
     from:gist,\
     as:command,\
-    use:"pdfto*"
+    use:"pdf*"
