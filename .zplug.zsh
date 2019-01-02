@@ -120,5 +120,4 @@ zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
 zplug "u1and0/aa64e61f0571521ede4e26b84cfbef6f",\
     from:gist,\
     as:command,\
-    use:"*.sh",\
-    rename-to:"wordcount"
+    use:"*.sh"
