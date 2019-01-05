@@ -150,20 +150,28 @@ if dein#load_state('$DATA/dein')
     call dein#add('vim-jp/vimdoc-ja')
     call dein#add('tomtom/tcomment_vim')       " Commentout plugin use 'Ctrl+/(C-_)'
     call dein#add('tpope/vim-surround')        " Select then 'S'
-    call dein#add('tpope/vim-repeat')          " Repead surroud.vim
-    call dein#add('jiangmiao/auto-pairs')      " Auto-bracket correction
-    call dein#add('yuta-masano/hz_ja.vim')     " :Zenkaku <--> :Hankaku
-    call dein#add('kshenoy/vim-signature')     " Place, toggle and display marks.
-    nnoremap <silent> <F3> :SignatureToggle<CR>
-    call dein#add('scrooloose/nerdtree')       " Filer
-    nnoremap <silent> <F5> :NERDTreeToggle<CR>
-    call dein#add('majutsushi/tagbar')         " A class outline viewer for Vim
-    nnoremap <silent> <F8> :TagbarToggle<CR>
-    " if !has('nvim')
-    "     call dein#add('roxma/nvim-yarp')
-    "     call dein#add('roxma/vim-hug-neovim-rpc')
-    " endif
-
+    call dein#add('tpope/vim-repeat', {
+                \ 'depends': ['vim-surround'],
+                \ 'lazy': 1,
+                \ })                  " Repeat surroud.vim
+    call dein#add('jiangmiao/auto-pairs' , {
+                \ 'on_event': 'InsertEnter',
+                \ 'lazy': 1,
+                \ })      " Auto-bracket correction
+                " Insertモードになったとき読み込まれるはず。うまく行かない
+    call dein#add('yuta-masano/hz_ja.vim', {
+                \ 'on_event': 'CmdlineEnter',
+                \ 'lazy': 1,
+                \ })     " :Zenkaku <--> :Hankaku
+    call dein#add('kshenoy/vim-signature', {
+                \ 'hook_add': 'nnoremap <silent> <F3> :SignatureToggle<CR>',
+                \ })                           " Place, toggle and display marks.
+    call dein#add('scrooloose/nerdtree', {
+                \ 'hook_add': 'nnoremap <silent> <F5> :NERDTreeToggle<CR>',
+                \ })                           " Filer
+    " call dein#add('majutsushi/tagbar', {
+    "             \ 'hook_add': 'nnoremap <silent> <F8> :TagbarToggle<CR>'
+    "             \ })                           " A class outline viewer for Vim
     call dein#end()
     call dein#save_state()
 endif
