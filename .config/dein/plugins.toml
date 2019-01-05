@@ -59,7 +59,7 @@ repo = 'tomtom/tcomment_vim'
 
 [[plugins]]  # Show side bar "NERDTree"
 repo = 'scrooloose/nerdtree'
-hook_add = 'nnoremap <F5> :NERDTreeToggle<CR>'
+hook_add = 'nnoremap <silent> <F5> :NERDTreeToggle<CR>'
 
 [[plugins]]  # Session saveing ':Obsession'
 repo = 'tpope/vim-obsession'
@@ -314,6 +314,3 @@ hook_add = '''
     " 続けて"で バッファを貼り付け
     " :help <C-R> for more help
 '''
-
-# ==============================
-
