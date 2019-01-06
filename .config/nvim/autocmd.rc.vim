@@ -26,3 +26,6 @@ augroup END
 if executable('pdftotext')
     command! -complete=file -nargs=1 Pdf :ene|0r !pdftotext -nopgbrk -layout <q-args> -
 endif
+
+command! TempfileEdit :edit `=tempname()`
+command! TempfileWrite :write `=tempname()`
