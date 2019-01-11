@@ -4,7 +4,7 @@ alias zmv='noglob zmv -W'
 
 
 #### Global Alias ####
-alias -g D='2> /dev/null'
+alias -g D='> /dev/null 2>&1'
 
 ## FuzzyFinder
 alias -g F='| fzf'
