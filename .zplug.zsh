@@ -70,8 +70,11 @@ zplug "zsh-users/zsh-completions",\
 
 
 # Install twitter.sh
-zplug "ShellShoccar-jpn/kotoriotoko", as:command, use:"BIN/*.sh"
-# export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
+zplug "ShellShoccar-jpn/kotoriotoko"
+# , as:command, use:"BIN/*.sh"  # この方法で指定すると
+# CONFIG読めなくなったりいろいろなツールのパスが異なってくる
+# のでシンボリックリンクとして扱わないほうが良いと思う。
+export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh"
