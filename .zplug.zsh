@@ -115,6 +115,11 @@ zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
     from:gist,\
     as:command,\
     use:"pdf*"
+alias pdffetch="pdffetch -layout -nopgbrk"
+alias pdftogz="pdftogz -layout -nopgbrk"
+alias pdftobz2="pdftobz2 -layout -nopgbrk"
+alias pdftoxz="pdftoxz -layout -nopgbrk"
+alias pdftozip="pdftozip -layout -nopgbrk"
 
 # Word counting in text
 zplug "u1and0/aa64e61f0571521ede4e26b84cfbef6f",\
