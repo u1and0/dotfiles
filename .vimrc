@@ -122,12 +122,14 @@ endif
 " Up/Down in command window
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <Up> <C-p>
+cnoremap <Down> <C-n>
 
 " Shift + 矢印でウィンドウサイズを変更
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
+nnoremap <S-Left>  5<C-w><<CR>
+nnoremap <S-Right> 5<C-w>><CR>
+nnoremap <S-Up>    5<C-w>-<CR>
+nnoremap <S-Down>  5<C-w>+<CR>
 "
 " `:e %%`アクティブなファイルが含まれているディレクトリを手早く展開する
 " :eだけでなく:wや:rでも使える。
@@ -140,8 +142,23 @@ nnoremap Y y$
 " --- Plugins manage ---
 " === Dein ===
 " Add the dein installation directory into runtimepath
+let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
 let $DATA = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
-set runtimepath+=$DATA/dein/repos/github.com/Shougo/dein.vim
+
+
+" {{{ dein
+let s:dein_dir = expand('$DATA/dein')
+
+if &runtimepath !~# '/dein.vim'
+    let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+    " Auto Download
+    if !isdirectory(s:dein_repo_dir)
+        call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+    endif
+
+    execute 'set runtimepath^=' . s:dein_repo_dir
+endif
 
 if dein#load_state('$DATA/dein')
     call dein#begin('$DATA/dein')
@@ -175,6 +192,12 @@ if dein#load_state('$DATA/dein')
     call dein#end()
     call dein#save_state()
 endif
+
+if has('vim_starting') && dein#check_install()
+    call dein#install()
+endif
+" }}}
+
 
 filetype plugin indent on
 syntax enable

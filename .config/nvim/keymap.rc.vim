@@ -4,9 +4,6 @@
 let mapleader = "\<Space>"
 
 
-" QuickFixおよびHelpでは q でバッファを閉じる
-autocmd MyAutoCmd FileType help,qf nnoremap <buffer> q <C-w>c<Paste>
-
 " Shift + 矢印でウィンドウサイズを変更
 nnoremap <S-Left>  5<C-w><<CR>
 nnoremap <S-Right> 5<C-w>><CR>
@@ -19,3 +16,5 @@ nnoremap Y y$
 " Up/Down in command window
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <Up> <C-p>
+cnoremap <Down> <C-n>
