@@ -9,10 +9,6 @@ repo = 'Shougo/neoyank.vim'
 on_source = 'denite.nvim'
 on_event = 'TextYankPost'
 
-[[plugins]] # Dein commands
-repo = 'haya14busa/dein-command.vim'
-on_source = ['dein.vim']
-
 [[plugins]] # Python completions
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
