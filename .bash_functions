@@ -177,3 +177,18 @@ function cconv() {
   curl -s "https://finance.google.com/finance/converter?a=$amount&from=$from&to=$to" | sed '/res/!d;s/<[^>]*>//g'
 }
 
+# Calcuration use awk
+calc() {
+    awk "BEGIN {print $*}"
+}
+
+# Math calcuration use perl or awk
+if type perl > /dev/null 2>&1; then
+    calc(){
+        echo $* | perl -nle 's/x/*/g;print eval($_)'
+    }
+else
+    calc(){
+        awk "BEGIN {print $*}"
+    }
+fi
