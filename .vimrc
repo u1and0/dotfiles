@@ -167,6 +167,7 @@ if dein#load_state('$DATA/dein')
     call dein#add('vim-jp/vimdoc-ja')
     call dein#add('tomtom/tcomment_vim')       " Commentout plugin use 'Ctrl+/(C-_)'
     call dein#add('tpope/vim-surround')        " Select then 'S'
+    call dein#add('tpope/vim-unimpaired')      " Add jump keybinds like ]b => :bn
     call dein#add('tpope/vim-repeat', {
                 \ 'depends': ['vim-surround'],
                 \ 'lazy': 1,
