@@ -23,9 +23,11 @@ augroup MyAutoCmd
         \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
 augroup END
 
+" PDFを開くコマンド
 if executable('pdftotext')
     command! -complete=file -nargs=1 Pdf :ene|0r !pdftotext -nopgbrk -layout <q-args> -
 endif
 
+" 一時ファイルの作成と書き込み
 command! TempfileEdit :edit `=tempname()`
 command! TempfileWrite :write `=tempname()`

@@ -43,6 +43,7 @@ hook_add = '''
 repo = 'lambdalisue/vim-pyenv'
 depends = 'jedi-vim'
 on_ft = 'python'
+if = '''executable('pyenv')'''
 
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
