@@ -305,3 +305,9 @@ hook_add = '''
     let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
 '''
 
+# Doesn't work
+#  [[plugins]]  # `gS`: literal Split, `gJ`: literal Join
+#  repo = 'AndrewRadev/splitjoin.vim'
+#  hook_add = '''
+#     set runtimepath+=~/.local/share/dein/repos/github.com/AndrewRadev/splitjoin.vim/ftplugin/*vim
+#  '''
