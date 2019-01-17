@@ -127,3 +127,77 @@ nmap <Leader>b :QuickRun <CR>
 [[plugins]]  # :Zenkaku <--> :Hankaku
 repo = 'yuta-masano/hz_ja.vim'
 on_i = 1
+
+
+# go lang plugins
+[[plugins]]  # go command use as vim command :GoBuild, :GoInstall
+
+# EXECUTE `:GoInstallBinaries` AT FIRST!
+
+# it's take a long time to go get some go sources & build them.
+
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = '''
+    "  参考: https://github.com/hnakamur/vim-go-tutorial-ja
+
+    " :nextなどでバッファ移動時にファイルが変更されていれば書き込む
+    " :GoBuildするときにファイルを保存する必要がなくなる
+    autocmd FileType go set autowrite
+
+    " === VIM-GO COMMAND KEYBINDS ===
+    " autocmd FileType go nmap <leader>b  <Plug>(go-build) " 下記に改善版
+    autocmd FileType go nmap <leader>r  <Plug>(go-run)
+    autocmd FileType go nmap <leader>t  <Plug>(go-test)
+    autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+    autocmd FileType go nmap <Leader>pp <Plug>(go-alternate-edit)
+    autocmd FileType go nmap <Leader>ps <Plug>(go-alternate-split)
+    autocmd FileType go nmap <Leader>pv <Plug>(go-alternate-vertical)
+    " run :GoBuild or :GoTestCompile based on the go file
+    function! s:build_go_files()
+      let l:file = expand('%')
+      if l:file =~# '^\f\+_test\.go$'
+        call go#test#Test(0, 1)
+      elseif l:file =~# '^\f\+\.go$'
+        call go#cmd#Build(0)
+      endif
+    endfunction
+    autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+    " === VIM-GO OPTIONS ===
+    " GoRunの結果をsplitで表示 (default vsplit)
+    let g:go_term_mode = "split"
+    " :GoFmt時にimportのチェック
+    " ファイルが巨大だと保存時の:GoFmtが遅くなるので消しましょう
+    let g:go_fmt_command = "goimports"
+    " "コメントも関数の一部として扱われたくないとき(default 1)
+    " let g:go_textobj_include_function_doc = 0
+    " キャメルケースに変換(defalut snake_cake)
+    let g:go_addtags_transform = "camelcase"
+    " let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']  " Default
+    " 自動保存時にLinter有効化
+    let g:go_metalinter_autosave = 1
+    " 自動保存時に走らせるLinter
+    let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+    " let g:go_metalinter_deadline = "5s"  " Default
+'''
+
+[[plugins]]  # go completion
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = 'go'
+depends = ['deoplete.nvim']
+hook_source = '''
+    let g:deoplete#sources#go#gocode_binary = '/usr/bin/gocode'
+'''
+
+[[plugins]]  # CUI web browser
+repo = 'yuratomo/w3m.vim'
+hook_add = '''
+    nnoremap <C-K><C-G> :W3mSplit <C-R>
+    " 続けて<C-W>で word 貼り付け
+    " 続けて<C-A>で WORD 貼り付け
+    " 続けて"で バッファを貼り付け
+    " :help <C-R> for more help
+'''
+if = '''executable('w3m')'''
