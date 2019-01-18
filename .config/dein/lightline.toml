@@ -91,15 +91,17 @@ function! MyMode()
   return winwidth('.') > 60 ? lightline#mode() : ''
 endfunction
 
-function! MyPyenvVersion()
-" systemかbuiltin以外のPyenvでenv nameを返す
-  let env = pyenv#info#preset('short')[1:]
-  if env == 'system' || env == 'builtin'
-    return ''
-  else
-    return '⌘ '.env
-  endif
-endfunction
+if executable('pyenv')
+    function! MyPyenvVersion()
+    " systemかbuiltin以外のPyenvでenv nameを返す
+      let env = pyenv#info#preset('short')[1:]
+      if env == 'system' || env == 'builtin'
+        return ''
+      else
+        return '⌘ '.env
+      endif
+    endfunction
+endif
 
 function! MyGitGutter()
   if ! exists('*GitGutterGetHunkSummary')

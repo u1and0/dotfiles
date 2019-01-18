@@ -61,6 +61,7 @@ fpath=(/usr/share/zsh/site-functions $fpath)
 fpath=(/usr/share/zsh/functions/Completion/zsh-completions/src $fpath)
 fpath=(${HOME}/my_zsh_completions $fpath)
 fpath=(${ZPLUG_BIN} $fpath)
+fpath=(${HOME}/bacpac $fpath)
 
 
 # 補完

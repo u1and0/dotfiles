@@ -28,8 +28,8 @@ keymap a PREV_TAB
 # ====Page navigation===
 keymap f NEXT_LINK
 keymap d PREV_LINK
-keymap C-d NEXT_PAGE
-keymap C-u PREV_PAGE
+keymap C-f NEXT_PAGE
+keymap C-b PREV_PAGE
 keymap b PREV_WORD
 keymap C-e UP
 keymap C-y DOWN

@@ -5,7 +5,7 @@ echo '--Loading ~/.bash_aliases--'
 
 # sudo command
 if which sudo > /dev/null 2>&1; then
-    alias sudo='sudo '
+    alias sudo='sudo '  # 最後のスペースは補完を有効にするために必須
 
     # apt-fast / apt
     if which apt-fast > /dev/null 2>&1; then
@@ -134,3 +134,7 @@ alias line="$SHPATH/line.sh"
 
 # bacpac
 [ -d $HOME/bacpac ] && alias bacpac="${HOME}/bacpac/bacpac"
+
+# pdftotext
+type pdftotext > /dev/null 2>&1 &&
+    alias pdftotext='pdftotext -layout -nopgbrk '

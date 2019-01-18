@@ -59,7 +59,7 @@ repo = 'tomtom/tcomment_vim'
 
 [[plugins]]  # Show side bar "NERDTree"
 repo = 'scrooloose/nerdtree'
-hook_add = 'nnoremap <F5> :NERDTreeToggle<CR>'
+hook_add = 'nnoremap <silent> <F5> :NERDTreeToggle<CR>'
 
 [[plugins]]  # Session saveing ':Obsession'
 repo = 'tpope/vim-obsession'
@@ -305,15 +305,9 @@ hook_add = '''
     let g:ref_jquery_doc_path = $HOME . '/.local/share/dein/repos/github.com/mustardamus/jqapi'  " Dosn't work!!
 '''
 
-[[plugins]]  # CUI web browser
-repo = 'yuratomo/w3m.vim'
-hook_add = '''
-    nnoremap [Ref]<C-G> :W3mSplit <C-R>
-    " 続けて<C-W>で word 貼り付け
-    " 続けて<C-A>で WORD 貼り付け
-    " 続けて"で バッファを貼り付け
-    " :help <C-R> for more help
-'''
-
-# ==============================
-
+# Doesn't work
+#  [[plugins]]  # `gS`: literal Split, `gJ`: literal Join
+#  repo = 'AndrewRadev/splitjoin.vim'
+#  hook_add = '''
+#     set runtimepath+=~/.local/share/dein/repos/github.com/AndrewRadev/splitjoin.vim/ftplugin/*vim
+#  '''
