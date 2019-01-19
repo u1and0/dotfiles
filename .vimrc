@@ -172,10 +172,7 @@ if dein#load_state('$DATA/dein')
                 \ 'depends': ['vim-surround'],
                 \ 'lazy': 1,
                 \ })                  " Repeat surroud.vim
-    call dein#add('jiangmiao/auto-pairs' , {
-                \ 'on_event': 'InsertEnter',
-                \ 'lazy': 1,
-                \ })      " Auto-bracket correction
+    call dein#add('jiangmiao/auto-pairs')      " Auto-bracket correction
                 " Insertモードになったとき読み込まれるはず。うまく行かない
     call dein#add('yuta-masano/hz_ja.vim', {
                 \ 'on_event': 'CmdlineEnter',
@@ -184,9 +181,9 @@ if dein#load_state('$DATA/dein')
     call dein#add('kshenoy/vim-signature', {
                 \ 'hook_add': 'nnoremap <silent> <F3> :SignatureToggle<CR>',
                 \ })                           " Place, toggle and display marks.
-    call dein#add('scrooloose/nerdtree', {
-                \ 'hook_add': 'nnoremap <silent> <F5> :NERDTreeToggle<CR>',
-                \ })                           " Filer
+    " call dein#add('scrooloose/nerdtree', {
+    "             \ 'hook_add': 'nnoremap <silent> <F5> :NERDTreeToggle<CR>',
+    "             \ })                           " Filer
     " call dein#add('majutsushi/tagbar', {
     "             \ 'hook_add': 'nnoremap <silent> <F8> :TagbarToggle<CR>'
     "             \ })                           " A class outline viewer for Vim
