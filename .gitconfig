@@ -13,7 +13,7 @@
 	excludesfile = ~/.globalgitignore
 	symlinks = true
 	quotepath = false
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = "type diff-so-fancy >/dev/null 2>&1 && PG='diff-so-fancy | less --tabs=4 -RFX' || PG='less --tabs=4 -RFX'; $PG"
 
 	# preloadindex = true  # <windows用>インデックスの比較を並列実行してくれてgit statusなどを高速化
 	# fscache = true  # <windows用>ユーザーディレクトリへのアクセスではなくシステム領域にキャッシュを書き込む
