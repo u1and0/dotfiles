@@ -4,10 +4,11 @@ export SHELL=/usr/bin/zsh
 export TERM="xterm-256color"
 # shell script path
 export SHPATH="${HOME}/sh"
-PATH="$PATH:$SHPATH/bin"
+export PATH="$PATH:$SHPATH/bin"
 # go lang path
-export GOPATH="${HOME}/go"
-PATH="$PATH:$GOPATH/bin"
+type go > /dev/null/ 2>&1 &&
+    export GOPATH="${HOME}/go"
+    export PATH="$PATH:$GOPATH/bin"
 # LinuxBrew setting
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.lilinuxbrew/nuxbrew/share/man:$MANPATH"
