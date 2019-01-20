@@ -20,27 +20,11 @@ zplug "junegunn/fzf",\
     use:bin/fzf-tmux,\
     on:"junegunn/fzf-bin"
 
-# Install fuzzy-finder "fzy"
-# Provided, it requires to set the variable like the following:
-# ZPLUG_SUDO_PASSWORD="********"
-if [ `whoami` = vagrant ]; then
-    ZPLUG_SUDO_PASSWORD=vagrant
-fi
-zplug "jhawthorn/fzy",\
-    as:command,\
-    rename-to:fzy,\
-    hook-build:"make && sudo make install"
-
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then
-    if $ZSH_KEYBINDS_VIMODE; then
-        bindkey -M viins '^P'  history-substring-search-up
-        bindkey -M viins '^N'  history-substring-search-down
-    else
-        bindkey '^P' history-substring-search-up
-        bindkey '^N' history-substring-search-down
-    fi
+    bindkey '^P' history-substring-search-up
+    bindkey '^N' history-substring-search-down
 fi
 
 
