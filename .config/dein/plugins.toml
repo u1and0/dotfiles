@@ -45,8 +45,8 @@ hook_add = '''
     nmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
     xmap <Leader>w <Plug>(quickhl-manual-this-whole-word)
 
-    nmap <Leader>c <Plug>(quickhl-manual-clear)
-    vmap <Leader>c <Plug>(quickhl-manual-clear)
+    " nmap <Leader>c <Plug>(quickhl-manual-clear)
+    " vmap <Leader>c <Plug>(quickhl-manual-clear)
 
     nmap <Leader>M <Plug>(quickhl-manual-reset)
     xmap <Leader>M <Plug>(quickhl-manual-reset)
