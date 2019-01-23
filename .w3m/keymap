@@ -28,8 +28,8 @@ keymap a PREV_TAB
 # ====Page navigation===
 keymap f NEXT_LINK
 keymap d PREV_LINK
-keymap C-d NEXT_PAGE
-keymap C-u PREV_PAGE
+keymap C-f NEXT_PAGE
+keymap C-b PREV_PAGE
 keymap b PREV_WORD
 keymap C-e UP
 keymap C-y DOWN
@@ -42,4 +42,4 @@ keymap ESC-h SELECT_MENU
 # ===Misc===
 keymap A EXEC_SHELL "printenv | grep $W3M_URL | vim -"
 keymap C CHARSET
-keymap ESC-d MAIN_MENU
+keymap ESC-SPC MAIN_MENU

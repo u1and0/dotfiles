@@ -10,7 +10,7 @@ zplug "junegunn/fzf-bin",\
     rename-to:"fzf"
 source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
 source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
-export FZF_DEFAULT_COMMAND='fd -t f -IE "/.git/"'
+export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
 # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
 export FZF_DEFAULT_OPTS='--ansi --multi'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -20,27 +20,11 @@ zplug "junegunn/fzf",\
     use:bin/fzf-tmux,\
     on:"junegunn/fzf-bin"
 
-# Install fuzzy-finder "fzy"
-# Provided, it requires to set the variable like the following:
-# ZPLUG_SUDO_PASSWORD="********"
-if [ `whoami` = vagrant ]; then
-    ZPLUG_SUDO_PASSWORD=vagrant
-fi
-zplug "jhawthorn/fzy",\
-    as:command,\
-    rename-to:fzy,\
-    hook-build:"make && sudo make install"
-
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then
-    if $ZSH_KEYBINDS_VIMODE; then
-        bindkey -M viins '^P'  history-substring-search-up
-        bindkey -M viins '^N'  history-substring-search-down
-    else
-        bindkey '^P' history-substring-search-up
-        bindkey '^N' history-substring-search-down
-    fi
+    bindkey '^P' history-substring-search-up
+    bindkey '^N' history-substring-search-down
 fi
 
 
@@ -71,6 +55,9 @@ zplug "zsh-users/zsh-completions",\
 
 # Install twitter.sh
 zplug "ShellShoccar-jpn/kotoriotoko"
+# , as:command, use:"BIN/*.sh"  # この方法で指定すると
+# CONFIG読めなくなったりいろいろなツールのパスが異なってくる
+# のでシンボリックリンクとして扱わないほうが良いと思う。
 export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 
 # Tracks your most used directories, based on 'frecency'.
@@ -109,3 +96,20 @@ zplug "jupyter/jupyter_core",\
     as:command,\
     use:examples/completions-zsh,\
     rename-to:"_jupyter"
+
+# PDF to compressed file
+zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
+    from:gist,\
+    as:command,\
+    use:"pdf*"
+alias pdffetch="pdffetch -layout -nopgbrk"
+alias pdftogz="pdftogz -layout -nopgbrk"
+alias pdftobz2="pdftobz2 -layout -nopgbrk"
+alias pdftoxz="pdftoxz -layout -nopgbrk"
+alias pdftozip="pdftozip -layout -nopgbrk"
+
+# Word counting in text
+zplug "u1and0/aa64e61f0571521ede4e26b84cfbef6f",\
+    from:gist,\
+    as:command,\
+    use:"*.sh"

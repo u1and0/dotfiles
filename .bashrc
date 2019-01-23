@@ -2,6 +2,13 @@
 export LANG=ja_JP.UTF-8
 export SHELL=/usr/bin/zsh
 export TERM="xterm-256color"
+# shell script path
+export SHPATH="${HOME}/sh"
+export PATH="$PATH:$SHPATH/bin"
+# go lang path
+type go > /dev/null 2>&1 &&\
+    export GOPATH="${HOME}/go" &&\
+    export PATH="$PATH:$GOPATH/bin"
 # LinuxBrew setting
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.lilinuxbrew/nuxbrew/share/man:$MANPATH"
@@ -53,9 +60,3 @@ export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without us
 
 # facd: Frecency directory & file
 type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
-
-# fzf setting
-
-if type fzf > /dev/null 2>&1 && type rg > /dev/null 2>&1 ; then
-    export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-fi

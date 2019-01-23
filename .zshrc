@@ -61,6 +61,7 @@ fpath=(/usr/share/zsh/site-functions $fpath)
 fpath=(/usr/share/zsh/functions/Completion/zsh-completions/src $fpath)
 fpath=(${HOME}/my_zsh_completions $fpath)
 fpath=(${ZPLUG_BIN} $fpath)
+fpath=(${HOME}/bacpac $fpath)
 
 
 # 補完
@@ -141,6 +142,16 @@ PERL_MB_OPT="--install_base \"/home/vagrant/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/vagrant/perl5"; export PERL_MM_OPT;
 
 ##########################################
+# Other APPs completions
+
+# docker-compose
+if [ type docker-compose ] >/dev/null 2>&1 && [[ ! -f ${HOME}/my_zsh_completions/_docker-compose ]] >/dev/null 2>&1; then
+    printf "Install docker-compose zsh-completion..."
+    curl -fsSL https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/zsh/_docker-compose > ${HOME}/my_zsh_completions/_docker-compose && echo "done"
+fi
+
+
+##########################################
 # Load zplug
 if [[ -f ${HOME}/.zplug/init.zsh ]]; then
     export ZPLUG_LOADFILE=${HOME}/.zplug.zsh
@@ -154,13 +165,13 @@ if [[ -f ${HOME}/.zplug/init.zsh ]]; then
         fi
     fi
 
-    # コマンドをリンクして、PATH に追加し、プラグインは読み込む
-    zplug load --verbose
+    # コマンドをリンクして、PATH に追加し、プラグインを読み込む
+    zplug load
 
 else; printf "Install zplug? [y/N]: "
     if read -q; then
-        curl -sL --proto-redir -all,\
-            https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh\
-                | zsh && source $0  # .zshrc再リロード
+        curl -sL --proto-redir -all, https\
+            https://raw.githubusercontent.com/zplug/installer/master/installer.zsh |
+    zsh && source $0  # .zshrc再リロード
     fi
 fi

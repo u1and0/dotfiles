@@ -5,7 +5,7 @@ echo '--Loading ~/.bash_aliases--'
 
 # sudo command
 if which sudo > /dev/null 2>&1; then
-    alias sudo='sudo '
+    alias sudo='sudo '  # 最後のスペースは補完を有効にするために必須
 
     # apt-fast / apt
     if which apt-fast > /dev/null 2>&1; then
@@ -118,7 +118,7 @@ alias gpo='git push origin'
 alias gs='git status --short --branch'
 alias gl='git log1'
 alias gls='git ls-files'
-alias gd='git diff --color-words'
+alias gd='git diff'
 
 # branch
 alias gch='git checkout'
@@ -129,9 +129,12 @@ alias gt='git tag -n'
 alias grst-h='git reset --hard HEAD'
 
 # sns
-export SH="~/Dropbox/Program/sh"
-alias timeline="$SH/get_tl.sh"
-alias line="$SH/line.sh"
+alias timeline="$SHPATH/get_tl.sh"
+alias line="$SHPATH/line.sh"
 
 # bacpac
 [ -d $HOME/bacpac ] && alias bacpac="${HOME}/bacpac/bacpac"
+
+# pdftotext
+type pdftotext > /dev/null 2>&1 &&
+    alias pdftotext='pdftotext -layout -nopgbrk '
