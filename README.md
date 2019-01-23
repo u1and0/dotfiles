@@ -39,6 +39,7 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
     * [mod] atool opt, pdftotext alias, bacpac completion
     * [add] Multiprocess compressor: pigz, pbzip2, pixz in package list @bacpac, .atoolrc
 * nvim / vim
+    * [add] vim-go plugin setting @lazy.toml
     * [add] splitjoin @nvim plugins :commented out ISSUE
     * [mod] deactivate pyenv plugin unless excutable pyenv command @nvim lazy
     * [rm] dein command @nvim plugin
@@ -51,6 +52,8 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
     * [mod] dein lazy @.vimrc
     * [mod] plugin manager NeoBundle->dein @.vimrc
 * w3m
+    * [merge] w3m bookmarks
+    * [add] w3m bookmark gawk
     * [mod] next/prev page keybind @w3m keybind
     * [add] w3m bookmark GAWK
     * [add] regex @w3m bookmark
@@ -60,6 +63,9 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 * python
     * [mod] conda enc snow export
 * zsh
+    * [rm] fzy @.zplug.zsh
+    * [mod] docker-compose completion install command @.zshrc
+    * [add] docker compose zsh-completion @.zshrc
     * [mod] tweet.sh path, add comment @.zplug.zsh
     * [add] alias of pdfto... tools @.zplug.zsh
     * [mod] alias D send all to /dev/null
@@ -165,7 +171,9 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
     * [add] node-jshint, eslint, powerpill [rm] GUI xfce's @bacpac
 
 * git
+    * [add] pager use diff-so-fancy if executable
     * [mod] fetch option @.gitconfig
+    * [mod] pager option use diff-so-fancy or cat @.gitconfig
 
 * etc
     * [add] skip extensions .eps, .pdf, .aux @.globalrc
