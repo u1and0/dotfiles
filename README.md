@@ -26,49 +26,96 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.13.0:
+* bash
+    * [mod] go path @.bashrc , bacpac backup
+    * [mod] fzf command, zplug load options @.zshrc, .bashrc, .zplug.zsh
+    * [mod] git diff option @.bash_alias & [add] ydiff (use `gd | ydiff -s`)
+    * [add] calc function use perl or awk
+    * [add] $SHPATH @.bashrc, .bash_alias
+* bacpac
+    * [add] parallel & r @bacpac
+    * [mod] bacpac diff command
+    * [mod] atool opt, pdftotext alias, bacpac completion
+    * [add] Multiprocess compressor: pigz, pbzip2, pixz in package list @bacpac, .atoolrc
+* nvim / vim
+    * [add] vim-go plugin setting @lazy.toml
+    * [add] splitjoin @nvim plugins :commented out ISSUE
+    * [mod] deactivate pyenv plugin unless excutable pyenv command @nvim lazy
+    * [rm] dein command @nvim plugin
+    * [mod] vim/nvim config dein auto load @vim
+    * [add] go path / go vim settings
+    * [mo] default key bind vim @jupyter nbconfig
+    * [add] TempfileEdit, TempfileWrite command added @autocmd.rc.vim
+    * [add] open pdf autocmd @atutocmd.rc.vim
+    * [add] unipaired easy jump keybinds plugin @.vimrc
+    * [mod] dein lazy @.vimrc
+    * [mod] plugin manager NeoBundle->dein @.vimrc
+* w3m
+    * [merge] w3m bookmarks
+    * [add] w3m bookmark gawk
+    * [mod] next/prev page keybind @w3m keybind
+    * [add] w3m bookmark GAWK
+    * [add] regex @w3m bookmark
+    * [add] perldoc ja @w3m bookmark
+    * [mod] main menu , add perl referlence @w3m bookmark, keymap
+    * [add] awk usage
+* python
+    * [mod] conda enc snow export
+* zsh
+    * [rm] fzy @.zplug.zsh
+    * [mod] docker-compose completion install command @.zshrc
+    * [add] docker compose zsh-completion @.zshrc
+    * [mod] tweet.sh path, add comment @.zplug.zsh
+    * [add] alias of pdfto... tools @.zplug.zsh
+    * [mod] alias D send all to /dev/null
+    * [add] hist.sh hist_graph.sh to gist @.zplug.zsh
+    * [add] wordcount from gist @.zplug.zsh
+    * [mod] shell shoccar path @.zplug.zsh
+    * [add] pdftogz, pdftobz2, pdftoxz from my gist @zplug.zsh
 
 ## v1.12.0: zsh-keybinds/VI-MODE, Get vim plugins (bufferline, Gundo, Calculate), tmux-prefix: Space
 * bash
-    [rm] remove thefuck, use .zsh option instead
-    [mod] colordiff alias @.bash_alias
-    [add] wikipedia function @.bash_functions
+    * [rm] remove thefuck, use .zsh option instead
+    * [mod] colordiff alias @.bash_alias
+    * [add] wikipedia function @.bash_functions
 * zsh
-    [add] perl path added by cpan @.zshrc
-    [rm] run-help key @.zsh_keybinds
-    [rn] setopt menu_complete @.zshrc
-    [add] vi-mode displaied in prompt @.zplug.zsh
-    [add] zsh bindkey vi-mode !BREAKABLE CHANGE!
+    * [add] perl path added by cpan @.zshrc
+    * [rm] run-help key @.zsh_keybinds
+    * [rn] setopt menu_complete @.zshrc
+    * [add] vi-mode displaied in prompt @.zplug.zsh
+    * [add] zsh bindkey vi-mode !BREAKABLE CHANGE!
 * bacpac
-    [add] add modules yay & expac @bacpac
+    * [add] add modules yay & expac @bacpac
 * vim
-    [fix] file_rec -> file/rec @nvim python.toml
-    [add] :Zenkaku & :Hankaku plugin @lazy.toml
-    [add] calculate function for vim
-    [add] calclate function for vim
-    [add] nvim external grep program @option
-    [add] open quickfix using grep or vimgrep immediately
-    [add] autocmd for close window use q @plugins.toml
-    [add] Gundo.vim
-    [add] autocmd.rc.vim file
-    [add] html.vim in ftplugins
-    [ignore] cpsm matcher commented out @nvim dein
-    [rm] project.vim @nvim plugin
-    [add] set lightline error mark @nvim lightline
-    [add] lightline-ale @nvim lightline
-    [mod] modify display info @nvim lightline
-    [add] lighline x bufferline @nvim
-    [add]spellcheck use language cjk(=jp)  @.vimrc, nvim options
-    [add] F4: show markers location list @nvim
-    [add] dependency on vim-ref
-    [mod] only jshint
-    [mod] use <leader>k/j @ale jump
-    [mod] bufferline setting move to mgee/lighline-bufferline
-    [rm] delete never used plugins NeoTerm, memolist on denite
+    * [fix] file_rec -> file/rec @nvim python.toml
+    * [add] :Zenkaku & :Hankaku plugin @lazy.toml
+    * [add] calculate function for vim
+    * [add] calclate function for vim
+    * [add] nvim external grep program @option
+    * [add] open quickfix using grep or vimgrep immediately
+    * [add] autocmd for close window use q @plugins.toml
+    * [add] Gundo.vim
+    * [add] autocmd.rc.vim file
+    * [add] html.vim in ftplugins
+    * [ignore] cpsm matcher commented out @nvim dein
+    * [rm] project.vim @nvim plugin
+    * [add] set lightline error mark @nvim lightline
+    * [add] lightline-ale @nvim lightline
+    * [mod] modify display info @nvim lightline
+    * [add] lighline x bufferline @nvim
+    * [add]spellcheck use language cjk(=jp)  @.vimrc, nvim options
+    * [add] F4: show markers location list @nvim
+    * [add] dependency on vim-ref
+    * [mod] only jshint
+    * [mod] use <leader>k/j @ale jump
+    * [mod] bufferline setting move to mgee/lighline-bufferline
+    * [rm] delete never used plugins NeoTerm, memolist on denite
 * ranger
-    [add] viewnior as image viewer @ranger.conf
+    * [add] viewnior as image viewer @ranger.conf
 * tmux
-    [mod] prefix key change from S to Space @.tmux.conf
-    [add] htop on split window @.tmux.conf
+    * [mod] prefix key change from S to Space @.tmux.conf
+    * [add] htop on split window @.tmux.conf
 
 ## v1.11.0: Add vim-ref, javascript completion
 
@@ -124,7 +171,9 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
     * [add] node-jshint, eslint, powerpill [rm] GUI xfce's @bacpac
 
 * git
+    * [add] pager use diff-so-fancy if executable
     * [mod] fetch option @.gitconfig
+    * [mod] pager option use diff-so-fancy or cat @.gitconfig
 
 * etc
     * [add] skip extensions .eps, .pdf, .aux @.globalrc
