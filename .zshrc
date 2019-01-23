@@ -145,7 +145,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/vagrant/perl5"; export PERL_MM_OPT;
 # Other APPs completions
 
 # docker-compose
-if [[ ! -f ${HOME}/mmy_zsh_completions/_docker-compose ]] >/dev/null 2>&1; then 
+if [ type docker-compose ] >/dev/null 2>&1 && [[ ! -f ${HOME}/my_zsh_completions/_docker-compose ]] >/dev/null 2>&1; then
     printf "Install docker-compose zsh-completion..."
     curl -fsSL https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/zsh/_docker-compose > ${HOME}/my_zsh_completions/_docker-compose && echo "done"
 fi
