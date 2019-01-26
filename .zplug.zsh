@@ -1,4 +1,6 @@
-# vim:ft=zsh
+#!/usr/bin/zsh
+echo -e "\U1F4AE Loading $0"  # ロード時に花柄表示
+#
 # zplug自体のアップデート
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
@@ -113,3 +115,4 @@ zplug "u1and0/aa64e61f0571521ede4e26b84cfbef6f",\
     from:gist,\
     as:command,\
     use:"*.sh"
+# vim:ft=zsh

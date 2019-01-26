@@ -1,4 +1,4 @@
-echo '--Loading ~/.bash_functions--'
+#!/bin/bash
 
 # Functions for MSYS2 bash
 
@@ -192,3 +192,4 @@ else
         awk "BEGIN {print $*}"
     }
 fi
+# vim:ft=sh
