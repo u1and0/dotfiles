@@ -26,7 +26,17 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
-## v1.13.0:
+## v1.13.2: prompt display dotfiles
+* bash/zsh dotfiles
+    * [mod] fixwhitespace @.bash_functions
+    * [mod] prompt display only .zplug.zsh @bash/zsh dotfiles
+    * [add] bookmark emoji @w3m/bookmark
+
+## v1.13.1: pyenv excutable check
+* bash
+    * [mod] pyenv excutable check @.bashrc
+
+## v1.13.0: golang dev-env
 * bash
     * [mod] go path @.bashrc , bacpac backup
     * [mod] fzf command, zplug load options @.zshrc, .bashrc, .zplug.zsh
