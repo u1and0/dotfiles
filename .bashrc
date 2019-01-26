@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Export Pathes
 export LANG=ja_JP.UTF-8
 export TERM="xterm-256color"
@@ -59,3 +61,4 @@ type pyenv > /dev/null 2>&1 && . ~/.pyenvrc
 
 # facd: Frecency directory & file
 type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
+# vim:ft=sh
