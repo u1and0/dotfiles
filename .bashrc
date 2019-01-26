@@ -1,6 +1,5 @@
 # Export Pathes
 export LANG=ja_JP.UTF-8
-export SHELL=/usr/bin/zsh
 export TERM="xterm-256color"
 # shell script path
 export SHPATH="${HOME}/sh"
@@ -56,7 +55,7 @@ export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without us
 
 [ -f ~/.bash_functions ] && . ~/.bash_functions
 
-[ -f ~/.pyenvrc ] && [ -d ~/pyenv ] && . ~/.pyenvrc
+type pyenv > /dev/null 2>&1 && . ~/.pyenvrc
 
 # facd: Frecency directory & file
 type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
