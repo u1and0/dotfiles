@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # Extended mv `zmv`
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
@@ -85,3 +87,4 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
+# vim:ft=zsh

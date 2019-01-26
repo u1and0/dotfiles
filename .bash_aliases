@@ -1,6 +1,5 @@
-echo '--Loading ~/.bash_aliases--'
+#!/bin/bash
 
-# Aliases for MSYS2 bash
 # alias hogeを一時的に無効にするには\hoge
 
 # sudo command
@@ -138,3 +137,4 @@ alias line="$SHPATH/line.sh"
 # pdftotext
 type pdftotext > /dev/null 2>&1 &&
     alias pdftotext='pdftotext -layout -nopgbrk '
+# vim:ft=sh
