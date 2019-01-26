@@ -26,6 +26,10 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.13.3: hook-load @zplug.zsh
+* zsh
+    * [mod] hook-load & touch .z when build rupa/z @.zplug.zsh
+
 ## v1.13.2: prompt display dotfiles
 * bash/zsh dotfiles
     * [mod] fixwhitespace @.bash_functions
