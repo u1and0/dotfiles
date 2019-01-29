@@ -13,11 +13,11 @@ zplug "junegunn/fzf-bin",\
     hook-load:"""
         source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
         source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
-        export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
-        # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
-        export FZF_DEFAULT_OPTS='--ansi --multi'
-        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     """
+    export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
+    # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
+    export FZF_DEFAULT_OPTS='--ansi --multi'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 zplug "junegunn/fzf",\
     as:command,\
@@ -54,12 +54,13 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions",\
     defer:2,\
-    hook-load:'compdef _pacman powerpill=pacman'  # Use _pacman as _powerpill
+    hook-load:'compdef _pacman powerpill=pacman',\
+    hook-load:'compdef _apt apt-fast=apt'
 
 
 # Install twitter.sh
-zplug "ShellShoccar-jpn/kotoriotoko",\
-    hook-load:"export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}"
+zplug "ShellShoccar-jpn/kotoriotoko"
+export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 # , as:command, use:"BIN/*.sh"  # この方法で指定すると
 # CONFIG読めなくなったりいろいろなツールのパスが異なってくる
 # のでシンボリックリンクとして扱わないほうが良いと思う。
