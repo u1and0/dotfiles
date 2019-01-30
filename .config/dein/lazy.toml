@@ -254,7 +254,7 @@ build = 'make'
 on_ft = 'go'
 depends = ['deoplete.nvim']
 hook_source = '''
-    let g:deoplete#sources#go#gocode_binary = $GOPATH'/bin/gocode'
+    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 '''
 
 [[plugins]]  # CUI web browser
