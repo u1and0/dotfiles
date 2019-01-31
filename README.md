@@ -26,6 +26,10 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.13.5: go path for deoplete.nvim
+* vim
+    * [mod] gocode path
+
 ## v1.13.4: tweet.sh path
 * zsh
     * [mod] export path modified @.zplug.zsh [add] apt-fast compdef
