@@ -38,6 +38,7 @@
 	c = commit -m
 	cundo = commit --amend
 	po = push origin
+    delete = push --delete origin
 	# ========diff========
 	difff = !git diff --word-diff
 	dif = !git diff --stat
