@@ -69,6 +69,9 @@ if [ `uname` = "Darwin" ]; then
 fi
 alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
 
+## PDF
+alias -s pdf='/usr/bin/nvim'
+
 ## Archive
 function extract() {
   case $1 in
