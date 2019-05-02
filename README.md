@@ -26,6 +26,18 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.13.6: PDF view at neovim
+* git
+  * [rm] remote.origin option @.gitconfig
+  * [add] git delete: remove remote branch @.gitconfig
+* vim/nvim
+  * [mod] nvim autocmd pdf open
+  * [add] pdf view at neovim to suffix alias
+  * [mod] open pdf&archive nomapping, display top @nvim/autocmd
+  * [add] quick close window after :GoRun
+* ranger
+  * [mod] video player totem @ranger
+
 ## v1.13.5: go path for deoplete.nvim
 * vim
     * [mod] gocode path
