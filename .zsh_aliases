@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # Extended mv `zmv`
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
@@ -67,6 +69,9 @@ if [ `uname` = "Darwin" ]; then
 fi
 alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
 
+## PDF
+alias -s pdf='/usr/bin/nvim'
+
 ## Archive
 function extract() {
   case $1 in
@@ -85,3 +90,4 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
+# vim:ft=zsh

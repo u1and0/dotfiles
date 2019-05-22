@@ -1,5 +1,5 @@
-# vim:set ft=zsh:
-# 少し凝った zshrc
+#!/usr/bin/zsh
+
 # License : MIT
 # http://mollifier.mit-license.org/
 
@@ -175,3 +175,4 @@ else; printf "Install zplug? [y/N]: "
     zsh && source $0  # .zshrc再リロード
     fi
 fi
+# vim:ft=zsh

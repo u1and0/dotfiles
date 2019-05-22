@@ -1,4 +1,6 @@
-# vim:ft=zsh
+#!/usr/bin/zsh
+echo -e "\U1F4AE Loading $0"  # ロード時に花柄表示
+#
 # zplug自体のアップデート
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
@@ -7,13 +9,15 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "junegunn/fzf-bin",\
     as:command,\
     from:gh-r,\
-    rename-to:"fzf"
-source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
-source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
-export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
-# export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
-export FZF_DEFAULT_OPTS='--ansi --multi'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    rename-to:"fzf",\
+    hook-load:"""
+        source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
+        source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
+    """
+    export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
+    # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
+    export FZF_DEFAULT_OPTS='--ansi --multi'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 zplug "junegunn/fzf",\
     as:command,\
@@ -50,18 +54,19 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions",\
     defer:2,\
-    hook-load:'compdef _pacman powerpill=pacman'  # Use _pacman as _powerpill
+    hook-load:'compdef _pacman powerpill=pacman',\
+    hook-load:'compdef _apt apt-fast=apt'
 
 
 # Install twitter.sh
 zplug "ShellShoccar-jpn/kotoriotoko"
+export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 # , as:command, use:"BIN/*.sh"  # この方法で指定すると
 # CONFIG読めなくなったりいろいろなツールのパスが異なってくる
 # のでシンボリックリンクとして扱わないほうが良いと思う。
-export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 
 # Tracks your most used directories, based on 'frecency'.
-zplug "rupa/z", use:"*.sh"
+zplug "rupa/z", use:"*.sh", hook-build:"touch ${HOME}/.z"
 
 zplug "clvv/fasd", as:command, use:fasd
 
@@ -73,15 +78,22 @@ zplug "clvv/fasd", as:command, use:fasd
 # fzf + cd, git, edit also...
 zplug "u1and0/fzf-extras",\
     on:"junegunn/fzf",\
-    use:"fzf*"
-alias zz='zd -z $*'
-alias gz='fzf-gitlog-widget'
-alias gx='fzf-gitlog-multi-widget'
+    use:"fzf*",\
+    hook-load:"""
+        alias zz='zd -z $*'
+        alias gz='fzf-gitlog-widget'
+        alias gx='fzf-gitlog-multi-widget'
+    """
 
 # The most awesome Powerline theme for ZSH around!
-zplug 'bhilburn/powerlevel9k', as:theme
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vi_mode anaconda dir vcs newline)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs command_execution_time history time)
+zplug 'bhilburn/powerlevel9k',\
+    as:theme,\
+    hook-load:"""
+    export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+        context vi_mode anaconda dir vcs newline)
+    export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+        status root_indicator background_jobs command_execution_time history time)
+    """
 
 # Dropbox
 zplug "andreafabrizi/Dropbox-Uploader",\
@@ -101,15 +113,18 @@ zplug "jupyter/jupyter_core",\
 zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
     from:gist,\
     as:command,\
-    use:"pdf*"
-alias pdffetch="pdffetch -layout -nopgbrk"
-alias pdftogz="pdftogz -layout -nopgbrk"
-alias pdftobz2="pdftobz2 -layout -nopgbrk"
-alias pdftoxz="pdftoxz -layout -nopgbrk"
-alias pdftozip="pdftozip -layout -nopgbrk"
+    use:"pdf*",\
+    hook-load:"""
+        alias pdffetch='pdffetch -layout -nopgbrk'
+        alias pdftogz='pdftogz -layout -nopgbrk'
+        alias pdftobz2='pdftobz2 -layout -nopgbrk'
+        alias pdftoxz='pdftoxz -layout -nopgbrk'
+        alias pdftozip='pdftozip -layout -nopgbrk'
+    """
 
 # Word counting in text
 zplug "u1and0/aa64e61f0571521ede4e26b84cfbef6f",\
     from:gist,\
     as:command,\
     use:"*.sh"
+# vim:ft=zsh

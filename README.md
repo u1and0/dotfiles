@@ -26,7 +26,41 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
-## v1.13.0:
+## v1.13.6: PDF view at neovim
+* git
+  * [rm] remote.origin option @.gitconfig
+  * [add] git delete: remove remote branch @.gitconfig
+* vim/nvim
+  * [mod] nvim autocmd pdf open
+  * [add] pdf view at neovim to suffix alias
+  * [mod] open pdf&archive nomapping, display top @nvim/autocmd
+  * [add] quick close window after :GoRun
+* ranger
+  * [mod] video player totem @ranger
+
+## v1.13.5: go path for deoplete.nvim
+* vim
+    * [mod] gocode path
+
+## v1.13.4: tweet.sh path
+* zsh
+    * [mod] export path modified @.zplug.zsh [add] apt-fast compdef
+
+## v1.13.3: hook-load @zplug.zsh
+* zsh
+    * [mod] hook-load & touch .z when build rupa/z @.zplug.zsh
+
+## v1.13.2: prompt display dotfiles
+* bash/zsh dotfiles
+    * [mod] fixwhitespace @.bash_functions
+    * [mod] prompt display only .zplug.zsh @bash/zsh dotfiles
+    * [add] bookmark emoji @w3m/bookmark
+
+## v1.13.1: pyenv excutable check
+* bash
+    * [mod] pyenv excutable check @.bashrc
+
+## v1.13.0: golang dev-env
 * bash
     * [mod] go path @.bashrc , bacpac backup
     * [mod] fzf command, zplug load options @.zshrc, .bashrc, .zplug.zsh
