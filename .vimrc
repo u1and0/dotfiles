@@ -138,6 +138,14 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Yank to end of line
 nnoremap Y y$
 
+" --- Autocmd --- "
+if executable('arduino-cli')
+    command! ArduinoCompile !arduino-cli compile --fqbn arduino:avr:uno %:p:h
+    command! ArduinoUpload !arduino-cli upload -p COM3 --fqbn arduino:avr:uno %:p:h
+endif
+
+
+
 
 " --- Plugins manage ---
 " === Dein ===
