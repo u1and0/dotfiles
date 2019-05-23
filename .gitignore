@@ -106,3 +106,8 @@
 
 # Install scripts
 !/.install/
+
+# docker
+!/.docker/
+/.docker/*
+!/.docker/config.json
