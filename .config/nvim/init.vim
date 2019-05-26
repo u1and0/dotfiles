@@ -9,6 +9,12 @@ endif
 
 
 runtime! autocmd.rc.vim keymap.rc.vim options.rc.vim
+"
+" Arduino Dev
+if executable('arduino-cli')
+    runtime! arduino.rc.vim
+endif
+
 
 let $CACHE = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
 let $CONFIG = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
