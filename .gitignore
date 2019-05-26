@@ -87,6 +87,9 @@
 !.vimrc
 !/.vim/
 /.vim/*
+!/.vim/after/
+/.vim/after/*
+!/.vim/after/ftplugin/
 
 !/.vim/bundle/
 /.vim/bundle/*
