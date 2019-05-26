@@ -23,7 +23,7 @@ set backspace=indent,eol,start
 " else
 "   set backup      " do not keep a backup file, use versions instead keep a backup file
 " endif
-set history=100     " keep 50 lines of command line history
+set history=10000     " keep 50 lines of command line history
 set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
@@ -142,9 +142,16 @@ nnoremap Y y$
 if executable('arduino-cli')
     command! ArduinoCompile !arduino-cli compile --fqbn arduino:avr:uno %:p:h
     command! ArduinoUpload !arduino-cli upload -p COM3 --fqbn arduino:avr:uno %:p:h
+    command! -complete=dir -nargs=1 ArduinoNew !arduino-cli sketch new <q-args>
+    set makeprg=arduino-cli\ compile\ --fqbn\ arduino:avr:uno\ %:p:h
 endif
 
+" --- Custom Commands ---
 
+" 一時ファイルの作成と書き込み
+" 標準出力を読み込んだ後:vimgrep などを使用する前に
+command! TempfileEdit :edit `=tempname()`
+command! TempfileWrite :write `=tempname()`
 
 
 " --- Plugins manage ---
@@ -195,6 +202,12 @@ if dein#load_state('$DATA/dein')
     " call dein#add('majutsushi/tagbar', {
     "             \ 'hook_add': 'nnoremap <silent> <F8> :TagbarToggle<CR>'
     "             \ })                           " A class outline viewer for Vim
+    call dein#add('scrooloose/nerdtree', {
+                \ 'hook_add': 'nnoremap <silent> <F5> :NERDTreeToggle<CR>',
+                \ })
+    " Session saveing ':Obsession'
+    call dein#add('tpope/vim-obsession')
+
     call dein#end()
     call dein#save_state()
 endif
