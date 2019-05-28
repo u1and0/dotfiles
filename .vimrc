@@ -139,12 +139,30 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap Y y$
 
 " --- Autocmd --- "
-if executable('arduino-cli')
-    command! ArduinoCompile !arduino-cli compile --fqbn arduino:avr:uno %:p:h
-    command! ArduinoUpload !arduino-cli upload -p COM3 --fqbn arduino:avr:uno %:p:h
-    command! -complete=dir -nargs=1 ArduinoNew !arduino-cli sketch new <q-args>
-    set makeprg=arduino-cli\ compile\ --fqbn\ arduino:avr:uno\ %:p:h
-endif
+" if executable('arduino-cli')
+"     command! ArduinoCompile !arduino-cli compile --fqbn arduino:avr:uno %:p:h
+"     command! ArduinoUpload !arduino-cli upload -p COM3 --fqbn arduino:avr:uno %:p:h
+"     command! -complete=dir -nargs=1 ArduinoNew !arduino-cli sketch new <q-args>
+"     set makeprg=arduino-cli\ compile\ --fqbn\ arduino:avr:uno\ %:p:h
+" endif
+
+augroup MyAutoCmd
+    autocmd!
+    " QuickFixおよびHelpでは q でバッファを閉じる
+    autocmd MyAutoCmd FileType help,qf,goterm nnoremap <buffer> q <C-w>c<Paste>
+    " スワップファイルがあったときは常にreadonlyで開く
+    autocmd SwapExists * let v:swapchoice = 'o'
+    " ファイルを開いたときに、カーソル位置を最後にカーソルがあった位置まで移動
+    autocmd BufReadPost * :normal! g`"
+    " grepしたときに自動的にquickfixウィンドウを開く
+    autocmd QuickFixCmdPost *grep* cwindow
+    if executable('pdftotext')
+        " PDFファイルを開いた時、text形式に変換してから開く
+        autocmd BufRead *.pdf :enew | 0read !pdftotext -layout -nopgbrk "#" -
+    endif
+    " 圧縮ファイルとPDFファイルを開いた時、readonlyモードで開く
+    autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly | normal gg
+augroup END
 
 " --- Custom Commands ---
 
