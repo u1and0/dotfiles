@@ -256,14 +256,3 @@ depends = ['deoplete.nvim']
 hook_source = '''
     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 '''
-
-[[plugins]]  # CUI web browser
-repo = 'yuratomo/w3m.vim'
-hook_add = '''
-    nnoremap <C-K><C-G> :W3mSplit <C-R>
-    " 続けて<C-W>で word 貼り付け
-    " 続けて<C-A>で WORD 貼り付け
-    " 続けて"で バッファを貼り付け
-    " :help <C-R> for more help
-'''
-if = '''executable('w3m')'''

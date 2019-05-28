@@ -23,7 +23,7 @@ set backspace=indent,eol,start
 " else
 "   set backup      " do not keep a backup file, use versions instead keep a backup file
 " endif
-set history=10000     " keep 50 lines of command line history
+set history=10000     " keep 10000 lines of command line history
 set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching

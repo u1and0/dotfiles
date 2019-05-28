@@ -3,8 +3,6 @@ augroup MyAutoCmd
     autocmd!
     " QuickFixおよびHelpでは q でバッファを閉じる
     autocmd MyAutoCmd FileType help,qf,goterm nnoremap <buffer> q <C-w>c<Paste>
-    " Helpでは j/kでカーソル固定移動(普通の移動はgj/gkを使う)
-    autocmd MyAutoCmd FileType help nn <buffer> j <C-E> | nn <buffer> k <C-Y>
     " スワップファイルがあったときは常にreadonlyで開く
     autocmd SwapExists * let v:swapchoice = 'o'
     " tags path
