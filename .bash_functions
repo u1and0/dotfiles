@@ -194,6 +194,10 @@ else
 fi
 
 weblio() {
+    w3m "https://ejje.weblio.jp/content/$1"
+}
+
+weblio-vim() {
     ${VISUAL} +"Ref webdict $1" +on
 }
 # vim:ft=sh
