@@ -192,4 +192,8 @@ else
         awk "BEGIN {print $*}"
     }
 fi
+
+weblio() {
+    ${VISUAL} +"Ref webdict $1" +on
+}
 # vim:ft=sh
