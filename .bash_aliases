@@ -137,4 +137,7 @@ alias line="$SHPATH/line.sh"
 # pdftotext
 type pdftotext > /dev/null 2>&1 &&
     alias pdftotext='pdftotext -layout -nopgbrk '
+
+# awk scripts
+alias joinln="awk 'NF != 0'"
 # vim:ft=sh
