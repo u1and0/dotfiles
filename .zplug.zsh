@@ -109,7 +109,7 @@ zplug "jupyter/jupyter_core",\
     use:examples/completions-zsh,\
     rename-to:"_jupyter"
 
-zplug "zchee/go-zsh-completions", as:command, rename-to:"_golang"
+zplug "zchee/go-zsh-completions", as:command, rename-to:"_go"
 
 # PDF to compressed file
 zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
