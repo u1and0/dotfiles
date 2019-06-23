@@ -26,6 +26,14 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.14.1: timeit, zplug completion, small awk script
+* [mod] bacpac
+* [mod] README.md v1.14.0 description
+* [fix] _golang -> _go
+* [add] .zsh_functions/timeit()
+* [add] zplug completion
+* [add] join line awk script @.bashrc
+
 ## v1.14.0: Add arduino-vim setting, ranger open xls & pdf as text
 * ranger
   * [add] open xls to $PAGER option @ranger/rifle.conf
