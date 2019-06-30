@@ -102,14 +102,28 @@ zplug "andreafabrizi/Dropbox-Uploader",\
     rename-to:"db"
 
 # Completions
-zplug "esc/conda-zsh-completion", as:command, rename-to:"_conda"
+# zplugのif:を使うと、ロードされないとき
+# jupyter/jupyter_core: (bypassed check) のように
+# 表示されるのでshell script的に普通にif-fiを使う
 
-zplug "jupyter/jupyter_core",\
-    as:command,\
-    use:examples/completions-zsh,\
-    rename-to:"_jupyter"
+if [ type conda > /dev/null 2>&1 ]; then
+    zplug "esc/conda-zsh-completion",\
+        as:command,\
+        rename-to:"_conda"
+fi
 
-zplug "zchee/go-zsh-completions", as:command, rename-to:"_go"
+if [ type jupyter > /dev/null 2>&1 ]; then
+    zplug "jupyter/jupyter_core",\
+        as:command,\
+        use:examples/completions-zsh,\
+        rename-to:"_jupyter"
+fi
+
+if [ type go > /dev/null 2>&1 ]; then
+    zplug "zchee/go-zsh-completions",\
+        as:command,\
+        rename-to:"_go"
+fi
 
 # PDF to compressed file
 zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
