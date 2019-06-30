@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """ipython start up scripts for pandas useful methods"""
 import pandas as pd
+from IPython.display import display
 
 
 def nearest_x(series, value):
@@ -39,10 +40,17 @@ def _read_tables(*files, **kwargs):
          for f in files})
 
 
+def _dump(self):
+    """print all rows & columns""" ""
+    with pd.option_context('display.max_rows', len(self)):
+        display(self)
+
+
 NAMES = [
     ('less', _less),
     ('mirror', _mirror),
     ('nearest_x', nearest_x),
+    ('dump', _dump),
 ]
 
 
