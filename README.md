@@ -26,6 +26,44 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.14.2: zsh completion call
+* bacpac: [mod] checkout docker branch @submodule/bacpac
+* zsh/zplug: [mod] @.zplug.zsh/zsh completions call in if statement
+* python: [add] pandas.DataFrame().damp() method, print all rows
+
+## v1.14.1: timeit, zplug completion, small awk script
+* [mod] bacpac
+* [mod] README.md v1.14.0 description
+* [fix] _golang -> _go
+* [add] .zsh_functions/timeit()
+* [add] zplug completion
+* [add] join line awk script @.bashrc
+
+## v1.14.0: Add arduino-vim setting, ranger open xls & pdf as text
+* ranger
+  * [add] open xls to $PAGER option @ranger/rifle.conf
+  * [add] open pdf to $PAGER option @ranger/rifle.conf
+* zsh
+  * [add] suffix alias X = xargs @.zsh_alias
+* bash
+  * [add] devide weblio() weblio-vim() functions
+  * [add] weblio function @.bash_functions
+* vim/nvim
+  * [merge] fix .vimrc conflict
+  * [add] autocmd
+  * [add] NERDTree, Temp commands, Arduino commands
+  * [mod] vim history keep 10000
+  * [add] arduino ftplugin @.vim/
+  * [add] FQBN & PORT use let args. Add keymap.
+  * [mod] not load arduino.rc.vim (deleted), use ftplugin instead
+  * [add] arduino.rc.vim: Arduino commands setting
+  * [mod] not lazy W3m load @dein/plugins.toml, lazy.toml
+  * [add] ArduinoCompile & ArduinoUpload command @.vimrc
+* bacpac
+  * [mod] update package list @docker
+* docker
+  * [add] docker config json
+
 ## v1.13.6: PDF view at neovim
 * git
   * [rm] remote.origin option @.gitconfig
