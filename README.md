@@ -26,6 +26,11 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.14.2: zsh completion call
+* bacpac: [mod] checkout docker branch @submodule/bacpac
+* zsh/zplug: [mod] @.zplug.zsh/zsh completions call in if statement
+* python: [add] pandas.DataFrame().damp() method, print all rows
+
 ## v1.14.1: timeit, zplug completion, small awk script
 * [mod] bacpac
 * [mod] README.md v1.14.0 description
