@@ -75,3 +75,5 @@
 	ff = false
 [pull]
 	ff = only
+[ghq]
+	root = /root/go/src
