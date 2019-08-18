@@ -36,6 +36,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 alias mkdir='mkdir -p'
+alias rmdir='rmdir -p'
 
 # 設定の読み込み
 alias relogin='exec $SHELL -l'
