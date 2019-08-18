@@ -147,7 +147,7 @@ hook_add = '''
 
     " === VIM-GO COMMAND KEYBINDS ===
     " autocmd FileType go nmap <leader>b  <Plug>(go-build) " 下記に改善版
-    autocmd FileType go nmap <leader>r <Plug>(go-run) <C-W>k
+    autocmd FileType go nmap <leader>r <Plug>(go-run) <C-W>kG
     autocmd FileType go nmap <leader>t <Plug>(go-test)
     autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
     " run :GoBuild or :GoTestCompile based on the go file
