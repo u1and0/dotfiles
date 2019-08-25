@@ -20,8 +20,8 @@ cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
 
 " vim grep faster
-nnoremap <leader>v :vim//%<CR>
-nnoremap <leader>V :vim//##<CR>
+nnoremap <leader>/ :vimgrep//%<CR>
+nnoremap <leader>? :vimgrep//##<CR>
 
 " vim - shell 通信用バッファ
 imap <leader>p <ESC>:read ${HOME}/.vim/bf<CR>i

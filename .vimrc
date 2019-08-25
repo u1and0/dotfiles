@@ -125,6 +125,10 @@ cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
 
+" vim grep faster
+nnoremap <leader>/ :vimgrep//%<CR>
+nnoremap <leader>? :vimgrep//##<CR>
+
 " Shift + 矢印でウィンドウサイズを変更
 nnoremap <S-Left>  5<C-w><<CR>
 nnoremap <S-Right> 5<C-w>><CR>
