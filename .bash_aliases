@@ -138,4 +138,9 @@ alias line="$SHPATH/line.sh"
 # pdftotext
 type pdftotext > /dev/null 2>&1 &&
     alias pdftotext='pdftotext -layout -nopgbrk '
+
+# vim - shell 通信用バッファ
+alias bf='cat > ${HOME}/.vim/bf'
+alias bfcat='cat ${HOME}/.vim/bf'
+alias bfexec='bfcat | ${SHELL}'
 # vim:ft=sh
