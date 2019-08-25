@@ -118,6 +118,7 @@ alias gpo='git push origin'
 alias gs='git status --short --branch'
 alias gl='git log1'
 alias gls='git ls-files'
+alias gn='git log1 -n10'
 alias gd='git diff'
 
 # branch
