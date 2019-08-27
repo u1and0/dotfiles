@@ -29,8 +29,7 @@ nmap <leader>p :read ${HOME}/.vim/bf<CR>
 " vmap <C-b> :w!${HOME}/.vim/bf<CR> の改良↓
 augroup MyBuf
     autocmd!
-    autocmd TextYankPost * call writefile(split(string(v:event.regcontents)[2:-3], "', '"), $HOME . "/.vim/bf")
-" [ 2:-3 ]はリストのprefix [' と surfix ']を消すため
+    autocmd TextYankPost * call writefile(v:event.regcontents, $HOME . "/.vim/bf")
 augroup END
 
 vnoremap <Leader><CR> :!${SHELL}<CR>
