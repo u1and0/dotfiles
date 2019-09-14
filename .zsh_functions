@@ -53,8 +53,6 @@ function tmux_automatically_attach_session()
 					fi
 				fi
             fi
-
-            tmux new-session && echo "tmux created new session"
         fi
     fi
 }
