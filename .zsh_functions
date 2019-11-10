@@ -34,10 +34,12 @@ function tmux_automatically_attach_session()
             if tmux has-session >/dev/null 2>&1; then
                 # detached session exists
                 if tmux list-sessions; then
-					echo -n "Tmux: attach? (Y/n/num) "
+					echo -n "Tmux: attach? ([Y]/n/neW/num) "
 					read
 					if [[ "$REPLY" == [Nn] ]]; then
                         return 0
+					elif [[ "$REPLY" == [wW] ]]; then
+                        tmux new-session && echo "tmux created new session"
 					elif [[ "$REPLY" == [0-9]* ]]; then
 						tmux attach-session -d -t "$REPLY"
 						if [ $? -eq 0 ]; then
