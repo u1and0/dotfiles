@@ -80,3 +80,5 @@
 	ff = only
 [ghq]
 	root = /root/go/src
+[remote "origin"]  # この設定はdockerでテストする時引っかかることがあるので、適宜削除
+	fetch = +refs/heads/*:refs/remotes/origin/*
