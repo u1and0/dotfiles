@@ -80,5 +80,10 @@
 	ff = only
 [ghq]
 	root = /root/go/src
-[remote "origin"]  # この設定はdockerでテストする時引っかかることがあるので、適宜削除
-	fetch = +refs/heads/*:refs/remotes/origin/*
+# [remote "origin"]  # この設定はdockerでテストする時引っかかることがあるので、つけてはいけない
+	# fetch = +refs/heads/*:refs/remotes/origin/*
+# deinのプラグインを更新する時、複数のブランチで更新することが許されていないため
+# [dein] fatal: multiple updates for ref 'refs/remotes/origin/master' not allowed
+#
+# git fetchで自分のdotファイルを落としたい時、on the flyでこのセッションだけ有効なfetchオプションを設定する
+# git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
