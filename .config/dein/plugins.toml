@@ -146,7 +146,7 @@ hook_add = 'nmap <F8> :TagbarToggle<CR>'
 repo = 'soramugi/auto-ctags.vim'
 hook_add = '''
 " Create at a Writing the file, default 0
-let g:auto_ctags = 1
+let g:auto_ctags = 0
 " Create the tags in directory, default .
 " And stored in a directory that matches the first
 let g:auto_ctags_directory_list = ['.git', '.svn']
