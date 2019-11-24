@@ -267,9 +267,11 @@ nmap [Ref] <Nop>
 map <C-k> [Ref]
 " カレントワードをコマンドラインに貼り付け、カーソルを'webdict'の前に置く
 " <CR>で即座に和英検索 or 別のリファレンスソースに変えてから検索
-nnoremap [Ref]      :Ref webdict <C-R><C-W><C-Left><Left>
+nnoremap [Ref] :Ref webdict <C-R><C-W><C-Left><Left>
+vnoremap [Ref] y:Ref webdict <C-R>"<C-Left><Left>
 " カレントワードを英和/和英検索
 nnoremap [Ref]<C-K> :Ref webdict <C-R><C-W><CR>
+vnoremap [Ref]<C-K> y:Ref webdict <C-R>"<CR>
 
 " Refで開いたウィンドウではq でバッファを閉じる
 augroup RefAutoCmd
