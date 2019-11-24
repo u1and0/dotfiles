@@ -64,5 +64,5 @@ set spelllang=en,cjk
 
 " grep program
 if executable('rg')
-    set grepprg=rg\ -nH
+    set grepprg=rg\ -nH\ --glob=!*tags
 endif

@@ -142,6 +142,22 @@ hook_add = 'nmap <F8> :TagbarToggle<CR>'
 #     let g:gen_tags#gtags_auto_gen = 1
 # '''
 
+[[plugins]] # ctags maker
+repo = 'soramugi/auto-ctags.vim'
+hook_add = '''
+" Create at a Writing the file, default 0
+let g:auto_ctags = 1
+" Create the tags in directory, default .
+" And stored in a directory that matches the first
+let g:auto_ctags_directory_list = ['.git', '.svn']
+" Create the tags name, default tags
+let g:auto_ctags_tags_name = 'tags'
+" Create the ctags args, default --tag-relative --recurse --sort=yes
+let g:auto_ctags_tags_args = ['--tag-relative=yes', '--recurse=yes', '--sort=yes']
+" Create the filetype tags --languages= option mode, default 0
+let g:auto_ctags_filetype_mode = 1
+'''
+
 [[plugins]] # Fuzzy Finder for vim
 repo = 'junegunn/fzf.vim'
 hook_add = '''
