@@ -28,9 +28,9 @@ filetype plugin indent on " filetypeによってインデント設定を変え�
 set cursorline          " Highlight corsorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
-set list  " 不可視文字の表示
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-colorscheme slate
+set nolist  " 不可視文字の表示
+" set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+colorscheme ron
 
 
 " vim default plugins
@@ -64,5 +64,5 @@ set spelllang=en,cjk
 
 " grep program
 if executable('rg')
-    set grepprg=rg\ -nH
+    set grepprg=rg\ -nH\ --glob=!*tags
 endif

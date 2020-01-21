@@ -87,6 +87,9 @@
 !.vimrc
 !/.vim/
 /.vim/*
+!/.vim/after/
+/.vim/after/*
+!/.vim/after/ftplugin/
 
 !/.vim/bundle/
 /.vim/bundle/*
@@ -106,3 +109,8 @@
 
 # Install scripts
 !/.install/
+
+# docker
+!/.docker/
+/.docker/*
+!/.docker/config.json

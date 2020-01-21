@@ -23,7 +23,7 @@ set backspace=indent,eol,start
 " else
 "   set backup      " do not keep a backup file, use versions instead keep a backup file
 " endif
-set history=100     " keep 50 lines of command line history
+set history=10000     " keep 10000 lines of command line history
 set ruler           " show the cursor position all the time
 set showcmd         " display incomplete commands
 set incsearch       " do incremental searching
@@ -125,6 +125,10 @@ cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
 
+" vim grep faster
+nnoremap <leader>/ :vimgrep//%<CR>
+nnoremap <leader>? :vimgrep//##<CR>
+
 " Shift + 矢印でウィンドウサイズを変更
 nnoremap <S-Left>  5<C-w><<CR>
 nnoremap <S-Right> 5<C-w>><CR>
@@ -138,6 +142,51 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Yank to end of line
 nnoremap Y y$
 
+" --- Autocmd --- "
+" if executable('arduino-cli')
+"     command! ArduinoCompile !arduino-cli compile --fqbn arduino:avr:uno %:p:h
+"     command! ArduinoUpload !arduino-cli upload -p COM3 --fqbn arduino:avr:uno %:p:h
+"     command! -complete=dir -nargs=1 ArduinoNew !arduino-cli sketch new <q-args>
+"     set makeprg=arduino-cli\ compile\ --fqbn\ arduino:avr:uno\ %:p:h
+" endif
+
+augroup MyAutoCmd
+    autocmd!
+    " QuickFixおよびHelpでは q でバッファを閉じる
+    autocmd MyAutoCmd FileType help,qf,goterm nnoremap <buffer> q <C-w>c<Paste>
+    " スワップファイルがあったときは常にreadonlyで開く
+    autocmd SwapExists * let v:swapchoice = 'o'
+    " ファイルを開いたときに、カーソル位置を最後にカーソルがあった位置まで移動
+    autocmd BufReadPost * :normal! g`"
+    " grepしたときに自動的にquickfixウィンドウを開く
+    autocmd QuickFixCmdPost *grep* cwindow
+    if executable('pdftotext')
+        " PDFファイルを開いた時、text形式に変換してから開く
+        autocmd BufRead *.pdf :enew | 0read !pdftotext -layout -nopgbrk "#" -
+    endif
+    " 圧縮ファイルとPDFファイルを開いた時、readonlyモードで開く
+    autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly | normal gg
+augroup END
+
+" --- Custom Commands ---
+
+" 一時ファイルの作成と書き込み
+" 標準出力を読み込んだ後:vimgrep などを使用する前に
+command! TempfileEdit :edit `=tempname()`
+command! TempfileWrite :write `=tempname()`
+
+" vim - shell 通信用バッファ
+imap <leader>p <ESC>:read ${HOME}/.vim/bf<CR>i
+nmap <leader>p :read ${HOME}/.vim/bf<CR>
+" vmap <C-b> :w!${HOME}/.vim/bf<CR> の改良↓
+augroup MyBuf
+    autocmd!
+    autocmd TextYankPost * call writefile(split(string(v:event.regcontents)[2:-3], "', '"), $HOME . "/.vim/bf")
+" [ 2:-3 ]はリストのprefix [' と surfix ']を消すため
+augroup END
+
+vnoremap <Leader><CR> :!${SHELL}<CR>
+nnoremap <Leader><CR> V:!${SHELL}<CR>
 
 " --- Plugins manage ---
 " === Dein ===
@@ -187,6 +236,12 @@ if dein#load_state('$DATA/dein')
     " call dein#add('majutsushi/tagbar', {
     "             \ 'hook_add': 'nnoremap <silent> <F8> :TagbarToggle<CR>'
     "             \ })                           " A class outline viewer for Vim
+    call dein#add('scrooloose/nerdtree', {
+                \ 'hook_add': 'nnoremap <silent> <F5> :NERDTreeToggle<CR>',
+                \ })
+    " Session saveing ':Obsession'
+    call dein#add('tpope/vim-obsession')
+
     call dein#end()
     call dein#save_state()
 endif

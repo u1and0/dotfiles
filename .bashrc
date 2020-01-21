@@ -6,10 +6,6 @@ export TERM="xterm-256color"
 # shell script path
 export SHPATH="${HOME}/sh"
 export PATH="$PATH:$SHPATH/bin"
-# go lang path
-type go > /dev/null 2>&1 &&\
-    export GOPATH="${HOME}/go" &&\
-    export PATH="$PATH:$GOPATH/bin"
 # LinuxBrew setting
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export MANPATH="/home/linuxbrew/.lilinuxbrew/nuxbrew/share/man:$MANPATH"
