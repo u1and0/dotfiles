@@ -45,7 +45,7 @@
   "autosavetime_starting_interval": "10",
   "Cell": {
     "cm_config": {
-      "lineNumbers": true
+      "lineNumbers": false
     }
   },
   "kse_rebinds": {
