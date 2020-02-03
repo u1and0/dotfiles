@@ -168,9 +168,10 @@ hook_add = '''
     autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
     autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
     " 自分専用キーバインド(^とpが近いので)
-    autocmd FileType go nmap <Leader>gp <Plug>(go-alternate-edit)
-    autocmd FileType go nmap <Leader>gs <Plug>(go-alternate-split)
-    autocmd FileType go nmap <Leader>gv <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <Leader>a <Plug>(go-alternate-edit)
+    autocmd FileType go nmap <Leader>s <Plug>(go-alternate-split)
+    autocmd FileType go nmap <Leader>v <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <Leader>l <Plug>(go-lint)
     " tabに表示はない
 
     " [[, ]]: 次/前の関数に移動
