@@ -210,7 +210,7 @@ repo = 'alvan/vim-closetag'
 [[plugins]]  # Place, toggle and display marks.
 repo = 'kshenoy/vim-signature'
 hook_add='''
-    nnoremap <silent> <F3> :SignatureToggle<CR>
+    nnoremap <silent> <F3> :SignatureListBufferMarks<CR>
 '''
 
 # ========Vim References========
