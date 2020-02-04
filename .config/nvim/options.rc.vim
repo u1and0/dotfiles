@@ -54,6 +54,8 @@ endfunction
 " `:e %%`アクティブなファイルが含まれているディレクトリを手早く展開する
 " :eだけでなく:wや:rでも使える。
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" `:e %_`拡張子を取り除いたファイル名を表示する
+cnoremap <expr> %_ getcmdtype() == ':' ? expand('%:r') : '%_'
 
 " file encodings
 set encoding=utf-8

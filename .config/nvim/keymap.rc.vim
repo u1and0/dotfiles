@@ -24,7 +24,8 @@ nnoremap <leader>/ :vimgrep//%<CR>
 nnoremap <leader>? :vimgrep//##<CR>
 
 " vim - shell 通信用バッファ
-imap <leader>p <ESC>:read ${HOME}/.vim/bf<CR>i
+imap <leader><leader>p <ESC>:read ${HOME}/.vim/bf<CR>i
+" leaderがSpaceなのでleader1つだと、Space-Pがペーストになってしまう
 nmap <leader>p :read ${HOME}/.vim/bf<CR>
 " vmap <C-b> :w!${HOME}/.vim/bf<CR> の改良↓
 augroup MyBuf
