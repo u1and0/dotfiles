@@ -3,7 +3,7 @@
 # USAGE:
 #   timeit [command] <args>
 function timeit() {
-    for i ($(seq 3)) time $* > /dev/null 2>&1
+    for i ($(seq 3)) time sh -c "$*" > /dev/null 2>&1
 }
 
 # tmux login
