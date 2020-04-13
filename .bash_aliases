@@ -36,6 +36,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 alias mkdir='mkdir -p'
+alias rmdir='rmdir -p'
 
 # 設定の読み込み
 alias relogin='exec $SHELL -l'
@@ -117,6 +118,7 @@ alias gpo='git push origin'
 alias gs='git status --short --branch'
 alias gl='git log1'
 alias gls='git ls-files'
+alias gn='git log1 -n10'
 alias gd='git diff'
 
 # branch
@@ -137,4 +139,9 @@ alias line="$SHPATH/line.sh"
 # pdftotext
 type pdftotext > /dev/null 2>&1 &&
     alias pdftotext='pdftotext -layout -nopgbrk '
+
+# vim - shell 通信用バッファ
+alias bf='cat > ${HOME}/.vim/bf'
+alias bfcat='cat ${HOME}/.vim/bf'
+alias bfexec='bfcat | ${SHELL}'
 # vim:ft=sh

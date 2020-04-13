@@ -67,10 +67,10 @@ let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 
 " lint結果をロケーションリストに表示
-let g:ale_set_loclist = 1
-" lint結果をQuickfixに表示しない
-let g:ale_set_quickfix = 0
-" lint結果をデフォルトで表示しない(:lopenで開く)
+let g:ale_set_loclist = 0
+" lint結果をQuickfixに表示
+let g:ale_set_quickfix = 1
+" lint結果をデフォルトで表示しない(:qw, :lwで開く)
 let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 
@@ -147,7 +147,7 @@ hook_add = '''
 
     " === VIM-GO COMMAND KEYBINDS ===
     " autocmd FileType go nmap <leader>b  <Plug>(go-build) " 下記に改善版
-    autocmd FileType go nmap <leader>r <Plug>(go-run) <C-W>k
+    autocmd FileType go nmap <leader>r <Plug>(go-run) <C-W>kG
     autocmd FileType go nmap <leader>t <Plug>(go-test)
     autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
     " run :GoBuild or :GoTestCompile based on the go file
@@ -168,9 +168,10 @@ hook_add = '''
     autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
     autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
     " 自分専用キーバインド(^とpが近いので)
-    autocmd FileType go nmap <Leader>pp <Plug>(go-alternate-edit)
-    autocmd FileType go nmap <Leader>ps <Plug>(go-alternate-split)
-    autocmd FileType go nmap <Leader>pv <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <Leader>a <Plug>(go-alternate-edit)
+    autocmd FileType go nmap <Leader>s <Plug>(go-alternate-split)
+    autocmd FileType go nmap <Leader>v <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <Leader>l <Plug>(go-lint)
     " tabに表示はない
 
     " [[, ]]: 次/前の関数に移動
