@@ -26,6 +26,54 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.15.0: tmux attatch function, vim buffer `bf`
+* zsh
+  * [mod] timeit adapt to piped script @.zsh_function
+  * [add] tmux new session select  @.zsh_functions
+* bacpac
+  * [mod] bacpac backup
+  * submodule bacpac sync
+* vim/neovim
+  * [add] modeline @vim option
+  * [mod] vim signature update command
+  * [add] remove extension map @nvim/option.rc.vim
+  * [mod] denite keymap & alias. Use insert mod to fuzzy-find
+  * [mod] leader-p bf paste @nvim/keymap
+  * [mod] auto_ctags disable @plugins.toml
+  * [mod] change buffer line use ]NUM @lightline.toml
+  * [mod] Ref keymap at vmode @dein/plugin.toml
+  * [mod] grepprg ignore tags file @config nvim option
+  * [mod] grepprg exclude tags @nvim/option
+  * [mod] writefile()関数の引数v:event.regcontentsはリストを返すので余計なものはいらない
+  * [mod] vimgrep keymap <Leader>-/ or ?
+  * [add] ~/.vim/bf alias & keymap
+  * [add] auto ctags @dein/plugins.toml, go lang run and move EOF
+  * [mod] ale display on quickfix @dein/lazy.toml
+  * [mod] file_rec excutable ag @dein/python.toml
+  * [add] vimgrep quick keymap <leader>v(current file) or V(arglist)
+* python
+  * [mod] line number false @notebook.json
+* go
+  * [mod] go keymap @dein/lazy.toml
+  * [rm] go path( use in docker env) [add] ghq option @.gitconfig
+* tmux
+  * tmux head checkout
+  * [rm] tmux auto create new session
+  * [mod] entering tmux sesstion default <Yes> @.zsh_functions
+  * [add] login with tmux attach @.zsh_functions
+* git
+  * fetchオプションに関する注意書き追加 @.gitconfig
+  * submodule bacpac commit
+  * [add] submodule ignore @.gitmodules
+  * [add] fetch = +refs/heads/*:refs/remotes/origin/* @.gitconfig
+  * [add] alias gn=git log1 -n10 @.bash_aliases
+* fzf
+  * [add] fzf + git checkout/diff/stash list
+* bash
+  * [add] rmdir always --parents option @.bash_aliases
+* ranger
+  * [mod] pdf viewer default@ranger/rifle.conf
+
 ## v1.14.2: zsh completion call
 * bacpac: [mod] checkout docker branch @submodule/bacpac
 * zsh/zplug: [mod] @.zplug.zsh/zsh completions call in if statement
