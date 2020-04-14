@@ -26,7 +26,7 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
-## v1.14.3: zsh completion call
+## v1.15.0: tmux attatch function, vim buffer `bf`
 * zsh
   * [mod] timeit adapt to piped script @.zsh_function
   * [add] tmux new session select  @.zsh_functions
