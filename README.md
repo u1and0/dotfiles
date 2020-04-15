@@ -26,6 +26,13 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.15.1: deoplete-go
+* vim/neovim
+  * zchee/deopleteのインストールが失敗する
+  -> メンテナンスが活発なdeplete-plugins/deoplete-go (Shougoさん開発) に変更。
+  -> .config/deinn/go.toml に切り分け。goが実行可能な時(if excutable)
+      に遅延loadするように.config/nvim/init.vimを変更。
+
 ## v1.15.0: tmux attatch function, vim buffer `bf`
 * zsh
   * [mod] timeit adapt to piped script @.zsh_function
