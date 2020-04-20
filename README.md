@@ -26,6 +26,10 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.15.2: remove deoplete-go
+* vim/neovim
+  * deopelte-plugins/deopelte-go のビルドがdocker build中にできない
+
 ## v1.15.1: deoplete-go
 * vim/neovim
   * zchee/deopleteのインストールが失敗する

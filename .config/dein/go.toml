@@ -117,12 +117,3 @@ hook_add = '''
     " GoImpl: インターフェースを実装するメソッドスタブの生成
     " GoPlay: コードをGo Playground に公開する(リンクはバッファかクリップボードにコピーされる)
 '''
-
-[[plugins]]  # go completion
-repo = 'deoplete-plugins/deoplete-go'
-build = 'make'
-on_ft = 'go'
-depends = ['deoplete.nvim']
-hook_source = '''
-    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
-'''
