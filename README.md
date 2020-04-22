@@ -27,6 +27,10 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 ---
 # Version info
 
+## v1.15.6: conda init if excutable pyenv
+* zsh
+  * source conda config @.zshrc
+
 ## v1.15.5: alias sudo docker
 * bash
   * alias docker="sudo docker " `@.bash_aliases`
