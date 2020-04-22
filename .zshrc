@@ -190,6 +190,7 @@ if [ type pyenv ] >/dev/null 2>&1; then
         fi
     fi
     unset __conda_setup
+    source ~/.pyenvrc
 fi
 # <<< conda initialize <<<<Plug>(neosnippet_expand_or_jump)
 
