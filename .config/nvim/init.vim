@@ -44,9 +44,6 @@ if dein#load_state(s:dein_dir)
     if has('python3')
         call dein#load_toml(s:toml_dir . '/python.toml', {'lazy': 0})
     endif
-    if executable('go')
-        call dein#load_toml(s:toml_dir . '/go.toml', {'lazy': 0})
-    endif
 
     call dein#end()
     call dein#save_state()
