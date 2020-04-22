@@ -19,6 +19,11 @@ if which sudo > /dev/null 2>&1; then
     else
         alias pacman='sudo pacman '
     fi
+
+    # docker
+    if which docker > /dev/null 2>&1; then
+        alias docker='sudo docker '
+    fi
 fi
 
 # 移動しやすく
