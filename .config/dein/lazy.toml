@@ -39,12 +39,6 @@ hook_add = '''
     autocmd FileType python setlocal completeopt-=preview
 '''
 
-[[plugins]]
-repo = 'lambdalisue/vim-pyenv'
-depends = 'jedi-vim'
-on_ft = 'python'
-if = '''executable('pyenv')'''
-
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
 on_ft = ['python', 'sh', 'js', 'javascript']
