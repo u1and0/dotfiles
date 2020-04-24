@@ -175,23 +175,4 @@ else; printf "Install zplug? [y/N]: "
     zsh && source $0  # .zshrc再リロード
     fi
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if [ type pyenv ] >/dev/null 2>&1; then
-    __conda_setup="$('/home/u1and0/pyenv/versions/miniconda3-latest/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0  ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/home/u1and0/pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"  ]; then
-            . "/home/u1and0/pyenv/versions/miniconda3-latest/etc/profile.d/conda.sh"
-        else
-            export PATH="/home/u1and0/pyenv/versions/miniconda3-latest/bin:$PATH"
-        fi
-    fi
-    unset __conda_setup
-    source ~/.pyenvrc
-fi
-# <<< conda initialize <<<<Plug>(neosnippet_expand_or_jump)
-
 # vim:ft=zsh
