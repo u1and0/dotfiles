@@ -53,8 +53,10 @@ export EDITOR=${VISUAL:='vi'}  # EDITOR editor should be able to work without us
 
 [ -f ~/.bash_functions ] && . ~/.bash_functions
 
-type pyenv > /dev/null 2>&1 && . ~/.pyenvrc
-
 # facd: Frecency directory & file
 type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
+
+# Activate conda env
+[ -f /etc/profile.d/conda.sh ] && . /etc/profile.d/conda.sh && conda activate
+
 # vim:ft=sh
