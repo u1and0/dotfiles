@@ -27,6 +27,13 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 ---
 # Version info
 
+## v1.15.8: remove pyenv
+* pyenv
+  * [rm] old conda package list, pyenv manage scripts
+  * [rm] .pyenvrc [add] conda activate @.bashrc
+  * [rm] submodule "pyenv"
+  * [mod] revert v1.15.6
+
 ## v1.15.7: pyenv patch
 * zsh
   * source .pyenvrc (activate pyenv) @.zshrc
