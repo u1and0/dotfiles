@@ -5,12 +5,14 @@ depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_add = '''
     " Vim起動時にneocompleteを有効にする
+    " Use deoplete.
     let g:deoplete#enable_at_startup = 1
-    let g:deoplete#enable_ignore_case = 1
-    " smartcase有効化. 大文字が入力されるまで大文字小文字の区別を無視する
-    let g:deoplete#enable_smart_case = 1
-    " 3文字以上の単語に対して補完を有効にする
-    let g:neocomplete#min_keyword_length = 3
+    " Use smartcase.
+    call deoplete#custom#option({
+    \ 'auto_complete_delay': 200,
+    \ 'smart_case': v:true,
+    \ })
+
     " 区切り文字まで補完する
     let g:neocomplete#enable_auto_delimiter = 1
     " 1文字目の入力から補完のポップアップを表示
