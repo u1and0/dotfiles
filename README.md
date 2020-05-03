@@ -26,6 +26,11 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.15.10: fix setting
+* bash
+  * [mod] path setting @.bashrc
+* vim/neovim
+  * [mod] deoplete option modify
 
 ## v1.15.9: remove pyenv
 * pyenv
