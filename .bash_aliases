@@ -7,23 +7,17 @@ if which sudo > /dev/null 2>&1; then
     alias sudo='sudo '  # 最後のスペースは補完を有効にするために必須
 
     # apt-fast / apt
-    if which apt-fast > /dev/null 2>&1; then
-        alias apt='sudo apt-fast '
-    else
-        alias apt='sudo apt '
-    fi
+    type apt > /dev/null 2>&1 && alias apt='sudo apt '
+    type apt-fast > /dev/null 2>&1 && alias apt='sudo apt-fast '
 
     # powerpill / pacman
-    if which powerpill > /dev/null 2>&1; then
-        alias pacman='sudo powerpill '
-    else
-        alias pacman='sudo pacman '
-    fi
+    type pacman > /dev/null 2>&1 && alias pacman='sudo pacman '
+    type powerpill > /dev/null 2>&1 && alias pacman='sudo powerpill '
 
     # docker
-    if which docker > /dev/null 2>&1; then
-        alias docker='sudo docker '
-    fi
+    type docker > /dev/null 2>&1 && alias docker='sudo docker '
+    type docker-compose > /dev/null 2>&1 && alias docker-compose='sudo docker-compose '
+
 fi
 
 # 移動しやすく
@@ -81,9 +75,6 @@ alias grep='grep --color=tty -i'
 
 # history cumsom
 alias h='history'
-
-# vagrant custum
-alias v='vagrant'
 
 # Windowsコマンド文字化け対策
 function wincmd()
