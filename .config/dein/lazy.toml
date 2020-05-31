@@ -153,6 +153,7 @@ hook_add = '''
     autocmd FileType go nmap <leader>r <Plug>(go-run) <C-W>k
     autocmd FileType go nmap <leader>t <Plug>(go-test)
     autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+    autocmd FileType go nmap <Leader>l <Plug>(go-lint)
     " run :GoBuild or :GoTestCompile based on the go file
     function! s:build_go_files()
       let l:file = expand('%')
