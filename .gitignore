@@ -113,3 +113,6 @@
 !/.docker/
 /.docker/*
 !/.docker/config.json
+
+# その他rcファイル
+!/.textlintrc
