@@ -70,7 +70,11 @@ let g:ale_keep_list_window_open = 0
 let g:ale_completion_enabled = 1
 
 " 有効にするlinter
-" Check Python files with flake8 and pylint.
+" Require for textlint
+" sudo npm install --global \
+"          textlint-rule-max-ten \
+"          textlint-rule-spellcheck-tech-word \
+"          textlint-rule-preset-japanese
 let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'sh': ['shellcheck'],
                     \ 'javascript': ['jshint',],
