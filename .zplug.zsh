@@ -14,9 +14,22 @@ zplug "junegunn/fzf-bin",\
         source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
         source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
     """
+    # fzf --preview command for file and directory
+    if type pygmentize >/dev/null 2>&1; then
+        export FZF_PREVIEW_CMD='head -n $FZF_PREVIEW_LINES {} | pygmentize -g'
+    elif type bat >/dev/null 2>&1; then
+        export FZF_PREVIEW_CMD='bat --color=always --plain --line-range :$FZF_PREVIEW_LINES {}'
+    else
+        export FZF_PREVIEW_CMD='head -n $FZF_PREVIEW_LINES {}'
+    fi
     export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
     # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
-    export FZF_DEFAULT_OPTS='--ansi --multi'
+    export FZF_DEFAULT_OPTS="--ansi --multi \
+            --preview='${FZF_PREVIEW_CMD}' \
+            --preview-window='right:hidden:wrap' \
+            --bind=ctrl-v:toggle-preview \
+            --bind=ctrl-x:toggle-sort \
+            --header='<C-V> toggle preview <C-X> toggle sort'"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 zplug "junegunn/fzf",\
