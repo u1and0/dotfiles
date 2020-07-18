@@ -68,7 +68,7 @@ export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh", hook-build:"touch ${HOME}/.z"
 
-zplug "clvv/fasd", as:command, use:fasd
+zplug "clvv/fasd", as:command, use:fasd, hook-load:"unalias zz"
 
 # history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
 # zplug "u1and0/ffsearch", defer:1
@@ -79,8 +79,8 @@ zplug "clvv/fasd", as:command, use:fasd
 zplug "u1and0/fzf-extras",\
     on:"junegunn/fzf",\
     use:"fzf*",\
+    defer:2,\
     hook-load:"""
-        alias zz='zd -z $*'
         alias gz='fzf-gitlog-widget'
         alias gx='fzf-gitlog-multi-widget'
     """
