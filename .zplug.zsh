@@ -143,4 +143,10 @@ zplug "u1and0/aa64e61f0571521ede4e26b84cfbef6f",\
     from:gist,\
     as:command,\
     use:"*.sh"
+
+# data-science-at-the-command-line's tools
+zplug "jeroenjanssens/dsutils",\
+    as:command,\
+    use:"*"
+
 # vim:ft=zsh
