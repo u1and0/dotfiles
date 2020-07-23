@@ -84,6 +84,9 @@ let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     " \ 'html': ['jshint', 'eslint'],
 " Fix Python files with autopep8 and yapf.
 let g:ale_fixers = { 'python': ['autopep8', 'yapf'],
+                   \ 'markdown': [
+                   \   {buffer, lines -> {'command': 'textlint -c ~/.config/textlintrc -o /dev/null --fix --no-color --quiet %t', 'read_temporary_file': 1}}
+                   \   ],
                    \ }
                    " \ 'javascript': ['eslint'],
 " Disable warnings about trailing whitespace for Python files.
