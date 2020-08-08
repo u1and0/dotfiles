@@ -72,9 +72,11 @@ let g:ale_completion_enabled = 1
 " 有効にするlinter
 " Require for textlint
 " sudo npm install --global \
+"          textlint \
 "          textlint-rule-max-ten \
 "          textlint-rule-spellcheck-tech-word \
-"          textlint-rule-preset-japanese
+"          textlint-rule-preset-japanese \
+"          textlint-no-mix-dearu-desumasu
 let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'sh': ['shellcheck'],
                     \ 'javascript': ['jshint',],
@@ -84,8 +86,16 @@ let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     " \ 'html': ['jshint', 'eslint'],
 " Fix Python files with autopep8 and yapf.
 let g:ale_fixers = { 'python': ['autopep8', 'yapf'],
-                   \ }
-                   " \ 'javascript': ['eslint'],
+                    \ 'markdown': [
+                    \   {buffer, lines -> {
+                    \       'command': 'textlint -c ~/.textlintrc -o /dev/null --fix --no-color --quiet %t',
+                    \       'read_temporary_file': 1
+                    \       }
+                    \   }
+                    \ ],
+                    \ }
+                    " \ 'javascript': ['eslint'],
+
 " Disable warnings about trailing whitespace for Python files.
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_fix_on_save = 1
