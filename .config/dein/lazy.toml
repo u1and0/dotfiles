@@ -266,3 +266,28 @@ hook_add = '''
     " GoImpl: インターフェースを実装するメソッドスタブの生成
     " GoPlay: コードをGo Playground に公開する(リンクはバッファかクリップボードにコピーされる)
 '''
+
+# Rust lang plugins
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+if = '''executable('rust')'''
+hook_source = '''
+    let g:rustfmt_autosave = 1
+    let g:rust_doc#define_map_K = 0
+'''
+
+[[plugins]]
+repo = 'sebastianmarkow/deoplete-rust'
+on_ft = 'rust'
+if = '''executable('rust')'''
+depends = ['deoplete.nvim']
+hook_source = '''
+    let g:deoplete#sources#rust#racer_binary='/home/u1and0/.cargo/bin/racer'
+    let g:deoplete#sources#rust#rust_source_path='/home/u1and0/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+    let $RUST_SRC_PATH='/home/u1and0/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+    let g:deoplete#sources#rust#show_duplicates=1
+    let g:deoplete#sources#rust#disable_keymap=1
+    nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
+    nmap <buffer> K  <plug>DeopleteRustShowDocumentation
+'''
