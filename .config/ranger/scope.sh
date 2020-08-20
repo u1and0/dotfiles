@@ -58,6 +58,14 @@ case "$extension" in
     pdf)
         try pdftotext -l 10 -nopgbrk -q "$path" - && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+    # DOC documents:
+    doc)
+        try catdoc "$path" && \
+            { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+    # DOCX documents:
+    docx)
+        try docx2txt "$path" - && \
+            { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
