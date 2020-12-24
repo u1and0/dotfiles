@@ -66,6 +66,14 @@ case "$extension" in
     docx)
         try docx2txt "$path" - && \
             { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+    # XLS documents:
+    xls)
+        try xls2csv "$path" && \
+            { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+    # XLSX documents:
+    xlsx)
+        try xlsx2csv "$path" && \
+            { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
