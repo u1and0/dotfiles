@@ -207,6 +207,15 @@ diffdoc() {
         echo $BIN not exist
         return 1
     fi
-    diff <(catdoc $1) <(catdoc $2)
+    diff <($BIN $1) <($BIN $2)
+}
+
+diffdocx() {
+    BIN=docx2txt
+    if ! type $BIN > /dev/null 2>&1; then
+        echo $BIN not exist
+        return 1
+    fi
+    diff <($BIN $1 -) <($BIN $2 -)
 }
 # vim:ft=sh
