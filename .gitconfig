@@ -21,6 +21,10 @@
 	packSizeLimit = 2g
 [diff]
 	renames = true
+[diff "word"]
+    textconv = catdoc
+[diff "wordx"]
+    textconv = ~/.config/git/docx2txt.sh
 [rebase]
 	autosquash = true
 [gui]

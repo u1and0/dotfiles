@@ -55,6 +55,9 @@
 !/.config/
 /.config/*
 
+# git
+!/.config/git
+
 # ranger
 !/.config/ranger/
 /.config/ranger/*
