@@ -60,4 +60,7 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 # Activate conda env
 [ -f /etc/profile.d/conda.sh ] && . /etc/profile.d/conda.sh && conda activate
 
+# pip installed bin's path
+export PATH="${HOME}/.local/bin:${PATH}"
+
 # vim:ft=sh

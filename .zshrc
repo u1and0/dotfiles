@@ -151,6 +151,12 @@ if [ type docker-compose ] >/dev/null 2>&1 && [[ ! -f ${HOME}/my_zsh_completions
 fi
 
 
+# fzf
+export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
+# export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
+export FZF_DEFAULT_OPTS='--ansi --multi'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 ##########################################
 # Load zplug
 if [[ -f ${HOME}/.zplug/init.zsh ]]; then
