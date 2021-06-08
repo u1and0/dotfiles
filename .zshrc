@@ -152,6 +152,8 @@ fi
 
 
 # fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
 # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
 export FZF_DEFAULT_OPTS='--ansi --multi'
