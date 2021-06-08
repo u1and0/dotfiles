@@ -9,7 +9,7 @@ if $ZSH_KEYBINDS_VIMODE ;then  # vi-keybinds
     bindkey -M viins '^D'  kill-word #delete-char-or-list
     bindkey -M viins '^E'  end-of-line
     bindkey -M viins '^F'  forward-char
-    bindkey -M viins '^G'  send-break
+    # bindkey -M viins '^G'  send-break
     bindkey -M viins '^H'  backward-delete-char
     bindkey -M viins '^J'  accept-and-infer-next-history
     bindkey -M viins '^K'  kill-line

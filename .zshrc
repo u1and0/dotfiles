@@ -97,6 +97,9 @@ zstyle ':completion:*' completer _oldlist _complete
 zstyle ':completion:*:default' menu select #interactive  # Tabキーを押すと候補を選択できる
 # setopt menu_complete  # 絞込み検索  # tabですぐに選択できないので削除
 
+# コマンド一覧を見れるcompgenを有効化する
+autoload -Uz bashcompinit
+bashcompinit
 
 ########################################
 # Options
