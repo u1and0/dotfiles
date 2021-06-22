@@ -73,10 +73,6 @@ main() {
         read_yn && "$HOME"/bacpac/bacpac restore
     fi
 
-    # Install python using `pyenv`
-    printf '\nInstall my python environment? [y/N]: '
-    read_yn && pyenv_conda_restore
-
     # Change user shell
     printf '\nChange default shell to zsh? [y/N]: '
     read_yn && chsh_zsh
