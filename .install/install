@@ -69,7 +69,7 @@ main() {
 
     # Restore archlinux packages using `bacpac`
     if [ -d bacpac ]; then
-        printf '\nRestore whole packages managed by pacman? [y/N]: '
+        printf '\nRestore whole packages managed by bacpac? [y/N]: '
         read_yn && "$HOME"/bacpac/bacpac restore
     fi
 
