@@ -39,6 +39,9 @@ set wildmenu        " コマンドライン上Tab補完
 set wildmode=full
 set spelllang=en,cjk " spell check language
 
+" Color
+colorscheme ron
+
 " Tab setting
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
@@ -52,7 +55,6 @@ set expandtab       " Expand TABs to spaces
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
-
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
