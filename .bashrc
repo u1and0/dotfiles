@@ -68,3 +68,4 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # vim:ft=sh
+export DOCKER_HOST=tcp://localhost:2375
