@@ -38,6 +38,7 @@ set smartcase       " Search ignore case if only use letter case
 set wildmenu        " コマンドライン上Tab補完
 set wildmode=full
 set spelllang=en,cjk " spell check language
+set modeline        " 文頭あるいは文末に書き込むvimのsetオプション
 
 " Color
 colorscheme ron
