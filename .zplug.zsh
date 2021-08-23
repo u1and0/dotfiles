@@ -5,19 +5,6 @@ echo -e "\U1F4AE Loading $0"  # ロード時に花柄表示
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 
-zplug "junegunn/fzf",\
-    as:command,\
-    use:"bin/fzf-tmux",\
-    hook-build:"$ZPLUG_REPOS/junegunn/fzf/install",\
-    hook-load:"""
-        source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
-        source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
-    """
-    export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
-    # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
-    export FZF_DEFAULT_OPTS='--ansi --multi'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then

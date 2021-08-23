@@ -16,6 +16,12 @@ if [ -f ~/.zsh_functions ]; then
     . ~/.zsh_functions
 fi
 
+[ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh
+
+# fzf
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
 
 ##########################################
 # 色を使用出来るようにする
