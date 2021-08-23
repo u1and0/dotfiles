@@ -51,12 +51,12 @@ zplug "clvv/fasd", as:command, use:fasd, hook-load:"unalias zz"
 
 # fzf + cd, git, edit also...
 zplug "u1and0/fzf-extras",\
-    on:"junegunn/fzf",\
     use:"fzf*",\
     defer:2,\
     hook-load:"""
         alias gz='fzf-gitlog-widget'
         alias gx='fzf-gitlog-multi-widget'
+        alias zz='zd -z'
     """
 
 # The most awesome Powerline theme for ZSH around!

@@ -17,8 +17,8 @@ if type brew > /dev/null 2>&1; then
     export XDG_DATA_DIRS="/home/linuxbrew/.lilinuxbrew/nuxbrew/share:$XDG_DATA_DIRS"
 fi
 # fzf setting
-[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
-[ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
+# [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+# [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 if type fzf > /dev/null 2>&1; then
     export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
     export FZF_DEFAULT_OPTS='--ansi --multi'
