@@ -348,3 +348,11 @@ hook_add = '''
     " :help <C-R> for more help
 '''
 if = '''executable('w3m')'''
+
+# Language Server https://github.com/prabirshrestha/vim-lsp
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+on_source = ['prabirshrestha/vim-lsp']

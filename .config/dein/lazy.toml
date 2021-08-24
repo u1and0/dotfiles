@@ -292,13 +292,3 @@ let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
     nmap <buffer> <leader>s <plug>DeopleteRustGoToDefinitionDefault
     nmap <buffer> K  <plug>DeopleteRustShowDocumentation
 '''
-
-# Language Server https://github.com/prabirshrestha/vim-lsp
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-on_ft = 'rust'
-if = '''executable('rls')'''
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-on_source = ['prabirshrestha/vim-lsp']
