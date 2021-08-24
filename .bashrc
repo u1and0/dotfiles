@@ -77,7 +77,7 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 # pip installed bin's path
 [ -d ${HOME}/.local/bin ] && export PATH="${HOME}/.local/bin:${PATH}"
 
-# pip installed bin's path
+# cargo installed bin's path
 [ -d ${HOME}/.cargo/bin ] && export PATH="${HOME}/.cargo/bin:${PATH}"
 
 # vim:ft=sh
