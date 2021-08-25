@@ -356,3 +356,6 @@ repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 on_source = ['prabirshrestha/vim-lsp']
+
+[[plugins]]
+repo = "mattn/webapi-vim"
