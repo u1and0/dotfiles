@@ -93,12 +93,6 @@ if [ type jupyter > /dev/null 2>&1 ]; then
         rename-to:"_jupyter"
 fi
 
-if [ type go > /dev/null 2>&1 ]; then
-    zplug "zchee/go-zsh-completions",\
-        as:command,\
-        rename-to:"_go"
-fi
-
 # PDF to compressed file
 zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
     from:gist,\
