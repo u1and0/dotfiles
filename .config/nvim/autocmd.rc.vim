@@ -17,14 +17,16 @@ augroup MyAutoCmd
     autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly nolist | normal gg
         " j/kキーマップを変更
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
-    " Rust seup
-    autocmd BufRead *.rs :nmap <buffer> <Leader>r :RustRun<CR>
-    autocmd BufRead *.rs :nmap <buffer> <Leader>R :RustRun!<CR>
 augroup END
 
 " PDFを開くコマンド
 if executable('pdftotext')
     command! -complete=file -nargs=1 Pdf :ene|0r !pdftotext -nopgbrk -layout <q-args> -
+endif
+
+" MarkdownをHTMLとして保存する
+if executable('pandoc')
+    command! WriteHTML :w !pandoc -o %:r.html
 endif
 
 " 一時ファイルの作成と書き込み

@@ -276,6 +276,10 @@ if = '''executable('rustc')'''
 hook_source = '''
     let g:rustfmt_autosave = 1
     let g:rust_doc#define_map_K = 1
+    augroup MyRustCmd
+        autocmd BufRead *.rs :nmap <buffer> <Leader>r :RustRun<CR>
+        autocmd BufRead *.rs :nmap <buffer> <Leader>R :RustRun!<CR>
+    augroup END
 '''
 
 [[plugins]]
