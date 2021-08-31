@@ -15,6 +15,21 @@
 	quotepath = false
     pager = "type diff-so-fancy >/dev/null 2>&1 && PG='diff-so-fancy' || PG='cat'; $PG | less --tabs=4 -RFX"
 
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = "Monokai Extended"
+    navigate = true
+
+[interactive]
+    diffFilter = delta --color-only
+
 	# preloadindex = true  # <windows用>インデックスの比較を並列実行してくれてgit statusなどを高速化
 	# fscache = true  # <windows用>ユーザーディレクトリへのアクセスではなくシステム領域にキャッシュを書き込む
 [pack]
