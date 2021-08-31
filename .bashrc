@@ -4,7 +4,7 @@
 export LANG=ja_JP.UTF-8
 export TERM="xterm-256color"
 # Golang path
-[ -e "$GOOPATH/bin" ] && export PATH="$PATH:$GOPATH/bin"
+[ -e "$GOPATH/bin" ] && export PATH="$PATH:$GOPATH/bin"
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 # shell script path
 export SHPATH="${HOME}/sh"
