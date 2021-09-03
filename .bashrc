@@ -78,6 +78,6 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 [ -d ${HOME}/.local/bin ] && export PATH="${HOME}/.local/bin:${PATH}"
 
 # cargo installed bin's path
-[ -f ${HOME}/.cargo/env ] && source "${HOME}/.cargo/env:${PATH}"
+[ -f ${HOME}/.cargo/env ] && source ${HOME}/.cargo/env
 
 # vim:ft=sh
