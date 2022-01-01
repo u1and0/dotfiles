@@ -55,6 +55,9 @@
 !/.config/
 /.config/*
 
+# git
+!/.config/git
+
 # ranger
 !/.config/ranger/
 /.config/ranger/*
@@ -113,3 +116,6 @@
 !/.docker/
 /.docker/*
 !/.docker/config.json
+
+# その他rcファイル
+!/.textlintrc

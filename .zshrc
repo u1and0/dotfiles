@@ -16,6 +16,10 @@ if [ -f ~/.zsh_functions ]; then
     . ~/.zsh_functions
 fi
 
+# fzf
+[ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
 ##########################################
 # 色を使用出来るようにする
@@ -97,6 +101,9 @@ zstyle ':completion:*' completer _oldlist _complete
 zstyle ':completion:*:default' menu select #interactive  # Tabキーを押すと候補を選択できる
 # setopt menu_complete  # 絞込み検索  # tabですぐに選択できないので削除
 
+# コマンド一覧を見れるcompgenを有効化する
+autoload -Uz bashcompinit
+bashcompinit
 
 ########################################
 # Options

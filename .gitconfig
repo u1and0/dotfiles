@@ -14,13 +14,16 @@
 	symlinks = true
 	quotepath = false
     pager = "type diff-so-fancy >/dev/null 2>&1 && PG='diff-so-fancy' || PG='cat'; $PG | less --tabs=4 -RFX"
-
 	# preloadindex = true  # <windows用>インデックスの比較を並列実行してくれてgit statusなどを高速化
 	# fscache = true  # <windows用>ユーザーディレクトリへのアクセスではなくシステム領域にキャッシュを書き込む
 [pack]
 	packSizeLimit = 2g
 [diff]
 	renames = true
+[diff "word"]
+    textconv = catdoc
+[diff "wordx"]
+    textconv = ~/.config/git/docx2txt.sh
 [rebase]
 	autosquash = true
 [gui]

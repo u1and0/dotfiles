@@ -1,16 +1,30 @@
 #!/bin/bash
 
 # Export Pathes
-export LANG=ja_JP.UTF-8
 export TERM="xterm-256color"
+# Golang path
+[ -e "$GOPATH/bin" ] && export PATH="$PATH:$GOPATH/bin"
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 # shell script path
 export SHPATH="${HOME}/sh"
 export PATH="$PATH:$SHPATH/bin"
 # LinuxBrew setting
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.lilinuxbrew/nuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-export XDG_DATA_DIRS="/home/linuxbrew/.lilinuxbrew/nuxbrew/share:$XDG_DATA_DIRS"
+if type brew > /dev/null 2>&1; then
+    export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+    export MANPATH="/home/linuxbrew/.lilinuxbrew/nuxbrew/share/man:$MANPATH"
+    export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+    export XDG_DATA_DIRS="/home/linuxbrew/.lilinuxbrew/nuxbrew/share:$XDG_DATA_DIRS"
+fi
+# fzf setting
+# [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+# [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
+if type fzf > /dev/null 2>&1; then
+    export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
+    export FZF_DEFAULT_OPTS='--ansi --multi'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
+
 
 
 # LESS設定
@@ -58,5 +72,11 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 
 # Activate conda env
 [ -f /etc/profile.d/conda.sh ] && . /etc/profile.d/conda.sh && conda activate
+
+# pip installed bin's path
+[ -d ${HOME}/.local/bin ] && export PATH="${HOME}/.local/bin:${PATH}"
+
+# cargo installed bin's path
+[ -f ${HOME}/.cargo/env ] && source ${HOME}/.cargo/env
 
 # vim:ft=sh

@@ -33,5 +33,10 @@ augroup MyBuf
     autocmd TextYankPost * call writefile(v:event.regcontents, $HOME . "/.vim/bf")
 augroup END
 
+" 現在行をshell scriptとして実行
 vnoremap <Leader><CR> :!${SHELL}<CR>
 nnoremap <Leader><CR> V:!${SHELL}<CR>
+
+" ターミナルを開く
+nnoremap <Leader>zs :new <Bar> term /usr/bin/zsh<CR>
+nnoremap <Leader>zv :vnew <Bar> term /usr/bin/zsh<CR>

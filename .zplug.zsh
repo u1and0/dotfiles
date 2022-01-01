@@ -5,38 +5,12 @@ echo -e "\U1F4AE Loading $0"  # ロード時に花柄表示
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 
-# Install fuzzy-finder "fzf"
-zplug "junegunn/fzf-bin",\
-    as:command,\
-    from:gh-r,\
-    rename-to:"fzf",\
-    hook-load:"""
-        source $ZPLUG_REPOS/junegunn/fzf/shell/key-bindings.zsh
-        source $ZPLUG_REPOS/junegunn/fzf/shell/completion.zsh
-    """
-    export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
-    # export FZF_DEFAULT_OPTS='--ansi --height 40% --reverse --no-border --multi'
-    export FZF_DEFAULT_OPTS='--ansi --multi'
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-zplug "junegunn/fzf",\
-    as:command,\
-    use:bin/fzf-tmux,\
-    on:"junegunn/fzf-bin"
-
 # history search using ctrl+P/N
 zplug "zsh-users/zsh-history-substring-search", defer:3
 if zplug check "zsh-users/zsh-history-substring-search"; then
     bindkey '^P' history-substring-search-up
     bindkey '^N' history-substring-search-down
 fi
-
-
-# Install zsh-gomi
-zplug "b4b4r07/zsh-gomi", \
-    as:command, \
-    use:bin/gomi, \
-    on:junegunn/fzf-bin
 
 
 # CLI finder like Mac
@@ -68,7 +42,7 @@ export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh", hook-build:"touch ${HOME}/.z"
 
-zplug "clvv/fasd", as:command, use:fasd
+zplug "clvv/fasd", as:command, use:fasd, hook-load:"unalias zz"
 
 # history search using FuzzyFinder ( fzf-tmux peco-tmux fzy fzf peco ) using ctrl+R
 # zplug "u1and0/ffsearch", defer:1
@@ -77,12 +51,12 @@ zplug "clvv/fasd", as:command, use:fasd
 
 # fzf + cd, git, edit also...
 zplug "u1and0/fzf-extras",\
-    on:"junegunn/fzf",\
     use:"fzf*",\
+    defer:2,\
     hook-load:"""
-        alias zz='zd -z $*'
         alias gz='fzf-gitlog-widget'
         alias gx='fzf-gitlog-multi-widget'
+        alias zz='zd -z'
     """
 
 # The most awesome Powerline theme for ZSH around!
@@ -119,12 +93,6 @@ if [ type jupyter > /dev/null 2>&1 ]; then
         rename-to:"_jupyter"
 fi
 
-if [ type go > /dev/null 2>&1 ]; then
-    zplug "zchee/go-zsh-completions",\
-        as:command,\
-        rename-to:"_go"
-fi
-
 # PDF to compressed file
 zplug "u1and0/ac1d84259a090bfcaa29a0b0f900cf1a",\
     from:gist,\
@@ -143,4 +111,16 @@ zplug "u1and0/aa64e61f0571521ede4e26b84cfbef6f",\
     from:gist,\
     as:command,\
     use:"*.sh"
+
+# data-science-at-the-command-line's tools
+zplug "jeroenjanssens/dsutils",\
+    as:command,\
+    use:"*"
+
+# Email file convert to text
+zplug "u1and0/eml2txt",\
+    as:command,\
+    use:"eml2txt.py",\
+    rename-to:"eml2txt"
+
 # vim:ft=zsh

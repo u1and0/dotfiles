@@ -201,6 +201,7 @@ bind diff	[	:toggle diff-context -1
 bind diff	]	:toggle diff-context +1
 bind main	G	:toggle commit-title-graph # Toggle revision graph visualization
 bind main	F	:toggle commit-title-refs  # Toggle reference display (tags/branches)
+bind main   !   ?git revert %(commit)      # `git revert` for the commit
 
 # Cursor navigation
 bind generic	k	move-up

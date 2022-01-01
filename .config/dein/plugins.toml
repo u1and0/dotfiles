@@ -193,7 +193,15 @@ repo = 'lambdalisue/vim-gista'
 repo = 'tpope/vim-abolish'
 
 [[plugins]]  # pairs of handy bracket mappings http://www.vim.org/scripts/script.php
+# Add jump keybinds like ]b => :bn
 repo = 'tpope/vim-unimpaired'
+hook_add='''
+    " Over write :cfirst, :clast :lfirst, :llast
+    nnoremap <silent> ]Q :cnewer <CR>
+    nnoremap <silent> [Q :colder <CR>
+    nnoremap <silent> ]L :lnewer <CR>
+    nnoremap <silent> [L :lolder <CR>
+'''
 
 [[plugins]]  # Yank History
 repo = 'vim-scripts/YankRing.vim'
@@ -340,3 +348,14 @@ hook_add = '''
     " :help <C-R> for more help
 '''
 if = '''executable('w3m')'''
+
+# Language Server https://github.com/prabirshrestha/vim-lsp
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+on_source = ['prabirshrestha/vim-lsp']
+
+[[plugins]]
+repo = "mattn/webapi-vim"

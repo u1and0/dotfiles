@@ -69,13 +69,9 @@ main() {
 
     # Restore archlinux packages using `bacpac`
     if [ -d bacpac ]; then
-        printf '\nRestore whole packages managed by pacman? [y/N]: '
+        printf '\nRestore whole packages managed by bacpac? [y/N]: '
         read_yn && "$HOME"/bacpac/bacpac restore
     fi
-
-    # Install python using `pyenv`
-    printf '\nInstall my python environment? [y/N]: '
-    read_yn && pyenv_conda_restore
 
     # Change user shell
     printf '\nChange default shell to zsh? [y/N]: '

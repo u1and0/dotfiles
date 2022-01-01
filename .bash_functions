@@ -200,4 +200,35 @@ weblio() {
 weblio-vim() {
     ${VISUAL} +"Ref webdict $1" +on
 }
+
+diffdoc() {
+    BIN=catdoc
+    if ! type $BIN > /dev/null 2>&1; then
+        echo $BIN not exist
+        return 1
+    fi
+    diff <($BIN $1) <($BIN $2)
+}
+
+diffdocx() {
+    BIN=docx2txt
+    if ! type $BIN > /dev/null 2>&1; then
+        echo $BIN not exist
+        return 1
+    fi
+    diff <($BIN $1 -) <($BIN $2 -)
+}
+
+function docker-tags {
+  curl -s https://registry.hub.docker.com/v1/repositories/$1/tags | jq -r '.[].name'
+}
+
+# X server control
+function xdisplay() {
+    xset dpms force $1
+}
+
+function xmute() {
+    amixer sset Master $1
+}
 # vim:ft=sh
