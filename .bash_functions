@@ -222,4 +222,13 @@ diffdocx() {
 function docker-tags {
   curl -s https://registry.hub.docker.com/v1/repositories/$1/tags | jq -r '.[].name'
 }
+
+# X server control
+function xdisplay() {
+    xset dpms force $1
+}
+
+function xmute() {
+    amixer sset Master $1
+}
 # vim:ft=sh
