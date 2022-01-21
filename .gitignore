@@ -118,4 +118,7 @@
 !/.docker/config.json
 
 # その他rcファイル
+!/.cargo
+
+# その他rcファイル
 !/.textlintrc

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Export Pathes
-export LANG=ja_JP.UTF-8
 export TERM="xterm-256color"
 # Golang path
 [ -e "$GOPATH/bin" ] && export PATH="$PATH:$GOPATH/bin"

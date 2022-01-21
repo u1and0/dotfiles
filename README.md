@@ -26,6 +26,70 @@ $ bash -c "$(wget -qO - raw.githubusercontent.com/u1and0/dotfiles/master/.instal
 
 ---
 # Version info
+## v1.15.11: Rust env
+* bash
+  * [mod] alias sudo in docker, docker-compose, apt, apt-fat, pacman, powerpoll @`.bash_aliases`
+  * [add] diffdoc()
+  * [rm] restore pyenv script @.install/install
+  * [style] managed by bacpac @.install/install
+  * [mod] PS1 @.bashrc, colorscheme @.vimrc
+  * [fix] rename CTRL+R keybind name
+  * [mod] source cargo env @.bashrc
+  * [add] docker-tag search @`.bash_function`
+  * [rm] `LANG=ja_JP`  @.bashrc
+  * [add] X server control @`.bash_function`
+  * [mod] windows copy command clip as surfix alias @`.bash_aliases`
+* zsh
+  * [mod] alias zz by updating fzf-extra.sh @.zplug.zsh
+  * [add] data-science-at-command-line's command @.zplug.zsh
+  * [rm] fzf zplug manage [add] eml2txt zplug manage
+  * [add] fzf key-bindings, completion @zshrc
+  * [add] compgen + fzf function & keybind
+  * [mod] fzf manage @.zplug.zsh
+  * [mod] fzf manage
+  * [mod] zplug.zsh, .bashrc fzf setting
+* git
+  * [add] ! revert @.tigrc/main bind
+  * [add] git-delta git-diff viewer @.gitconfig
+  * [rm] git-delta @.gitconfig
+* vim
+  * [add] open terminal at split window
+  * [add] textlint config @dein/lazy.toml
+  * [mod] comment @dein/lazy.toml
+  * [mod] grepprg rg --vimgrep @nvim/options
+  * [add] textlint fixer @dein/lazy
+  * [mod] .textlintrc, ale linter @lazy.toml
+  * [add] git attributes [bug] docx2txt script not work
+  * [mod] QuickRun option [add] [Q ]Q [L ]L as cold, cnew, lold, lnew
+  * [add] set modeline @.vimrc
+  * [mod] lsp default install => move to plugin.toml from lazy.toml
+  * [add] mattn/webapi-vim @plugin.toml
+  * [add] Gdiffsplit always split vertical option
+* rust
+  * [add] Neovim for Rust env
+  * [mod] add cargo path @.bashrc
+  * [mod] remove excutable rust, replace $HOME variable @lazy.toml
+  * [add] rust lsp server !need rustup rls rust-analyzer
+  * [mod] source cargo env
+  * [mod] Rust autocmd move to lazy.toml, [add] write html from markdown command
+  * [mod] rust autocmd @dein/lazy.toml
+  * [fix] rust autocmd @lazy.toml
+* go
+  * [add] go lint key bind @dein/lazy.toml
+  * [fix] typo GOPATH @.bashrc
+  * [rm] zchee/go-zsh-completions @.zplug.zsh
+* docker
+  * [rm] docker config auth
+  * [mod] Docker Desktop setting
+* tmux
+  * [add] tmux-resurrect option, tmux-continuum option
+  * [add] sync toggle key bind @.tmuxrc
+  * [mod] tmux sidebar / tree ignore hidden file
+* ranger
+  * [mod] xls/xlsx preview @ranger
+  * [add] doc/docx preview and pager script @config/ranger
+
+
 ## v1.15.10: fix setting
 * bash
   * [mod] path setting @.bashrc

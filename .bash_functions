@@ -225,5 +225,14 @@ function docker-tags {
 
 function gonew {
   mkdir "$1"; cd "$1"; ${EDITOR} main.go
+
+# X server control
+function xdisplay() {
+    xset dpms force $1
 }
+
+function xmute() {
+    amixer sset Master $1
+}
+
 # vim:ft=sh
