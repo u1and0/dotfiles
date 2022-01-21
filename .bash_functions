@@ -222,4 +222,8 @@ diffdocx() {
 function docker-tags {
   curl -s https://registry.hub.docker.com/v1/repositories/$1/tags | jq -r '.[].name'
 }
+
+function gonew {
+  mkdir "$1"; cd "$1"; ${EDITOR} main.go
+}
 # vim:ft=sh
