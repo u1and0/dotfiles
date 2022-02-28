@@ -132,21 +132,6 @@ hook_add = '''
     nmap <Leader>b :QuickRun <CR>
 '''
 
-[[plugins]]  # CUI web browser
-repo = 'yuratomo/w3m.vim'
-hook_add = '''
-    nnoremap <C-K><C-G> :W3mSplit <C-R>
-    " 続けて<C-W>で word 貼り付け
-    " 続けて<C-A>で WORD 貼り付け
-    " 続けて"で バッファを貼り付け
-    " :help <C-R> for more help
-'''
-if = '''executable('w3m')'''
-
-[[plugins]]  # :Zenkaku <--> :Hankaku
-repo = 'yuta-masano/hz_ja.vim'
-on_i = 1
-
 # go lang plugins
 [[plugins]]  # go command use as vim command :GoBuild, :GoInstall
 
