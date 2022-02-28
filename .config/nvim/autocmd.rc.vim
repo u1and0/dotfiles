@@ -19,6 +19,12 @@ augroup MyAutoCmd
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
 augroup END
 
+augroup DenoCommands
+    autocmd!
+    autocmd BufWrite *.ts !deno fmt -q %
+    autocmd FileType *.ts nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
+augroup END
+
 " PDFを開くコマンド
 if executable('pdftotext')
     command! -complete=file -nargs=1 Pdf :ene|0r !pdftotext -nopgbrk -layout <q-args> -
