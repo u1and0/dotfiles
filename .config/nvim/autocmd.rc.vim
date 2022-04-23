@@ -6,7 +6,7 @@ augroup MyAutoCmd
     " スワップファイルがあったときは常にreadonlyで開く
     autocmd SwapExists * let v:swapchoice = 'o'
     " ファイルを開いたときに、カーソル位置を最後にカーソルがあった位置まで移動
-    autocmd BufReadPost * :normal! g`"
+    autocmd BufReadPost FileType !fugitive :normal! g`"
     " grepしたときに自動的にquickfixウィンドウを開く
     autocmd QuickFixCmdPost *grep* cwindow
     if executable('pdftotext')
