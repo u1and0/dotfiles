@@ -110,12 +110,15 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
 [[plugins]]  # Program runner
 repo = 'thinca/vim-quickrun'
-on_ft = ['python', 'sh']
+on_ft = ['python', 'sh', 'typescript']
 hook_add = '''
     " vimprocで非同期実行
     " 成功時にバッファ、失敗時にQuickFixで表示
     " 結果表示のサイズ調整など
     let g:quickrun_config = {
+        \ 'typescript' : {
+            \ 'command' : 'tsc',
+        \ },
         \ '_' : {
             \ 'runner' : 'vimproc',
             \ 'runner/vimproc/updatetime' : 40,
