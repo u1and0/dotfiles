@@ -110,12 +110,15 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
 [[plugins]]  # Program runner
 repo = 'thinca/vim-quickrun'
-on_ft = ['python', 'sh']
+on_ft = ['python', 'sh', 'typescript']
 hook_add = '''
     " vimprocで非同期実行
     " 成功時にバッファ、失敗時にQuickFixで表示
     " 結果表示のサイズ調整など
     let g:quickrun_config = {
+        \ 'typescript' : {
+            \ 'command' : 'tsc',
+        \ },
         \ '_' : {
             \ 'runner' : 'vimproc',
             \ 'runner/vimproc/updatetime' : 40,
@@ -131,21 +134,6 @@ hook_add = '''
     let g:quickrun_no_default_key_mappings = 1
     nmap <Leader>b :QuickRun <CR>
 '''
-
-[[plugins]]  # CUI web browser
-repo = 'yuratomo/w3m.vim'
-hook_add = '''
-    nnoremap <C-K><C-G> :W3mSplit <C-R>
-    " 続けて<C-W>で word 貼り付け
-    " 続けて<C-A>で WORD 貼り付け
-    " 続けて"で バッファを貼り付け
-    " :help <C-R> for more help
-'''
-if = '''executable('w3m')'''
-
-[[plugins]]  # :Zenkaku <--> :Hankaku
-repo = 'yuta-masano/hz_ja.vim'
-on_i = 1
 
 # go lang plugins
 [[plugins]]  # go command use as vim command :GoBuild, :GoInstall

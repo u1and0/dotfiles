@@ -229,7 +229,8 @@ let g:ref_detect_filetype         = {
             \    'css':        'phpmanual',
             \    'html':       ['phpmanual',  'javascript', 'jquery'],
             \    'javascript': ['javascript', 'jquery'],
-            \    'php':        ['phpmanual',  'javascript', 'jquery']
+            \    'php':        ['phpmanual',  'javascript', 'jquery'],
+            \    'typescript': ['denodoc', 'denoreadme',  'javascript', 'jquery']
             \}
 
 " To download the phpmanual, type below on your shell.
@@ -254,6 +255,12 @@ let g:ref_source_webdict_sites = {
             \   'jquery': {
             \     'url': 'https://api.jquery.com/%s/',
             \     'cache': 0,
+            \   },
+            \   'denodoc': {
+            \     'url': 'https://doc.deno.land/https://deno.land/%s',
+            \   },
+            \   'denoreadme': {
+            \     'url': 'https://deno.land/%s/README.md',
             \   },
             \ }
 " jqueryはmustardamus/jqapiの代わり
@@ -341,7 +348,8 @@ hook_add = '''
 [[plugins]]  # CUI web browser
 repo = 'yuratomo/w3m.vim'
 hook_add = '''
-    nnoremap <C-K><C-G> :W3mSplit <C-R>
+    nnoremap <C-K><C-G> :W3mSplit <C-R><C-W><CR>
+    vnoremap <C-K><C-G> "9y:W3mSplit <C-R>9<CR>
     " 続けて<C-W>で word 貼り付け
     " 続けて<C-A>で WORD 貼り付け
     " 続けて"で バッファを貼り付け
@@ -352,6 +360,40 @@ if = '''executable('w3m')'''
 # Language Server https://github.com/prabirshrestha/vim-lsp
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    " 定義元をqfに表示
+    nmap <buffer> gd <plug>(lsp-definition)
+    " 定義をfuzzy-find で検索"
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    " 使用されている部分をqfに表示
+    nmap <buffer> gr <plug>(lsp-references)
+    " 定義元をqfに表示
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>r <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    " docstring 表示
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+'''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
