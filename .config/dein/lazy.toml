@@ -129,7 +129,7 @@ hook_add = '''
     " ただし :chistory に記録されない
     " 実行時に前回の表示内容をクローズ&保存してから実行
     let g:quickrun_no_default_key_mappings = 1
-    nmap <Leader>b :QuickRun <CR>
+    nmap <Leader>b :QuickRun<CR>
 '''
 
 [[plugins]]  # CUI web browser
