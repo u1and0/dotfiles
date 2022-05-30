@@ -6,7 +6,7 @@ augroup MyAutoCmd
     " スワップファイルがあったときは常にreadonlyで開く
     autocmd SwapExists * let v:swapchoice = 'o'
     " ファイルを開いたときに、カーソル位置を最後にカーソルがあった位置まで移動
-    autocmd BufReadPost * :normal! g`"
+    autocmd BufReadPost FileType !fugitive :normal! g`"
     " grepしたときに自動的にquickfixウィンドウを開く
     autocmd QuickFixCmdPost *grep* cwindow
     if executable('pdftotext')
@@ -17,6 +17,7 @@ augroup MyAutoCmd
     autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly nolist | normal gg
         " j/kキーマップを変更
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
+    autocmd FileType python nnoremap <buffer> <Leader>r :sp <CR> :term python %<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 

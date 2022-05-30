@@ -19,6 +19,16 @@ cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
 
+" quickfix window操作系
+" 副作用: <C-q> ビジュアル矩形選択が使えなくなる
+" <C-o>で前 <C-i>で後に行くkeymapのquickfix版
+nmap <C-q> <Nop>
+" <C-o>で前 に行くkeymapのquickfix版
+nnoremap <C-q><C-o> :cold<CR>
+" <C-n>で後に行くkeymapのquickfix版
+" <C-p>だとdockerのログアウトとかぶる
+nnoremap <C-q><C-n> :cnew<CR>
+
 " vim grep faster
 nnoremap <leader>/ :vimgrep//%<CR>
 nnoremap <leader>? :vimgrep//##<CR>
