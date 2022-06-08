@@ -161,10 +161,15 @@ let g:auto_ctags_filetype_mode = 1
 [[plugins]] # Fuzzy Finder for vim
 repo = 'junegunn/fzf.vim'
 hook_add = '''
+    nmap [denite] <Nop>
+    map <C-j> [denite]
     " <C-]>でタグ検索
     nnoremap <silent> [denite]<C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
     " fzfからファイルにジャンプできるようにする
     let g:fzf_buffers_jump = 1
+    nnoremap <silent> [denite]<C-j> :Buffers<CR>
+    nnoremap <silent> [denite]<C-h> :History<CR>
+    nnoremap <silent> [denite]<C-l> :FZF<CR>
 '''
 
 [[plugins]]  # Add support for markdown files in tagbar

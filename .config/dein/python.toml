@@ -37,180 +37,180 @@ hook_add = '''
     imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
 '''
 
-[[plugins]] # unite.vim 後継
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-depends = ['neomru.vim']
-on_event = 'BufRead'
-hook_add = '''
-    " Prefix key
-    nmap [denite] <Nop>
-    map <C-j> [denite]
-
-	" === Define mappings ===
-	autocmd FileType denite call s:denite_my_settings()
-	function! s:denite_my_settings() abort
-	  nnoremap <silent><buffer><expr> <CR>
-	  \ denite#do_map('do_action')
-	  nnoremap <silent><buffer><expr> d
-	  \ denite#do_map('do_action', 'delete')
-	  nnoremap <silent><buffer><expr> p
-	  \ denite#do_map('do_action', 'preview')
-	  nnoremap <silent><buffer><expr> q
-	  \ denite#do_map('quit')
-	  nnoremap <silent><buffer><expr> i
-	  \ denite#do_map('open_filter_buffer')
-	  nnoremap <silent><buffer><expr> <Space>
-	  \ denite#do_map('toggle_select').'j'
-	endfunction
-
-	autocmd FileType denite-filter call s:denite_filter_my_settings()
-	function! s:denite_filter_my_settings() abort
-	  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-	endfunction
-
-    nmap <silent> [denite]<C-f> :<C-u>Denite line<CR>
-    nmap <silent> [denite]<C-e> :<C-u>DeniteCursorWord line<CR>
-
-    " バッファからgrep
-    nmap <silent> [denite]<C-g> :<C-u>Denite grep<CR>
-    nmap <silent> [denite]<C-b> :<C-u>DeniteCursorWord grep<CR>
-
-    " ファイルタイプが云々　不明
-    nmap <silent> [denite]<C-t> :<C-u>Denite filetype<CR>
-    " カレントディレクトリ以下のファイル
-    nmap <silent> [denite]<C-n> :<C-u>Denite file/rec<CR>
-    " ホームディレクトリ以下のファイル
-    nmap <silent> [denite]. :<C-u>call denite#start([{'name': 'file/rec', 'args': ['~/']}])<CR>
-
-    " バッファからファイル名検索
-    nmap <silent> [denite]<C-p> :<C-u>Denite buffer<CR>
-    nmap <silent> [denite]<C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
-
-    " アクセス率の高いファイルを開く
-    nmap <silent> [denite]<C-j> :<C-u>Denite file_mru<CR>
-
-    " 過去に開いたファイル(:oldfilesで表示される)を開く
-    nmap <silent> [denite]<C-z> :<C-u>Denite file_old<CR>
-
-    " 現在ディレクトリ以下のディレクトリからファイルを開く
-    nmap <silent> [denite],     :<C-u>Denite directory_rec<CR>
-
-    " よく行くディレクトリへ移動
-    nmap <silent> [denite]<C-d> :<C-u>Denite directory_mru<CR>
-
-    " yankで取り込んだバッファ検索
-    nmap <silent> [denite]<C-y> :<C-u>Denite neoyank<CR>
-
-    " help tag検索
-    nmap <silent> [denite]<C-h> :<C-u>Denite help<CR>
-
-    " Denite中断したDeniteの続き
-    nmap <silent> [denite]<C-r> :<C-u>Denite -resume<CR>
-    "以前のバッファで次の候補を即座に開く
-    nmap <silent> [denite] ; :<C-u>Denite -resume -immediately -select=+1<CR>
-    "以前のバッファで前の候補を即座に開く
-    nmap <silent> <C-j>- :<C-u>Denite -resume -immediately -select=-1<CR>
-
-
-    " === Denite中のkeymap ===
-    "上下移動
-    call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
-    call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
-    call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-    call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-    "split / tabで開く
-    call denite#custom#map('insert', '<C-l>', '<denite:do_action:split>', 'noremap')
-    call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
-    call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
-
-	" === Define alias ===
-	call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-	call denite#custom#var('file/rec/git', 'command',
-	      \ ['git', 'ls-files', '-co', '--exclude-standard'])
-
-	call denite#custom#alias('source', 'file/rec/py', 'file/rec')
-	call denite#custom#var('file/rec/py', 'command',
-	\ ['scantree.py', '--path', ':directory'])
-
-	" Change ignore_globs
-	call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-	      \ [ '.git/', '.ropeproject/', '__pycache__/',
-	      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
-
-    " === file/rec custom ===
-    if executable('rg')
-        call denite#custom#var('file/rec', 'command',
-        \ ['rg', '--files', '--glob', '!.git'])
-        " call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
-    endif
-
-
-    " === grep custom ===
-    if executable('rg')
-        call denite#custom#var('grep', 'command', ['rg'])
-        call denite#custom#var('grep', 'recursive_opts', [])
-        call denite#custom#var('grep', 'final_opts', [])
-        call denite#custom#var('grep', 'separator', ['--'])
-        call denite#custom#var('grep', 'default_opts',
-            \ ['--vimgrep', '--no-heading'])
-        call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    elseif executable('pt')
-        call denite#custom#var('grep', 'command', ['pt'])
-        call denite#custom#var('grep', 'default_opts', ['--nogroup', '--nocolor', '--smart-case'])
-        call denite#custom#var('grep', 'recursive_opts', [])
-        call denite#custom#var('grep', 'pattern_opt', [])
-        call denite#custom#var('grep', 'separator', ['--'])
-        call denite#custom#var('grep', 'final_opts', [])
-    elseif executable('ag')
-        call denite#custom#var('file/rec', 'command',
-            \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-    endif
-
-    call denite#custom#source('file_old', 'matchers',
-          \ ['matcher_fuzzy', 'matcher_project_files'])
-    call denite#custom#source('tag', 'matchers', ['matcher_substring'])
-    call denite#custom#source('file_old', 'converters',
-          \ ['converter_relative_word'])
-
-    " 正規表現検索
-    call denite#custom#map('insert', '<C-r>',
-          \ '<denite:toggle_matchers:matcher_substring>', 'noremap')
-    call denite#custom#map('insert', '<C-a>',
-          \ '<denite:toggle_sorters:sorter_reverse>', 'noremap')
-    call denite#custom#map('normal', 'r',
-          \ '<denite:do_action:quickfix>', 'noremap')
-    call denite#custom#map('insert', ';',
-          \ 'vimrc#sticky_func()', 'expr')
-
-    call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-    call denite#custom#var('file/rec/git', 'command',
-          \ ['git', 'ls-files', '-co', '--exclude-standard'])
-
-    call denite#custom#option('default', {
-          \ 'auto_accel': v:true,
-          \ 'prompt': '>',
-          \ 'source_names': 'short',
-          \ })
-
-	" Add custom menus
-	let s:menus = {}
-	let s:menus.zsh = {
-		\ 'description': 'Edit your import zsh configuration'
-		\ }
-	let s:menus.zsh.file_candidates = [
-		\ ['zshrc', '~/.config/zsh/.zshrc'],
-		\ ['zshenv', '~/.zshenv'],
-		\ ]
-	let s:menus.my_commands = {
-		\ 'description': 'Example commands'
-		\ }
-	let s:menus.my_commands.command_candidates = [
-		\ ['Split the window', 'vnew'],
-		\ ['Open zsh menu', 'Denite menu:zsh'],
-		\ ['Format code', 'FormatCode', 'go,python'],
-		\ ]
-'''
+# [[plugins]] # unite.vim 後継
+# repo = 'Shougo/denite.nvim'
+# on_cmd = 'Denite'
+# depends = ['neomru.vim']
+# on_event = 'BufRead'
+# hook_add = '''
+#     " Prefix key
+#     nmap [denite] <Nop>
+#     map <C-j> [denite]
+#
+# 	" === Define mappings ===
+# 	autocmd FileType denite call s:denite_my_settings()
+# 	function! s:denite_my_settings() abort
+# 	  nnoremap <silent><buffer><expr> <CR>
+# 	  \ denite#do_map('do_action')
+# 	  nnoremap <silent><buffer><expr> d
+# 	  \ denite#do_map('do_action', 'delete')
+# 	  nnoremap <silent><buffer><expr> p
+# 	  \ denite#do_map('do_action', 'preview')
+# 	  nnoremap <silent><buffer><expr> q
+# 	  \ denite#do_map('quit')
+# 	  nnoremap <silent><buffer><expr> i
+# 	  \ denite#do_map('open_filter_buffer')
+# 	  nnoremap <silent><buffer><expr> <Space>
+# 	  \ denite#do_map('toggle_select').'j'
+# 	endfunction
+#
+# 	autocmd FileType denite-filter call s:denite_filter_my_settings()
+# 	function! s:denite_filter_my_settings() abort
+# 	  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+# 	endfunction
+#
+#     nmap <silent> [denite]<C-f> :<C-u>Denite line<CR>
+#     nmap <silent> [denite]<C-e> :<C-u>DeniteCursorWord line<CR>
+#
+#     " バッファからgrep
+#     nmap <silent> [denite]<C-g> :<C-u>Denite grep<CR>
+#     nmap <silent> [denite]<C-b> :<C-u>DeniteCursorWord grep<CR>
+#
+#     " ファイルタイプが云々　不明
+#     nmap <silent> [denite]<C-t> :<C-u>Denite filetype<CR>
+#     " カレントディレクトリ以下のファイル
+#     nmap <silent> [denite]<C-n> :<C-u>Denite file/rec<CR>
+#     " ホームディレクトリ以下のファイル
+#     nmap <silent> [denite]. :<C-u>call denite#start([{'name': 'file/rec', 'args': ['~/']}])<CR>
+#
+#     " バッファからファイル名検索
+#     nmap <silent> [denite]<C-p> :<C-u>Denite buffer<CR>
+#     nmap <silent> [denite]<C-o> :<C-u>Denite buffer -buffer-name=file file<CR>
+#
+#     " アクセス率の高いファイルを開く
+#     nmap <silent> [denite]<C-j> :<C-u>Denite file_mru<CR>
+#
+#     " 過去に開いたファイル(:oldfilesで表示される)を開く
+#     nmap <silent> [denite]<C-z> :<C-u>Denite file_old<CR>
+#
+#     " 現在ディレクトリ以下のディレクトリからファイルを開く
+#     nmap <silent> [denite],     :<C-u>Denite directory_rec<CR>
+#
+#     " よく行くディレクトリへ移動
+#     nmap <silent> [denite]<C-d> :<C-u>Denite directory_mru<CR>
+#
+#     " yankで取り込んだバッファ検索
+#     nmap <silent> [denite]<C-y> :<C-u>Denite neoyank<CR>
+#
+#     " help tag検索
+#     nmap <silent> [denite]<C-h> :<C-u>Denite help<CR>
+#
+#     " Denite中断したDeniteの続き
+#     nmap <silent> [denite]<C-r> :<C-u>Denite -resume<CR>
+#     "以前のバッファで次の候補を即座に開く
+#     nmap <silent> [denite] ; :<C-u>Denite -resume -immediately -select=+1<CR>
+#     "以前のバッファで前の候補を即座に開く
+#     nmap <silent> <C-j>- :<C-u>Denite -resume -immediately -select=-1<CR>
+#
+#
+#     " === Denite中のkeymap ===
+#     "上下移動
+#     call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
+#     call denite#custom#map('insert', '<Up>', '<denite:move_to_previous_line>', 'noremap')
+#     call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+#     call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+#     "split / tabで開く
+#     call denite#custom#map('insert', '<C-l>', '<denite:do_action:split>', 'noremap')
+#     call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+#     call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
+#
+# 	" === Define alias ===
+# 	call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+# 	call denite#custom#var('file/rec/git', 'command',
+# 	      \ ['git', 'ls-files', '-co', '--exclude-standard'])
+#
+# 	call denite#custom#alias('source', 'file/rec/py', 'file/rec')
+# 	call denite#custom#var('file/rec/py', 'command',
+# 	\ ['scantree.py', '--path', ':directory'])
+#
+# 	" Change ignore_globs
+# 	call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+# 	      \ [ '.git/', '.ropeproject/', '__pycache__/',
+# 	      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+#
+#     " === file/rec custom ===
+#     if executable('rg')
+#         call denite#custom#var('file/rec', 'command',
+#         \ ['rg', '--files', '--glob', '!.git'])
+#         " call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
+#     endif
+#
+#
+#     " === grep custom ===
+#     if executable('rg')
+#         call denite#custom#var('grep', 'command', ['rg'])
+#         call denite#custom#var('grep', 'recursive_opts', [])
+#         call denite#custom#var('grep', 'final_opts', [])
+#         call denite#custom#var('grep', 'separator', ['--'])
+#         call denite#custom#var('grep', 'default_opts',
+#             \ ['--vimgrep', '--no-heading'])
+#         call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+#     elseif executable('pt')
+#         call denite#custom#var('grep', 'command', ['pt'])
+#         call denite#custom#var('grep', 'default_opts', ['--nogroup', '--nocolor', '--smart-case'])
+#         call denite#custom#var('grep', 'recursive_opts', [])
+#         call denite#custom#var('grep', 'pattern_opt', [])
+#         call denite#custom#var('grep', 'separator', ['--'])
+#         call denite#custom#var('grep', 'final_opts', [])
+#     elseif executable('ag')
+#         call denite#custom#var('file/rec', 'command',
+#             \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+#     endif
+#
+#     call denite#custom#source('file_old', 'matchers',
+#           \ ['matcher_fuzzy', 'matcher_project_files'])
+#     call denite#custom#source('tag', 'matchers', ['matcher_substring'])
+#     call denite#custom#source('file_old', 'converters',
+#           \ ['converter_relative_word'])
+#
+#     " 正規表現検索
+#     call denite#custom#map('insert', '<C-r>',
+#           \ '<denite:toggle_matchers:matcher_substring>', 'noremap')
+#     call denite#custom#map('insert', '<C-a>',
+#           \ '<denite:toggle_sorters:sorter_reverse>', 'noremap')
+#     call denite#custom#map('normal', 'r',
+#           \ '<denite:do_action:quickfix>', 'noremap')
+#     call denite#custom#map('insert', ';',
+#           \ 'vimrc#sticky_func()', 'expr')
+#
+#     call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+#     call denite#custom#var('file/rec/git', 'command',
+#           \ ['git', 'ls-files', '-co', '--exclude-standard'])
+#
+#     call denite#custom#option('default', {
+#           \ 'auto_accel': v:true,
+#           \ 'prompt': '>',
+#           \ 'source_names': 'short',
+#           \ })
+#
+# 	" Add custom menus
+# 	let s:menus = {}
+# 	let s:menus.zsh = {
+# 		\ 'description': 'Edit your import zsh configuration'
+# 		\ }
+# 	let s:menus.zsh.file_candidates = [
+# 		\ ['zshrc', '~/.config/zsh/.zshrc'],
+# 		\ ['zshenv', '~/.zshenv'],
+# 		\ ]
+# 	let s:menus.my_commands = {
+# 		\ 'description': 'Example commands'
+# 		\ }
+# 	let s:menus.my_commands.command_candidates = [
+# 		\ ['Split the window', 'vnew'],
+# 		\ ['Open zsh menu', 'Denite menu:zsh'],
+# 		\ ['Format code', 'FormatCode', 'go,python'],
+# 		\ ]
+# '''
 
 [[plugins]]  # Great asynchronous execution library
 repo = 'Shougo/vimproc.vim'
