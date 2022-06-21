@@ -1,8 +1,8 @@
 # vim:ft=toml
-[[plugins]] # Plugin to easily access Most Recently Used (MRU) files
-repo = 'Shougo/neomru.vim'
-on_source = 'denite.nvim'
-on_path = '.*'
+# [[plugins]] # Plugin to easily access Most Recently Used (MRU) files
+# repo = 'Shougo/neomru.vim'
+# on_source = 'denite.nvim'
+# on_path = '.*'
 
 [[plugins]] # Yank
 repo = 'Shougo/neoyank.vim'
@@ -286,4 +286,22 @@ let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
     let g:deoplete#sources#rust#disable_keymap = 1
     nmap <buffer> <leader>s <plug>DeopleteRustGoToDefinitionDefault
     nmap <buffer> K  <plug>DeopleteRustShowDocumentation
+'''
+
+[[plugins]]
+repo = 'zah/nim.vim'
+on_ft = 'nim'
+if = '''executable('nim')'''
+hook_source = '''
+fun! JumpToDef()
+  if exists("*GotoDefinition_" . &filetype)
+    call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
 '''

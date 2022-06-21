@@ -79,4 +79,6 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 # cargo installed bin's path
 [ -f ${HOME}/.cargo/env ] && source ${HOME}/.cargo/env
 
+# choosenim bin's path
+type choosenim > /dev/null 2>&1 && export PATH="${HOME}/.nimble/bin:${PATH}"
 # vim:ft=sh
