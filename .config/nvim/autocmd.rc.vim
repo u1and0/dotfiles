@@ -53,4 +53,4 @@ endif
 
 " 一時ファイルの作成と書き込み
 command! TempfileEdit :edit `=tempname()`
-command! TempfileWrite :write `=tempname()`
+            command! TempfileWrite :write `=tempname()`
