@@ -19,6 +19,7 @@ augroup MyAutoCmd
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
     autocmd FileType python nnoremap <buffer> <Leader>r :sp <CR> :term python %<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.nim set filetype=nim
 augroup END
 
 if executable("deno")
