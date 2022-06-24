@@ -20,13 +20,14 @@ augroup MyAutoCmd
     autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> :term python %<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.nim,*.nimble set filetype=nim
+    autocmd BufWritePost *.nim,*.nimble !nimpretty %
     autocmd FileType nim nnoremap <buffer> <Leader>r :sp <Bar> term nim c -r %<CR>
 augroup END
 
 if executable("deno")
   augroup LspTypeScript
     autocmd!
-    autocmd BufWrite *.ts !deno fmt -q %
+    autocmd BufWritePost *.ts !deno fmt -q %
     autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
     autocmd User lsp_setup call lsp#register_server({
     \ "name": "deno lsp",
