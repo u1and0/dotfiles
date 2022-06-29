@@ -14,6 +14,7 @@ set smartcase           " Search ignore case if only use letter case
 set display=lastline    " 長い行の表示
 set pumheight=10        " 補完ウィンドウの大きさ
 set modeline            " 行頭or行末にvim: set {options}を書ける
+set tags=./tags
 
 " Tab setting
 set tabstop=4           " The width of a TAB is set to 4.
