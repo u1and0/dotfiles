@@ -17,15 +17,18 @@ augroup MyAutoCmd
     autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly nolist | normal gg
         " j/kキーマップを変更
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
-    autocmd FileType python nnoremap <buffer> <Leader>r :sp <CR> :term python %<CR>
+    autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> :term python %<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.nim,*.nimble set filetype=nim
+    autocmd BufWritePost *.nim,*.nimble !nimpretty %
+    autocmd FileType nim nnoremap <buffer> <Leader>r :sp <Bar> term nim c -r %<CR>
 augroup END
 
 if executable("deno")
   augroup LspTypeScript
     autocmd!
-    autocmd BufWrite *.ts !deno fmt -q %
-    autocmd FileType *.ts nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
+    autocmd BufWritePost *.ts !deno fmt -q %
+    autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
     autocmd User lsp_setup call lsp#register_server({
     \ "name": "deno lsp",
     \ "cmd": {server_info -> ["deno", "lsp"]},
@@ -47,9 +50,9 @@ endif
 
 " MarkdownをHTMLとして保存する
 if executable('pandoc')
-    autocmd FileType html command! WriteHTML :w !pandoc -o %:r.html
+    autocmd FileType markdown command! WriteHTML :w !pandoc -o %:r.html
 endif
 
 " 一時ファイルの作成と書き込み
 command! TempfileEdit :edit `=tempname()`
-command! TempfileWrite :write `=tempname()`
+            command! TempfileWrite :write `=tempname()`
