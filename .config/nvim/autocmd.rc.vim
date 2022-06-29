@@ -47,7 +47,7 @@ endif
 
 " MarkdownをHTMLとして保存する
 if executable('pandoc')
-    autocmd FileType html command! WriteHTML :w !pandoc -o %:r.html
+    autocmd FileType markdown command! WriteHTML :w !pandoc -o %:r.html
 endif
 
 " 一時ファイルの作成と書き込み
