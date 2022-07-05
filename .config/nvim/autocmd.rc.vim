@@ -22,6 +22,7 @@ augroup MyAutoCmd
     autocmd BufNewFile,BufRead *.nim,*.nimble set filetype=nim
     autocmd BufWritePost *.nim,*.nimble !nimpretty %
     autocmd FileType nim nnoremap <buffer> <Leader>r :sp <Bar> term nim c -r %<CR>
+    autocmd FileType nim nnoremap <buffer> <Leader>b :sp <Bar> term nim c %<CR>
 augroup END
 
 if executable("deno")
