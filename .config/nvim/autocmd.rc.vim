@@ -17,13 +17,21 @@ augroup MyAutoCmd
     autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly nolist | normal gg
         " j/kキーマップを変更
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
-    autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> :term python %<CR>
+    autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> term python %<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.nim,*.nimble set filetype=nim
-    autocmd BufWritePost *.nim,*.nimble !nimpretty %
-    autocmd FileType nim nnoremap <buffer> <Leader>r :sp <Bar> term nim c -r %<CR>
-    autocmd FileType nim nnoremap <buffer> <Leader>b :sp <Bar> term nim c %<CR>
 augroup END
+
+if executable("nim")
+    augroup MyNimCmd
+        autocmd BufNewFile,BufRead *.nim,*.nimble set filetype=nim
+        autocmd BufWritePost *.nim,*.nimble !nimpretty %
+        autocmd FileType nim command! -nargs=* NimRun :sp <Bar> term nim c -r <args> %
+        autocmd FileType nim command! -nargs=* NimBuild :sp <Bar> term nim c <args> %
+        autocmd FileType nim command! -nargs=* NimBuildLib :!nim c --tlsEmulation:off --app:lib --out:%:t:r.so <args> %
+        autocmd FileType nim nnoremap <buffer> <Leader>r :NimRun<CR>
+        autocmd FileType nim nnoremap <buffer> <Leader>b :NimBuild<CR>
+    augroup END
+endif
 
 if executable("deno")
   augroup LspTypeScript
@@ -64,4 +72,4 @@ endif
 
 " 一時ファイルの作成と書き込み
 command! TempfileEdit :edit `=tempname()`
-            command! TempfileWrite :write `=tempname()`
+command! TempfileWrite :write `=tempname()`
