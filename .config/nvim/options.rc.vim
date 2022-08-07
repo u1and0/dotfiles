@@ -33,7 +33,7 @@ highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
 set nolist  " 不可視文字の表示
 " set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-colorscheme ron
+colorscheme zellner
 
 
 " vim default plugins
