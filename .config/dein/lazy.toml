@@ -156,7 +156,8 @@ hook_add = '''
     " autocmd FileType go nmap <leader>b  <Plug>(go-build) " 下記に改善版
     autocmd FileType go nmap <leader>r <Plug>(go-run)
     " autocmd FileType go nmap <leader>t <Plug>(go-test)
-    autocmd FileType go nmap <leader>t :GoTest %<CR>  " leader tが効かなくなったので暫定処置
+    " leader tが効かなくなったので暫定処置
+    autocmd FileType go nmap <leader>t :GoTest<CR>
     autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
     autocmd FileType go nmap <Leader>l <Plug>(go-lint)
     " run :GoBuild or :GoTestCompile based on the go file
@@ -180,6 +181,7 @@ hook_add = '''
     autocmd FileType go nmap <Leader>pp <Plug>(go-alternate-edit)
     autocmd FileType go nmap <Leader>ps <Plug>(go-alternate-split)
     autocmd FileType go nmap <Leader>pv <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <Leader>d :!pkill main<CR>
     " tabに表示はない
 
     " [[, ]]: 次/前の関数に移動
