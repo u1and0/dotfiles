@@ -227,6 +227,10 @@ function gonew() {
   mkdir "$1"; cd "$1"; ${EDITOR} main.go
 }
 
+function nimnew() {
+  echo 'echo "Hello world."' > "$1" && ${EDITOR} "$1"
+}
+
 # X server control
 function xdisplay() {
     xset dpms force $1
