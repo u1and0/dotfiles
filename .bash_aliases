@@ -19,7 +19,8 @@ if which sudo > /dev/null 2>&1; then
     type docker-compose > /dev/null 2>&1 && alias docker-compose='sudo docker-compose '
 
     # conda
-    type conda > /dev/null 2>&1 && alias conda='sudo conda '
+    # type conda > /dev/null 2>&1 && alias conda='sudo conda '
+    # conda activate ができなくなるのでやってはいけない
 
 fi
 
