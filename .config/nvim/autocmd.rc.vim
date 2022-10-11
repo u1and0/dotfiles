@@ -30,8 +30,10 @@ if executable("nim")
         autocmd FileType nim command! -nargs=* NimRun :sp <Bar> term nim c -r <args> %
         autocmd FileType nim command! -nargs=* NimBuild :sp <Bar> term nim c <args> %
         autocmd FileType nim command! -nargs=* NimBuildLib :!nim c --tlsEmulation:off --app:lib --out:%:t:r.so <args> %
+        autocmd FileType nim command! -nargs=* NimTest :sp <Bar> term testament pattern <args> 'tests/*.nim'
         autocmd FileType nim nnoremap <buffer> <Leader>r :NimRun<CR>
         autocmd FileType nim nnoremap <buffer> <Leader>b :NimBuild<CR>
+        autocmd FileType nim nnoremap <buffer> <Leader>t :NimTest<CR>
     augroup END
 endif
 
