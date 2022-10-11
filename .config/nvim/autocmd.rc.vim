@@ -17,7 +17,9 @@ augroup MyAutoCmd
     autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly nolist | normal gg
         " j/kキーマップを変更
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
-    autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> term python %<CR>
+    " autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> term python %<CR>
+    autocmd BufNewFile,BufRead *.py command! -nargs=* PythonRun :sp <Bar> term python <args> %
+    autocmd BufNewFile,BufRead *.py noremap <buffer> <Leader>r :PythonRun<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
