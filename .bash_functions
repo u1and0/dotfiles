@@ -224,7 +224,8 @@ function docker-tags() {
 }
 
 function gonew() {
-  mkdir "$1"; cd "$1"; ${EDITOR} main.go
+  mkdir "$1"; cd "$1"
+  ${EDITOR} main.go -c ":w | !go mod init $(basename $(pwd)) && go mod tidy"
 }
 
 function nimnew() {
