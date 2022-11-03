@@ -17,7 +17,9 @@ augroup MyAutoCmd
     autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly nolist | normal gg
         " j/kキーマップを変更
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
-    autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> term python %<CR>
+    " autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> term python %<CR>
+    autocmd BufNewFile,BufRead *.py command! -nargs=* PythonRun :sp <Bar> term python <args> %
+    autocmd BufNewFile,BufRead *.py noremap <buffer> <Leader>r :PythonRun<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
@@ -28,8 +30,10 @@ if executable("nim")
         autocmd FileType nim command! -nargs=* NimRun :sp <Bar> term nim c -r <args> %
         autocmd FileType nim command! -nargs=* NimBuild :sp <Bar> term nim c <args> %
         autocmd FileType nim command! -nargs=* NimBuildLib :!nim c --tlsEmulation:off --app:lib --out:%:t:r.so <args> %
+        autocmd FileType nim command! -nargs=* NimTest :sp <Bar> term testament pattern <args> 'tests/*.nim'
         autocmd FileType nim nnoremap <buffer> <Leader>r :NimRun<CR>
         autocmd FileType nim nnoremap <buffer> <Leader>b :NimBuild<CR>
+        autocmd FileType nim nnoremap <buffer> <Leader>t :NimTest<CR>
     augroup END
 endif
 
