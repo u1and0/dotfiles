@@ -40,7 +40,7 @@ endif
 if executable("deno")
   augroup LspTypeScript
     autocmd!
-    autocmd BufWritePost *.ts !deno fmt -q %
+    autocmd BufWritePost *.ts,*.js !deno fmt -q %
     autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
     autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
     autocmd User lsp_setup call lsp#register_server({
