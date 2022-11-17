@@ -241,4 +241,10 @@ function xmute() {
     amixer sset Master $1
 }
 
+
+# URL encoding from multibyte character
+function urlencoding() {
+    echo "$*" | nkf -WwMQ | sed -e 's/=$//g' | tr = % | tr -d '\n'
+}
+
 # vim:ft=sh
