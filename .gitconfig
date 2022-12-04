@@ -90,3 +90,5 @@
 #
 # git fetchで自分のdotファイルを落としたい時、on the flyでこのセッションだけ有効なfetchオプションを設定する
 # git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+[commit]
+	template = ~/.gitmessage
