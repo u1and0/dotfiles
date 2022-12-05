@@ -17,7 +17,9 @@ augroup MyAutoCmd
     autocmd BufRead *.zip,*.gz,*.bz2,*.xz,*.pdf setlocal readonly nolist | normal gg
         " j/kキーマップを変更
         " \| nn <buffer> j <C-E> | nn <buffer> k <C-Y>
-    autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> term python %<CR>
+    " autocmd FileType python nnoremap <buffer> <Leader>r :sp <Bar> term python %<CR>
+    autocmd BufNewFile,BufRead *.py command! -nargs=* PythonRun :sp <Bar> term python <args> %
+    autocmd BufNewFile,BufRead *.py noremap <buffer> <Leader>r :PythonRun<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
@@ -28,17 +30,20 @@ if executable("nim")
         autocmd FileType nim command! -nargs=* NimRun :sp <Bar> term nim c -r <args> %
         autocmd FileType nim command! -nargs=* NimBuild :sp <Bar> term nim c <args> %
         autocmd FileType nim command! -nargs=* NimBuildLib :!nim c --tlsEmulation:off --app:lib --out:%:t:r.so <args> %
+        autocmd FileType nim command! -nargs=* NimTest :sp <Bar> term testament pattern <args> 'tests/*.nim'
         autocmd FileType nim nnoremap <buffer> <Leader>r :NimRun<CR>
         autocmd FileType nim nnoremap <buffer> <Leader>b :NimBuild<CR>
+        autocmd FileType nim nnoremap <buffer> <Leader>t :NimTest<CR>
     augroup END
 endif
 
-if executable("deno")
-  augroup LspTypeScript
-    autocmd!
-    autocmd BufWritePost *.ts !deno fmt -q %
-    autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
-    autocmd User lsp_setup call lsp#register_server({
+augroup MyTypeScriptCmd
+autocmd!
+autocmd BufWritePost *.ts,*.js !deno fmt -q %
+autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
+autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
+autocmd FileType typescript colorscheme pablo
+autocmd User lsp_setup call lsp#register_server({
     \ "name": "deno lsp",
     \ "cmd": {server_info -> ["deno", "lsp"]},
     \ "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), "tsconfig.json"))},
@@ -50,7 +55,6 @@ if executable("deno")
     \   },
     \ })
   augroup END
-endif
 
 " PDFを開くコマンド
 if executable('pdftotext')
