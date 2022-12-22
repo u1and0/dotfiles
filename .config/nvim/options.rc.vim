@@ -27,14 +27,13 @@ set expandtab           " Expand TABs to spaces
 set diffopt+=vertical   " Gdiffsplit always split vertical
 filetype plugin indent on " filetypeによってインデント設定を変える
 
-" 文字装飾、ハイライト
+set nolist  " 不可視文字の表示
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
+" カラースキーム、文字装飾、ハイライト
+colorscheme koehler
 set cursorline          " Highlight corsorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
-
-set nolist  " 不可視文字の表示
-" set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-colorscheme zellner
-
 
 " vim default plugins
 filetype plugin on

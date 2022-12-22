@@ -23,6 +23,15 @@ augroup MyAutoCmd
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+augroup TransparentBG
+  	autocmd!
+	autocmd Colorscheme * highlight Normal ctermbg=none
+	autocmd Colorscheme * highlight NonText ctermbg=none
+	autocmd Colorscheme * highlight LineNr ctermbg=none
+	autocmd Colorscheme * highlight Folded ctermbg=none
+	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
+augroup END
+
 if executable("nim")
     augroup MyNimCmd
         autocmd BufNewFile,BufRead *.nim,*.nimble set filetype=nim
