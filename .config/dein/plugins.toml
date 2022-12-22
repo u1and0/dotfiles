@@ -14,6 +14,23 @@ repo = 'w0ng/vim-hybrid'
 
 [[plugins]]  # vim-fugitive
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+    " Escape default <C-G> key bind
+    nnoremap <C-g>g :file
+    nnoremap <C-g>s :Git<CR>
+    nnoremap <C-g>a :Git add %<CR>
+    nnoremap <C-g>A :Git add .<CR>
+    nnoremap <C-g>d :Gdiffsplit<CR>
+    nnoremap <C-g>c :Git commit<CR>
+    nnoremap <C-g>C :Git commit -a<CR>
+    nnoremap <C-g>p :Git push<CR>
+    " fugitiveで開いたウィンドウではq でバッファを閉じる
+    augroup FugitiveCmd
+        autocmd!
+        autocmd FugitiveCmd FileType fugitive nnoremap <buffer> q <C-w>c<Paste>
+    augroup END
+
+'''
 
 [[plugins]]  # vim-gitgutter
 repo = 'airblade/vim-gitgutter'

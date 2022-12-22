@@ -30,13 +30,13 @@ if executable("nim")
     augroup END
 endif
 
-if executable("deno")
-  augroup LspTypeScript
-    autocmd!
-    autocmd BufWritePost *.ts !deno fmt -q %
-    autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
-    autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
-    autocmd User lsp_setup call lsp#register_server({
+augroup MyTypeScriptCmd
+autocmd!
+autocmd BufWritePost *.ts,*.js !deno fmt -q %
+autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
+autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
+autocmd FileType typescript colorscheme pablo
+autocmd User lsp_setup call lsp#register_server({
     \ "name": "deno lsp",
     \ "cmd": {server_info -> ["deno", "lsp"]},
     \ "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), "tsconfig.json"))},
@@ -48,7 +48,6 @@ if executable("deno")
     \   },
     \ })
   augroup END
-endif
 
 " PDFを開くコマンド
 if executable('pdftotext')

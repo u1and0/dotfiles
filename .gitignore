@@ -36,6 +36,7 @@
 !.gitignore
 !.globalgitignore
 !.gitconfig
+!.gitmessage
 
 # git submodules
 !/bacpac/
@@ -92,6 +93,7 @@
 !/.vim/after/
 /.vim/after/*
 !/.vim/after/ftplugin/
+!/.vim/dict/
 
 !/.vim/bundle/
 /.vim/bundle/*
