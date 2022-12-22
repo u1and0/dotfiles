@@ -32,6 +32,7 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " カラースキーム、文字装飾、ハイライト
 colorscheme koehler
+set pumblend=30  " 0~100 ポップアップウィンドウの半透明化
 set cursorline          " Highlight corsorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 
