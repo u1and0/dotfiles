@@ -252,7 +252,7 @@ let g:ref_detect_filetype         = {
             \    'html':       ['phpmanual',  'javascript', 'jquery'],
             \    'javascript': ['javascript', 'jquery'],
             \    'php':        ['phpmanual',  'javascript', 'jquery'],
-            \    'typescript': ['denodoc', 'denoreadme',  'javascript', 'jquery']
+            \    'typescript': ['denodoc',  'javascript', 'jquery']
             \}
 
 " To download the phpmanual, type below on your shell.
@@ -280,9 +280,6 @@ let g:ref_source_webdict_sites = {
             \   },
             \   'denodoc': {
             \     'url': 'https://doc.deno.land/https://deno.land/%s',
-            \   },
-            \   'denoreadme': {
-            \     'url': 'https://deno.land/%s/README.md',
             \   },
             \ }
 " jqueryはmustardamus/jqapiの代わり
