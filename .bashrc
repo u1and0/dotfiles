@@ -25,7 +25,7 @@ if type fzf > /dev/null 2>&1; then
 fi
 
 # Secret API Keys
-[ -f ${HOME}/.secret] && source ${HOME}/.secret
+[ -f ${HOME}/.secret ] && source ${HOME}/.secret
 
 
 # LESS設定
