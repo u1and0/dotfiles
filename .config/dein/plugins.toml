@@ -14,6 +14,23 @@ repo = 'w0ng/vim-hybrid'
 
 [[plugins]]  # vim-fugitive
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+    " Escape default <C-G> key bind
+    nnoremap <C-g>g :file
+    nnoremap <C-g>s :Git<CR>
+    nnoremap <C-g>a :Git add %<CR>
+    nnoremap <C-g>A :Git add .<CR>
+    nnoremap <C-g>d :Gdiffsplit<CR>
+    nnoremap <C-g>c :Git commit<CR>
+    nnoremap <C-g>C :Git commit -a<CR>
+    nnoremap <C-g>p :Git push<CR>
+    " fugitiveで開いたウィンドウではq でバッファを閉じる
+    augroup FugitiveCmd
+        autocmd!
+        autocmd FugitiveCmd FileType fugitive nnoremap <buffer> q <C-w>c<Paste>
+    augroup END
+
+'''
 
 [[plugins]]  # vim-gitgutter
 repo = 'airblade/vim-gitgutter'
@@ -235,7 +252,7 @@ let g:ref_detect_filetype         = {
             \    'html':       ['phpmanual',  'javascript', 'jquery'],
             \    'javascript': ['javascript', 'jquery'],
             \    'php':        ['phpmanual',  'javascript', 'jquery'],
-            \    'typescript': ['denodoc', 'denoreadme',  'javascript', 'jquery']
+            \    'typescript': ['denodoc',  'javascript', 'jquery']
             \}
 
 " To download the phpmanual, type below on your shell.
@@ -263,9 +280,6 @@ let g:ref_source_webdict_sites = {
             \   },
             \   'denodoc': {
             \     'url': 'https://doc.deno.land/https://deno.land/%s',
-            \   },
-            \   'denoreadme': {
-            \     'url': 'https://deno.land/%s/README.md',
             \   },
             \ }
 " jqueryはmustardamus/jqapiの代わり
@@ -408,3 +422,6 @@ on_source = ['prabirshrestha/vim-lsp']
 
 [[plugins]]
 repo = "mattn/webapi-vim"
+
+[[plugins]]
+repo = "mattn/vim-chatgpt"

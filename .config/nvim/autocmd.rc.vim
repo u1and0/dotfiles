@@ -23,17 +23,19 @@ augroup MyAutoCmd
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+augroup TransparentBG
+  	autocmd!
+	autocmd Colorscheme * highlight Normal ctermbg=none
+	autocmd Colorscheme * highlight NonText ctermbg=none
+	autocmd Colorscheme * highlight LineNr ctermbg=none
+	autocmd Colorscheme * highlight Folded ctermbg=none
+	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
+augroup END
+
 if executable("nim")
     augroup MyNimCmd
         autocmd BufNewFile,BufRead *.nim,*.nimble set filetype=nim
         autocmd BufWritePost *.nim,*.nimble !nimpretty %
-        autocmd FileType nim command! -nargs=* NimRun :sp <Bar> term nim c -r <args> %
-        autocmd FileType nim command! -nargs=* NimBuild :sp <Bar> term nim c <args> %
-        autocmd FileType nim command! -nargs=* NimBuildLib :!nim c --tlsEmulation:off --app:lib --out:%:t:r.so <args> %
-        autocmd FileType nim command! -nargs=* NimTest :sp <Bar> term testament pattern <args> 'tests/*.nim'
-        autocmd FileType nim nnoremap <buffer> <Leader>r :NimRun<CR>
-        autocmd FileType nim nnoremap <buffer> <Leader>b :NimBuild<CR>
-        autocmd FileType nim nnoremap <buffer> <Leader>t :NimTest<CR>
     augroup END
 endif
 
