@@ -1,13 +1,10 @@
 #!/bin/sh
 
-# # ローディングスピナーを表示する
-# spinner $!
-# ```
-#
-# このスクリプトでは、`spinner`関数がローディングスピナーを表示します。
+# ローディングスピナーを表示します。
 # `$1`には、バックグラウンドで実行されるプロセスのPIDを渡します。
 # スピナーのフレームは、`spinstr`変数に保存されます。
-# `printf`コマンドを使用して、スピナーの各フレームを表示し、`sleep`コマンドを使用して、スピナーの速度を調整します。
+# `printf`コマンドを使用して、スピナーの各フレームを表示し、
+# `sleep`コマンドを使用して、スピナーの速度を調整します。
 # 最後に、`printf`コマンドを使用して、スピナーを消去します。
 function spinner() {
     local pid=$1
@@ -41,6 +38,30 @@ function print_one_by_one(){
 # jqでcontentのみ表示
 # sedで最初と最後の"を削除し、改行表示
 function curlgpt(){
+    USAGE=$(cat <<-END
+Usage:
+    $ curlgpt "hello world!"
+        or
+    $ echo "hello world!" | curlgpt
+END
+)
+    if [ -p /dev/stdin  ]; then
+        # パイプラインからの入力がある場合
+        input=$(cat -)
+    elif [ -n "$1"  ]; then
+        # 引数がある場合
+        input="$1"
+    else
+        # 引数がなく、パイプラインからの入力もない場合
+        echo ${USAGE}
+        return 1
+    fi
+
+    if [[ $(echo $input | xargs echo -n) == "-h" ]]; then
+        echo ${USAGE}
+        return 0
+    fi
+
     curl -s -X POST https://api.openai.com/v1/chat/completions \
         -H "Content-Type: application/json" \
         -H "Authorization: Bearer ${CHATGPT_API_KEY}" \
@@ -49,7 +70,7 @@ function curlgpt(){
             "messages": [
                 {
                     "role":"user",
-                    "content": "'"$1"'"
+                    "content": "'"$input"'"
                 }
             ],
             "temperature": 1.0,
