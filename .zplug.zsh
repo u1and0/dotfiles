@@ -123,4 +123,9 @@ zplug "u1and0/eml2txt",\
     use:"eml2txt.py",\
     rename-to:"eml2txt"
 
+# Ask ChatGPT from terminal
+zplug "u1and0/b4a8647bebbcb8b9b71c6e166726063e",\
+    from:gist,\
+    use:"*.sh",\
+    hook-load:"source curlgpt.sh"
 # vim:ft=zsh
