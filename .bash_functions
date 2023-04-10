@@ -247,4 +247,6 @@ function urlencoding() {
     echo "$*" | nkf -WwMQ | sed -e 's/=$//g' | tr = % | tr -d '\n'
 }
 
+[ -f ${HOME}/curlgpt.sh ] && source ${HOME}/curlgpt.sh
+
 # vim:ft=sh
