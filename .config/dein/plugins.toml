@@ -422,3 +422,6 @@ on_source = ['prabirshrestha/vim-lsp']
 
 [[plugins]]
 repo = "mattn/webapi-vim"
+
+[[plugins]]
+repo = "mattn/vim-chatgpt"

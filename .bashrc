@@ -7,7 +7,7 @@ export TERM="xterm-256color"
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 # shell script path
 export SHPATH="${HOME}/sh"
-export PATH="$PATH:$SHPATH/bin"
+export PATH="$PATH:$SHPATH/bin:${HOME}/go/bin"
 # LinuxBrew setting
 if type brew > /dev/null 2>&1; then
     export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
@@ -24,7 +24,8 @@ if type fzf > /dev/null 2>&1; then
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
-
+# Secret API Keys
+[ -f ${HOME}/.secret ] && source ${HOME}/.secret
 
 
 # LESS設定
