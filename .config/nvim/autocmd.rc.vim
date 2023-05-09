@@ -42,7 +42,7 @@ endif
 augroup MyTypeScriptCmd
 autocmd!
 autocmd BufWritePost *.ts,*.js !deno fmt -q %
-autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -q %<CR>
+autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -qA %<CR>
 autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
 autocmd FileType typescript colorscheme pablo
 autocmd User lsp_setup call lsp#register_server({
