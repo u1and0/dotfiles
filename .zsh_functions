@@ -67,4 +67,15 @@ function fuzzy-command-search(){
 }
 zle -N fuzzy-command-search
 bindkey -M viins '^G'  fuzzy-command-search
+
+# fzf-history-widget backup
+# function fzf-history-widget() {
+#     BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) |
+#         sed 's/ *[0-9]* *//' |
+#         awk '!a[$0]++' |
+#         fzf --no-sort --tac --height=40% --reverse)
+#     CURSOR=$#BUFFER
+#     zle reset-prompt
+# }
+# zle -N fzf-history-widget
 # vim:ft=zsh
