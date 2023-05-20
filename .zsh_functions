@@ -62,7 +62,8 @@ tmux_automatically_attach_session
 
 # fzf
 function fuzzy-command-search(){
-    print -z -- $(compgen -abc | fzf)
+    BUFFER=$(compgen -abc | fzf)
+    CURSOR=$#BUFFER
 }
 zle -N fuzzy-command-search
 bindkey -M viins '^G'  fuzzy-command-search
