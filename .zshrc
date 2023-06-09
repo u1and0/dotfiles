@@ -5,22 +5,14 @@
 
 ##########################################
 # External files
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi
-
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
-fi
-if [ -f ~/.zsh_functions ]; then
-    . ~/.zsh_functions
-fi
+[ -f ~/.bashrc ] && source ~/.bashrc
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+[ -f ~/.zsh_functions ] && source ~/.zsh_functions
 
 # fzf
 [ -f ~/.fzf.zsh  ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-
 ##########################################
 # 色を使用出来るようにする
 autoload -Uz colors
