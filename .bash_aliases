@@ -141,7 +141,10 @@ type pdftotext > /dev/null 2>&1 &&
     alias pdftotext='pdftotext -layout -nopgbrk '
 
 # vim - shell 通信用バッファ
+# 読み込み
 alias bf='cat > ${HOME}/.vim/bf'
+# 書き込み
 alias bfcat='cat ${HOME}/.vim/bf'
+# 実行
 alias bfexec='bfcat | ${SHELL}'
 # vim:ft=sh
