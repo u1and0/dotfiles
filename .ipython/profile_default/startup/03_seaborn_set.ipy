@@ -1,11 +1,11 @@
 """
 seaborn setting
 
-#import seaborn as sns
 If imported seaborn, change font style, grid style.
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def __plottest__(flip=8):
