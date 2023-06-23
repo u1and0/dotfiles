@@ -18,6 +18,10 @@ if which sudo > /dev/null 2>&1; then
     type docker > /dev/null 2>&1 && alias docker='sudo docker '
     type docker-compose > /dev/null 2>&1 && alias docker-compose='sudo docker-compose '
 
+    # conda
+    # type conda > /dev/null 2>&1 && alias conda='sudo conda '
+    # conda activate ができなくなるのでやってはいけない
+
 fi
 
 # 移動しやすく
@@ -137,7 +141,10 @@ type pdftotext > /dev/null 2>&1 &&
     alias pdftotext='pdftotext -layout -nopgbrk '
 
 # vim - shell 通信用バッファ
+# 読み込み
 alias bf='cat > ${HOME}/.vim/bf'
+# 書き込み
 alias bfcat='cat ${HOME}/.vim/bf'
+# 実行
 alias bfexec='bfcat | ${SHELL}'
 # vim:ft=sh

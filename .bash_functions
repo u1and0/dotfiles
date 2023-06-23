@@ -219,8 +219,17 @@ diffdocx() {
     diff <($BIN $1 -) <($BIN $2 -)
 }
 
-function docker-tags {
+function docker-tags() {
   curl -s https://registry.hub.docker.com/v1/repositories/$1/tags | jq -r '.[].name'
+}
+
+function gonew() {
+  mkdir "$1"; cd "$1"
+  ${EDITOR} main.go -c ":w | !go mod init $(basename $(pwd)) && go mod tidy"
+}
+
+function nimnew() {
+  echo 'echo "Hello world."' > "$1" && ${EDITOR} "$1"
 }
 
 # X server control
@@ -231,4 +240,11 @@ function xdisplay() {
 function xmute() {
     amixer sset Master $1
 }
+
+
+# URL encoding from multibyte character
+function urlencoding() {
+    echo "$*" | nkf -WwMQ | sed -e 's/=$//g' | tr = % | tr -d '\n'
+}
+
 # vim:ft=sh

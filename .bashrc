@@ -7,7 +7,7 @@ export TERM="xterm-256color"
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 # shell script path
 export SHPATH="${HOME}/sh"
-export PATH="$PATH:$SHPATH/bin"
+export PATH="$PATH:$SHPATH/bin:${HOME}/go/bin"
 # LinuxBrew setting
 if type brew > /dev/null 2>&1; then
     export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
@@ -19,12 +19,14 @@ fi
 # [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
 # [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 if type fzf > /dev/null 2>&1; then
-    export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
+   [ -e fd ]  && export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
     export FZF_DEFAULT_OPTS='--ansi --multi'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_CTRL_R_OPTS="--height=40% --reverse"
 fi
 
-
+# Secret API Keys
+[ -f ${HOME}/.secret ] && source ${HOME}/.secret
 
 
 # LESS設定
@@ -79,4 +81,6 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 # cargo installed bin's path
 [ -f ${HOME}/.cargo/env ] && source ${HOME}/.cargo/env
 
+# choosenim bin's path
+type choosenim > /dev/null 2>&1 && export PATH="${HOME}/.nimble/bin:${PATH}"
 # vim:ft=sh

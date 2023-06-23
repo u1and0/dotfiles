@@ -1,8 +1,8 @@
 # vim:ft=toml
-[[plugins]] # Plugin to easily access Most Recently Used (MRU) files
-repo = 'Shougo/neomru.vim'
-on_source = 'denite.nvim'
-on_path = '.*'
+# [[plugins]] # Plugin to easily access Most Recently Used (MRU) files
+# repo = 'Shougo/neomru.vim'
+# on_source = 'denite.nvim'
+# on_path = '.*'
 
 [[plugins]] # Yank
 repo = 'Shougo/neoyank.vim'
@@ -37,6 +37,14 @@ hook_add = '''
 
     " ポップアップを表示しない
     autocmd FileType python setlocal completeopt-=preview
+'''
+
+[[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+autocmd! BufEnter,BufWritePost * Neomake
+let g:neomake_python_enabled_makers = ['python', 'flake8', 'mypy']
 '''
 
 [[plugins]]  # Asynchronous Lint Engine
@@ -110,12 +118,15 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
 [[plugins]]  # Program runner
 repo = 'thinca/vim-quickrun'
-on_ft = ['python', 'sh']
+on_ft = ['python', 'sh', 'typescript']
 hook_add = '''
     " vimprocで非同期実行
     " 成功時にバッファ、失敗時にQuickFixで表示
     " 結果表示のサイズ調整など
     let g:quickrun_config = {
+        \ 'typescript' : {
+            \ 'command' : 'tsc',
+        \ },
         \ '_' : {
             \ 'runner' : 'vimproc',
             \ 'runner/vimproc/updatetime' : 40,
@@ -129,23 +140,8 @@ hook_add = '''
     " ただし :chistory に記録されない
     " 実行時に前回の表示内容をクローズ&保存してから実行
     let g:quickrun_no_default_key_mappings = 1
-    nmap <Leader>b :QuickRun <CR>
+    nmap <Leader>b :QuickRun<CR>
 '''
-
-[[plugins]]  # CUI web browser
-repo = 'yuratomo/w3m.vim'
-hook_add = '''
-    nnoremap <C-K><C-G> :W3mSplit <C-R>
-    " 続けて<C-W>で word 貼り付け
-    " 続けて<C-A>で WORD 貼り付け
-    " 続けて"で バッファを貼り付け
-    " :help <C-R> for more help
-'''
-if = '''executable('w3m')'''
-
-[[plugins]]  # :Zenkaku <--> :Hankaku
-repo = 'yuta-masano/hz_ja.vim'
-on_i = 1
 
 # go lang plugins
 [[plugins]]  # go command use as vim command :GoBuild, :GoInstall
@@ -166,8 +162,10 @@ hook_add = '''
 
     " === VIM-GO COMMAND KEYBINDS ===
     " autocmd FileType go nmap <leader>b  <Plug>(go-build) " 下記に改善版
-    autocmd FileType go nmap <leader>r <Plug>(go-run) <C-W>k
-    autocmd FileType go nmap <leader>t <Plug>(go-test)
+    autocmd FileType go nmap <leader>r <Plug>(go-run)
+    " autocmd FileType go nmap <leader>t <Plug>(go-test)
+    " leader tが効かなくなったので暫定処置
+    autocmd FileType go nmap <leader>t :GoTest<CR>
     autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
     autocmd FileType go nmap <Leader>l <Plug>(go-lint)
     " run :GoBuild or :GoTestCompile based on the go file
@@ -191,6 +189,7 @@ hook_add = '''
     autocmd FileType go nmap <Leader>pp <Plug>(go-alternate-edit)
     autocmd FileType go nmap <Leader>ps <Plug>(go-alternate-split)
     autocmd FileType go nmap <Leader>pv <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <Leader>d :!pkill main<CR>
     " tabに表示はない
 
     " [[, ]]: 次/前の関数に移動
@@ -298,4 +297,41 @@ let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
     let g:deoplete#sources#rust#disable_keymap = 1
     nmap <buffer> <leader>s <plug>DeopleteRustGoToDefinitionDefault
     nmap <buffer> K  <plug>DeopleteRustShowDocumentation
+'''
+
+# Nim lang plugins
+[[plugins]]
+repo = 'zah/nim.vim'
+on_ft = ['nim', 'nimble']
+if = '''executable('nim')'''''
+hook_add = '''
+fun! JumpToDef()
+ if exists("*GotoDefinition_" . &filetype)
+     call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+hook_add = '''
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
+'''
+
+[[plugins]]
+repo = 'alaviss/nim.nvim'
+on_ft = ['nim', 'nimble']
+hook_add = '''
+au User asyncomplete_setup call asyncomplete#register_source({
+  \ 'name': 'nim',
+  \ 'whitelist': ['nim'],
+  \ 'completor': {opt, ctx -> nim#suggest#sug#GetAllCandidates(
+  \     {start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates)})}
+  \ })
 '''

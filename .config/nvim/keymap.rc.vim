@@ -13,11 +13,28 @@ nnoremap <S-Down>  5<C-w>+<CR>
 " Yank to end of line
 nnoremap Y y$
 
+" Always Virtual Replace Mode
+nnoremap R gR
+" 仮想置換モード		*vreplace-mode* *Virtual-Replace-mode*
+" 仮想置換モードは置換モードに良く似ているが、ファイルの実際の文字ごとにではな
+" く、スクリーン上の文字幅単位で置換することができ、そのためファイル内の他の文字
+" の見た目の位置が移動することはない。
+
 " Up/Down in command window
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
+
+" quickfix window操作系
+" 副作用: <C-q> ビジュアル矩形選択が使えなくなる
+" <C-o>で前 <C-i>で後に行くkeymapのquickfix版
+nmap <C-q> <Nop>
+" <C-o>で前 に行くkeymapのquickfix版
+nnoremap <C-q><C-o> :cold<CR>
+" <C-n>で後に行くkeymapのquickfix版
+" <C-p>だとdockerのログアウトとかぶる
+nnoremap <C-q><C-n> :cnew<CR>
 
 " vim grep faster
 nnoremap <leader>/ :vimgrep//%<CR>

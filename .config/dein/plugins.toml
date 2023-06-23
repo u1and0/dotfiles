@@ -14,6 +14,23 @@ repo = 'w0ng/vim-hybrid'
 
 [[plugins]]  # vim-fugitive
 repo = 'tpope/vim-fugitive'
+hook_add = '''
+    " Escape default <C-G> key bind
+    nnoremap <C-g>g :file
+    nnoremap <C-g>s :Git<CR>
+    nnoremap <C-g>a :Git add %<CR>
+    nnoremap <C-g>A :Git add .<CR>
+    nnoremap <C-g>d :Gdiffsplit<CR>
+    nnoremap <C-g>c :Git commit<CR>
+    nnoremap <C-g>C :Git commit -a<CR>
+    nnoremap <C-g>p :Git push<CR>
+    " fugitiveで開いたウィンドウではq でバッファを閉じる
+    augroup FugitiveCmd
+        autocmd!
+        autocmd FugitiveCmd FileType fugitive nnoremap <buffer> q <C-w>c<Paste>
+    augroup END
+
+'''
 
 [[plugins]]  # vim-gitgutter
 repo = 'airblade/vim-gitgutter'
@@ -161,10 +178,15 @@ let g:auto_ctags_filetype_mode = 1
 [[plugins]] # Fuzzy Finder for vim
 repo = 'junegunn/fzf.vim'
 hook_add = '''
+    nmap [denite] <Nop>
+    map <C-j> [denite]
     " <C-]>でタグ検索
     nnoremap <silent> [denite]<C-]> :call fzf#vim#tags(expand('<cword>'))<CR>
     " fzfからファイルにジャンプできるようにする
     let g:fzf_buffers_jump = 1
+    nnoremap <silent> [denite]<C-j> :Buffers<CR>
+    nnoremap <silent> [denite]<C-h> :History<CR>
+    nnoremap <silent> [denite]<C-l> :FZF<CR>
 '''
 
 [[plugins]]  # Add support for markdown files in tagbar
@@ -229,7 +251,8 @@ let g:ref_detect_filetype         = {
             \    'css':        'phpmanual',
             \    'html':       ['phpmanual',  'javascript', 'jquery'],
             \    'javascript': ['javascript', 'jquery'],
-            \    'php':        ['phpmanual',  'javascript', 'jquery']
+            \    'php':        ['phpmanual',  'javascript', 'jquery'],
+            \    'typescript': ['denodoc',  'javascript', 'jquery']
             \}
 
 " To download the phpmanual, type below on your shell.
@@ -254,6 +277,9 @@ let g:ref_source_webdict_sites = {
             \   'jquery': {
             \     'url': 'https://api.jquery.com/%s/',
             \     'cache': 0,
+            \   },
+            \   'denodoc': {
+            \     'url': 'https://doc.deno.land/https://deno.land/%s',
             \   },
             \ }
 " jqueryはmustardamus/jqapiの代わり
@@ -341,7 +367,8 @@ hook_add = '''
 [[plugins]]  # CUI web browser
 repo = 'yuratomo/w3m.vim'
 hook_add = '''
-    nnoremap <C-K><C-G> :W3mSplit <C-R>
+    nnoremap <C-K><C-G> :W3mSplit <C-R><C-W><CR>
+    vnoremap <C-K><C-G> "9y:W3mSplit <C-R>9<CR>
     " 続けて<C-W>で word 貼り付け
     " 続けて<C-A>で WORD 貼り付け
     " 続けて"で バッファを貼り付け
@@ -352,6 +379,42 @@ if = '''executable('w3m')'''
 # Language Server https://github.com/prabirshrestha/vim-lsp
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+    nmap [lsp] <Nop>
+    map <C-l> [lsp]
+    function! s:on_lsp_buffer_enabled() abort
+        setlocal omnifunc=lsp#complete
+        setlocal signcolumn=yes
+        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+        " 定義元をqfに表示
+        nmap <buffer> [lsp]d <plug>(lsp-definition)
+        " 定義をfuzzy-find で検索"
+        nmap <buffer> [lsp]s <plug>(lsp-document-symbol-search)
+        nmap <buffer> [lsp]S <plug>(lsp-workspace-symbol-search)
+        " 使用されている部分をqfに表示
+        nmap <buffer> [lsp]r <plug>(lsp-references)
+        " 定義元をqfに表示
+        nmap <buffer> [lsp]i <plug>(lsp-implementation)
+        nmap <buffer> [lsp]t <plug>(lsp-type-definition)
+        nmap <buffer> [lsp]r <plug>(lsp-rename)
+        nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+        nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+        " docstring 表示
+        nmap <buffer> K <plug>(lsp-hover)
+        nnoremap <buffer> [lsp]<c-f> lsp#scroll(+4)
+        nnoremap <buffer> [lsp]<c-d> lsp#scroll(-4)
+
+        let g:lsp_format_sync_timeout = 1000
+        autocmd! BufWritePre *.rs,*.go,*.ts call execute('LspDocumentFormatSync')
+        " refer to doc to add more commands
+    endfunction
+
+    augroup lsp_install
+        au!
+        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    augroup END
+'''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
@@ -359,3 +422,25 @@ on_source = ['prabirshrestha/vim-lsp']
 
 [[plugins]]
 repo = "mattn/webapi-vim"
+
+[[plugins]]
+repo = "mattn/vim-chatgpt"
+
+[[plugins]]
+repo = 'ryicoh/deepl.vim'
+hook_add = '''
+    let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
+    let g:deepl#auth_key = $DEEPL_API_KEY
+
+    " replace a visual selection
+    vmap t<C-e> <Cmd>call deepl#v("EN")<CR>
+    vmap t<C-j> <Cmd>call deepl#v("JA")<CR>
+
+    " translate a current line and display on a new line
+    nmap t<C-e> yypV<Cmd>call deepl#v("EN")<CR>
+    nmap t<C-j> yypV<Cmd>call deepl#v("JA")<CR>
+
+    " specify the source language
+    " translate from FR to EN
+    " nmap t<C-e> yypV<Cmd>call deepl#v("EN", "FR")<CR>
+'''
