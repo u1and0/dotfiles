@@ -186,7 +186,8 @@ hook_add = '''
     let g:fzf_buffers_jump = 1
     nnoremap <silent> [denite]<C-j> :Buffers<CR>
     nnoremap <silent> [denite]<C-h> :History<CR>
-    nnoremap <silent> [denite]<C-l> :FZF<CR>
+    nnoremap <silent> [denite]<C-k> :FZF<CR>
+    nnoremap <silent> [denite]<C-l> :Lines<CR>
 '''
 
 [[plugins]]  # Add support for markdown files in tagbar
