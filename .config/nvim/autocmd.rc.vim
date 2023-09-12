@@ -43,7 +43,7 @@ augroup MyTypeScriptCmd
 autocmd!
 autocmd BufWritePost *.ts,*.js !deno fmt -q %
 autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -qA %<CR>
-autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term tsc %<CR>
+autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc<CR>
 " autocmd FileType typescript colorscheme pablo
 " autocmd Colorscheme * highlight Normal ctermbg=none
 " autocmd Colorscheme * highlight NonText ctermbg=none
