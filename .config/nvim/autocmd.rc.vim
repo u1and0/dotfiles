@@ -40,29 +40,36 @@ if executable("nim")
 endif
 
 augroup MyTypeScriptCmd
-autocmd!
-autocmd BufWritePost *.ts,*.js !deno fmt -q %
-autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -qA %<CR>
-autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc<CR>
-autocmd FileType typescript nnoremap <buffer> <Leader>t :sp <Bar> term deno test<CR>
-" autocmd FileType typescript colorscheme pablo
-" autocmd Colorscheme * highlight Normal ctermbg=none
-" autocmd Colorscheme * highlight NonText ctermbg=none
-" autocmd Colorscheme * highlight LineNr ctermbg=none
-" autocmd Colorscheme * highlight Folded ctermbg=none
-" autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
-autocmd User lsp_setup call lsp#register_server({
-    \ "name": "deno lsp",
-    \ "cmd": {server_info -> ["deno", "lsp"]},
-    \ "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), "tsconfig.json"))},
-    \ "allowlist": ["typescript", "typescript.tsx"],
-    \ "initialization_options": {
-    \     "enable": v:true,
-    \     "lint": v:true,
-    \     "unstable": v:true,
-    \   },
-    \ })
-  augroup END
+    autocmd!
+    autocmd BufWritePost *.ts,*.js !deno fmt -q %
+    autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -qA %<CR>
+    autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
+    autocmd FileType typescript nnoremap <buffer> <Leader>t :sp <Bar> term deno test<CR>
+    autocmd FileType typescript colorscheme pablo
+    autocmd User lsp_setup call lsp#register_server({
+        \ "name": "deno lsp",
+        \ "cmd": {server_info -> ["deno", "lsp"]},
+        \ "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), "tsconfig.json"))},
+        \ "allowlist": ["typescript", "typescript.tsx"],
+        \ "initialization_options": {
+        \     "enable": v:true,
+        \     "lint": v:true,
+        \     "unstable": v:true,
+        \   },
+        \ })
+augroup END
+
+augroup MyDockerScriptCmd
+    autocmd!
+    " specify `--platform` and `--tag`
+    " `%:h` はDockerfileが配置されたディレクトリ
+    " Usage:
+    " :DockerBuild --platform linux/arm64/v8 -t u1and0/yay:arm64
+    autocmd FileType dockerfile command! -nargs=* DockerBuild :sp <Bar> te sudo docker buildx build --load --cache-from=type=local,src=/tmp/buildx-cache --cache-to=type=local,dest=/tmp/buildx-cache <args> %:h
+    " Usage:
+    " :DockerPush --platform linux/arm64/v8 -t u1and0/yay:arm64
+    autocmd FileType dockerfile command! -nargs=* DockerPush :sp <Bar> te sudo docker buildx build --cache-from=type=local,src=/tmp/buildx-cache --push <args> %:h
+augroup END
 
 " PDFを開くコマンド
 if executable('pdftotext')
