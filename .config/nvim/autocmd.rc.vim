@@ -83,10 +83,10 @@ endif
 
 " Growi API
 if executable('growiapi')
-    autocmd FileType markdown command! -nargs=1 GrowiGet :0r !growiapi get <q-args>
-    autocmd FileType markdown command! -nargs=+ -complete=file GrowiCreate :w !growiapi create <args>
-    autocmd FileType markdown command! -nargs=+ -complete=file GrowiUpdate :w !growiapi update <args>
-    autocmd FileType markdown command! -nargs=+ -complete=file GrowiPost :w !growiapi post <args>
+    command! -nargs=1 GrowiGet :0r !growiapi get <q-args>
+    command! -nargs=+ -complete=file GrowiCreate :w !growiapi create <args>
+    command! -nargs=+ -complete=file GrowiUpdate :w !growiapi update <args>
+    command! -nargs=+ -complete=file GrowiPost :w !growiapi post <args>
 endif
 
 " 一時ファイルの作成と書き込み
