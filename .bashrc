@@ -22,7 +22,12 @@ fi
 # [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 if type fzf > /dev/null 2>&1; then
    [ -e fd ]  && export FZF_DEFAULT_COMMAND='fd --hidden --type file --no-ignore --exclude "/.git/"'
-    export FZF_DEFAULT_OPTS='--ansi --multi'
+    export __FZF_PREVIEW_CMD='bat --color=always --plain {}'
+    export FZF_DEFAULT_OPTS="--ansi --multi \
+           --preview=\"${__FZF_PREVIEW_CMD}\" \
+           --preview-window='right:hidden:wrap' \
+           --bind=ctrl-v:toggle-preview \
+           --header='<C-V> toggle preview'"
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_CTRL_R_OPTS="--height=40% --reverse"
 fi
