@@ -45,7 +45,6 @@ augroup MyTypeScriptCmd
     autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -qA %<CR>
     autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
     autocmd FileType typescript nnoremap <buffer> <Leader>t :sp <Bar> term deno test<CR>
-    " autocmd FileType typescript colorscheme pablo
     autocmd User lsp_setup call lsp#register_server({
         \ "name": "deno lsp",
         \ "cmd": {server_info -> ["deno", "lsp"]},
