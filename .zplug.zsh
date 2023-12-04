@@ -129,4 +129,9 @@ zplug "u1and0/b4a8647bebbcb8b9b71c6e166726063e",\
     as:command,\
     use:"*.sh",\
     rename-to:"curlgpt"
+
+zplug "joshskidmore/zsh-fzf-history-search",\
+    use:"zsh-fzf-history-search.zsh",\
+    defer:2,\
+    hook-load:'source zsh-fzf-history-search.zsh'
 # vim:ft=zsh
