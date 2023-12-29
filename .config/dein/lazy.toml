@@ -49,7 +49,7 @@ let g:neomake_python_enabled_makers = ['python', 'flake8', 'mypy']
 
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
-on_ft = ['python', 'sh', 'js', 'javascript', 'markdown']
+on_ft = ['python', 'sh', 'js', 'javascript', 'markdown', 'yaml']
 hook_add= '''
 " エラー行に表示するマーク
 let g:ale_sign_error = '⨉'
@@ -87,9 +87,10 @@ let g:ale_completion_enabled = 1
 "          textlint-no-mix-dearu-desumasu
 let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'sh': ['shellcheck'],
-                    \ 'javascript': ['jshint',],
-                    \ 'html': ['jshint',],
-                    \ 'markdown': ['textlint',],
+                    \ 'javascript': ['jshint'],
+                    \ 'html': ['jshint'],
+                    \ 'markdown': ['textlint'],
+                    \ 'yaml': ['actionlint'],
                     \ }
                     " \ 'html': ['jshint', 'eslint'],
 " Fix Python files with autopep8 and yapf.
