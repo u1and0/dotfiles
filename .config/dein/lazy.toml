@@ -84,7 +84,7 @@ let g:ale_completion_enabled = 1
 "          textlint-rule-max-ten \
 "          textlint-rule-spellcheck-tech-word \
 "          textlint-rule-preset-japanese \
-"          textlint-no-mix-dearu-desumasu
+"          textlint-rule-no-mix-dearu-desumasu
 let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'sh': ['shellcheck'],
                     \ 'javascript': ['jshint'],
