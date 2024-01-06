@@ -6,6 +6,8 @@ export TERM="xterm-256color"
 [ -e "$GOPATH/bin" ] && export PATH="$PATH:$GOPATH/bin"
 # Deno path
 [ -e "${HOME}/.deno/bin" ] && export PATH="$PATH:${HOME}/.deno/bin"
+# pipx path
+[ -e "${HOME}/.local/bin" ] && export PATH="$PATH:${HOME}/.local/bin"
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 # shell script path
 export SHPATH="${HOME}/sh"

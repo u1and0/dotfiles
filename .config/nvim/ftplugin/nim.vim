@@ -1,4 +1,3 @@
-colorscheme delek
 command! -nargs=* NimRun :sp <Bar> term nim c -r <args> %
 command! -nargs=* NimBuild :sp <Bar> term nim c <args> %
 command! -nargs=* NimBuildLib :!nim c --tlsEmulation:off --app:lib --out:%:t:r.so <args> %
