@@ -42,9 +42,12 @@ endif
 augroup MyTypeScriptCmd
     autocmd!
     autocmd BufWritePost *.ts,*.js !deno fmt -q %
-    autocmd FileType typescript nnoremap <buffer> <Leader>r :sp <Bar> term deno run -qA %<CR>
-    autocmd FileType typescript nnoremap <buffer> <Leader>b :sp <Bar> term npx tsc <CR>
-    autocmd FileType typescript nnoremap <buffer> <Leader>t :sp <Bar> term deno test<CR>
+    autocmd FileType typescript command! -nargs=* DenoRun :sp <Bar> term deno run -qA <args> %
+    autocmd FileType typescript nnoremap <buffer> <Leader>r :DenoRun<CR>
+    autocmd FileType typescript command! -nargs=* DenoBuild :sp <Bar> term npx tsc <args>
+    autocmd FileType typescript nnoremap <buffer> <Leader>b :DenoBuild<CR>
+    autocmd FileType typescript command! -nargs=* DenoTest :sp <Bar> term deno test <args>
+    autocmd FileType typescript nnoremap <buffer> <Leader>t :DenoTest<CR>
     autocmd User lsp_setup call lsp#register_server({
         \ "name": "deno lsp",
         \ "cmd": {server_info -> ["deno", "lsp"]},
