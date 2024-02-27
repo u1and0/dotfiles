@@ -97,7 +97,7 @@ let g:ale_linters = { 'python': ['flake8', 'pylint'],
 let g:ale_fixers = { 'python': ['autopep8', 'yapf'],
                     \ 'javascript': ['eslint'],
                     \ 'typescript': ['eslint'],
-                    " markdownのlinterが強すぎるので無効化
+                    " \ markdownのlinterが強すぎるので無効化
                     " \ 'markdown': [
                     " \   {buffer, lines -> {
                     " \       'command': 'textlint -c ~/.textlintrc -o /dev/null --fix --no-color --quiet %t',
