@@ -39,29 +39,6 @@ if executable("nim")
     augroup END
 endif
 
-augroup MyTypeScriptCmd
-    autocmd!
-    autocmd BufWritePost *.ts,*.js !deno fmt -q %
-    autocmd FileType typescript command! -nargs=* DenoRun :sp <Bar> term deno run -qA <args> %
-    autocmd FileType typescript nnoremap <buffer> <Leader>r :DenoRun<CR>
-    autocmd FileType typescript command! -nargs=* DenoBuild :sp <Bar> term npx tsc <args>
-    autocmd FileType typescript nnoremap <buffer> <Leader>b :DenoBuild<CR>
-    autocmd FileType typescript command! -nargs=* DenoTest :sp <Bar> term deno test <args>
-    autocmd FileType typescript nnoremap <buffer> <Leader>t :DenoTest<CR>
-    autocmd User lsp_setup call lsp#register_server({
-        \ "name": "deno lsp",
-        \ "cmd": {server_info -> ["deno", "lsp"]},
-        \ "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), "tsconfig.json"))},
-        \ "allowlist": ["typescript", "typescript.tsx"],
-        \ "initialization_options": {
-        \     "enable": v:true,
-        \     "lint": v:true,
-        \     "unstable": v:true,
-        \   },
-        \ })
-augroup END
-
-
 " PDFを開くコマンド
 if executable('pdftotext')
     command! -complete=file -nargs=1 Pdf :ene|0r !pdftotext -nopgbrk -layout <q-args> -
