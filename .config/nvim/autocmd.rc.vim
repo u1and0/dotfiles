@@ -9,6 +9,7 @@ augroup MyAutoCmd
     autocmd BufReadPost FileType !fugitive :normal! g`"
     " grepしたときに自動的にquickfixウィンドウを開く
     autocmd QuickFixCmdPost *grep* cwindow
+    autocmd QuickFixCmdPost *make* cwindow
     if executable('pdftotext')
         " PDFファイルを開いた時、text形式に変換してから開く
         autocmd BufRead *.pdf :enew | 0read !pdftotext -layout -nopgbrk "#" -
@@ -60,3 +61,26 @@ endif
 " 一時ファイルの作成と書き込み
 command! TempfileEdit :edit `=tempname()`
 command! TempfileWrite :write `=tempname()`
+
+" LLM AI Supported C-X Completion
+if executable("gpt")
+    function! GPT() range
+        " Get lines in the provided range
+        let lines = getline(a:firstline, a:lastline)
+        " Get the file type using 'set ft' command
+        let question = "Using " . &ft . " " . join(lines, " ")
+        echomsg "to openai: " .. question
+        " Update the path to the openai script as needed
+        let result = systemlist("/usr/bin/gpt -x 10 -n -m claude-3-haiku-20240307 ", question)
+
+        " Append the result below the last line and then delete the range
+        call append(a:lastline, result)
+        execute(a:firstline .. "," .. a:lastline .. "delete")
+    endfunction
+    " :GPTコマンドとして使用
+    command! -nargs=0 -range GPT <line1>,<line2>call GPT()
+    " カスタム補完関数 C-X, C-U
+    " fun! CompleteByGPT(findstart, base)
+    " endfun
+    " set completefunc=CompleteByGPT
+endif

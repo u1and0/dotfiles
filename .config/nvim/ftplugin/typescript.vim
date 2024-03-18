@@ -1,13 +1,23 @@
 setlocal shiftwidth=2
 setlocal tabstop=2
 setlocal softtabstop=2
-setlocal makeprg=npx\ tsc
+
 command! -nargs=* DenoRun :sp <Bar> term deno run -qA <args> %
 nnoremap <buffer> <Leader>r :DenoRun<CR>
 " staticディレクトリにtsconfig.jsonがある場合
 " DenoBuild -p static
-command! -nargs=* DenoBuild :sp <Bar> term npx tsc <args>
-nnoremap <buffer> <Leader>b :make<CR>
+command! TscBuild let &makeprg='npx tsc' | make
+nnoremap <buffer> <Leader>b :TscBuild<CR>
+"
+" command! -nargs=* DenoLint :sp <Bar> term deno lint <args>
+setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m
+command! -nargs=* DenoLint let &makeprg='deno lint --compact' | make
+      " \ let &l:efm='%f:\ line\ %l\\,\ col\ %c\ -\ %m' |
+" command! -nargs=* DenoLint let &makeprg='deno lint --compact' |
+"     \ let &l:%f:\ line\ %l\\,\ col\ %c\ -\ %m%f:\ line\ %l\\,\ col\ %c\ -\ %m |
+"     make
+nnoremap <buffer> <Leader>l :DenoLint<CR>
+
 command! -nargs=* DenoTest :sp <Bar> term deno test <args>
 nnoremap <buffer> <Leader>t :DenoTest<CR>
 

@@ -65,7 +65,31 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 
 " spell check language
+set spell
 set spelllang=en,cjk
+
+" カスタム補完関数
+fun! CompleteMonths(findstart, base)
+    if a:findstart
+        " 単語の始点を検索する
+        let line = getline('.')
+        let start = col('.') - 1
+        while start > 0 && line[start - 1] =~ '\a'
+            let start -= 1
+        endwhile
+        return start
+    else
+        " "a:base" にマッチする月を探す
+        let res = []
+        for m in split("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec")
+            if m =~ '^' .. a:base
+                call add(res, m)
+            endif
+        endfor
+        return res
+    endif
+endfun
+set completefunc=CompleteMonths
 
 " grep program
 if executable('rg')
