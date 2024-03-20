@@ -68,14 +68,17 @@ if executable("gpt")
         " Get lines in the provided range
         let lines = getline(a:firstline, a:lastline)
         " Get the file type using 'set ft' command
-        let question = "Using " . &ft . " " . join(lines, " ")
-        echomsg "to openai: " .. question
+        let question = "Using " . &ft . " " . join(lines)
+        " echomsg "Send to gpt: " . question
         " Update the path to the openai script as needed
-        let result = systemlist("/usr/bin/gpt -x 10 -n -m claude-3-haiku-20240307 ", question)
+        let args = ["/usr/bin/gpt", "-m", "claude-3-haiku-20240307", "-n", "-x", "20", "'" . question . "'"]
+        let cmd = join(args)
+        echomsg cmd
+        let result = systemlist(cmd)
 
         " Append the result below the last line and then delete the range
         call append(a:lastline, result)
-        execute(a:firstline .. "," .. a:lastline .. "delete")
+        execute(a:firstline . "," . a:lastline . "delete")
     endfunction
     " :GPTコマンドとして使用
     command! -nargs=0 -range GPT <line1>,<line2>call GPT()
