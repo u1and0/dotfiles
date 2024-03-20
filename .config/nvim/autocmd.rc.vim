@@ -81,10 +81,33 @@ if executable("gpt")
         " Append the result below the last line and then delete the range
         call append(a:lastline, result)
     endfunction
+
     " :GPTコマンドとして使用
     command! -nargs=0 -range GPT <line1>,<line2>call GPT()
+
     " カスタム補完関数 C-X, C-U
-    " fun! CompleteByGPT(findstart, base)
-    " endfun
-    " set completefunc=CompleteByGPT
+    fun! CompleteByGPT(findstart, base)
+        if a:findstart
+            " 単語の始点を検索する
+            let line = getline('.')
+            let start = col('.') - 1
+            while start > 0 && line[start - 1] =~ '\a'
+                let start -= 1
+            endwhile
+            return start
+        else
+            " "a:base" にマッチする補完候補を探す
+            let res = []
+            let system_prompt = "'" . 'You are best of code generator. Generate a prompt to continue coding based on the given input code using language of ' . &ft . '.Genera te only code effectively, DO NOT generate code descriptions nor code blocks.' . "'"
+            let model = "claude-3-haiku-20240307"
+            let max_tokens = 30
+            let args = ["/usr/bin/gpt", "-m", model, "-n", "-x", max_tokens, "-s", system_prompt, a:base]
+            let cmd = join(args)
+            let result = systemlist(cmd)
+            call add(res, result)
+            return res
+        endif
+    endfun
+
+    set completefunc=CompleteByGPT
 endif
