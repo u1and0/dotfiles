@@ -68,6 +68,17 @@ set fileformats=unix,dos,mac
 set spell
 set spelllang=en,cjk
 
+" Thesaurus dictionary
+"
+" 英単語リストはこのGitHub Issueに追加されている:
+" https://github.com/vim/vim/issues/629#issuecomment-443293282
+" thesaurus_pkg.zip を展開し、thesaurus.txt をどこかに配置する、例えば
+" ~/.vim/thesaurus/english.txt、そして 'thesaurus' オプションをこのファイル名{訳
+" 注: ファイルパス}にする。
+"
+" 詳しくは :h: compl-thesaurus
+se thesaurus=~/.vim/thesaurus/english.txt
+
 " カスタム補完関数
 fun! CompleteMonths(findstart, base)
     if a:findstart
