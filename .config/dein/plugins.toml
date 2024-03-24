@@ -445,3 +445,6 @@ hook_add = '''
     " translate from FR to EN
     " nmap t<C-e> yypV<Cmd>call deepl#v("EN", "FR")<CR>
 '''
+
+[[plugins]]
+repo = 'u1and0/gpt-cli'

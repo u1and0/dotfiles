@@ -77,7 +77,7 @@ set spelllang=en,cjk
 " 注: ファイルパス}にする。
 "
 " 詳しくは :h: compl-thesaurus
-se thesaurus=~/.vim/thesaurus/english.txt
+set thesaurus=~/.vim/thesaurus/english.txt
 
 " カスタム補完関数
 fun! CompleteMonths(findstart, base)
