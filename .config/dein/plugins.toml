@@ -448,3 +448,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'u1and0/gpt-cli'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+hook_add = '''
+    set runtimepath^=~/Drpobox/Program/deno/dps-helloworld
+    let g:denops#debug = 1
+'''
