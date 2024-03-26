@@ -448,6 +448,20 @@ hook_add = '''
 
 [[plugins]]
 repo = 'u1and0/gpt-cli'
+if = '''executable('gpt')'''
+hook_add = '''
+command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { "max_tokens": 400, "temperature": 0.5, "model": "claude-3-haiku-20240307" })
+" Keybind C-X, C-G
+inoremap <C-x><C-g> <Esc>:GPTGenerateCode<CR>
+" Docs to code
+command! -nargs=0 -range GPTGenerateDocs <line1>,<line2>call gptcli#GPT('あなたは最高のコードライターです。 与えられたコードに基づいてわかりやすい日本語のドキュメントをコメントアウトして生成してください。', {"max_tokens": 2000, "model": "claude-3-haiku-20240307"})
+" Create test code
+command! -nargs=0 -range GPTGenerateTest <line1>,<line2>call gptcli#GPT('You are the best code tester. Please write test code that covers all cases to try the given code.', { "temperature": 0.5, "model": "claude-3-haiku-20240307" })
+" Any system prompt
+command! -nargs=1 -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args>, { "model": "claude-3-haiku-20240307" })
+" Conversate with GPT
+command! -nargs=1 GPTConversate call gptcli#GPTWindow(<q-args>, {"model": "claude-3-sonnet-20240229" })
+'''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
