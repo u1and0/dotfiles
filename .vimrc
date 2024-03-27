@@ -244,7 +244,6 @@ if dein#load_state('$DATA/dein')
                 \ })
     " Session saveing ':Obsession'
     call dein#add('tpope/vim-obsession')
-    call dein#add('mattn/vim-chatgpt')
 
     call dein#end()
     call dein#save_state()

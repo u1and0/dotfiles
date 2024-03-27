@@ -425,9 +425,6 @@ on_source = ['prabirshrestha/vim-lsp']
 repo = "mattn/webapi-vim"
 
 [[plugins]]
-repo = "mattn/vim-chatgpt"
-
-[[plugins]]
 repo = 'ryicoh/deepl.vim'
 hook_add = '''
     let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
