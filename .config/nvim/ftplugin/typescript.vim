@@ -6,7 +6,9 @@ command! -nargs=* DenoRun :sp <Bar> term deno run -qA <args> %
 nnoremap <buffer> <Leader>r :DenoRun<CR>
 " staticディレクトリにtsconfig.jsonがある場合
 " DenoBuild -p static
-command! TscBuild let &makeprg='npx tsc' | make!
+" || src/cart.ts(54,10): error TS2339: Property 'cartAllButton' does not exist on type 'Cart'.
+" setlocal efm=%+P%f(%l\,%c):\ %m
+command! TscBuild setlocal efm=%f(%l\,%c):\ %m | let &makeprg='npx tsc' | make!
 nnoremap <buffer> <Leader>b :TscBuild<CR>
 
 command! -nargs=* DenoLint setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m | let &makeprg='deno lint --compact' | make!

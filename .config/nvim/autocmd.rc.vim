@@ -8,8 +8,8 @@ augroup MyAutoCmd
     " ファイルを開いたときに、カーソル位置を最後にカーソルがあった位置まで移動
     autocmd BufReadPost FileType !fugitive :normal! g`"
     " grepしたときに自動的にquickfixウィンドウを開く
-    autocmd QuickFixCmdPost *grep* cwindow
-    autocmd QuickFixCmdPost *make* cwindow
+    autocmd QuickFixCmdPost *grep* copen
+    autocmd QuickFixCmdPost *make* copen
     if executable('pdftotext')
         " PDFファイルを開いた時、text形式に変換してから開く
         autocmd BufRead *.pdf :enew | 0read !pdftotext -layout -nopgbrk "#" -
