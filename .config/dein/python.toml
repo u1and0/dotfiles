@@ -212,9 +212,9 @@
 # 		\ ]
 # '''
 
-[[plugins]]  # Great asynchronous execution library
-repo = 'Shougo/vimproc.vim'
-build = 'make'
+# [[plugins]]  # Great asynchronous execution library
+# repo = 'Shougo/vimproc.vim'
+# build = 'make'
 
 [[plugins]]  # denite.nvim source for GNU Global
 repo = 'ozelentok/denite-gtags'

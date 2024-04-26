@@ -311,7 +311,7 @@ let g:ref_source_webdict_sites.default = 'weblio'  " Ref webdict {word}で和英
 let g:ref_source_webdict_use_cache = 1
 let g:ref_use_cache           = 1
 let g:ref_cache_dir               = $HOME . '/.local/share/dein/repos/github.com/thinca/vim-ref/cache'
-let g:ref_use_vimproc         = 1
+let g:ref_use_vimproc         = 0
 
 " Keymap
 nmap [Ref] <Nop>

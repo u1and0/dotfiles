@@ -111,32 +111,32 @@ nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
 '''
 
-[[plugins]]  # Program runner
-repo = 'thinca/vim-quickrun'
-on_ft = ['python', 'sh', 'typescript']
-hook_add = '''
-    " vimprocで非同期実行
-    " 成功時にバッファ、失敗時にQuickFixで表示
-    " 結果表示のサイズ調整など
-    let g:quickrun_config = {
-        \ 'typescript' : {
-            \ 'command' : 'tsc',
-        \ },
-        \ '_' : {
-            \ 'runner' : 'vimproc',
-            \ 'runner/vimproc/updatetime' : 40,
-            \ 'outputter' : 'error',
-            \ 'outputter/error/success' : 'quickfix',
-            \ 'outputter/error/error'   : 'quickfix',
-            \ 'outputter/buffer/split' : ':botright 8sp',
-        \ }
-    \}
-    " 成功時に上書きするとき   'outputter/error/success' : 'buffer',
-    " ただし :chistory に記録されない
-    " 実行時に前回の表示内容をクローズ&保存してから実行
-    let g:quickrun_no_default_key_mappings = 1
-    nmap <Leader>b :QuickRun<CR>
-'''
+# [[plugins]]  # Program runner
+# repo = 'thinca/vim-quickrun'
+# on_ft = ['python', 'sh', 'typescript']
+# hook_add = '''
+#     " vimprocで非同期実行
+#     " 成功時にバッファ、失敗時にQuickFixで表示
+#     " 結果表示のサイズ調整など
+#     let g:quickrun_config = {
+#         \ 'typescript' : {
+#             \ 'command' : 'tsc',
+#         \ },
+#         \ '_' : {
+#             \ 'runner' : 'vimproc',
+#             \ 'runner/vimproc/updatetime' : 40,
+#             \ 'outputter' : 'error',
+#             \ 'outputter/error/success' : 'quickfix',
+#             \ 'outputter/error/error'   : 'quickfix',
+#             \ 'outputter/buffer/split' : ':botright 8sp',
+#         \ }
+#     \}
+#     " 成功時に上書きするとき   'outputter/error/success' : 'buffer',
+#     " ただし :chistory に記録されない
+#     " 実行時に前回の表示内容をクローズ&保存してから実行
+#     let g:quickrun_no_default_key_mappings = 1
+#     nmap <Leader>b :QuickRun<CR>
+# '''
 
 # go lang plugins
 [[plugins]]  # go command use as vim command :GoBuild, :GoInstall
