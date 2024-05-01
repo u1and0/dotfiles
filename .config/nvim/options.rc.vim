@@ -65,7 +65,7 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 
 " spell check language
-set spell
+" set spell   " スペルミスをハイライト
 set spelllang=en,cjk
 
 " Thesaurus dictionary
