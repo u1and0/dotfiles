@@ -282,9 +282,6 @@ let g:ref_source_webdict_sites = {
             \   'denodoc': {
             \     'url': 'https://doc.deno.land/https://deno.land/%s',
             \   },
-            \   'mdn': {
-            \     'url': 'https://developer.mozilla.org/ja/search?q=%s',
-            \   },
             \ }
 " jqueryはmustardamus/jqapiの代わり
 
