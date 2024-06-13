@@ -2,8 +2,8 @@ setlocal shiftwidth=2
 setlocal tabstop=2
 setlocal softtabstop=2
 
-command! -nargs=* DenoRun :sp <Bar> term deno run -qA <args> %
-nnoremap <buffer> <Leader>r :DenoRun<CR>
+command! -nargs=* DenoRun :sp <Bar> term deno run -qA <args>
+nnoremap <buffer> <Leader>r :DenoRun %<CR>
 " staticディレクトリにtsconfig.jsonがある場合
 " DenoBuild -p static
 " || src/cart.ts(54,10): error TS2339: Property 'cartAllButton' does not exist on type 'Cart'.
