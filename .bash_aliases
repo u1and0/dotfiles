@@ -30,9 +30,15 @@ alias ...='cd ../..'
 alias -- -='cd -'
 
 # lsを使いやすく
-alias ls='ls --color=auto --show-control-chars --time-style=long-iso -FH'
-alias ll='ls -lAhrt'
-alias la='ls -A'
+if type eza > /dev/null 2>&1; then
+    alias ls='eza --color=always --icons --time-style=long-iso --classify '
+    alias la='ls -A'
+    alias ll='eza -lhAr -sold'
+else
+    alias ls='ls --color=auto --show-control-chars --time-style=long-iso -FH'
+    alias ll='ls -lhArt'
+    alias la='ls -A'
+fi
 
 # 移動系コマンド
 alias mv='mv -i'
