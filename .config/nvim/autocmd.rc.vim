@@ -48,6 +48,7 @@ endif
 " MarkdownをHTMLとして保存する
 if executable('pandoc')
     autocmd FileType markdown command! WriteHTML :w !pandoc -o %:r.html
+    autocmd FileType markdown,tex,plaintex command! -range MarkdownToTeX :<line1>,<line2>!pandoc -f markdown -t latex
 endif
 
 " Growi API
