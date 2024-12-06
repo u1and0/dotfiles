@@ -247,4 +247,9 @@ function urlencoding() {
     echo "$*" | nkf -WwMQ | sed -e 's/=$//g' | tr = % | tr -d '\n'
 }
 
+# URL decoding from URL to plain text
+function urldecoding() {
+    python -c "import urllib.parse; print(urllib.parse.unquote('$*'))"
+}
+
 # vim:ft=sh
