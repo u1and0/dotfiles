@@ -453,7 +453,7 @@ hook_add = '''
     command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'temperature': 0.5, 'model': s:model})
     " command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'max_tokens': 400, 'temperature': 0.5, 'model': s:model})
     " Keybind C-X, C-G
-    inoremap <C-x><C-g> <Esc>:GPTGenerateCode<CR>
+    inoremap <C-x><C-g> <Esc>:.-5,.+5GPTGenerateCode<CR>
     " Docs to code
     command! -nargs=0 -range GPTGenerateDocs <line1>,<line2>call gptcli#GPT('あなたの仕事は、提供されたコード スニペットを取り出し、シンプルでわかりやすい言葉で説明することです。コードの機能、目的、主要コンポーネントを分析します。最小限のコーディング知識を持つ人でも説明が理解できるように、例え話、例、わかりやすい用語を使用します。どうしても必要な場合を除き、専門用語の使用を避け、使用される専門用語については明確な説明を提供します。目標は、コードが何をするのか、そしてそれが高レベルでどのように機能するのかを読者が理解できるようにすることです。', {"max_tokens": 2000, "model": s:model})
     " Create test code
