@@ -31,7 +31,7 @@ alias -- -='cd -'
 
 # lsを使いやすく
 if type eza > /dev/null 2>&1; then
-    alias ls='eza --color=always --icons --git -HF '
+    alias ls='eza -F=auto --icons --git -H '
     alias la='ls -A '
     alias ll='ls -lhAr -sold --time-style=long-iso '
 else
