@@ -15,7 +15,7 @@ command! TscBuild setlocal efm=%f(%l\\,%c):\ %m | let &makeprg='npx tsc --pretty
 nnoremap <buffer> <Leader>b :TscBuild<CR>
 
 " leader+l で deno lint
-command! -nargs=* DenoLint setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m | let &makeprg='deno lint --compact <args>' | make!
+command! -nargs=* DenoLint setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m | let &makeprg='NO_COLOR=1 deno lint --compact -q <args>' | make!
 nnoremap <buffer> <Leader>l :DenoLint<CR>
 
 command! -nargs=* DenoCheck setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m | let &makeprg='NO_COLOR=1 deno check -q <args> ' | make!
@@ -30,7 +30,7 @@ autocmd!
 " セーブするたびに現在ファイルをdeno fmt
 autocmd BufWritePost *.ts,*.js !deno fmt -q %
 " セーブするたびに現在開いているバッファ全てにdeno lint
-autocmd BufWritePost *.ts,*.js DenoLint ##
+autocmd BufWritePost *.ts,*.js DenoCheck ##
 
 autocmd User lsp_setup call lsp#register_server({
     \ "name": "deno lsp",
