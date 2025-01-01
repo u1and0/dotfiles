@@ -479,3 +479,51 @@ hook_add = '''
     set runtimepath^=~/Drpobox/Program/deno/dps-helloworld
     let g:denops#debug = 1
 '''
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+# depends = ['vim-denops/denops.vim']
+hook_add = '''
+    imap <C-j> <Plug>(skkeleton-toggle)
+    cmap <C-j> <Plug>(skkeleton-toggle)
+
+    " call skkeleton#config({
+    "   \ 'eggLikeNewline': v:true,
+    "   \ 'globalDictionaries': [['~/.local/share/dein/skk/SKK-JISYO.L', 'euc-jp']],
+    "   \ })
+    " call skkeleton#register_kanatable('rom', {
+    "   \ 'z\<Space>': ['\u3000', ''],
+    "   \ })
+
+    " call skkeleton#config({ 'globalDictionaries': [['~/.local/share/dein/skk/SKK-JISYO.L', 'euc-jp']] })
+    " call skkeleton#config({
+    "     globalDictionaries = {'~/.local/share/dein/skk/SKK-JISYO.L'},
+    "     showCandidatesCount=5,
+    " })
+    " call skkelton#register_keymap('input', '/', 'abbrev')
+'''
+
+# [[plugins]]
+# repo = "Shougo/ddc.vim"
+# hook_add = '''
+# call ddc#custom#patch_global('sources', ['skkeleton'])
+# call ddc#custom#patch_global('sourceOptions', {
+#     \   'skkeleton': {
+#     \     'mark': 'skkeleton',
+#     \     'matchers': [],
+#     \     'sorters': [],
+#     \     'converters': [],
+#     \     'isVolatile': v:true,
+#     \     'minAutoCompleteLength': 1,
+#     \   },
+#     \ })
+# call ddc#enable()
+# '''
+#
+# [[plugins]]
+# repo = 'delphinus/skkeleton_indicator.nvim'
+
+[[plugins]]
+repo = 'skk-dev/dict'
+# hook_add = '''
+# '''

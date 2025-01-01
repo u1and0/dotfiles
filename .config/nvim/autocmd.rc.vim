@@ -62,3 +62,21 @@ endif
 " 一時ファイルの作成と書き込み
 command! TempfileEdit :edit `=tempname()`
 command! TempfileWrite :write `=tempname()`
+
+" skkeleton config
+function! s:skkeleton_init() abort
+  call skkeleton#config({
+    \ 'eggLikeNewline': v:true,
+    \ 'globalDictionaries' : [[ '~/.local/share/dein/repos/github.com/skk-dev/dict/SKK-JISYO.L', 'euc-jp' ]],
+    \ })
+  " call skkeleton#register_keymap('henkan', "\<BS>", 'henkanForward')
+  " call skkeleton#register_kanatable('rom', {
+  "   \ 'z\<Space>': ['\u3000', ''],
+  "   \ })
+endfunction
+
+augroup skkeleton-initialize-pre
+  autocmd!
+  autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+augroup END
+

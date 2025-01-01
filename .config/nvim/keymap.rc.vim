@@ -1,7 +1,7 @@
 " vim:ft=vim
 
 " Leader
-let mapleader = "\<Space>"
+" let mapleader = "\<Space>"
 
 
 " Shift + 矢印でウィンドウサイズを変更
