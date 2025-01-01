@@ -67,9 +67,14 @@ command! TempfileWrite :write `=tempname()`
 function! s:skkeleton_init() abort
   call skkeleton#config({
     \ 'eggLikeNewline': v:true,
-    \ 'globalDictionaries' : [[ '~/.local/share/dein/repos/github.com/skk-dev/dict/SKK-JISYO.L', 'euc-jp' ]],
+    \ 'debug': v:true,
+    \ 'registerConvertResult': v:false,
+    \ 'keepState': v:true,
+    \ 'globalDictionaries' : ['~/.local/share/dein/repos/github.com/skk-dev/dict/SKK-JISYO.L'],
     \ })
-  " call skkeleton#register_keymap('henkan', "\<BS>", 'henkanForward')
+  " call add(g:skkeleton#mapped_keys, '<C-k>')
+  " call skkeleton#register_keymap('henkan', "<C-k>", 'henkanForward')
+  " call skkeleton#register_keymap('henkan', "<C-l>", 'henkanBackward')
   " call skkeleton#register_kanatable('rom', {
   "   \ 'z\<Space>': ['\u3000', ''],
   "   \ })
