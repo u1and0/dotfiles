@@ -468,7 +468,7 @@ hook_add = '''
     " command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
     " Conversate with GPT
     command! -nargs=? -range GPTChat <line1>,<line2>call gptcli#GPTWindow(<q-args>, {'model': s:pro_model})
-    command! -range GPTWizard <line1>,<line2>call gptcli#GPTWindow( 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:llama, 'temperature': 1.3})
+    command! -range GPTWizard <line1>,<line2>call gptcli#GPTWindow( 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:llama, 'temperature': 1.1})
     " command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
 '''
 
