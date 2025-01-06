@@ -445,7 +445,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'u1and0/gpt-cli'
-if = '''executable('gpt')'''
+build = "./install.sh"
 hook_add = '''
     let s:model = 'gemini-2.0-flash-exp' "'claude-3-5-haiku-20241022'  gemini-1.5-flash-latest,  llama3.2:1b
     let s:code_model = 'claude-3-5-haiku-20241022'
