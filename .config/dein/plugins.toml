@@ -447,9 +447,9 @@ hook_add = '''
 repo = 'u1and0/gpt-cli'
 build = "./install.sh"
 hook_add = '''
-    let s:model = 'gemini-2.0-flash-exp' "'claude-3-5-haiku-20241022'  gemini-1.5-flash-latest,  llama3.2:1b
-    let s:code_model = 'claude-3-5-haiku-20241022'
-    let s:pro_model = 'claude-3-5-sonnet-20241022'  "'claude-3-5-sonnet-20241022'  gemini-1.5-pro-latest
+    let s:model = 'gemini-2.0-flash' "'claude-3-5-haiku-20241022'
+    let s:code_model = 'claude-3-5-sonnet-20241022' "'claude-3-5-haiku-20241022'
+    let s:pro_model = 'groq/deepseek-r1-distill-qwen-32b' " 'groq/deepseek-r1-distill-llama-70b' 'claude-3-5-sonnet-20241022'  gemini-2.0-flash
     let s:llama = 'groq/llama-3.3-70b-versatile'
     let s:url = 'http://localhost:11434'
 
@@ -468,7 +468,8 @@ hook_add = '''
     " command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
     " Conversate with GPT
     command! -nargs=? -range GPTChat <line1>,<line2>call gptcli#GPTWindow(<q-args>, {'model': s:pro_model})
-    command! -range GPTWizard <line1>,<line2>call gptcli#GPTWindow( 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:llama, 'temperature': 1.1})
+    command! -nargs=? -range GPTProChat <line1>,<line2>call gptcli#GPTWindow(<q-args>, {'model': s:pro_model})
+    command! -range GPTWizard <line1>,<line2>call gptcli#GPTWindow( 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:model, 'temperature': 1.1})
     " command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
 '''
 
