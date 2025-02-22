@@ -22,7 +22,7 @@ command! -nargs=* DenoCheck setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m | let 
 nnoremap <buffer> <Leader>c :DenoCheck ##<CR>
 " leader + t でdeno test
 " command! -nargs=* DenoTest let &makeprg='deno test' | make
-command! -nargs=* DenoTest :sp <Bar> term deno test <args>
+command! -nargs=* DenoTest :sp <Bar> term deno test -A <args>
 nnoremap <buffer> <Leader>t :DenoTest<CR>
 
 augroup MyTypeScriptCmd
