@@ -465,12 +465,16 @@ hook_add = '''
     command! -nargs=0 -range GPTShaper <line1>,<line2>call gptcli#GPT("Format the code without rewriting the content of the code.", { "model": "gemini-2.0-flash-lite-preview-0205", "temperature": 0})
 
     " Any system prompt
-    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<f-args>, { 'model': s:model})
+    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args>, { 'model': s:model})
     " command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<f-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
+
     " Conversate with GPT
-    command! -nargs=* GPTChat call gptcli#GPTWindow(<f-args>, {'model': s:model})
-    command! -nargs=* GPTProChat call gptcli#GPTWindow(<f-args>, {'model': s:pro_model})
-    command! -nargs=* GPTWizard call gptcli#GPTWindow(<f-args>, 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:llama, 'temperature': 1.1})
+    command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': s:model})
+    command! -nargs=? GPTProChat call gptcli#GPTWindow(<q-args>, {'model': s:pro_model})
+    command! -nargs=? GPTWizard call gptcli#GPTWindow(<q-args>, 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:llama, 'temperature': 1.04})
+
+    " Conversate with file content
+    command! -nargs=* GPTChatWithFile call gptcli#GPTWindow(<f-args>, {'model': s:model})
 '''
 
 [[plugins]]
