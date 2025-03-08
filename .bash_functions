@@ -252,4 +252,47 @@ function urldecoding() {
     python -c "import urllib.parse; print(urllib.parse.unquote('$*'))"
 }
 
+# ポモドーロタイマー設定
+_POMO_WORK_TIME=25m
+_POMO_BREAK_TIME=5m
+_POMO_LONG_BREAK_TIME=15m
+_POMO_ALERT_TIME=30s
+_POMO_SLEEP_TIME=2
+_POMO_CYCLES=4
+
+# 関数: 作業時間
+_work() {
+  termdown -b -c $_POMO_ALERT_TIME -t "Work time done" $_POMO_WORK_TIME
+}
+
+# 関数: 短い休憩時間
+_short_break() {
+  termdown -b -c $_POMO_ALERT_TIME -t "Short break done" $_POMO_BREAK_TIME
+}
+
+# 関数: 長い休憩時間
+_long_break() {
+  termdown -b -c $_POMO_ALERT_TIME -t "Long break done" $_POMO_LONG_BREAK_TIME
+}
+
+pomodoro_cycle(){
+    echo "🍅 ポモドーロタイマー開始: $_POMO_CYCLES サイクル 開始"
+    for i in $(seq 1 $_POMO_CYCLES); do
+      echo "⏰ サイクル $i/$_POMO_CYCLES: 作業時間 開始"
+      sleep $_POMO_SLEEP_TIME
+      _work
+      if [ $i -lt $_POMO_CYCLES ]; then
+        echo "☕ サイクル $i/$_POMO_CYCLES: 短い休憩時間 開始"
+        sleep $_POMO_SLEEP_TIME
+        _short_break
+      else
+        echo "🌴 サイクル $i/$_POMO_CYCLES: 長い休憩時間 開始"
+        sleep $_POMO_SLEEP_TIME
+        _long_break
+      fi
+    done
+
+    echo "✅ ポモドーロタイマー完了！🎉"
+}
+
 # vim:ft=sh
