@@ -260,19 +260,20 @@ _POMO_ALERT_TIME=30s
 _POMO_SLEEP_TIME=2
 _POMO_CYCLES=4
 
-# 関数: 作業時間
-_work() {
-  termdown -b -c $_POMO_ALERT_TIME -t "Work time done" $_POMO_WORK_TIME
+# notify-sendが使えるか確認する関数
+_notify() {
+    if command -v notify-send &> /dev/null; then
+        notify-send "$1" "$2"
+    else
+        echo "$1: $2"
+    fi
 }
 
-# 関数: 短い休憩時間
-_short_break() {
-  termdown -b -c $_POMO_ALERT_TIME -t "Short break done" $_POMO_BREAK_TIME
-}
-
-# 関数: 長い休憩時間
-_long_break() {
-  termdown -b -c $_POMO_ALERT_TIME -t "Long break done" $_POMO_LONG_BREAK_TIME
+# 汎用的なポモドーロタイマー関数
+_pomo_timer() {
+    local notify_message="$1"
+    local duration="$2"
+    termdown -b -c $ALERT_TIME -t "$notify_message" ; _notify "Pomodoro" "$notify_message" $duration
 }
 
 pomodoro_cycle(){
@@ -280,15 +281,15 @@ pomodoro_cycle(){
     for i in $(seq 1 $_POMO_CYCLES); do
       echo "⏰ サイクル $i/$_POMO_CYCLES: 作業時間 開始"
       sleep $_POMO_SLEEP_TIME
-      _work
+      _pomo_timer "Work time done" $WORK_TIME
       if [ $i -lt $_POMO_CYCLES ]; then
         echo "☕ サイクル $i/$_POMO_CYCLES: 短い休憩時間 開始"
         sleep $_POMO_SLEEP_TIME
-        _short_break
+        _pomo_timer "Short break done" $BREAK_TIME
       else
         echo "🌴 サイクル $i/$_POMO_CYCLES: 長い休憩時間 開始"
         sleep $_POMO_SLEEP_TIME
-        _long_break
+        _pomo_timer "Long break done" $LONG_BREAK_TIME
       fi
     done
 
