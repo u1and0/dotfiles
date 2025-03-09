@@ -135,4 +135,15 @@ zplug "u1and0/b4a8647bebbcb8b9b71c6e166726063e",\
 #     use:"zsh-fzf-history-search.zsh",\
 #     defer:2,\
 #     hook-load:'source zsh-fzf-history-search.zsh'
+
+# pomodoro cycle on terminal
+## Require
+#   - termdown
+## Optional
+#   - lolcat
+#   - notify-send
+zplug "u1and0/pomodoro_cycle",\
+    as:plugin,\
+    use:"pomodoro.sh"
+
 # vim:ft=zsh
