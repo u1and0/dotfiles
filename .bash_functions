@@ -285,47 +285,48 @@ pomodoro_cycle() {
     # オプション引数の処理
     while [[ $# -gt 0 ]]; do
         case $1 in
-            --work)
+            --work|-w)
                 _POMO_WORK_TIME="$2"
                 shift 2
                 ;;
-            --short)
+            --short|-s)
                 _POMO_BREAK_TIME="$2"
                 shift 2
                 ;;
-            --long)
+            --long|-l)
                 _POMO_LONG_BREAK_TIME="$2"
                 shift 2
                 ;;
-            --cycles)
+            --cycles|-c)
                 _POMO_CYCLES="$2"
                 shift 2
                 ;;
-            --alert)
+            --alert|-a)
                 _POMO_ALERT_TIME="$2"
                 shift 2
                 ;;
-            --sleep)
+            --sleep|-z)
                 _POMO_SLEEP_TIME="$2"
                 shift 2
                 ;;
-            --help)
+            --help|-h)
                 echo "使用方法: pomodoro_cycle [オプション]"
                 echo "オプション:"
-                echo "  --work TIME    作業時間を設定 (デフォルト: 25m)"
-                echo "  --short TIME   短い休憩時間を設定 (デフォルト: 5m)"
-                echo "  --long TIME    長い休憩時間を設定 (デフォルト: 15m)"
-                echo "  --cycles NUM   サイクル数を設定 (デフォルト: 4)"
-                echo "  --alert NUM    アラート時間を設定 (デフォルト: 30秒)"
-                echo "  --sleep NUM    通知間の待機時間を設定 (デフォルト: 2秒)"
-                echo "  --help         このヘルプメッセージを表示"
+                echo "  -w, --work TIME    作業時間を設定 (デフォルト: 25m)"
+                echo "  -s, --short TIME   短い休憩時間を設定 (デフォルト: 5m)"
+                echo "  -l, --long TIME    長い休憩時間を設定 (デフォルト: 15m)"
+                echo "  -c, --cycles NUM   サイクル数を設定 (デフォルト: 4)"
+                echo "  -a, --alert NUM    アラート時間を設定 (デフォルト: 30秒)"
+                echo "  -z, --sleep NUM    通知間の待機時間を設定 (デフォルト: 2秒)"
+                echo "  -h, --help         このヘルプメッセージを表示"
                 echo ""
+                echo "例: pomodoro_cycle -w 45m -s 10m -l 30m -c 3"
                 echo "例: pomodoro_cycle --work 45m --short 10m --long 30m --cycles 3"
                 return 0
                 ;;
             *)
                 echo "不明なオプション: $1"
-                echo "ヘルプを表示するには: pomodoro_cycle --help"
+                echo "ヘルプを表示するには: pomodoro_cycle -h"
                 return 1
                 ;;
         esac
