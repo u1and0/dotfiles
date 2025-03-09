@@ -252,6 +252,14 @@ function urldecoding() {
     python -c "import urllib.parse; print(urllib.parse.unquote('$*'))"
 }
 
+# usage
+# timer_screen 5m
+# カウントダウンを表示し、
+# 5分後スクリーンにきれいなマトリックスが描画される
+timer_screen() {
+    termdown "$1" | lolcat && cmatrix | lolcat
+}
+
 # ポモドーロタイマー設定（デフォルト値）
 _POMO_WORK_TIME=25m
 _POMO_BREAK_TIME=5m
