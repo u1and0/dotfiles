@@ -252,7 +252,7 @@ function urldecoding() {
     python -c "import urllib.parse; print(urllib.parse.unquote('$*'))"
 }
 
-# ポモドーロタイマー設定
+# ポモドーロタイマー設定（デフォルト値）
 _POMO_WORK_TIME=25m
 _POMO_BREAK_TIME=5m
 _POMO_LONG_BREAK_TIME=15m
@@ -281,21 +281,73 @@ _pomo_timer() {
     _notify "Pomodoro" "$notify_message"
 }
 
-pomodoro_cycle(){
-    echo "🍅 ポモドーロタイマー開始: $_POMO_CYCLES サイクル 開始"
+pomodoro_cycle() {
+    # オプション引数の処理
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --work)
+                _POMO_WORK_TIME="$2"
+                shift 2
+                ;;
+            --short)
+                _POMO_BREAK_TIME="$2"
+                shift 2
+                ;;
+            --long)
+                _POMO_LONG_BREAK_TIME="$2"
+                shift 2
+                ;;
+            --cycles)
+                _POMO_CYCLES="$2"
+                shift 2
+                ;;
+            --alert)
+                _POMO_ALERT_TIME="$2"
+                shift 2
+                ;;
+            --sleep)
+                _POMO_SLEEP_TIME="$2"
+                shift 2
+                ;;
+            --help)
+                echo "使用方法: pomodoro_cycle [オプション]"
+                echo "オプション:"
+                echo "  --work TIME    作業時間を設定 (デフォルト: 25m)"
+                echo "  --short TIME   短い休憩時間を設定 (デフォルト: 5m)"
+                echo "  --long TIME    長い休憩時間を設定 (デフォルト: 15m)"
+                echo "  --cycles NUM   サイクル数を設定 (デフォルト: 4)"
+                echo "  --alert NUM    アラート時間を設定 (デフォルト: 30秒)"
+                echo "  --sleep NUM    通知間の待機時間を設定 (デフォルト: 2秒)"
+                echo "  --help         このヘルプメッセージを表示"
+                echo ""
+                echo "例: pomodoro_cycle --work 45m --short 10m --long 30m --cycles 3"
+                return 0
+                ;;
+            *)
+                echo "不明なオプション: $1"
+                echo "ヘルプを表示するには: pomodoro_cycle --help"
+                return 1
+                ;;
+        esac
+    done
+
+    echo "🍅 ポモドーロタイマー開始: $_POMO_CYCLES サイクル"
+    echo "⏱️ 作業時間: $_POMO_WORK_TIME | 短い休憩: $_POMO_BREAK_TIME | 長い休憩: $_POMO_LONG_BREAK_TIME"
+
     for i in $(seq 1 $_POMO_CYCLES); do
-      echo "⏰ サイクル $i/$_POMO_CYCLES: 作業時間 開始"
-      sleep $_POMO_SLEEP_TIME
-      _pomo_timer "Work time done" $_POMO_WORK_TIME
-      if [ $i -lt $_POMO_CYCLES ]; then
-        echo "☕ サイクル $i/$_POMO_CYCLES: 短い休憩時間 開始"
+        echo "⏰ サイクル $i/$_POMO_CYCLES: 作業時間 開始"
         sleep $_POMO_SLEEP_TIME
-        _pomo_timer "Short break done" $_POMO_BREAK_TIME
-      else
-        echo "🌴 サイクル $i/$_POMO_CYCLES: 長い休憩時間 開始"
-        sleep $_POMO_SLEEP_TIME
-        _pomo_timer "Long break done" $_POMO_LONG_BREAK_TIME
-      fi
+        _pomo_timer "Work time done" $_POMO_WORK_TIME
+
+        if [ $i -lt $_POMO_CYCLES ]; then
+            echo "☕ サイクル $i/$_POMO_CYCLES: 短い休憩時間 開始"
+            sleep $_POMO_SLEEP_TIME
+            _pomo_timer "Short break done" $_POMO_BREAK_TIME
+        else
+            echo "🌴 サイクル $i/$_POMO_CYCLES: 長い休憩時間 開始"
+            sleep $_POMO_SLEEP_TIME
+            _pomo_timer "Long break done" $_POMO_LONG_BREAK_TIME
+        fi
     done
 
     echo "✅ ポモドーロタイマー完了！🎉"
