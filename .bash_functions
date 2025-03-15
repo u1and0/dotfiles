@@ -252,48 +252,18 @@ function urldecoding() {
     python -c "import urllib.parse; print(urllib.parse.unquote('$*'))"
 }
 
-# ポモドーロタイマー設定
-_POMO_WORK_TIME=25m
-_POMO_BREAK_TIME=5m
-_POMO_LONG_BREAK_TIME=15m
-_POMO_ALERT_TIME=30s
-_POMO_SLEEP_TIME=2
-_POMO_CYCLES=4
-
-# notify-sendが使えるか確認する関数
-_notify() {
-    if command -v notify-send &> /dev/null; then
-        notify-send "$1" "$2"
-    else
-        echo "$1: $2"
-    fi
-}
-
-# 汎用的なポモドーロタイマー関数
-_pomo_timer() {
-    local notify_message="$1"
-    local duration="$2"
-    termdown -b -c $ALERT_TIME -t "$notify_message" ; _notify "Pomodoro" "$notify_message" $duration
-}
-
-pomodoro_cycle(){
-    echo "🍅 ポモドーロタイマー開始: $_POMO_CYCLES サイクル 開始"
-    for i in $(seq 1 $_POMO_CYCLES); do
-      echo "⏰ サイクル $i/$_POMO_CYCLES: 作業時間 開始"
-      sleep $_POMO_SLEEP_TIME
-      _pomo_timer "Work time done" $WORK_TIME
-      if [ $i -lt $_POMO_CYCLES ]; then
-        echo "☕ サイクル $i/$_POMO_CYCLES: 短い休憩時間 開始"
-        sleep $_POMO_SLEEP_TIME
-        _pomo_timer "Short break done" $BREAK_TIME
-      else
-        echo "🌴 サイクル $i/$_POMO_CYCLES: 長い休憩時間 開始"
-        sleep $_POMO_SLEEP_TIME
-        _pomo_timer "Long break done" $LONG_BREAK_TIME
-      fi
-    done
-
-    echo "✅ ポモドーロタイマー完了！🎉"
+## Usage:
+# $ screen_timer 5m
+#
+# カウントダウンを表示し、
+# 5分後スクリーンにきれいなマトリックスが描画される
+#
+## Require
+# - termdown
+# - lolcat
+# - cmatrix
+screen_timer() {
+    termdown "$1" | lolcat && cmatrix | lolcat
 }
 
 # vim:ft=sh

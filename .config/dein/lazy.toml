@@ -49,7 +49,7 @@ let g:neomake_python_enabled_makers = ['python', 'flake8', 'mypy']
 
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
-on_ft = ['python', 'sh', 'js', 'javascript', 'markdown', 'yaml']
+on_ft = ['python', 'sh', 'js', 'javascript', 'markdown', 'yaml', 'tex']
 hook_add= '''
 " エラー行に表示するマーク
 let g:ale_sign_error = '⨉'
@@ -90,6 +90,7 @@ let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ 'javascript': ['jshint'],
                     \ 'html': ['jshint'],
                     \ 'markdown': ['textlint'],
+                    \ 'tex': ['textlint'],
                     \ 'yaml': ['actionlint'],
                     \ }
                     " \ 'html': ['jshint', 'eslint'],
