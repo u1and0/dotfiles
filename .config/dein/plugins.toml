@@ -450,7 +450,7 @@ hook_add = '''
     let s:model = 'gemini-2.0-flash' "'claude-3-5-haiku-20241022'
     let s:code_model =  'claude-3-7-sonnet-latest' " 'claude-3-5-haiku-latest'  'claude-3-5-sonnet-20241022'
     let s:reasoning_model = 'groq/deepseek-r1-distill-qwen-32b' " 'groq/deepseek-r1-distill-llama-70b' 'claude-3-5-sonnet-20241022'  gemini-2.0-flash
-    let s:pro_model = 'gemini-2.5-pro-preview-03-25'
+    let s:pro_model = 'gemini-2.5-pro-exp-03-25 '
     let s:llama = 'groq/meta-llama/llama-4-scout-17b-16e-instruct'
     let s:pro_llama = 'groq/meta-llama/llama-4-maverick-17b-128e-instruct'
     let s:url = 'http://localhost:11434'
@@ -467,7 +467,7 @@ hook_add = '''
     command! -nargs=0 -range GPTShaper <line1>,<line2>call gptcli#GPT("Format the code without rewriting the content of the code.", { "model": "gemini-2.0-flash-lite-preview-0205", "temperature": 0})
 
     " Any system prompt
-    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args>, { 'model': s:model})
+    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args>, { 'model': s:llama})
     " command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<f-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
 
     " Conversate with GPT
