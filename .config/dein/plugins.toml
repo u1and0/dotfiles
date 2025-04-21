@@ -468,7 +468,7 @@ hook_add = '''
     command! -nargs=0 -range GPTShaper <line1>,<line2>call gptcli#GPT("Format the code without rewriting the content of the code. Do not explain the code.", { "model": s:lite_model, "temperature": 0})
 
     " Any system prompt
-    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args>, { 'model': s:llama})
+    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args> . 'Generate the [programming language] code for [task description]. Provide only the code, with short, concise comments explaining key sections. Avoid lengthy explanations.', { 'model': s:llama})
     " command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<f-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
 
     " Conversate with GPT
