@@ -447,7 +447,7 @@ hook_add = '''
 repo = 'u1and0/gpt-cli'
 build = "./install.sh"
 hook_add = '''
-    let s:model = 'gemini-2.0-flash' "'claude-3-5-haiku-20241022'
+    let s:model = 'gemini-2.5-flash-preview-04-17' " 'gemini-2.0-flash' 'claude-3-5-haiku-20241022'
     let s:code_model =  'claude-3-7-sonnet-latest' " 'claude-3-5-haiku-latest'  'claude-3-5-sonnet-20241022'
     let s:reasoning_model = 'groq/deepseek-r1-distill-llama-70b'
     let s:pro_model = 'gemini-2.5-pro-exp-03-25'
@@ -468,7 +468,7 @@ hook_add = '''
     command! -nargs=0 -range GPTShaper <line1>,<line2>call gptcli#GPT("Format the code without rewriting the content of the code. Do not explain the code.", { "model": s:lite_model, "temperature": 0})
 
     " Any system prompt
-    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args> . 'Generate the [programming language] code for [task description]. Provide only the code, with short, concise comments explaining key sections. Avoid lengthy explanations.', { 'model': s:llama})
+    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args> . 'Generate the [programming language] code for [task description]. Provide only the code, with short, concise comments explaining key sections. Avoid lengthy explanations."', { 'model': s:llama, 'max_tokens': 500})
     " command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<f-args>, {'model': 'llama3.2:1b', 'url': 'http://localhost:11434' })
 
     " Conversate with GPT
