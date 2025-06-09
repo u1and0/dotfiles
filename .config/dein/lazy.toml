@@ -44,7 +44,7 @@ repo = 'neomake/neomake'
 if = "has('nvim')"
 hook_add = '''
 autocmd! BufEnter,BufWritePost * Neomake
-let g:neomake_python_enabled_makers = ['python', 'flake8', 'mypy']
+let g:neomake_python_enabled_makers = ['python',ruff, 'mypy']
 '''
 
 [[plugins]]  # Asynchronous Lint Engine
@@ -85,7 +85,7 @@ let g:ale_completion_enabled = 1
 "          textlint-rule-spellcheck-tech-word \
 "          textlint-rule-preset-japanese \
 "          textlint-rule-no-mix-dearu-desumasu
-let g:ale_linters = { 'python': ['flake8', 'pylint'],
+let g:ale_linters = { 'python': ['ruff', 'mypy'],
                     \ 'sh': ['shellcheck'],
                     \ 'javascript': ['jshint'],
                     \ 'html': ['jshint'],
@@ -95,7 +95,7 @@ let g:ale_linters = { 'python': ['flake8', 'pylint'],
                     \ }
                     " \ 'html': ['jshint', 'eslint'],
 " Fix Python files with autopep8 and yapf.
-let g:ale_fixers = { 'python': ['autopep8', 'yapf'],
+let g:ale_fixers = { 'python': ['ruff_format'],
                     \ 'javascript': ['eslint'],
                     \ 'typescript': ['eslint'],
                     \ }
