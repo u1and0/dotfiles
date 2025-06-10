@@ -493,3 +493,13 @@ hook_add = '''
     set runtimepath^=~/Drpobox/Program/deno/dps-helloworld
     let g:denops#debug = 1
 '''
+
+[[plugins]]  # claude-code depenency
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'greggh/claude-code.nvim'
+depends = ['nvim-lua/plenary.nvim']
+hook_add = '''
+lua require("claude-code").setup()
+'''
