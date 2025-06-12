@@ -44,7 +44,7 @@ repo = 'neomake/neomake'
 if = "has('nvim')"
 hook_add = '''
 autocmd! BufEnter,BufWritePost * Neomake
-let g:neomake_python_enabled_makers = ['python',ruff, 'mypy']
+let g:neomake_python_enabled_makers = ['python','ruff', 'mypy']
 '''
 
 [[plugins]]  # Asynchronous Lint Engine

@@ -489,10 +489,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-hook_add = '''
-    set runtimepath^=~/Drpobox/Program/deno/dps-helloworld
-    let g:denops#debug = 1
-'''
+if = '''executable('deno')'''
 
 [[plugins]]  # claude-code depenency
 repo = 'nvim-lua/plenary.nvim'
