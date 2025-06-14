@@ -32,13 +32,6 @@ zplug "zsh-users/zsh-completions",\
     hook-load:'compdef _apt apt-fast=apt'
 
 
-# Install twitter.sh
-zplug "ShellShoccar-jpn/kotoriotoko"
-export PATH=${ZPLUG_REPOS}/ShellShoccar-jpn/kotoriotoko/BIN:${PATH}
-# , as:command, use:"BIN/*.sh"  # この方法で指定すると
-# CONFIG読めなくなったりいろいろなツールのパスが異なってくる
-# のでシンボリックリンクとして扱わないほうが良いと思う。
-
 # Tracks your most used directories, based on 'frecency'.
 zplug "rupa/z", use:"*.sh", hook-build:"touch ${HOME}/.z"
 
@@ -75,16 +68,6 @@ zplug "andreafabrizi/Dropbox-Uploader",\
     use:"dropbox_uploader.sh",\
     rename-to:"db"
 
-# Completions
-# zplugのif:を使うと、ロードされないとき
-# jupyter/jupyter_core: (bypassed check) のように
-# 表示されるのでshell script的に普通にif-fiを使う
-
-if [ type conda > /dev/null 2>&1 ]; then
-    zplug "esc/conda-zsh-completion",\
-        as:command,\
-        rename-to:"_conda"
-fi
 
 if [ type jupyter > /dev/null 2>&1 ]; then
     zplug "jupyter/jupyter_core",\
@@ -122,13 +105,6 @@ zplug "u1and0/eml2txt",\
     as:command,\
     use:"eml2txt.py",\
     rename-to:"eml2txt"
-
-# Ask ChatGPT from terminal
-zplug "u1and0/b4a8647bebbcb8b9b71c6e166726063e",\
-    from:gist,\
-    as:command,\
-    use:"*.sh",\
-    rename-to:"curlgpt"
 
 # Archlinuxでは不要
 # zplug "joshskidmore/zsh-fzf-history-search",\
