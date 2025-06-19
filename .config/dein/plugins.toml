@@ -487,6 +487,10 @@ hook_add = '''
     command! -nargs=* GPTChatWithFile call gptcli#GPTWindow(<f-args>, {'model': s:model})
 '''
 
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+if = '''executable('deno')'''
+
 [[plugins]]  # claude-code depenency
 repo = 'nvim-lua/plenary.nvim'
 

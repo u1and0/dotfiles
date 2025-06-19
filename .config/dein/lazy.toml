@@ -39,6 +39,14 @@ hook_add = '''
     autocmd FileType python setlocal completeopt-=preview
 '''
 
+[[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+autocmd! BufEnter,BufWritePost * Neomake
+let g:neomake_python_enabled_makers = ['python','ruff', 'mypy']
+'''
+
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
 on_ft = ['python', 'sh', 'js', 'javascript', 'markdown', 'yaml', 'tex']
@@ -86,7 +94,8 @@ let g:ale_linters = { 'python': ['ruff', 'mypy'],
                     \ 'yaml': ['actionlint'],
                     \ }
                     " \ 'html': ['jshint', 'eslint'],
-let g:ale_fixers = { 'python': ['ruff'],
+" Fix Python files with autopep8 and yapf.
+let g:ale_fixers = { 'python': ['ruff_format'],
                     \ 'javascript': ['eslint'],
                     \ 'typescript': ['eslint'],
                     \ }
@@ -321,19 +330,4 @@ au User asyncomplete_setup call asyncomplete#register_source({
   \ 'completor': {opt, ctx -> nim#suggest#sug#GetAllCandidates(
   \     {start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates)})}
   \ })
-'''
-
-# LSPの基本設定
-[[plugins]]
-repo = 'neovim/nvim-lspconfig'
-on_ft = ['python']
-hook_source = '''
-  lua require('config.lsp')
-'''
-
-[[plugins]]
-repo = 'nvimtools/none-ls.nvim'
-on_ft = ['python']
-hook_source = '''
-  lua require('config.null-ls')
 '''
