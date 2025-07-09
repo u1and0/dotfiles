@@ -92,6 +92,11 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 
 # choosenim bin's path
 type choosenim > /dev/null 2>&1 && export PATH="${HOME}/.nimble/bin:${PATH}"
-# vim:ft=sh
 export PYTHONPATH=~/home/python
+
+# deno auto setting
 . "/home/u1and0/.deno/env"
+
+# ddgr default browser
+export BROWSER=w3m
+# vim:ft=sh
