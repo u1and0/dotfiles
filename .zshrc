@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/u1and0/.zsh/completions:"* ]]; then export FPATH="/home/u1and0/.zsh/completions:$FPATH"; fi
 #!/usr/bin/zsh
 
 # License : MIT
@@ -177,3 +179,4 @@ else; printf "Install zplug? [y/N]: "
     fi
 fi
 # vim:ft=zsh
+. "/home/u1and0/.deno/env"

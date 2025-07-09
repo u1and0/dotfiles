@@ -94,3 +94,4 @@ type fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 type choosenim > /dev/null 2>&1 && export PATH="${HOME}/.nimble/bin:${PATH}"
 # vim:ft=sh
 export PYTHONPATH=~/home/python
+. "/home/u1and0/.deno/env"
