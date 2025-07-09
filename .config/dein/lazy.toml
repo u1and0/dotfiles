@@ -39,14 +39,6 @@ hook_add = '''
     autocmd FileType python setlocal completeopt-=preview
 '''
 
-[[plugins]]
-repo = 'neomake/neomake'
-if = "has('nvim')"
-hook_add = '''
-autocmd! BufEnter,BufWritePost * Neomake
-let g:neomake_python_enabled_makers = ['python','ruff', 'mypy']
-'''
-
 [[plugins]]  # Asynchronous Lint Engine
 repo = 'w0rp/ale'
 on_ft = ['python', 'sh', 'js', 'javascript', 'markdown', 'yaml', 'tex']
