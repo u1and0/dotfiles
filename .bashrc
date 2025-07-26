@@ -34,8 +34,8 @@ if type fzf > /dev/null 2>&1; then
     export FZF_CTRL_R_OPTS="--height=40% --reverse"
 fi
 
-# Secret API Keys
-[ -f ${HOME}/.secret ] && source ${HOME}/.secret
+# env file
+[ -f ${HOME}/.env ] && source ${HOME}/.env
 
 
 # LESS設定
@@ -95,7 +95,7 @@ type choosenim > /dev/null 2>&1 && export PATH="${HOME}/.nimble/bin:${PATH}"
 export PYTHONPATH=~/home/python
 
 # deno auto setting
-. "/home/u1and0/.deno/env"
+[ -f ${HOME}/.deno/env ] && source ${HOME}/.deno/env
 
 # ddgr default browser
 export BROWSER=w3m
