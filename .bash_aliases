@@ -153,4 +153,7 @@ alias bf='cat > ${HOME}/.vim/bf'
 alias bfcat='cat ${HOME}/.vim/bf'
 # 実行
 alias bfexec='bfcat | ${SHELL}'
+
+# qwen coder + open router
+alias qwen='OPENAI_API_KEY=$OPENROUTER_API_KEY OPENAI_MODEL="qwen/qwen3-coder:free" OPENAI_BASE_URL="https://openrouter.ai/api/v1" qwen'
 # vim:ft=sh
