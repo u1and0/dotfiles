@@ -457,7 +457,7 @@ hook_add = '''
     let s:llama = 'groq/meta-llama/llama-4-scout-17b-16e-instruct'
     let s:llama_pro = 'groq/meta-llama/llama-4-maverick-17b-128e-instruct'
     let s:qwen = 'groq/qwen/qwen3-32b'
-    let s:qwen_pro = 'Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8'
+    let s:qwen_pro = 'togetherai/Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8'
     let s:kimi = 'groq/moonshotai/kimi-k2-instruct'
     let s:url = 'http://localhost:11434'
 
