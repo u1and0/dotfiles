@@ -457,11 +457,11 @@ hook_add = '''
     let s:llama = 'groq/meta-llama/llama-4-scout-17b-16e-instruct'
     let s:llama_pro = 'groq/meta-llama/llama-4-maverick-17b-128e-instruct'
     let s:qwen = 'groq/qwen/qwen3-32b'
-    let s:qwen_pro = 'togetherai/Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8'
+    let s:qwen_pro = 'openrouter/qwen/qwen3-coder:free'
     let s:kimi = 'groq/moonshotai/kimi-k2-instruct'
     let s:url = 'http://localhost:11434'
 
-    command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'max_tokens': 512, 'temperature': 0.5, 'model': s:gptoss_pro})
+    command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'max_tokens': 512, 'temperature': 0.5, 'model': s:qwen_pro})
     " Keybind C-X, C-G
     inoremap <C-x><C-g> <Esc>:GPTGenerateCode<CR>
     " Docs to code
