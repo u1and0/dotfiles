@@ -476,19 +476,19 @@ hook_add = '''
     command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args> . 'Generate the [programming language] code for [task description]. Provide only the code, with short, concise comments explaining key sections. Avoid lengthy explanations."', { 'model': s:gptoss, 'max_tokens': 512})
 
     " Conversate with GPT
-    command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': s:gptoss_pro})
-    command! -nargs=? GPTChatPro call gptcli#GPTWindow(<q-args>, {'model': s:qwen_pro, "max_tokens": 8192})
-    command! -nargs=? GPTChatReasoning call gptcli#GPTWindow(<q-args>, {'model': s:reasoning_model})
+    command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': s:gptoss_pro}) | setlocal filetype=markdown
+    command! -nargs=? GPTChatPro call gptcli#GPTWindow(<q-args>, {'model': s:qwen_pro, "max_tokens": 8192}) | setlocal filetype=markdown
+    command! -nargs=? GPTChatReasoning call gptcli#GPTWindow(<q-args>, {'model': s:reasoning_model}) | setlocal filetype=markdown
 
     " With systemp prompt
-    command! -nargs=? GPTChatGenerateTest call gptcli#GPTWindow('You are the best code tester. Please write test code that covers all cases to try the given code.', {'model': s:qwen_pro, "temperature": 0.1, "max_tokens": 8192})
-    command! -nargs=? GPTChatErrorBustor call gptcli#GPTWindow('Your task is to analyze the provided code snippet, identify any bugs or errors present, and provide a corrected version of the code that resolves these issues. Explain the problems you found in the original code and how your fixes address them. The corrected code should be functional, efficient, and adhere to best practices in programming.', {'model': 'groq/openai/gpt-oss-120b', "temperature": 0.5, "max_tokens": 8192})
-    command! -nargs=? GPTChatCodeOptimizer call gptcli#GPTWindow('Ultrathink. Your task is to analyze the code snippet and suggest improvements to optimize its performance. Identify areas where the code can be made more efficient, faster, or less resource-intensive. Provide specific suggestions for optimization, along with explanations of how these changes can enhance the code’s performance. The optimized code should maintain the same functionality as the original code while demonstrating improved efficiency.', {'model': s:code_model, "temperature": 0.2})
-    command! -nargs=? GPTChatWizard call gptcli#GPTWindow(<q-args>, 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:qwen_pro, 'temperature': 1.04})
-    command! -nargs=? GPTChatSocrates call gptcli#GPTWindow('あなたは幅広いトピックについてソクラテス式の深い対話ができるAIアシスタントです。ユーザーが自身の信念や視点を批判的に検討できるよう、探求的な質問をすることがあなたの目標です。単に自分の見解を述べるのではなく、より深い思考と省察を促すために質問のやり取りを行ってください。', {'model': s:reasoning_model})
+    command! -nargs=? GPTChatGenerateTest call gptcli#GPTWindow('You are the best code tester. Please write test code that covers all cases to try the given code.', {'model': s:qwen_pro, "temperature": 0.1, "max_tokens": 8192}) | setlocal filetype=markdown
+    command! -nargs=? GPTChatErrorBustor call gptcli#GPTWindow('Your task is to analyze the provided code snippet, identify any bugs or errors present, and provide a corrected version of the code that resolves these issues. Explain the problems you found in the original code and how your fixes address them. The corrected code should be functional, efficient, and adhere to best practices in programming.', {'model': 'groq/openai/gpt-oss-120b', "temperature": 0.5, "max_tokens": 8192}) | setlocal filetype=markdown
+    command! -nargs=? GPTChatCodeOptimizer call gptcli#GPTWindow('Ultrathink. Your task is to analyze the code snippet and suggest improvements to optimize its performance. Identify areas where the code can be made more efficient, faster, or less resource-intensive. Provide specific suggestions for optimization, along with explanations of how these changes can enhance the code’s performance. The optimized code should maintain the same functionality as the original code while demonstrating improved efficiency.', {'model': s:code_model, "temperature": 0.2}) | setlocal filetype=markdown
+    command! -nargs=? GPTChatWizard call gptcli#GPTWindow(<q-args>, 'あなたは偉大な老魔術師であり、Linuxエンジニアです。コマンドを魔術に見立てて、儀式を弟子に伝授する形式で質問に答えるのじゃ。' , {'model': s:qwen_pro, 'temperature': 1.04}) | setlocal filetype=markdown
+    command! -nargs=? GPTChatSocrates call gptcli#GPTWindow('あなたは幅広いトピックについてソクラテス式の深い対話ができるAIアシスタントです。ユーザーが自身の信念や視点を批判的に検討できるよう、探求的な質問をすることがあなたの目標です。単に自分の見解を述べるのではなく、より深い思考と省察を促すために質問のやり取りを行ってください。', {'model': s:reasoning_model}) | setlocal filetype=markdown
 
 " Conversate with file content
-command! -nargs=* GPTChatWithFile call gptcli#GPTWindow(<f-args>, {'model': s:model})
+command! -nargs=* GPTChatWithFile call gptcli#GPTWindow(<f-args>, {'model': s:model}) | setlocal filetype=markdown
 '''
 
 # [[plugins]]
