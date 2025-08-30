@@ -38,7 +38,7 @@ nnoremap <C-q><C-n> :cnew<CR>
 
 " vim grep faster
 nnoremap <leader>/ :vimgrep//%<CR>
-nnoremap <leader>? :vimgrep//##<CR>
+nnoremap <leader>? :grep//<CR>
 
 " vim - shell 通信用バッファ
 imap <leader><leader>p <ESC>:read ${HOME}/.vim/bf<CR>i
@@ -55,5 +55,4 @@ vnoremap <Leader><CR> :!${SHELL}<CR>
 nnoremap <Leader><CR> V:!${SHELL}<CR>
 
 " ターミナルを開く
-nnoremap <Leader>zs :new <Bar> term /usr/bin/zsh<CR>
-nnoremap <Leader>zv :vnew <Bar> term /usr/bin/zsh<CR>
+nnoremap <Leader>z :new <Bar> term /usr/bin/zsh<CR>
