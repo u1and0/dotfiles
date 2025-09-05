@@ -16,7 +16,7 @@ nnoremap <buffer> <Leader>b :TscBuild<CR>
 
 " leader+l で deno lint
 command! -nargs=* DenoLint setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m | let &makeprg='NO_COLOR=1 deno lint --compact -q <args>' | make!
-nnoremap <buffer> <Leader>l :DenoLint<CR>
+nnoremap <buffer> <Leader>l :DenoLint ##<CR>
 
 command! -nargs=* DenoCheck setlocal efm=%f:\ line\ %l\\,\ col\ %c\ -\ %m | let &makeprg='NO_COLOR=1 deno check -q <args> ' | make!
 nnoremap <buffer> <Leader>c :DenoCheck ##<CR>
