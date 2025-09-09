@@ -30,7 +30,9 @@ autocmd!
 " セーブするたびに現在ファイルをdeno fmt
 autocmd BufWritePost *.ts,*.js !deno fmt -q %
 " セーブするたびに現在開いているバッファ全てにdeno lint
-autocmd BufWritePost *.ts,*.js DenoLint ##
+" autocmd BufWritePost *.ts,*.js DenoLint ##
+" セーブするたびに現在ファイルをdeno lint
+autocmd BufWritePost *.ts,*.js DenoLint %
 
 if executable("deno")
     autocmd User lsp_setup call lsp#register_server({
