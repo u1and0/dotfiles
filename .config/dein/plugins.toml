@@ -474,8 +474,8 @@ hook_add = '''
     command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args> . 'Generate the [programming language] code for [task description]. Provide only the code, with short, concise comments explaining key sections. Avoid lengthy explanations."', { 'model': s:kimi, 'max_tokens': 512})
 
     " Conversate with GPT
-    command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': s:qwen}) | setlocal filetype=markdown
-    command! -nargs=? GPTChatPro call gptcli#GPTWindow(<q-args>, {'model': s:pro_model, "max_tokens": 8192}) | setlocal filetype=markdown
+    command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': s:qwen, 'timeout': 60}) | setlocal filetype=markdown
+    command! -nargs=? GPTChatPro call gptcli#GPTWindow(<q-args>, {'model': s:code_model, "max_tokens": 8192, 'timeout': 60}) | setlocal filetype=markdown
     command! -nargs=? GPTChatReasoning call gptcli#GPTWindow(<q-args>, {'model': s:reasoning_model}) | setlocal filetype=markdown
 
     " With systemp prompt
