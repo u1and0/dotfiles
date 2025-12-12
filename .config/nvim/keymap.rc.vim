@@ -38,7 +38,7 @@ nnoremap <C-q><C-n> :cnew<CR>
 
 " vim grep faster
 nnoremap <leader>/ :vimgrep//%<CR>
-nnoremap <leader>? :grep//<CR>
+nnoremap <leader>? :execute "grep " . shellescape(@/) . " "<CR>
 
 " vim - shell 通信用バッファ
 imap <leader><leader>p <ESC>:read ${HOME}/.vim/bf<CR>i

@@ -39,7 +39,11 @@ if type fzf > /dev/null 2>&1; then
 fi
 
 # env file
-[ -f ${HOME}/.env ] && source ${HOME}/.env
+if [ -f ${HOME}/.env ]; then
+    set -a # 以降の変数定義を自動エクスポート
+    source ${HOME}/.env  # KEY=VALUE のenvファイル
+    set +a
+fi
 
 
 # LESS設定
