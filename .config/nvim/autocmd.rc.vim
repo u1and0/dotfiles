@@ -59,6 +59,16 @@ if executable('growiapi')
     command! -nargs=+ -complete=file GrowiPost :w !growiapi post <args>
 endif
 
+" Formatting JSON file using `jq` command
+if executable('jq')
+    augroup JsonFormat
+        autocmd!
+        autocmd FileType json nnoremap <buffer> <leader>= :.!jq .<CR>
+        autocmd FileType json nnoremap <buffer> g = :%!jq .<CR>
+        autocmd FileType json vnoremap <buffer> <leader>= :!jq .<CR>
+    augroup END
+endif
+
 " 一時ファイルの作成と書き込み
 command! TempfileEdit :edit `=tempname()`
 command! TempfileWrite :write `=tempname()`
