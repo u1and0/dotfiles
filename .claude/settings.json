@@ -9,9 +9,9 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ~/.claude/hooks/go-format.sh",
+            "command": "bash ~/.claude/hooks/format-and-check.sh",
             "timeout": 10,
-            "statusMessage": "Running goimports..."
+            "statusMessage": "Running format check..."
           }
         ]
       }
