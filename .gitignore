@@ -123,6 +123,7 @@
 !/.claude/
 /.claude/*
 !/.claude/hooks/
+!/.claude/commands/
 !/.claude/settings.json
 
 # その他rcファイル
