@@ -119,6 +119,12 @@
 /.docker/*
 !/.docker/config.json
 
+# LLM関連
+!/.claude/
+/.claude/*
+!/.claude/hooks/
+!/.claude/settings.json
+
 # その他rcファイル
 !/.cargo
 
