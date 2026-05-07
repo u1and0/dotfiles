@@ -63,9 +63,10 @@ endif
 if executable('jq')
     augroup JsonFormat
         autocmd!
-        autocmd FileType json nnoremap <buffer> <leader>= :.!jq .<CR>
-        autocmd FileType json nnoremap <buffer> g = :%!jq .<CR>
-        autocmd FileType json vnoremap <buffer> <leader>= :!jq .<CR>
+        autocmd FileType json command! JQ :.!jq .
+        autocmd FileType json nnoremap <buffer> <leader>jq= :.!jq .<CR>
+        autocmd FileType json nnoremap <buffer> <leader>JQ = :%!jq .<CR>
+        autocmd FileType json vnoremap <buffer> <leader>jq= :!jq .<CR>
     augroup END
 endif
 
