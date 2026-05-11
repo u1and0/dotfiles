@@ -104,6 +104,10 @@
 !/.config/dein/
 !.globalrc
 
+# OpenCode
+!/.config/opencode/opencode.json
+
+
 # テキストブラウザw3m
 !/.w3m/
 /.w3m/*
