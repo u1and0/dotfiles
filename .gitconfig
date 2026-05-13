@@ -13,7 +13,7 @@
 	excludesfile = ~/.globalgitignore
 	symlinks = true
 	quotepath = false
-    pager = "type diff-so-fancy >/dev/null 2>&1 && PG='diff-so-fancy' || PG='cat'; $PG | less --tabs=4 -RFX"
+    # pager = "type diff-so-fancy >/dev/null 2>&1 && PG='diff-so-fancy' || PG='cat'; $PG | less --tabs=4 -RFX"
 	# preloadindex = true  # <windows用>インデックスの比較を並列実行してくれてgit statusなどを高速化
 	# fscache = true  # <windows用>ユーザーディレクトリへのアクセスではなくシステム領域にキャッシュを書き込む
 [pack]
@@ -94,11 +94,6 @@
 	template = ~/.gitmessage
 [init]
 	defaultBranch = main
-[safe]
-	directory = /mnt/z/3_Personal/2課/ando-yu/vms/fekoubuntu/dneo_hack
-	directory = /mnt/z/3_Personal/2課/ando-yu/vms/fekoubuntu/dneo_hack/growi_tools
-	directory = /mnt/z/2_Common/03_製造/A_NewPLAN/ZRA-16_空中線/100_艤装支援/241114_海上公試データ分析
-	directory = /mnt/z/3_Personal/2課/ando-yu/vms/growi
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
