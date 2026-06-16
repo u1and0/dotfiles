@@ -22,6 +22,8 @@ augroup MyAutoCmd
     autocmd BufNewFile,BufRead *.py command! -nargs=* PythonRun :sp <Bar> term python <args> %
     autocmd BufNewFile,BufRead *.py noremap <buffer> <Leader>r :PythonRun<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " 非表示にされる文字列 (markdownの`やJSONの") を通常表示にする
+    autocmd FileType markdown,json setlocal conceallevel=0
 augroup END
 
 augroup TransparentBG
