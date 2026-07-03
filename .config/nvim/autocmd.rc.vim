@@ -42,15 +42,15 @@ if executable("nim")
     augroup END
 endif
 
-" PDFを開くコマンド
+" PDFをテキストとして開くコマンド(読み取り専用)
 if executable('pdftotext')
     command! -complete=file -nargs=1 Pdf :ene|0r !pdftotext -nopgbrk -layout <q-args> -
 endif
 
 " MarkdownをHTMLとして保存する
 if executable('pandoc')
-    autocmd FileType markdown command! WriteHTML :w !pandoc -o %:r.html
-    autocmd FileType markdown,tex,plaintex command! -range MarkdownToTeX :<line1>,<line2>!pandoc -f markdown -t latex
+    command! TOHTML :w !pandoc -o %:r.html
+    command! -range TOTeX :<line1>,<line2>!pandoc -f markdown -t latex
 endif
 
 " Growi API
