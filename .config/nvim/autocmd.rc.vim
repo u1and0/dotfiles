@@ -49,7 +49,7 @@ endif
 
 " MarkdownをHTMLとして保存する
 if executable('pandoc')
-    command! TOHTML :w !pandoc -o %:r.html
+    command! -range TOHTML <line1>,<line2>!pandoc -f markdown -t html
     command! -range TOTeX :<line1>,<line2>!pandoc -f markdown -t latex
 endif
 
