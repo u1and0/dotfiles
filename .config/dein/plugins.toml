@@ -188,6 +188,8 @@ hook_add = '''
     nnoremap <silent> [denite]<C-h> :History<CR>
     nnoremap <silent> [denite]<C-k> :FZF<CR>
     nnoremap <silent> [denite]<C-l> :Lines<CR>
+    nnoremap <silent> [denite]<C-o> :Jumps<CR>
+    nnoremap <silent> [denite]<C-m> :Marks<CR>
 '''
 
 [[plugins]]  # Add support for markdown files in tagbar
@@ -461,7 +463,7 @@ hook_add = '''
     let s:google_gemma = 'gemma-4-26b-a4b-it'
     let s:url = 'http://localhost:11434'
 
-    command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'max_tokens': 2048, 'temperature': 0.5, 'model': s:lite_model, 'timeout': 60})
+    command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'max_tokens': 2048, 'temperature': 0.5, 'model': s:model, 'timeout': 60})
     " Keybind C-X, C-G
     inoremap <C-x><C-g> <Esc>:GPTGenerateCode<CR>
     " Docs to code
