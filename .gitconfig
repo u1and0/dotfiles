@@ -47,6 +47,14 @@
 	dif = !git diff --stat
 	# ========branch========
 	b = branch
+	# ========tag========
+    # git tagmsg <tag> [<file>]
+    tagmsg = "!f() { \
+        tag_name=$1; \
+        note_file=${2:-PATCHNOTE.md}; \
+        msg=$(sed -e 's/^#\\+ //' \"$note_file\"); \
+        git tag -m \"$msg\" \"$tag_name\"; \
+    }; f"
 	# ========log========
 	log0 = !git log --all --oneline
 	log1 = !git log --all --graph --date=relative --date-order --format=format:'%C(yellow)%h %C(bold green)%ar %C(reset)%s %C(auto)%d %C(reset)'
@@ -95,8 +103,8 @@
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/usr/bin/gh auth git-credential
