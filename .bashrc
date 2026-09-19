@@ -107,4 +107,7 @@ export PYTHONPATH=~/home/python
 
 # ddgr default browser
 export BROWSER=w3m
+
+# npm のデフォルト表示をinfoにする
+export NPM_CONFIG_LOGLEVEL=info
 # vim:ft=sh
