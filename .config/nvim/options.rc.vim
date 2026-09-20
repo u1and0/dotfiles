@@ -14,6 +14,7 @@ set smartcase           " Search ignore case if only use letter case
 set display=lastline    " 長い行の表示
 set pumheight=10        " 補完ウィンドウの大きさ
 set modeline            " 行頭or行末にvim: set {options}を書ける
+set conceallevel=0      " 非表示にされる文字列 (markdownの`やJSONの") を通常表示にする
 set tags=./tags
 
 " Tab setting
@@ -27,11 +28,11 @@ set expandtab           " Expand TABs to spaces
 set diffopt+=vertical   " Gdiffsplit always split vertical
 filetype plugin indent on " filetypeによってインデント設定を変える
 
-set nolist  " 不可視文字の表示
+set list  " 不可視文字の表示
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " カラースキーム、文字装飾、ハイライト
-colorscheme slate
+colorscheme wildcharm
 set pumblend=30  " 0~100 ポップアップウィンドウの半透明化
 set cursorline          " Highlight corsorline
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE

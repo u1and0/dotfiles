@@ -143,18 +143,21 @@ function vagrant-snapbox(){
 }
 
 
-# google search using w3m
-function google() {
-    local str opt
-    if [ $# != 0 ]; then
-        for i in $*; do
-            str="$str+$i"
-        done
-        str=`echo $str | sed 's/^\+//'`
-        opt='search?num=50&hl=ja&lr=lang_ja'
-        opt="${opt}&q=${str}"
+# duckduckgo search using w3m
+function duck() {
+    TEMPFILE=$(mktemp)
+    URL="https://lite.duckduckgo.com/lite/"
+
+    if [ "$1" = ""  ]
+    then
+        echo "w3d: search keyword with DuckDuckGo"
+        echo "usage: w3d keyword"
+        exit 0
     fi
-    w3m http://www.google.co.jp/$opt
+
+    echo "q=$*" >$TEMPFILE
+    w3m -post $TEMPFILE $URL
+    rm -f $TEMPFILE
 }
 
 

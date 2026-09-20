@@ -22,6 +22,8 @@ augroup MyAutoCmd
     autocmd BufNewFile,BufRead *.py command! -nargs=* PythonRun :sp <Bar> term python <args> %
     autocmd BufNewFile,BufRead *.py noremap <buffer> <Leader>r :PythonRun<CR>
     autocmd BufNewFile,BufRead *.ts,*.js,*.html,*.tmpl setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    " 非表示にされる文字列 (markdownの`やJSONの") を通常表示にする
+    autocmd FileType markdown,json setlocal conceallevel=0
 augroup END
 
 augroup TransparentBG
@@ -40,15 +42,15 @@ if executable("nim")
     augroup END
 endif
 
-" PDFを開くコマンド
+" PDFをテキストとして開くコマンド(読み取り専用)
 if executable('pdftotext')
     command! -complete=file -nargs=1 Pdf :ene|0r !pdftotext -nopgbrk -layout <q-args> -
 endif
 
 " MarkdownをHTMLとして保存する
 if executable('pandoc')
-    autocmd FileType markdown command! WriteHTML :w !pandoc -o %:r.html
-    autocmd FileType markdown,tex,plaintex command! -range MarkdownToTeX :<line1>,<line2>!pandoc -f markdown -t latex
+    command! -range TOHTML <line1>,<line2>!pandoc -f markdown -t html
+    command! -range TOTeX :<line1>,<line2>!pandoc -f markdown -t latex
 endif
 
 " Growi API
@@ -57,6 +59,17 @@ if executable('growiapi')
     command! -nargs=+ -complete=file GrowiCreate :w !growiapi create <args>
     command! -nargs=+ -complete=file GrowiUpdate :w !growiapi update <args>
     command! -nargs=+ -complete=file GrowiPost :w !growiapi post <args>
+endif
+
+" Formatting JSON file using `jq` command
+if executable('jq')
+    augroup JsonFormat
+        autocmd!
+        autocmd FileType json command! JQ :.!jq .
+        autocmd FileType json nnoremap <buffer> <leader>jq= :.!jq .<CR>
+        autocmd FileType json nnoremap <buffer> <leader>JQ = :%!jq .<CR>
+        autocmd FileType json vnoremap <buffer> <leader>jq= :!jq .<CR>
+    augroup END
 endif
 
 " 一時ファイルの作成と書き込み

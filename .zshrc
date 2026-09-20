@@ -179,4 +179,3 @@ else; printf "Install zplug? [y/N]: "
     fi
 fi
 # vim:ft=zsh
-. "/home/u1and0/.deno/env"

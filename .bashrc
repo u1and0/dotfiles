@@ -3,7 +3,7 @@
 # Export Pathes
 export TERM="xterm-256color"
 # pipx path
-[ -e "${HOME}/.local/bin" ] && export PATH="$PATH:${HOME}/.local/bin"
+[ -d "${HOME}/.local/bin" ] && export PATH="$PATH:${HOME}/.local/bin"
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 # shell script path
 export SHPATH="${HOME}/sh"
@@ -39,7 +39,11 @@ if type fzf > /dev/null 2>&1; then
 fi
 
 # env file
-[ -f ${HOME}/.env ] && source ${HOME}/.env
+if [ -f ${HOME}/.env ]; then
+    set -a # 以降の変数定義を自動エクスポート
+    source ${HOME}/.env  # KEY=VALUE のenvファイル
+    set +a
+fi
 
 
 # LESS設定
@@ -103,4 +107,7 @@ export PYTHONPATH=~/home/python
 
 # ddgr default browser
 export BROWSER=w3m
+
+# npm のデフォルト表示をinfoにする
+export NPM_CONFIG_LOGLEVEL=info
 # vim:ft=sh

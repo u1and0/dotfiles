@@ -15,8 +15,8 @@ if which sudo > /dev/null 2>&1; then
     type powerpill > /dev/null 2>&1 && alias pacman='sudo powerpill '
 
     # docker
-    # type docker > /dev/null 2>&1 && alias docker='sudo docker '
-    # type docker-compose > /dev/null 2>&1 && alias docker-compose='sudo docker-compose '
+    type docker > /dev/null 2>&1 && alias docker='sudo docker '
+    type docker-compose > /dev/null 2>&1 && alias docker-compose='sudo docker-compose '
 
     # conda
     # type conda > /dev/null 2>&1 && alias conda='sudo conda '
@@ -156,4 +156,8 @@ alias bfexec='bfcat | ${SHELL}'
 
 # qwen coder + open router
 alias qwen='OPENAI_API_KEY=$OPENROUTER_API_KEY OPENAI_MODEL="qwen/qwen3-coder:free" OPENAI_BASE_URL="https://openrouter.ai/api/v1" qwen'
+
+# 再帰的にnull値を持つプロパティを省くjqカスタムスクリプト
+alias jq_nonnull="jq 'walk(if type == \"object\" then del(.[] | select(. == null)) else . end)'"
+
 # vim:ft=sh

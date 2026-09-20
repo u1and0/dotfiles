@@ -13,7 +13,7 @@
 	excludesfile = ~/.globalgitignore
 	symlinks = true
 	quotepath = false
-    pager = "type diff-so-fancy >/dev/null 2>&1 && PG='diff-so-fancy' || PG='cat'; $PG | less --tabs=4 -RFX"
+    # pager = "type diff-so-fancy >/dev/null 2>&1 && PG='diff-so-fancy' || PG='cat'; $PG | less --tabs=4 -RFX"
 	# preloadindex = true  # <windows用>インデックスの比較を並列実行してくれてgit statusなどを高速化
 	# fscache = true  # <windows用>ユーザーディレクトリへのアクセスではなくシステム領域にキャッシュを書き込む
 [pack]
@@ -47,6 +47,14 @@
 	dif = !git diff --stat
 	# ========branch========
 	b = branch
+	# ========tag========
+    # git tagmsg <tag> [<file>]
+    tagmsg = "!f() { \
+        tag_name=$1; \
+        note_file=${2:-PATCHNOTE.md}; \
+        msg=$(sed -e 's/^#\\+ //' \"$note_file\"); \
+        git tag -m \"$msg\" \"$tag_name\"; \
+    }; f"
 	# ========log========
 	log0 = !git log --all --oneline
 	log1 = !git log --all --graph --date=relative --date-order --format=format:'%C(yellow)%h %C(bold green)%ar %C(reset)%s %C(auto)%d %C(reset)'
@@ -94,14 +102,9 @@
 	template = ~/.gitmessage
 [init]
 	defaultBranch = main
-[safe]
-	directory = /mnt/z/3_Personal/2課/ando-yu/vms/fekoubuntu/dneo_hack
-	directory = /mnt/z/3_Personal/2課/ando-yu/vms/fekoubuntu/dneo_hack/growi_tools
-	directory = /mnt/z/2_Common/03_製造/A_NewPLAN/ZRA-16_空中線/100_艤装支援/241114_海上公試データ分析
-	directory = /mnt/z/3_Personal/2課/ando-yu/vms/growi
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/usr/bin/gh auth git-credential

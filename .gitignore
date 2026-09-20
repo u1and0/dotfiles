@@ -104,6 +104,10 @@
 !/.config/dein/
 !.globalrc
 
+# OpenCode
+!/.config/opencode/opencode.json
+
+
 # テキストブラウザw3m
 !/.w3m/
 /.w3m/*
@@ -118,6 +122,13 @@
 !/.docker/
 /.docker/*
 !/.docker/config.json
+
+# LLM関連
+!/.claude/
+/.claude/*
+!/.claude/hooks/
+!/.claude/commands/
+!/.claude/settings.json
 
 # その他rcファイル
 !/.cargo
