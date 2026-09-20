@@ -492,17 +492,3 @@ hook_add = '''
 " Conversate with file content
 command! -nargs=* GPTChatWithFile call gptcli#GPTWindow(<f-args>, {'model': s:model}) | setlocal filetype=markdown
 '''
-
-# [[plugins]]
-# repo = 'vim-denops/denops.vim'
-# if = '''executable('deno')'''
-
-[[plugins]]  # claude-code depenency
-repo = 'nvim-lua/plenary.nvim'
-
-[[plugins]]
-repo = 'greggh/claude-code.nvim'
-depends = ['nvim-lua/plenary.nvim']
-hook_add = '''
-lua require("claude-code").setup()
-'''
