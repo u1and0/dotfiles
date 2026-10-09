@@ -449,7 +449,7 @@ hook_add = '''
 repo = 'u1and0/gpt-cli'
 build = "./install.sh"
 hook_add = '''
-    let s:model = 'gemini-flash-latest'
+    let s:model = 'gemini-3.8-flash'
     let s:claude_lite_model = 'claude-haiku-4-5-20251001'
     let s:claude_model = 'claude-sonnet-5'
     " let s:reasoning_model = 'groq/deepseek-r1-distill-llama-70b'
@@ -463,7 +463,7 @@ hook_add = '''
     let s:google_gemma = 'gemma-4-26b-a4b-it'
     let s:url = 'http://localhost:11434'
 
-    command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'max_tokens': 2048, 'temperature': 0.5, 'model': s:model, 'timeout': 60})
+    command! -nargs=0 -range GPTGenerateCode <line1>,<line2>call gptcli#GPT('You are best of code generator. Generate a prompt to continue coding based on the given input code. Generate only code effectively, DO NOT generate descriptions nor code blocks. If you need describe code, please comment out it.', { 'max_tokens': 2048, 'temperature': 0.5, 'model': s:openrouter, 'timeout': 60})
     " Keybind C-X, C-G
     inoremap <C-x><C-g> <Esc>:GPTGenerateCode<CR>
     " Docs to code
