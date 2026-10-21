@@ -449,12 +449,12 @@ hook_add = '''
 repo = 'u1and0/gpt-cli'
 build = "./install.sh"
 hook_add = '''
-    let s:model = 'gemini-3.8-flash'
+    let s:model = 'gemini-3.5-flash-lite'
     let s:claude_lite_model = 'claude-haiku-4-5-20251001'
     let s:claude_model = 'claude-sonnet-5'
     " let s:reasoning_model = 'groq/deepseek-r1-distill-llama-70b'
     let s:pro_model = 'gemini-3.1-pro-preview'
-    let s:lite_model = 'openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free'
+    let s:lite_model = 'openrouter/nvidia/nemotron-3.5-super-vl:free'
     let s:llama = 'groq/meta-llama/llama-4-scout-17b-16e-instruct'
     let s:llama_pro = 'groq/meta-llama/llama-4-maverick-17b-128e-instruct'
     let s:openrouter = 'openrouter/nvidia/nemotron-3-ultra-550b-a55b:free'
@@ -475,7 +475,7 @@ hook_add = '''
     command! -nargs=0 -range GPTShaper <line1>,<line2>call gptcli#GPT("Format the code without rewriting the content of the code. Do not explain the code.", { "model": s:lite_model, "temperature": 0})
 
     " Any system prompt
-    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args> . 'Generate the [programming language] code for [task description]. Provide only the code, with short, concise comments explaining key sections. Avoid lengthy explanations."', { 'model': s:model, 'max_tokens': 2048})
+    command! -nargs=? -range GPTComplete <line1>,<line2>call gptcli#GPT(<q-args> . 'Generate the [programming language] code for [task description]. Provide only the code, with short, concise comments explaining key sections. Avoid lengthy explanations."', { 'model': s:lite_model, 'max_tokens': 2048})
 
     " Conversate with GPT
     command! -nargs=? GPTChat call gptcli#GPTWindow(<q-args>, {'model': s:model}) | setlocal filetype=markdown
